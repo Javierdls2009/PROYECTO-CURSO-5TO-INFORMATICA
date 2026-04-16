@@ -1,0 +1,156 @@
+:root {
+    --primary-red: #e5322e;
+    --dark-blue: #1a1a2e;
+    --light-bg: #f3f6ff;
+    --gold-accent: #c0a080;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--light-bg);
+}
+
+/* --- estilos del index completo --- */
+.main-header { text-align: center; padding: 60px 20px; }
+.main-header h1 { font-size: 3rem; margin: 0; color: var(--dark-blue); }
+.main-header span { color: var(--primary-red); }
+
+.nav-center {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* contenedor de la etiqueta con área de seguridad */
+.tag-container {
+    position: relative;
+    padding-bottom: 20px; /* en esta parte es el area para que el mouse no salga al bajar al menú */
+}
+
+.tag-main {
+    background: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid var(--dark-blue);
+    transition: all 0.3s ease;
+    box-shadow: 6px 6px 0px var(--gold-accent);
+    white-space: nowrap;
+}
+
+.tag-container:hover .tag-main {
+    background: var(--primary-red);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 0px var(--dark-blue);
+}
+
+/* aca iria el menu */
+.dropdown {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    list-style: none;
+    padding: 10px 0;
+    border-radius: 12px;
+    width: 220px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 100;
+    border: 1px solid #eee;
+}
+
+.tag-container:hover .dropdown {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dropdown li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.dropdown li a:hover {
+    background: #f8f9fa;
+    color: var(--primary-red);
+    padding-left: 25px;
+    transition: 0.2s;
+}
+
+/* --- ESTILOS PÁGINA MATERIA --- */
+.nav-materia {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background: white;
+    border-bottom: 2px solid #ddd;
+    align-items: center;
+}
+
+.materia-title { font-weight: 800; color: var(--primary-red); font-size: 1.5rem; }
+
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar-maestro {
+    width: 300px;
+    background: white;
+    padding: 40px 20px;
+    border-right: 1px solid #ddd;
+}
+
+.maestro-card { text-align: center; }
+.foto-profe {
+    width: 110px; height: 110px;
+    background: #f0f0f0; border-radius: 50%;
+    margin: 0 auto 15px; border: 4px solid var(--primary-red);
+}
+
+.content-tools { flex: 1; padding: 50px; background-color: #f9f9fb; }
+
+.grid-ilovepdf {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: var(--primary-red);
+}
+
+.tool-card .icon { font-size: 2.2rem; color: var(--primary-red); margin-bottom: 10px; }
+.tool-card h3 { margin: 0; font-size: 1.1rem; }
+
+footer.main-footer {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #ddd;
+    color: #666;
+    font-size: 0.9rem;
+    
+}
