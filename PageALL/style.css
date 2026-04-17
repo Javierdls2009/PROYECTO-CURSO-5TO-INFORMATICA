@@ -82,7 +82,7 @@ body {
 /* EL MENÚ DESPLEGABLE (SUBMENU) */
 .submenu {
     position: absolute;                /* Aparece encima de todo */
-    top: 90%;                          /* Debajo del botón */
+    top: 70%;                          /* Debajo del botón */
     left: 50%;                         /* Centrado */
     transform: translateX(-50%);       /* Ajuste para que esté bien centrado */
     background: white;                 /* Fondo blanco */
