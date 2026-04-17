@@ -19,18 +19,18 @@ body {
 .nav-center {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    padding: 40px;
+    gap: 100px;
+    padding: 100px;
 }
 
 /* contenedor de la etiqueta con área de seguridad */
 .tag-container {
     position: relative;
-    padding-bottom: 20px; /* en esta parte es el area para que el mouse no salga al bajar al menú */
+    padding-bottom: 10px; /* en esta parte es el area para que el mouse no salga al bajar al menú */
 }
 
-.tag-main {
-    background: white;
+.tag-main { /* estilo de las etiquetas principales */
+    background: rgb(255, 255, 255);
     padding: 15px 35px;
     border-radius: 50px;
     font-weight: bold;
