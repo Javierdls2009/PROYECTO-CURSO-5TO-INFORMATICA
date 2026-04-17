@@ -1,156 +1,136 @@
+/* COLORES QUE USAMOS EN TODO EL SITIO */
 :root {
-    --primary-red: #e5322e;
-    --dark-blue: #1a1a2e;
-    --light-bg: #f3f6ff;
-    --gold-accent: #c0a080;
+    --color-principal: #70493c;      /* marron que aparece en el logo */
+    --color-fondo: #ffffff;          /* blanco de fondo */
+    --color-oscuro: #1a1a2e;         /* Azul oscuro para textos */
+    --color-dorado: #c0a080;         /* Dorado para sombras */
 }
 
+
+/* El cuerpo (toda la página) */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background-color: var(--light-bg);
+    font-family: Arial, sans-serif;   /* Tipo de letra */
+    margin: 0;                         /* Sin espacios en los bordes */
+    background-color: var(--color-fondo); /* Fondo azul claro */
 }
 
-/* --- estilos del index completo --- */
-.main-header { text-align: center; padding: 60px 20px; }
-.main-header h1 { font-size: 3rem; margin: 0; color: var(--dark-blue); }
-.main-header span { color: var(--primary-red); }
+/* ========================================
+   ENCABEZADO (HEADER)
+   La parte de arriba con el logo
+   ======================================== */
 
-.nav-center {
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    padding: 100px;
+.encabezado-principal {
+    text-align: center;                /* Todo centrado */
+    padding: 60px 20px;                /* Espacio alrededor */
+    background-color: rgb(208, 202, 192);           /* Fondo blanco */
 }
 
-/* contenedor de la etiqueta con área de seguridad */
-.tag-container {
-    position: relative;
-    padding-bottom: 10px; /* en esta parte es el area para que el mouse no salga al bajar al menú */
+.encabezado-principal h1 {
+    font-size: 3rem;                   /* Letras grandes */
+    margin: 10px;                         /* Sin espacios */
+    color: var(--color-oscuro);        /* Azul oscuro */
 }
 
-.tag-main { /* estilo de las etiquetas principales */
-    background: rgb(255, 255, 255);
-    padding: 15px 35px;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    border: 2px solid var(--dark-blue);
-    transition: all 0.3s ease;
-    box-shadow: 6px 6px 0px var(--gold-accent);
-    white-space: nowrap;
+/* El CCED en rojo */
+.encabezado-principal .rojo {
+    color: var(--color-principal);     /* Marron */
 }
 
-.tag-container:hover .tag-main {
-    background: var(--primary-red);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 8px 8px 0px var(--dark-blue);
+.encabezado-principal p {
+    color: var(--color-principal);     /* Marron */
+    font-size: 1.1rem;                 /* Letras medianas */
 }
 
-/* aca iria el menu */
-.dropdown {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    list-style: none;
-    padding: 10px 0;
-    border-radius: 12px;
-    width: 220px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    display: none;
-    z-index: 100;
-    border: 1px solid #eee;
+/* ========================================
+   MENÚ PRINCIPAL
+   Los botones con desplegables
+   ======================================== */
+
+.menu-principal {
+    display: flex;                     /* Pone los botones en línea */
+    justify-content: center;           /* Los centra */
+    gap: 20px;                         /* Espacio entre botones */
+    padding: 40px 20px;                /* Espacio alrededor */
+    flex-wrap: wrap;                   /* Si no caben, bajan de línea */
 }
 
-.tag-container:hover .dropdown {
+/* CADA BOTÓN DE MATERIA */
+.boton-materia {
+    position: relative;                /* Para que el submenu salga de aquí */
+}
+
+.boton-texto {
+    background: white;                 /* Fondo blanco */
+    padding: 15px 35px;                /* Espacio dentro del botón */
+    border-radius: 5px;               /* Bordes redondeados */
+    font-weight: bold;                 /* Letras gruesas */
+    cursor:pointer;                    /* Manito al pasar el mouse */
+    border: 2px solid var(--color-oscuro); /* Borde azul oscuro */
+    transition: all 0.3s ease;         /* Cambios suaves */
+    box-shadow: 6px 6px 0px var(--color-dorado); /* Sombra dorada */
+    white-space: nowrap;               /* El texto no se parte */
+}
+
+/* EFECTO CUANDO PASAS EL MOUSE SOBRE EL BOTÓN */
+.boton-materia:hover .boton-texto {
+    background: var(--color-principal); /* Se pone rojo */
+    color: white;                      /* Texto blanco */
+    transform: translateY(-3px);       /* Se levanta un poco */
+    box-shadow: 8px 8px 0px var(--color-oscuro); /* Sombra azul */
+}
+
+/* EL MENÚ DESPLEGABLE (SUBMENU) */
+.submenu {
+    position: absolute;                /* Aparece encima de todo */
+    top: 90%;                          /* Debajo del botón */
+    left: 50%;                         /* Centrado */
+    transform: translateX(-50%);       /* Ajuste para que esté bien centrado */
+    background: white;                 /* Fondo blanco */
+    list-style: none;                  /* Sin viñetas */
+    padding: 10px 0;                   /* Espacio dentro */
+    border-radius: 15px;               /* Bordes redondeados */
+    width: 220px;                      /* Ancho del menú */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra negra */
+    display: none;                     /* ESCONDIDO al principio */
+    z-index: 100;                      /* Aparece encima de todo */
+    border: 1px solid #eee;            /* Borde gris claro */
+}
+
+/* CUANDO PASAS EL MOUSE, EL SUBMENU APARECE */
+.boton-materia:hover .submenu {
     display: block;
-    animation: slideUp 0.3s ease;
+    animation: animacion-subida 0.3s ease; /* Con animación */
 }
 
-@keyframes slideUp {
-    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+
+/* CADA OPCIÓN DEL SUBMENU */
+.submenu li a {
+    display: block;                    /* Para que ocupe todo el espacio */
+    padding: 12px 20px;                /* Espacio dentro */
+    text-decoration: none;             /* Sin subrayado */
+    color: #444;                       /* Gris oscuro */
+    font-size: 0.95rem;                /* Letras medianas */
+    transition: 0.2s;                  /* Cambios suaves */
 }
 
-.dropdown li a {
-    display: block;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #444;
-    font-size: 0.95rem;
+/* EFECTO CUANDO PASAS EL MOUSE EN UNA OPCIÓN */
+.submenu li a:hover {
+    background: #f8f9fa;               /* Fondo gris muy claro */
+    color: var(--color-principal);     /* texto marron */
+    padding-left: 25px;                /* Se mueve a la derecha */
 }
 
-.dropdown li a:hover {
-    background: #f8f9fa;
-    color: var(--primary-red);
-    padding-left: 25px;
-    transition: 0.2s;
-}
+/* ========================================
+   PIE DE PÁGINA (FOOTER)
+   La parte de abajo
+   ======================================== */
 
-/* --- ESTILOS PÁGINA MATERIA --- */
-.nav-materia {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 5%;
-    background: white;
-    border-bottom: 2px solid #ddd;
-    align-items: center;
-}
-
-.materia-title { font-weight: 800; color: var(--primary-red); font-size: 1.5rem; }
-
-.layout { display: flex; min-height: 100vh; }
-
-.sidebar-maestro {
-    width: 300px;
-    background: white;
-    padding: 40px 20px;
-    border-right: 1px solid #ddd;
-}
-
-.maestro-card { text-align: center; }
-.foto-profe {
-    width: 110px; height: 110px;
-    background: #f0f0f0; border-radius: 50%;
-    margin: 0 auto 15px; border: 4px solid var(--primary-red);
-}
-
-.content-tools { flex: 1; padding: 50px; background-color: #f9f9fb; }
-
-.grid-ilovepdf {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.tool-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #eee;
-    transition: 0.3s;
-}
-
-.tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    border-color: var(--primary-red);
-}
-
-.tool-card .icon { font-size: 2.2rem; color: var(--primary-red); margin-bottom: 10px; }
-.tool-card h3 { margin: 0; font-size: 1.1rem; }
-
-footer.main-footer {
-    text-align: center;
-    padding: 20px;
-    background: white;
-    border-top: 1px solid #ddd;
-    color: #666;
-    font-size: 0.9rem;
-    
+.pie-pagina {
+    text-align: center;                /* Centrado */
+    padding: 20px;                     /* Espacio */
+    background: white;                 /* Fondo blanco */
+    border-top: 1px solid #ddd;        /* Línea gris en la parte superior */
+    color: #666;                       /* Texto gris */
+    font-size: 0.9rem;                 /* Letras pequeñas */
 }
