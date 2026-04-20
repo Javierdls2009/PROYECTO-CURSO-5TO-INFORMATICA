@@ -1,136 +1,384 @@
-/* COLORES QUE USAMOS EN TODO EL SITIO */
+/* ========================================
+   ESTILOS CON IMÁGENES - TARJETAS DE MATERIAS
+   Similar a la plantilla de zapatillas
+   ======================================== */
+
 :root {
-    --color-principal: #70493c;      /* marron que aparece en el logo */
-    --color-fondo: #ffffff;          /* blanco de fondo */
-    --color-oscuro: #1a1a2e;         /* Azul oscuro para textos */
-    --color-dorado: #c0a080;         /* Dorado para sombras */
+    --color-principal: #e5322e;
+    --color-fondo: #f3f6ff;
+    --color-oscuro: #1a1a2e;
+    --blanco: #ffffff;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
 
-/* El cuerpo (toda la página) */
 body {
-    font-family: Arial, sans-serif;   /* Tipo de letra */
-    margin: 0;                         /* Sin espacios en los bordes */
-    background-color: var(--color-fondo); /* Fondo azul claro */
+    background: linear-gradient(135deg, #f3f6ff 0%, #e8eef7 100%);
+    min-height: 100vh;
+    padding: 20px;
 }
 
 /* ========================================
-   ENCABEZADO (HEADER)
-   La parte de arriba con el logo
+   ENCABEZADO
    ======================================== */
 
-.encabezado-principal {
-    text-align: center;                /* Todo centrado */
-    padding: 60px 20px;                /* Espacio alrededor */
-    background-color: rgb(208, 202, 192);           /* Fondo blanco */
+.encabezado {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--blanco);
+    border-radius: 20px;
+    margin-bottom: 60px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
-.encabezado-principal h1 {
-    font-size: 3rem;                   /* Letras grandes */
-    margin: 10px;                         /* Sin espacios */
-    color: var(--color-oscuro);        /* Azul oscuro */
+.encabezado h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    color: var(--color-oscuro);
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
-/* El CCED en rojo */
-.encabezado-principal .rojo {
-    color: var(--color-principal);     /* Marron */
+.encabezado .rojo {
+    color: var(--color-principal);
 }
 
-.encabezado-principal p {
-    color: var(--color-principal);     /* Marron */
-    font-size: 1.1rem;                 /* Letras medianas */
+.encabezado p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    font-weight: 300;
 }
 
 /* ========================================
-   MENÚ PRINCIPAL
-   Los botones con desplegables
+   GRID DE TARJETAS
    ======================================== */
 
-.menu-principal {
-    display: flex;                     /* Pone los botones en línea */
-    justify-content: center;           /* Los centra */
-    gap: 20px;                         /* Espacio entre botones */
-    padding: 40px 20px;                /* Espacio alrededor */
-    flex-wrap: wrap;                   /* Si no caben, bajan de línea */
-}
-
-/* CADA BOTÓN DE MATERIA */
-.boton-materia {
-    position: relative;                /* Para que el submenu salga de aquí */
-}
-
-.boton-texto {
-    background: white;                 /* Fondo blanco */
-    padding: 15px 35px;                /* Espacio dentro del botón */
-    border-radius: 5px;               /* Bordes redondeados */
-    font-weight: bold;                 /* Letras gruesas */
-    cursor:pointer;                    /* Manito al pasar el mouse */
-    border: 2px solid var(--color-oscuro); /* Borde azul oscuro */
-    transition: all 0.3s ease;         /* Cambios suaves */
-    box-shadow: 6px 6px 0px var(--color-dorado); /* Sombra dorada */
-    white-space: nowrap;               /* El texto no se parte */
-}
-
-/* EFECTO CUANDO PASAS EL MOUSE SOBRE EL BOTÓN */
-.boton-materia:hover .boton-texto {
-    background: var(--color-principal); /* Se pone rojo */
-    color: white;                      /* Texto blanco */
-    transform: translateY(-3px);       /* Se levanta un poco */
-    box-shadow: 8px 8px 0px var(--color-oscuro); /* Sombra azul */
-}
-
-/* EL MENÚ DESPLEGABLE (SUBMENU) */
-.submenu {
-    position: absolute;                /* Aparece encima de todo */
-    top: 70%;                          /* Debajo del botón */
-    left: 50%;                         /* Centrado */
-    transform: translateX(-50%);       /* Ajuste para que esté bien centrado */
-    background: white;                 /* Fondo blanco */
-    list-style: none;                  /* Sin viñetas */
-    padding: 10px 0;                   /* Espacio dentro */
-    border-radius: 15px;               /* Bordes redondeados */
-    width: 220px;                      /* Ancho del menú */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra negra */
-    display: none;                     /* ESCONDIDO al principio */
-    z-index: 100;                      /* Aparece encima de todo */
-    border: 1px solid #eee;            /* Borde gris claro */
-}
-
-/* CUANDO PASAS EL MOUSE, EL SUBMENU APARECE */
-.boton-materia:hover .submenu {
-    display: block;
-    animation: animacion-subida 0.3s ease; /* Con animación */
-}
-
-
-
-/* CADA OPCIÓN DEL SUBMENU */
-.submenu li a {
-    display: block;                    /* Para que ocupe todo el espacio */
-    padding: 12px 20px;                /* Espacio dentro */
-    text-decoration: none;             /* Sin subrayado */
-    color: #444;                       /* Gris oscuro */
-    font-size: 0.95rem;                /* Letras medianas */
-    transition: 0.2s;                  /* Cambios suaves */
-}
-
-/* EFECTO CUANDO PASAS EL MOUSE EN UNA OPCIÓN */
-.submenu li a:hover {
-    background: #f8f9fa;               /* Fondo gris muy claro */
-    color: var(--color-principal);     /* texto marron */
-    padding-left: 25px;                /* Se mueve a la derecha */
+.contenedor-general {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
 }
 
 /* ========================================
-   PIE DE PÁGINA (FOOTER)
-   La parte de abajo
+   TARJETA INDIVIDUAL
+   ======================================== */
+
+.contenedor-tarjeta {
+    perspective: 1000px;
+}
+
+.tarjeta {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    background: var(--blanco);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+/* FONDO DECORATIVO */
+.fondo-decorativo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color);
+    clip-path: circle(180px at 85% 15%);
+    transition: clip-path 0.5s ease;
+    opacity: 0.12;
+    z-index: 1;
+}
+
+.tarjeta:hover .fondo-decorativo {
+    clip-path: circle(350px at 85% -15%);
+}
+
+/* ZONA DE IMAGEN */
+.zona-imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.tarjeta:hover .zona-imagen {
+    height: 200px;
+}
+
+/* IMAGEN DE LA MATERIA */
+.imagen-materia {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: all 0.5s ease;
+    transform: rotate(-20deg) scale(1);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.tarjeta:hover .imagen-materia {
+    transform: rotate(0deg) scale(1.1);
+    opacity: 1;
+}
+
+/* NOMBRE DE LA MATERIA EN LA IMAGEN */
+.nombre-materia {
+    position: absolute;
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+    opacity: 0.08;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.tarjeta:hover .nombre-materia {
+    opacity: 0.15;
+}
+
+/* CONTENIDO DE LA TARJETA */
+.contenido-tarjeta {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, var(--blanco) 30%);
+    padding: 25px;
+    text-align: center;
+    transition: all 0.6s ease;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.tarjeta:hover .contenido-tarjeta {
+    height: 280px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, var(--blanco) 30%);
+}
+
+/* TÍTULO */
+.contenido-tarjeta h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-oscuro);
+    letter-spacing: -0.5px;
+}
+
+/* DESCRIPCIÓN */
+.contenido-tarjeta p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease 0.2s;
+    line-height: 1.4;
+}
+
+.tarjeta:hover .contenido-tarjeta p {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* OPCIONES / BOTÓN */
+.opciones {
+    margin-top: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.3s;
+}
+
+.tarjeta:hover .opciones {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* BOTÓN */
+.boton {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--color);
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.boton:hover {
+    filter: brightness(1.2);     /* Se vuelve más brillante */
+    color: #e5322e;             /* El texto cambia a rojo */
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   PIE DE PÁGINA
    ======================================== */
 
 .pie-pagina {
-    text-align: center;                /* Centrado */
-    padding: 20px;                     /* Espacio */
-    background: white;                 /* Fondo blanco */
-    border-top: 1px solid #ddd;        /* Línea gris en la parte superior */
-    color: #666;                       /* Texto gris */
-    font-size: 0.9rem;                 /* Letras pequeñas */
+    text-align: center;
+    padding: 30px;
+    background: var(--blanco);
+    border-radius: 15px;
+    color: #999;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-top: 60px;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+@keyframes flotante {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.tarjeta {
+    animation: flotante 3s ease-in-out infinite;
+}
+
+.tarjeta:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.tarjeta:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.tarjeta:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.tarjeta:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.tarjeta:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .encabezado {
+        padding: 40px 20px;
+        margin-bottom: 40px;
+    }
+
+    .encabezado h1 {
+        font-size: 2.5rem;
+    }
+
+    .encabezado p {
+        font-size: 1rem;
+    }
+
+    .contenedor-general {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 10px;
+    }
+
+    .tarjeta {
+        height: 420px;
+    }
+
+    .zona-imagen {
+        height: 240px;
+    }
+
+    .tarjeta:hover .zona-imagen {
+        height: 160px;
+    }
+
+    .imagen-materia {
+        width: 180px;
+        height: 180px;
+    }
+
+    .contenido-tarjeta {
+        height: 180px;
+    }
+
+    .tarjeta:hover .contenido-tarjeta {
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    .encabezado h1 {
+        font-size: 2rem;
+    }
+
+    .contenedor-general {
+        gap: 20px;
+    }
+
+    .tarjeta {
+        height: 380px;
+    }
+
+    .zona-imagen {
+        height: 220px;
+    }
+
+    .imagen-materia {
+        width: 160px;
+        height: 160px;
+    }
+
+    .contenido-tarjeta h2 {
+        font-size: 1.2rem;
+    }
+
+    .boton {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
 }

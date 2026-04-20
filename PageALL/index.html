@@ -8,92 +8,159 @@
 </head>
 <body>
 
-    <!-- encabezado principal -->
-    <header class="encabezado-principal">
-        <h1>CCED<span class="rojo">INFO</span></h1>
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <h1>Academia<span class="rojo">CCED</span></h1>
         <p>Selecciona una materia para explorar</p>
     </header>
 
-    <!-- menu principal -->
-    <nav class="menu-principal">
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="contenedor-general">
+
+        <!-- TARJETA 1: MATEMÁTICAS -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #3b82f6;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/matematicas.png" alt="Matemáticas" class="imagen-materia">
+                    <div class="nombre-materia">MATEMÁTICAS</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Matemáticas</h2>
+                    <p>Ecuaciones, trigonometría y geometría</p>
+                    <div class="opciones">
+                        <a href="Matematicas/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 2: LENGUA ESPAÑOLA -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #ef4444;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/lengua.png" alt="Lengua Española" class="imagen-materia">
+                    <div class="nombre-materia">LENGUA ESPAÑOLA</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Lengua Española</h2>
+                    <p>Ortografía, gramática y análisis</p>
+                    <div class="opciones">
+                        <a href="Lengua Española/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 3: EDUCACIÓN FÍSICA -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #10b981;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/deportes.png" alt="Educación Física" class="imagen-materia">
+                    <div class="nombre-materia">EDUCACIÓN FÍSICA</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Educación Física</h2>
+                    <p>Deportes y ejercicios</p>
+                    <div class="opciones">
+                        <a href="Educacion Fisica/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 4: CIENCIAS SOCIALES -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #f59e0b;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/sociales.png" alt="Ciencias Sociales" class="imagen-materia">
+                    <div class="nombre-materia">CIENCIAS SOCIALES</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Ciencias Sociales</h2>
+                    <p>Historia, geografía y civismo</p>
+                    <div class="opciones">
+                        <a href="Ciencias Sociales/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 5: CIENCIAS NATURALES -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #8b5cf6;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/naturales.png" alt="Ciencias Naturales" class="imagen-materia">
+                    <div class="nombre-materia">CIENCIAS NATURALES</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Ciencias Naturales</h2>
+                    <p>Biología, química y física</p>
+                    <div class="opciones">
+                        <a href="Ciencas Naturales/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-
-        <!-- MATEMÁTICAS -->
-        <div class="boton-materia">
-            <div class="boton-texto">Matemáticas</div>
-            <ul class="submenu">
-                <li><a href="Matematicas/PanelGeneral.html">Panel General</a></li>
-                <li><a href="Matematicas/ecuaciones.html">Ecuaciones</a></li>
-                <li><a href="Matematicas/trigonometria.html">Trigonometría</a></li>
-                <li><a href="Matematicas/geometria.html">Geometría</a></li>
-            </ul>
+        <!-- TARJETA 6: ARTES -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #8b5cf6;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/artes.png" alt="Arte" class="imagen-materia">
+                    <div class="nombre-materia">ARTE</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Arte</h2>
+                    <p>Dibujo, pintura y escultura</p>
+                    <div class="opciones">
+                        <a href="Artes/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- LENGUA ESPAÑOLA -->
-        <div class="boton-materia">
-            <div class="boton-texto">Lengua Española</div>
-            <ul class="submenu">
-                <li><a href="Lengua Española/PanelGeneral.html">Panel General</a></li>
-                <li><a href="Lengua Española/Ejercicios.html">Analizador de Texto</a></li>
-                <li><a href="Lengua Española/Ortografia.html">Ortografía</a></li>
-            </ul>
+        
+        <!-- TARJETA 7: FORMACION HUMANA -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #8b5cf6;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/humana.png" alt="Formación Humana" class="imagen-materia">
+                    <div class="nombre-materia">FORMACIÓN HUMANA</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Formación Humana</h2>
+                    <p>Valores, ética y ciudadanía</p>
+                    <div class="opciones">
+                        <a href="Formacion Humana/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-        <!-- Formacion Humana -->
-        <div class="boton-materia">
-            <div class="boton-texto">Formación Humana</div>
-            <ul class="submenu">
-                <li><a href="Formacion Humana/PanelGeneral.html">Panel General</a></li>
-                <li><a href="Formacion Humana/FormacionLaboral.html">Formación Laboral</a></li>
-            </ul>
+        
+        <!-- TARJETA 8: INGLES -->
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
+                <div class="fondo-decorativo" style="--color: #8b5cf6;"></div>
+                <div class="zona-imagen">
+                    <img src="./imagenes/ingles.png" alt="Inglés" class="imagen-materia">
+                    <div class="nombre-materia">INGLÉS</div>
+                </div>
+                <div class="contenido-tarjeta">
+                    <h2>Inglés</h2>
+                    <p>Comunicación y gramática</p>
+                    <div class="opciones">
+                        <a href="Ingles/PanelGeneral.html" class="boton">Ver herramientas</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- EDUCACIÓN FÍSICA -->
-        <div class="boton-materia">
-            <div class="boton-texto">Educación Física</div>
-            <ul class="submenu">
-                <li><a href="Educacion Fisica/PanelGeneral.html">Panel General</a></li>
-                <li><a href="Educacion Fisica/Deportes.html">Deportes</a></li>
-                <li><a href="Educacion Fisica/Ejercicios.html">Ejercicios</a></li>
-            </ul>
-        </div>
-
-        <!-- CIENCIAS SOCIALES -->
-        <div class="boton-materia">
-            <div class="boton-texto">Ciencias Sociales</div>
-            <ul class="submenu">
-                <li><a href="Ciencias Sociales/PanelGeneral.html">Panel General</a></li>
-                <li><a href="Ciencias Sociales/Historia.html">Historia</a></li>
-                <li><a href="Ciencias Sociales/Geografia.html">Geografía</a></li>
-                <li><a href="Ciencias Sociales/Civismo.html">Civismo</a></li>
-            </ul>
-        </div>
-
-        <!-- CIENCIAS NATURALES -->
-        <div class="boton-materia">
-            <div class="boton-texto">Ciencias Naturales</div>
-            <ul class="submenu">
-                <li><a href="Ciencas Naturales/PanelGeneral.html">Panel General</a></li>
-                <li><a href="Ciencas Naturales/Biologia.html">Biología</a></li>
-                <li><a href="Ciencas Naturales/Quimica.html">Química</a></li>
-                <li><a href="Ciencas Naturales/Fisica.html">Física</a></li>
-            </ul>
-        </div>
-
-        <!-- ARTES -->
-        <div class="boton-materia">
-            <div class="boton-texto">Artes</div>
-            <ul class="submenu">
-                <li><a href="Artes/PanelGeneral.html">Panel General</a></li>
-                <li><a href="Artes/Musica.html">Música</a></li>
-                <li><a href="Artes/Dibujo.html">Dibujo</a></li>
-            </ul>
-        </div>
-
-    </nav>
-
-    
+    </div>
 
     <!-- PIE DE PÁGINA -->
     <footer class="pie-pagina">
