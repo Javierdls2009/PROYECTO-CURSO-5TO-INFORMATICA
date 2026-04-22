@@ -7,8 +7,7 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-    <link rel="stylesheet" href="/PageALL/style.css">
-    
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 
@@ -90,6 +89,61 @@
         #list li figcaption p { color: #666; font-size: 0.9rem; font-weight: 400; margin: 0; }
         
         .cf:after { content: " "; display: table; clear: both; }
+        /* --- Estilos de la sección Sobre Nosotros --- */
+.contenido-sobre-nosotros {
+    padding: 60px 0;
+    background-color: #f9f9f9; /* Un gris muy tenue para diferenciar */
+}
+
+.texto-introductorio {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.texto-introductorio h2 {
+    color: #06141B; /* Tu azul oscuro */
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.cuadros-info {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tarjeta-info {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    width: 350px;
+    text-align: center;
+    border-bottom: 5px solid #11212D; /* Color de tu paleta */
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-info:hover {
+    transform: translateY(-10px);
+}
+
+.tarjeta-info .material-symbols-outlined {
+    font-size: 3rem;
+    color: #4A5C6A;
+    margin-bottom: 15px;
+}
+
+.tarjeta-info h3 {
+    color: #11212D;
+    margin-bottom: 10px;
+}
+
+/* --- Ajuste para el Slider (Para que no choque con el footer) --- */
+.slider--teams {
+    margin-bottom: 150px !important; /* Espacio extra para que no pise el fondo animado */
+}
     </style>
 </head>
 <body>
@@ -97,7 +151,7 @@
     <header class="encabezado-principal">
         <nav class="nav-superior">
             <div class="logo">
-                <img src="/PageALL/ImgALL/LogoCCED.jpeg" alt="logo del colegio">
+                <img src="ImgALL/WhatsApp Image 2026-04-20 at 10.10.05 AM.jpeg" alt="logo del colegio">
             </div>
             
             <div class="buscador">
@@ -128,21 +182,43 @@
 
         <nav class="nav-inferior">
             <ul class="ul-principal">
-                <li><a href="/PageALL/index.html"><span class="material-symbols-outlined">home</span></a></li>
+                <li><a href="index.html"><span class="material-symbols-outlined">home</span></a></li>
                 <li><a href="#" class="active">Sobre el CCED</a></li>
-                <li><a href="/PageALL/Biblioteca/Biblioteca.html">Biblioteca</a></li>
+                <li><a href="Biblioteca.html">Biblioteca</a></li>
             </ul>
         </nav>
     </header>
     
-    <section id="inicio">
-        <div class="titulo">
-            <h1>Biblioteca<span class="rojo">CCED</span></h1>
-        </div>
-    </section>
+   <section id="inicio" class="hero-subpage">
+    <div class="titulo">
+        <h1>Sobre el <span class="rojo">CCED</span></h1>
+        <p>Conoce al equipo que hace posible nuestra excelencia académica.</p>
+    </div>
+</section>
 
 
     <main>
+        <section class="contenido-sobre-nosotros">
+    <div class="contenedor_personalizado">
+        <div class="texto-introductorio">
+            <h2>Nuestra Institución</h2>
+            <p>El Colegio Cristiano Educación Dinámica (CCED) se dedica a formar jóvenes con valores integrales y excelencia académica, preparándolos para los retos del futuro con una base tecnológica sólida.</p>
+        </div>
+        
+        <div class="cuadros-info">
+            <div class="tarjeta-info">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                <h3>Misión</h3>
+                <p>Brindar una educación de calidad basada en principios cristianos y tecnológicos.</p>
+            </div>
+            <div class="tarjeta-info">
+                <span class="material-symbols-outlined">visibility</span>
+                <h3>Visión</h3>
+                <p>Ser la institución líder en innovación educativa y formación de líderes en Santo Domingo.</p>
+            </div>
+        </div>
+    </div>
+</section>
         <div class="slider--teams">
             <div class="slider--teams__team">
                 <ul id="list" class="cf">
@@ -150,7 +226,7 @@
                     <li>
                         <figure class="active">
                             <div>
-                                <img src="/PageALL/ImgALL/Jan.jpeg" alt="Foto de Jan">
+                                <img src="ImgALL/Jan.jpeg" alt="Foto de Jan">
                             </div>
                             <figcaption>
                                 <h2>Jan Segura</h2>
@@ -162,7 +238,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Ariel.jpeg" alt="Foto de Ariel">
+                                <img src="ImgALL/Ariel.jpeg" alt="Foto de Ariel">
                             </div>
                             <figcaption>
                                 <h2>Ariel</h2>
@@ -174,7 +250,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Anderson.jpeg" alt="Foto de Anderson">
+                                <img src="ImgALL/Anderson.jpeg" alt="Foto de Anderson">
                             </div>
                             <figcaption>
                                 <h2>Anderson</h2>
@@ -186,7 +262,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Colon.jpeg" alt="Foto de Edwin Colon">
+                                <img src="ImgALL/Colon.jpeg" alt="Foto de Edwin Colon">
                             </div>
                             <figcaption>
                                 <h2>Edwin Colon</h2>
@@ -198,7 +274,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Paul.jpeg" alt="Foto de Paul">
+                                <img src="ImgALL/Paul.jpeg" alt="Foto de Paul">
                             </div>
                             <figcaption>
                                 <h2>Paul</h2>
@@ -210,7 +286,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Surelis.jpeg" alt="Foto de Surelis">
+                                <img src="ImgALL/Surelis.jpeg" alt="Foto de Surelis">
                             </div>
                             <figcaption>
                                 <h2>Surelis</h2>
@@ -221,7 +297,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Delsa.jpeg" alt="Foto de Delsa Herrera">
+                                <img src="ImgALL/Delsa.jpeg" alt="Foto de Delsa Herrera">
                             </div>
                             <figcaption>
                                 <h2>Delsa Herrera</h2>
@@ -233,7 +309,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/lorna.jpeg" alt="Foto de Lorna">
+                                <img src="ImgALL/lorna.jpeg" alt="Foto de Lorna">
                             </div>
                             <figcaption>
                                 <h2>Lorna Elizabeth de la Paz</h2>
@@ -245,7 +321,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Mauro.jpeg" alt="Foto de Mauro">
+                                <img src="ImgALL/Mauro.jpeg" alt="Foto de Mauro">
                             </div>
                             <figcaption>
                                 <h2>Mauro Bocio</h2>
@@ -257,7 +333,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/SimonSanchez.jpeg" alt="Foto de Simon Sanchez">
+                                <img src="ImgALL/SimonSanchez.jpeg" alt="Foto de Simon Sanchez">
                             </div>
                             <figcaption>
                                 <h2>Simon Sanchez</h2>
@@ -269,7 +345,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/Jeovanny.jpeg" alt="Foto de Jeovanny Guzman">
+                                <img src="ImgALL/Jeovanny.jpeg" alt="Foto de Jeovanny Guzman">
                             </div>
                             <figcaption>
                                 <h2>Jeovanny Guzman</h2>
@@ -281,7 +357,7 @@
                     <li>
                         <figure>
                             <div>
-                                <img src="/PageALL/ImgALL/foto_wesley.jpg" alt="Foto de Wesley">
+                                <img src="ImgALL/foto_wesley.jpg" alt="Foto de Wesley">
                             </div>
                             <figcaption>
                                 <h2>Wesley</h2>
@@ -303,9 +379,9 @@
                         <div class="f_widget enlace-widget">
                             <h3 class="f-titulo">Ayuda</h3>
                             <ul class="f_lista">
-                                <li><a href="/Ayuda/PreguntasFrecuentes.html">Preguntas frecuentes</a></li>
-                                <li><a href="/Ayuda/Terminos_condiciones.html">Términos y condiciones</a></li>
-                                <li><a href="/Ayuda/Documentacion.html">Documentación</a></li>
+                                <li><a href="PreguntasFrecuentes.html">Preguntas frecuentes</a></li>
+                                <li><a href="Terminos_condiciones.html">Términos y condiciones</a></li>
+                                <li><a href="Documentacion.html">Documentación</a></li>
                             </ul>
                         </div>
                     </div>
@@ -430,6 +506,6 @@
           sliderTeam.init();
         });
     </script>
-    <script src="/PageALL/script.js"></script>
+    <script src="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/script.js"></script>
 </body>
 </html>
