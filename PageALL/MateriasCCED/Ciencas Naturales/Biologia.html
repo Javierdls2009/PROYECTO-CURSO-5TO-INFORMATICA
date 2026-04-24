@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educación Física | AcademiaCCED</title>
+    <title>Matemáticas | AcademiaCCED</title>
     
     <!-- estilos propios de esta sola pagina -->
     <style>
@@ -176,15 +176,34 @@
             color: #666;
             font-size: 0.9rem;
         }
+        .info-materia{
+            text-align: left;
+            font-size: 0.9rem;
+            color: #555;
+           
+            margin: 10px 10px;
+            padding: 10px;
+        }
+        .tema {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
 
     </style>
+  
+
+
 </head>
 <body>
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/index.html">← VOLVER AL INICIO</a></div>
-        <div class="titulo-materia">Educación Física</div>
+        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Ciencas Naturales/PanelGeneral.html">← VOLVER AL INICIO</a></div>
+        <div class="titulo-materia">Ciencias de la naturaleza</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
@@ -193,53 +212,69 @@
         
         <!-- barra lateral -->
         <aside class="barra-lateral">
-             <div class="foto-profesor">
-                <img src="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/ImgALL/Jan.jpeg" alt=" Jan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <h3>Jan</h3>
+            <div class="foto-profesor"></div>
+            <h3>Biología</h3>
             <hr>
-            <div class="info-profesor">
-                <p><b>Especialidad:</b> Área de Educación Física</p>
-                <p><b>Horario:</b> Lunes a Viernes</p>
-                <p><b>Aula:</b> ---</p>
-            </div>
-        </aside>
+    <div class="info-materia">
+<div class="tema" onclick="mostrar('Tema1')">Biología</div>
+<br>
+<div class="tema" onclick="mostrar('Tema2')">Célula</div>
+<br>
+<div class="tema" onclick="mostrar('Tema3')">Seres vivos</div>
+<br>
+<div class="tema" onclick="mostrar('Tema4')">Sistema humano</div>
+<br>
+<div class="tema" onclick="mostrar('Tema5')">Ecosistema</div>
+<br>
+<div class="tema" onclick="mostrar('Tema6')">Fotosíntesis</div>
+</div>
+</aside>
 
-        <!-- zona de herramientas -->
-        <main class="zona-herramientas">
-            <h2>Herramientas Educativas</h2>
-            <p>Selecciona una herramienta para comenzar.</p>
+<main class="zona-herramientas">
+<div id="contenido">
+<h2>Introducción a Biología</h2>
+<p>Selecciona un tema para aprender sobre los seres vivos.</p>
+</div>
+</main>
 
-            <!-- grid de herramientas -->
-            <div class="grid-herramientas">
-                
-                <!-- tarjeta 1 deportes -->
-                <a href="Deportes.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Deportes</h3>
-                    <p>Práctica y teoría de actividades deportivas.</p>
-                </a>
+<script>
+function mostrar(tema) {
+  const contenido = document.getElementById("contenido");
 
-                <!-- tarjeta 2 salud y deportes -->
-                <a href="Salud y deportes.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Salud y Deportes</h3>
-                    <p>Información sobre salud física y prácticas deportivas.</p>
-                </a>
-                  <!-- tarjeta 3 condicion fisica -->
-                <a href="Condicion fisica.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Condición Física</h3>
-                    <p>Información sobre el desarrollo de la condición física.</p>
-                </a>
-            </div>
-        </main>
-    </div>
+  if (tema === "Tema1") contenido.innerHTML = `
+    <h2>Biología</h2>
+    <p>Es la ciencia que estudia los seres vivos y sus procesos.</p>
+    <p>Incluye el estudio de plantas, animales y microorganismos.</p>
+  `;
 
-    <!-- pie de pagina -->
-    <footer>
-        <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-    </footer>
+  if (tema === "Tema2") contenido.innerHTML = `
+    <h2>Célula</h2>
+    <p>Es la unidad básica de la vida.</p>
+    <p>Puede ser animal o vegetal.</p>
+  `;
 
+  if (tema === "Tema3") contenido.innerHTML = `
+    <h2>Seres vivos</h2>
+    <p>Son organismos que nacen, crecen, se reproducen y mueren.</p>
+  `;
+
+  if (tema === "Tema4") contenido.innerHTML = `
+    <h2>Sistema humano</h2>
+    <p>Conjunto de órganos que trabajan juntos.</p>
+    <p>Ejemplo: sistema digestivo, respiratorio.</p>
+  `;
+
+  if (tema === "Tema5") contenido.innerHTML = `
+    <h2>Ecosistema</h2>
+    <p>Relación entre seres vivos y su entorno.</p>
+  `;
+
+  if (tema === "Tema6") contenido.innerHTML = `
+    <h2>Fotosíntesis</h2>
+    <p>Proceso por el cual las plantas producen alimento usando luz solar.</p>
+  `;
+}
+</script>
+            
 </body>
 </html>

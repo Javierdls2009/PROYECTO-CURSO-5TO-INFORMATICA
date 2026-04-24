@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educación Física | AcademiaCCED</title>
+    <title>Matemáticas | AcademiaCCED</title>
     
     <!-- estilos propios de esta sola pagina -->
     <style>
@@ -176,15 +176,34 @@
             color: #666;
             font-size: 0.9rem;
         }
+        .info-materia{
+            text-align: left;
+            font-size: 0.9rem;
+            color: #555;
+           
+            margin: 10px 10px;
+            padding: 10px;
+        }
+        .tema {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
 
     </style>
+  
+
+
 </head>
 <body>
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/index.html">← VOLVER AL INICIO</a></div>
-        <div class="titulo-materia">Educación Física</div>
+       <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Formacion Humana/PanelGeneral.html">← VOLVER AL INICIO</a></div>
+         <div class="titulo-materia">Formacion Laboral</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
@@ -193,53 +212,71 @@
         
         <!-- barra lateral -->
         <aside class="barra-lateral">
-             <div class="foto-profesor">
-                <img src="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/ImgALL/Jan.jpeg" alt=" Jan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <h3>Jan</h3>
+            <div class="foto-profesor"></div>
+            <h3>Formacion laboral</h3>
             <hr>
-            <div class="info-profesor">
-                <p><b>Especialidad:</b> Área de Educación Física</p>
-                <p><b>Horario:</b> Lunes a Viernes</p>
-                <p><b>Aula:</b> ---</p>
-            </div>
-        </aside>
+    <div class="info-materia">
+<div class="tema" onclick="mostrar('Tema1')">Empleo</div>
+<br>
+<div class="tema" onclick="mostrar('Tema2')">Currículum</div>
+<br>
+<div class="tema" onclick="mostrar('Tema3')">Entrevista</div>
+<br>
+<div class="tema" onclick="mostrar('Tema4')">Experiencia laboral</div>
+<br>
+<div class="tema" onclick="mostrar('Tema5')">Actitud laboral</div>
+<br>
+<div class="tema" onclick="mostrar('Tema6')">Presentación personal</div>
+</div>
+</aside>
 
-        <!-- zona de herramientas -->
-        <main class="zona-herramientas">
-            <h2>Herramientas Educativas</h2>
-            <p>Selecciona una herramienta para comenzar.</p>
+<main class="zona-herramientas">
+<div id="contenido">
+<h2>Introducción al Empleo</h2>
+<p>Selecciona un tema para prepararte para el mundo laboral.</p>
+</div>
+</main>
 
-            <!-- grid de herramientas -->
-            <div class="grid-herramientas">
-                
-                <!-- tarjeta 1 deportes -->
-                <a href="Deportes.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Deportes</h3>
-                    <p>Práctica y teoría de actividades deportivas.</p>
-                </a>
+<script>
+function mostrar(tema) {
+  const contenido = document.getElementById("contenido");
 
-                <!-- tarjeta 2 salud y deportes -->
-                <a href="Salud y deportes.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Salud y Deportes</h3>
-                    <p>Información sobre salud física y prácticas deportivas.</p>
-                </a>
-                  <!-- tarjeta 3 condicion fisica -->
-                <a href="Condicion fisica.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Condición Física</h3>
-                    <p>Información sobre el desarrollo de la condición física.</p>
-                </a>
-            </div>
-        </main>
-    </div>
+  if (tema === "Tema1") contenido.innerHTML = `
+    <h2>Empleo</h2>
+    <p>Es la actividad que una persona realiza a cambio de un salario.</p>
+  `;
 
-    <!-- pie de pagina -->
-    <footer>
-        <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-    </footer>
+  if (tema === "Tema2") contenido.innerHTML = `
+    <h2>Currículum</h2>
+    <p>Documento que resume estudios, habilidades y experiencia.</p>
+    <p>Debe ser claro y organizado.</p>
+  `;
 
+  if (tema === "Tema3") contenido.innerHTML = `
+    <h2>Entrevista</h2>
+    <p>Proceso donde el empleador conoce al candidato.</p>
+    <p>Se evalúan habilidades y actitud.</p>
+  `;
+
+  if (tema === "Tema4") contenido.innerHTML = `
+    <h2>Experiencia laboral</h2>
+    <p>Son trabajos realizados anteriormente.</p>
+    <p>Ayudan a demostrar habilidades.</p>
+  `;
+
+  if (tema === "Tema5") contenido.innerHTML = `
+    <h2>Actitud laboral</h2>
+    <p>Forma en que una persona actúa en el trabajo.</p>
+    <p>Debe ser positiva y responsable.</p>
+  `;
+
+  if (tema === "Tema6") contenido.innerHTML = `
+    <h2>Presentación personal</h2>
+    <p>La imagen que proyectas en el trabajo.</p>
+    <p>Incluye vestimenta, higiene y comportamiento.</p>
+  `;
+}
+</script>
+</script>
 </body>
 </html>
