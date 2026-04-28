@@ -15,6 +15,7 @@
         /* ============================================================
            ESTILOS DEL SLIDER (Modificados para imágenes individuales)
            ============================================================ */
+
         .slider--teams {
             position: relative;
             margin: 80px auto; /* Espacio con el header */
@@ -90,64 +91,320 @@
         
         .cf:after { content: " "; display: table; clear: both; }
         /* --- Estilos de la sección Sobre Nosotros --- */
-.contenido-sobre-nosotros {
-    padding: 60px 0;
-    background-color: #f9f9f9; /* Un gris muy tenue para diferenciar */
-}
+        
+        .contenido-sobre-nosotros {
+            padding: 60px 0;
+            background-color: #f9f9f9; /* Un gris muy tenue para diferenciar */
+        }
 
-.texto-introductorio {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 40px;
-}
+        .texto-introductorio {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
 
-.texto-introductorio h2 {
-    color: #06141B; /* Tu azul oscuro */
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
+        .texto-introductorio h2 {
+            color: #06141B; /* Tu azul oscuro */
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
 
-.cuadros-info {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+        .cuadros-info {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-.tarjeta-info {
-    background: #FFFFFF;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    width: 350px;
-    text-align: center;
-    border-bottom: 5px solid #11212D; /* Color de tu paleta */
-    transition: transform 0.3s ease;
-}
+        .tarjeta-info {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            width: 350px;
+            text-align: center;
+            border-bottom: 5px solid #11212D; /* Color de tu paleta */
+            transition: transform 0.3s ease;
+        }
 
-.tarjeta-info:hover {
-    transform: translateY(-10px);
-}
+        .tarjeta-info:hover {
+            transform: translateY(-10px);
+        }
 
-.tarjeta-info .material-symbols-outlined {
-    font-size: 3rem;
-    color: #4A5C6A;
-    margin-bottom: 15px;
-}
+        .tarjeta-info .material-symbols-outlined {
+            font-size: 3rem;
+            color: #4A5C6A;
+            margin-bottom: 15px;
+        }
 
-.tarjeta-info h3 {
-    color: #11212D;
-    margin-bottom: 10px;
-}
+        .tarjeta-info h3 {
+            color: #11212D;
+            margin-bottom: 10px;
+        }
 
-/* --- Ajuste para el Slider (Para que no choque con el footer) --- */
-.slider--teams {
-    margin-bottom: 150px !important; /* Espacio extra para que no pise el fondo animado */
-}
+        .tarjeta-info li{
+            list-style: none;
+        }
+
+        /* --- Ajuste para el Slider (Para que no choque con el footer) --- */
+        .slider--teams {
+            margin-bottom: 150px !important; /* Espacio extra para que no pise el fondo animado */
+        }
+
+        /* =============================================
+           ENCABEZADO DE SECCIÓN SELECIONADOR
+        ============================================= */
+
+        .seleccionador {
+            background: #FFFFFF;
+            border-bottom: 1px solid #666;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .subnav {
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 40px;
+            gap: 4px;
+        }
+
+        .subnav li {
+            list-style: none;
+        }
+
+        .link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 18px 36px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #11212D;
+            border-bottom: 3px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .link:hover {
+            color: #5c3314;
+        }
+
+        .link.activo {
+            color: #06141B;
+            border-bottom: 1px solid #06141B;
+        }
+
+        .link .numero {
+            font-size: 10px; 
+            font-weight: 800; 
+            color: #5c3314;
+        }
+
+        .seccion {
+            display: none;
+        }
+
+       .seccion.visible {
+            display: block;
+            animation: entrada 0.3s ease;
+        }
+
+        @keyframes entrada {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+       
+        /* =============================================
+           ENCABEZADO DE SECCIÓN HISTORIA
+        ============================================= */
+
+        #historia .contenedor-principal {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /*Titulo*/
+        .contedor-titulo {
+            margin-bottom: 50px;
+        }
+
+        .titulo span {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .titulo h1 {
+            font-size: 70px;
+            font-weight: bold;
+            color: #06141B;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .items-centro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        /*Imagen*/
+        .figura-imagen-fundadores{
+            margin: 0;
+        }
+
+        .imagen-fundadores {
+            width: 100%;
+            max-width: 460px;
+            height: 700px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.10);
+        }
+
+        .imagen-area {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.10);
+        }
+        
+        /* Fila invertida: texto izq, imagen der */
+        .items-centro.invertido {
+            direction: rtl;
+        }
+        .items-centro.invertido > * {
+            direction: ltr;
+        }
+
+        .contendor-texto {
+            padding: 0;
+        }
+
+        .contendor-texto p {
+            font-size: 15px !important;
+            line-height: 1.8 !important;
+            color: #5a6d78 !important;
+            text-align: justify !important;
+            margin-bottom: 16px;
+        }
+
+        /* Galería al final */
+        #galeria {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        #galeria h3 {
+            text-align: center;
+            font-size: 32px !important;
+            font-weight: 800;
+            color: #06141B;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .items-centro,
+            .items-centro.invertido {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+        
+            .imagen-fundadores {
+                height: 240px;
+            }
+        }
+
+        /* =============================================
+            CARRUSEL
+        ============================================= */
+
+        .carrusel-wrapper {
+            position: relative;
+            max-width: 860px;
+            margin: 0 auto 40px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .carrusel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carrusel-slide {
+            min-width: 100%;
+            height: 460px;
+            flex-shrink: 0;
+        }
+
+        .carrusel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carrusel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.45);
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            text-decoration: none;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .carrusel-btn:hover { background: rgba(0, 0, 0, 0.75); }
+        .carrusel-btn.prev  { left: 12px; }
+        .carrusel-btn.next  { right: 12px; }
+
+        .carrusel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .carrusel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #c5d2da;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .carrusel-dot.activo {
+            background: #06141B;
+            transform: scale(1.3);
+        }
     </style>
 </head>
 <body>
-
     <header class="encabezado-principal">
         <nav class="nav-superior">
             <div class="logo">
@@ -156,7 +413,7 @@
             
             <div class="buscador">
                 <span class="material-symbols-outlined">search</span>
-                <input type="text" id="entradaBusqueda" placeholder="...">
+                <input type="text" id="entradaBusqueda" placeholder="Buscar temas...">
             </div>
 
             <div class="controles-derecha">
@@ -167,6 +424,16 @@
                     </label>
                 </div>
 
+                <div class="icono-acceder">
+                    <span class="material-symbols-outlined" id="acceder">account_circle</span>
+                    <ul class="submenu">
+                        <li><a href="#">Mi perfil</a></li>
+                        <li><a href="#">Progreso</a></li>
+                        <li><a href="#">Configuración</a></li>  
+                        <li><hr></li> 
+                        <li><a href="#">Cerrar sesión</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
@@ -178,17 +445,124 @@
             </ul>
         </nav>
     </header>
-    
-   <section id="inicio" class="hero-subpage">
-    <div class="titulo">
-        <h1>Sobre el <span class="rojo">CCED</span></h1>
-        <p>Conoce al equipo que hace posible nuestra excelencia académica.</p>
-    </div>
-</section>
-
 
     <main>
-        <div class="slider--teams">
+        <section class="seleccionador">
+            <nav class="sobre-cced">
+                <div class="subnav">
+                    <li><a href="#historia" class="link activo" data-target="historia">HISTORIA</a></li>
+                    <li><a href="#vision" class="link" data-target="vision">Nuestra vision</a></li>
+                    <li><a href="#equipo" class="link" data-target="equipo">Conoce el equipo</a></li>
+                </div>
+            </nav>
+        </section>
+
+        <section id="historia" class="seccion visible">
+            <div class="contenedor-principal">
+                <div class="contenador-titulo">
+                    <div class="header-section">
+                        <div class="titulo" style="margin-top: 5rem;">
+                            <span>CCED</span>
+                            <h1>Historia</h1>
+                        </div> 
+                    </div>
+                </div>
+
+                <!--Primera fila: imagen izquierda, texto derecha-->
+                <div class="items-centro">
+                    <div class="contendor-imagen">
+                        <figure class="figura-imagen-fundadores">
+                            <img src="/PageALL/ImgALL/funda.jpg" alt="imagen de los fundadores" class="imagen-fundadores">
+                        </figure>
+                    </div>
+                    <div class="contendor-texto">
+                        <p>
+                            <strong>(Centro Cristiano de Educación para el Desarrollo)</strong>
+                            El CCED es una institución educativa cristiana fundada en 1995 en Barrio Nuevo El Corbano.
+                            Promueve la educación integral como herramienta de transformacion personal, familiar y comunitaria,
+                            basada en valores del Reino de Dios y en la igualdad de oportunidades.
+                        </p>
+
+                        <br>
+
+                        <p>
+                            Inició con 173 estudiantes y hoy cuenta con más de 960 alumnos de los niveles iniciales, básico y 
+                            medio, además de una Escuela Vocacional con 86 estudiantes. Ha graduado bachilleres de tecnicos con distintas 
+                            áreas.
+                        </p>
+
+                        <br>
+
+                        <p>
+                            Desde 1996 ofrece educación técnico'vocacional. En 2025 cuenta con tres áreas técnicas
+                            principales: Enfermería, Informática y Contabilidad.
+                        </p>
+                    </div>
+                </div> 
+
+                <!-- Segunda fila: imagen derecha, texto izquierda -->
+                <div class="items-centro invertido">
+                    <div class="contendor-imagen">
+                        <figure class="figura-imagen-area">
+                            <img src="/PageALL/ImgALL/pro-one.jpg" alt="área técnicas" class="imagen-area">
+                         </figure>
+                    </div>
+
+                    <div class="contendor-texto">
+                        <p>
+                            La filosofía del CCED es producto de la Asociación Cristiana para la Salud integral (APCSI)
+                            que cree que salud es también una buena educación. El lema desde el principio ha sido: "A los pobres cuando se les da la oportunidad pueden".
+                            El edificio para operar lo contituían 12 aulas de las que usábamos sólo 4 con un espacio para oficina, un comedor y una extensa área de recreación.
+                        </p>
+
+                    <br>
+
+                        <p>
+                            Actualmente contamos con una población estudiantil de 861 estudiantes. La visión principal del centro siempre ha sido, educar para transformar la sociedad Sanjuanera a través del poder del Espíritu Santo, 
+                            ofreciendo una formación integral y técnica desde los 3 años de edad. Con valores fundamentales como: Calidad, Solidaridad, Transformación, Honestidad que se aplican desde Directivos, Maestros y Estudiantes 
+                            hasta nuestro personal de apoyo.  
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <article id="galeria">
+                <h3 style="font-size: 45px; text-align: center;">Antiguas instalaciones</h3>
+
+                <div class="carrusel-wrapper">
+                    <div class="carrusel-track" id="carruselTrack">
+                        <div class="carrusel-slide">
+                            <img src="/PageALL/ImgALL/an1.jpeg" alt="Instalación 1">
+                        </div>
+
+                        <div class="carrusel-slide">
+                            <img src="/PageALL/ImgALL/an2.jpeg" alt="Instalación 2">
+                        </div>
+
+                        <div class="carrusel-slide">
+                            <img src="/PageALL/ImgALL/an3.jpeg" alt="Instalación 3">
+                        </div>
+
+                        <div class="carrusel-slide">
+                            <img src="/PageALL/ImgALL/an4.jpeg" alt="Instalación 4">
+                        </div>
+                    </div>
+
+                    <a class="carrusel-btn prev" id="btnPrev">&#8592;</a>
+                    <a class="carrusel-btn next" id="btnNext">&#8594;</a>
+                </div>
+
+                <div class="carrusel-dots" id="carruselDots"></div>
+            </article>
+        </section>
+
+        <section id="equipo" class="seccion">
+            <div class="titulo">
+            <h1>Sobre el <span class="rojo">CCED</span></h1>
+            <p>Conoce al equipo que hace posible nuestra excelencia académica.</p>
+            </div>
+
+             <div class="slider--teams">
             <div class="slider--teams__team">
                 <ul id="list" class="cf">
                     
@@ -334,10 +708,54 @@
                             </figcaption>
                         </figure>
                     </li>
-                    
                 </ul>
             </div>
+            </div>
+        </section>
+
+        <section id="vision" class="contenido-sobre-nosotros seccion">
+        <div class="contenedor_personalizado">
+            <div class="texto-introductorio">
+                <h2>Nuestra Institución</h2>
+                <p>El Colegio Cristiano Educación Dinámica (CCED) se dedica a formar jóvenes con valores integrales y excelencia académica, preparándolos para los retos del futuro con una base tecnológica sólida.</p>
+            </div>
+        
+            <div class="cuadros-info">
+                <div class="tarjeta-info">
+                    <span class="material-symbols-outlined">auto_awesome</span>
+                    <h3>Misión</h3>
+
+                    <p>
+                        Capacitar la población estudiantil de dos años en adelante, ofreciendo una educación integral, basada
+                        en las necesidades de la población y de la región suroeste en sentido general, promoviendo la educación
+                        técnica como vehículo para el desarrollo.
+                    </p>
+                </div>
+            
+                <div class="tarjeta-info">
+                    <span class="material-symbols-outlined">visibility</span>
+                    <h3>Visión</h3>
+                    <p>
+                        Dios nos ha llamado y nosotros respondemos hasta transformar la sociedad sanjuanera,
+                        con el poder del Espíritu Santo, usando la educación como medio.
+                    </p>
+                </div>
+
+                <div class="tarjeta-info">
+                    <span class="material-symbols-outlined">star</span>
+                    <h3>valores</h3>
+                    <ul>
+                        <li>Amor</li>
+                        <li>Solidaridad</li>
+                        <li>Calidad</li>
+                        <li>Transformación</li>
+                        <li>Honestidad</li>
+                        <li>Justicia</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        </section>
     </main>
 
     <footer class="area_pie_pagina">
@@ -350,6 +768,7 @@
                             <ul class="f_lista">
                                 <li><a href="PreguntasFrecuentes.html">Preguntas frecuentes</a></li>
                                 <li><a href="Terminos_condiciones.html">Términos y condiciones</a></li>
+                                <li><a href="Documentacion.html">Documentación</a></li>
                             </ul>
                         </div>
                     </div>
@@ -371,6 +790,37 @@
     </footer>
 
     <script>
+        // Java del carrusel
+            (function () {
+                var track    = document.getElementById('carruselTrack');
+                var dots     = document.getElementById('carruselDots');
+                var slides   = track.querySelectorAll('.carrusel-slide');
+                var total    = slides.length;
+                var actual   = 0;
+                var timer;
+
+            slides.forEach(function(_, i) {
+                var d = document.createElement('button');
+                d.className = 'carrusel-dot' + (i === 0 ? ' activo' : '');
+                d.addEventListener('click', function() { ir(i); });
+                dots.appendChild(d);
+            });
+
+            function ir(i) {
+                actual = (i + total) % total;
+                track.style.transform = 'translateX(-' + actual * 100 + '%)';
+                dots.querySelectorAll('.carrusel-dot').forEach(function(d, j) {
+                    d.classList.toggle('activo', j === actual);
+                });
+                clearInterval(timer);
+                timer = setInterval(function() { ir(actual + 1); }, 4000);
+            }
+
+            document.getElementById('btnPrev').addEventListener('click', function(e) { e.preventDefault(); ir(actual - 1); });
+            document.getElementById('btnNext').addEventListener('click', function(e) { e.preventDefault(); ir(actual + 1); });
+
+            timer = setInterval(function() { ir(actual + 1); }, 4000);
+        })();
         var sliderTeam = (function(document, $) {
           'use strict';
           var $sliderTeams = $('.slider--teams'),
@@ -473,7 +923,17 @@
         $(window).on('load', function(){
           sliderTeam.init();
         });
+
+        var links = document.querySelectorAll('.link');
+        links.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                links.forEach(l => l.classList.remove('activo'));
+                document.querySelectorAll('.seccion').forEach(s => s.classList.remove('visible'));
+                btn.classList.add('activo');
+                document.getElementById(btn.dataset.target).classList.add('visible');
+            });
+        });
     </script>
-    <script src="script.js"></script>
+    <script src="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/script.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Biologia | AcademiaCCED</title>
     
     <!-- estilos propios de esta sola pagina -->
     <style>
@@ -219,13 +219,20 @@
 <br>
 <div class="tema" onclick="mostrar('Tema2')">Célula</div>
 <br>
-<div class="tema" onclick="mostrar('Tema3')">Seres vivos</div>
+<div class="tema" onclick="mostrar('Tema3')">Ecologia</div>
 <br>
-<div class="tema" onclick="mostrar('Tema4')">Sistema humano</div>
+<div class="tema" onclick="mostrar('Tema4')">Anatomia</div>
 <br>
-<div class="tema" onclick="mostrar('Tema5')">Ecosistema</div>
+<div class="tema" onclick="mostrar('Tema5')">Genetica</div>
 <br>
-<div class="tema" onclick="mostrar('Tema6')">Fotosíntesis</div>
+<div class="tema" onclick="mostrar('Tema6')">Botanica</div>
+<br>
+<div class="tema" onclick="mostrar('Tema7')">Zoologia</div>
+<br>
+<div class="tema" onclick="mostrar('Tema8')">Citologia</div>
+<br>
+<div class="tema" onclick="mostrar('Tema9')">Paleontologia</div>
+</div>
 </div>
 </aside>
 
@@ -253,24 +260,36 @@ function mostrar(tema) {
   `;
 
   if (tema === "Tema3") contenido.innerHTML = `
-    <h2>Seres vivos</h2>
-    <p>Son organismos que nacen, crecen, se reproducen y mueren.</p>
+    <h2>Ecologia</h2>
+    <p></p>
   `;
 
   if (tema === "Tema4") contenido.innerHTML = `
-    <h2>Sistema humano</h2>
-    <p>Conjunto de órganos que trabajan juntos.</p>
-    <p>Ejemplo: sistema digestivo, respiratorio.</p>
+    <h2>Anatomia</h2>
+    <p></p>
+    <p></p>
   `;
 
   if (tema === "Tema5") contenido.innerHTML = `
-    <h2>Ecosistema</h2>
-    <p>Relación entre seres vivos y su entorno.</p>
+    <h2>Genetica</h2>
+    <p></p>
   `;
 
   if (tema === "Tema6") contenido.innerHTML = `
-    <h2>Fotosíntesis</h2>
-    <p>Proceso por el cual las plantas producen alimento usando luz solar.</p>
+    <h2>Botanica</h2>
+    <p>Estudio de las plantas.</p>
+  `;
+  if (tema === "Tema7") contenido.innerHTML = `
+    <h2>Zoologia</h2>
+    <p>Estudio de los animales.</p>
+  `;
+  if (tema === "Tema8") contenido.innerHTML = `
+    <h2>Citologia</h2>
+    <p></p>
+  `;
+  if (tema === "Tema9") contenido.innerHTML = `
+    <h2>Paleontologia</h2>
+    <p></p>
   `;
 }
 </script>
