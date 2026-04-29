@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
+    <title>Artes | AcademiaCCED</title>
+    
+    <style>
+        :root {
+            /* COLOR PERSONALIZADO: Cambia este código hexadecimal (#...) 
+               para darle un color único a cada asignatura (ej: Azul para Matemáticas) */
+            --color-materia: #e5322e; 
+            
+            /* COLORES DE ESTRUCTURA: No suele ser necesario cambiarlos */
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            color: #333;
+        }
+
+        /* BARRA DE NAVEGACIÓN: Controla la parte superior de la pantalla */
+        .nav-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            height: 70px;
+            position: sticky; /* Se queda fija al hacer scroll */
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* ENLACE VOLVER: Estilo del botón de retroceso */
+        .volver a {
+            text-decoration: none;
+            color: var(--color-materia);
+            font-weight: bold;
+        }
+
+        /* TÍTULO PRINCIPAL: El nombre de la plataforma en la barra superior */
+        .titulo-app {
+            font-weight: 800;
+            color: var(--color-materia);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        /* CONTENEDOR FLEX: Divide la pantalla en Menú Lateral y Contenido */
+        .contenedor-principal {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* SIDEBAR: Panel izquierdo donde van los temas */
+        .sidebar {
+            width: 280px;
+            background: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 25px;
+            box-sizing: border-box;
+            flex-shrink: 0; /* Evita que el menú se aplaste en pantallas pequeñas */
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            border-left: 4px solid var(--color-materia); /* Línea decorativa del color de la materia */
+            padding-left: 10px;
+        }
+
+        /* BOTONES DE TEMAS: Estilo de cada botón del menú */
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        /* EFECTO HOVER: Lo que pasa cuando pasas el ratón sobre un tema */
+        .btn-tema:hover {
+            background: var(--color-materia);
+            color: white;
+            transform: translateX(5px); /* Pequeño movimiento a la derecha */
+        }
+
+        /* VISOR DE CONTENIDO: El área grande donde se lee la información */
+        .visor-contenido {
+            flex: 1;
+            padding: 60px;
+            background: #fafbfc;
+        }
+
+        /* PIZARRA: El cuadro de texto centralizado */
+        #pizarra {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease; /* Animación de aparición suave */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
+        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+
+        /* PIE DE PÁGINA */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #888;
+            background: var(--blanco);
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN: Puedes cambiar el enlace de "href" para que vuelva a la página correcta -->
+    <nav class="nav-superior">
+        <div class="volver"><a href="../index.html">← REGRESAR</a></div>
+        <div class="titulo-app">Biblioteca CCED</div>
+        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    </nav>
+
+    <div class="contenedor-principal">
+        
+        <!-- MENÚ LATERAL: Aquí añades los botones para cada tema nuevo -->
+        <aside class="sidebar">
+            <h3>TEMARIO</h3>
+            <div class="lista-temas">
+                <!-- Para añadir un tema:
+                     1. Copia la línea del botón.
+                     2. Cambia el nombre (ej: "4. Nuevo Tema").
+                     3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
+                <button class="btn-tema" onclick="cargar('tema1')">Arte prehistórico</button>
+                <button class="btn-tema" onclick="cargar('tema2')">Arte antiguo</button>
+                <button class="btn-tema" onclick="cargar('tema3')">Arte egipcio</button>
+                <button class="btn-tema" onclick="cargar('tema4')">Arte griego</button>
+                <button class="btn-tema" onclick="cargar('tema5')">Arte romano</button>
+                <button class="btn-tema" onclick="cargar('tema6')">Arte medieval</button>
+                <button class="btn-tema" onclick="cargar('tema7')">Arte renacentista</button>
+                <button class="btn-tema" onclick="cargar('tema8')">Arte barroco</button>
+                <button class="btn-tema" onclick="cargar('tema9')">Arte neoclásico</button>
+                <button class="btn-tema" onclick="cargar('tema10')">Romanticismo</button>
+                <button class="btn-tema" onclick="cargar('tema11')">Impresionismo</button>
+                <button class="btn-tema" onclick="cargar('tema12')">Arte moderno</button>
+                <button class="btn-tema" onclick="cargar('tema13')">Arte contemporáneo</button>
+                <button class="btn-tema" onclick="cargar('tema14')">Historia del arte en América Latina</button>
+                <button class="btn-tema" onclick="cargar('tema15')">Historia del arte en República Dominicana</button>
+            </div>
+        </aside>
+
+        <!-- ÁREA DE LECTURA: Aquí es donde el JavaScript "dibuja" la información -->
+        <main class="visor-contenido">
+            <div id="pizarra">
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Biblioteca CCED. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        /**
+         * FUNCIÓN CARGAR: Es la encargada de cambiar el texto de la pantalla.
+         * @param {string} id - El identificador del tema que queremos mostrar.
+         */
+        function cargar(id) {
+            const pizarra = document.getElementById("pizarra");
+
+            /* BASE DE DATOS: Aquí guardas toda la información de la materia.
+               Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
+            const baseDeDatos = {
+                'tema1': {
+                    titulo: "Arte prehistórico",
+                    texto: "El arte prehistórico se refiere a las manifestaciones artísticas creadas por los seres humanos antes de la invención de la escritura. Este período abarca desde hace aproximadamente 40,000 años hasta alrededor del 3,000 a.C. El arte prehistórico incluye pinturas rupestres, esculturas, grabados y objetos decorativos. Las pinturas rupestres, como las encontradas en las cuevas de Altamira en España y Lascaux en Francia, representan animales, figuras humanas y símbolos abstractos. Estas obras de arte nos ofrecen una visión fascinante de la vida y las creencias de nuestros antepasados."
+                },
+                'tema2': {
+                    titulo: "Arte antiguo",
+                    texto: "El arte antiguo abarca las manifestaciones artísticas de las civilizaciones que existieron desde la invención de la escritura hasta la caída del Imperio Romano en el siglo V d.C. Este período incluye el arte de las culturas mesopotámicas, egipcias, griegas y romanas. El arte mesopotámico se caracteriza por sus relieves y esculturas monumentales, mientras que el arte egipcio es conocido por sus pirámides, templos y estatuas de faraones. El arte griego se destaca por su idealización de la figura humana y su arquitectura clásica, mientras que el arte romano se caracteriza por su realismo y su uso de arcos y bóvedas."
+                },
+                'tema3': {
+                    titulo: "Arte egipcio",
+                    texto: "El arte egipcio es una de las manifestaciones artísticas más reconocibles y duraderas de la antigüedad. Se desarrolló a lo largo de más de 3,000 años en el valle del Nilo, desde el período predinástico hasta la conquista romana. El arte egipcio se caracteriza por su simbolismo, su rigidez formal y su enfoque en la vida después de la muerte. Las pirámides, los templos y las estatuas de faraones son ejemplos icónicos del arte egipcio. Además, los jeroglíficos, un sistema de escritura pictográfica, también forman parte integral del arte egipcio."
+                },
+                'tema4': {
+                    titulo: "Arte griego",
+                    texto: "El arte griego es una de las manifestaciones artísticas más influyentes de la historia. Se desarrolló en la antigua Grecia desde el siglo VIII a.C. hasta el siglo I a.C. El arte griego se caracteriza por su idealización de la figura humana, su equilibrio y su armonía. La escultura griega, como las obras de Fidias y Praxíteles, representa cuerpos humanos perfectos y expresivos. La arquitectura griega, con sus templos y teatros, también es destacada por su uso de columnas y proporciones matemáticas. El arte griego ha dejado un legado duradero que ha influido en el arte occidental durante siglos."
+                },
+                'tema5': {
+                    titulo: "Arte romano",
+                    texto: "El arte romano se desarrolló en la antigua Roma desde el siglo VIII a.C. hasta la caída del Imperio Romano en el siglo V d.C. El arte romano se caracteriza por su realismo, su monumentalidad y su uso de arcos y bóvedas. La escultura romana, como las obras de Augusto y Trajano, representa figuras humanas con gran detalle y expresividad. La arquitectura romana, con sus anfiteatros, acueductos y templos, es conocida por su innovación técnica y su grandiosidad. El arte romano ha dejado un legado duradero que ha influido en la arquitectura y el arte occidental durante siglos."
+                },
+                'tema6': {
+                    titulo: "Arte medieval",
+                    texto: "El arte medieval se desarrolló en Europa durante la Edad Media, desde el siglo V hasta el siglo XV. Este período abarca una amplia variedad de estilos artísticos, incluyendo el arte románico, gótico y bizantino. El arte medieval se caracteriza por su enfoque en temas religiosos, su simbolismo y su falta de perspectiva. Las catedrales góticas, con sus altas bóvedas y vitrales coloridos, son ejemplos icónicos del arte medieval. Además, los manuscritos iluminados, con sus elaboradas ilustraciones y decoraciones, también forman parte integral del arte medieval."
+                },
+                'tema7': {
+                    titulo: "Arte renacentista",
+                    texto: "El arte renacentista se desarrolló en Europa durante el Renacimiento, desde el siglo XIV hasta el siglo XVII. Este período se caracteriza por un renacer del interés en la cultura clásica de Grecia y Roma, así como por un enfoque en la representación realista de la figura humana y la naturaleza. El arte renacentista incluye obras maestras de artistas como Leonardo da Vinci, Michelangelo y Rafael. La pintura renacentista se destaca por su uso de la perspectiva, el claroscuro y la anatomía precisa, mientras que la escultura renacentista se caracteriza por su idealización de la figura humana."
+                },
+                'tema8': {
+                    titulo: "Arte barroco",
+                    texto: "El arte barroco se desarrolló en Europa durante el siglo XVII y principios del siglo XVIII. Este período se caracteriza por su dramatismo, su ornamentación exuberante y su uso de la luz y la sombra para crear efectos emocionales. El arte barroco incluye obras de artistas como Caravaggio, Bernini y Rubens. La pintura barroca se destaca por su dinamismo, su realismo y su capacidad para transmitir emociones intensas, mientras que la escultura barroca se caracteriza por su movimiento y su teatralidad."
+                },
+                'tema9': {
+                    titulo: "Arte neoclásico",
+                    texto: "El arte neoclásico se desarrolló en Europa durante el siglo XVIII y principios del siglo XIX. Este período se caracteriza por un retorno a los ideales clásicos de simplicidad, simetría y proporción. El arte neoclásico incluye obras de artistas como Jacques-Louis David y Antonio Canova. La pintura neoclásica se destaca por su claridad, su enfoque en temas históricos y su idealización de la figura humana, mientras que la escultura neoclásica se caracteriza por su elegancia y su inspiración en la antigüedad clásica."
+                },
+                'tema10': {
+                    titulo: "Romanticismo",
+                    texto: "El romanticismo se desarrolló en Europa durante finales del siglo XVIII y principios del siglo XIX. Este movimiento artístico se caracteriza por su énfasis en la emoción, la individualidad y la naturaleza. El romanticismo incluye obras de artistas como Francisco Goya, Caspar David Friedrich y Eugène Delacroix. La pintura romántica se destaca por su uso dramático del color, su representación de paisajes salvajes y su enfoque en temas como el amor, la muerte y lo sublime."
+                },
+                'tema11': {
+                    titulo: "Impresionismo",
+                    texto: "El impresionismo se desarrolló en Francia durante la segunda mitad del siglo XIX. Este movimiento artístico se caracteriza por su enfoque en la captura de la luz y el color en el momento presente, así como por su rechazo a las técnicas tradicionales de pintura. El impresionismo incluye obras de artistas como Claude Monet, Pierre-Auguste Renoir y Edgar Degas. La pintura impresionista se destaca por su uso de pinceladas sueltas, su representación de escenas cotidianas y su interés en los efectos atmosféricos."
+                },
+                'tema12': {
+                    titulo: "Arte moderno",
+                    texto: "El arte moderno se desarrolló a finales del siglo XIX y principios del siglo XX. Este período se caracteriza por su ruptura con las tradiciones artísticas anteriores y su exploración de nuevas formas de expresión. El arte moderno incluye movimientos como el cubismo, el surrealismo y el expresionismo, con artistas como Pablo Picasso, Salvador Dalí y Edvard Munch. La pintura moderna se destaca por su experimentación con la forma, el color y la perspectiva, así como por su enfoque en temas como la psicología, la sociedad y la abstracción."
+                },
+                'tema13': {
+                    titulo: "Arte contemporáneo",
+                    texto: "El arte contemporáneo se refiere al arte creado desde la segunda mitad del siglo XX hasta la actualidad. Este período se caracteriza por su diversidad de estilos, medios y enfoques, así como por su énfasis en la innovación y la experimentación. El arte contemporáneo incluye obras de artistas como Andy Warhol, Yayoi Kusama y Banksy. La pintura contemporánea se destaca por su uso de materiales no tradicionales, su enfoque en temas sociales y políticos, y su capacidad para desafiar las convenciones artísticas establecidas."
+                },
+                'tema14': {
+                    titulo: "Historia del arte en América Latina",
+                    texto: "La historia del arte en América Latina es rica y diversa, reflejando la mezcla de culturas indígenas, europeas y africanas que han influido en la región. Desde las civilizaciones precolombinas como los mayas, aztecas e incas, hasta el arte colonial y el arte contemporáneo, América Latina ha producido una amplia gama de expresiones artísticas. El arte latinoamericano se caracteriza por su colorido, su simbolismo y su enfoque en temas sociales y políticos. Artistas como Frida Kahlo, Diego Rivera y Fernando Botero han dejado un legado duradero en la historia del arte mundial."
+                },
+                'tema15': {
+                    titulo: "Historia del arte en República Dominicana",
+                    texto: "La historia del arte en República Dominicana es un reflejo de la rica herencia cultural del país, que combina influencias indígenas, africanas y europeas. Desde el arte precolombino de los taínos hasta el arte contemporáneo, la República Dominicana ha producido una variedad de expresiones artísticas. El arte dominicano se caracteriza por su vibrante uso del color, su simbolismo y su enfoque en temas sociales y culturales. Artistas como Cándido Bidó, Clara Ledesma y Ramón Oviedo han contribuido significativamente a la historia del arte dominicano y han ganado reconocimiento internacional."
+                }
+                /* Para añadir más, solo pon una coma al final del anterior y crea el nuevo:
+                'tema4': {
+                    titulo: "Título del tema 4",
+                    texto: "Texto del tema 4..."
+                } 
+                */
+            };
+
+            // Busca en la base de datos el ID que pulsamos en el botón
+            const info = baseDeDatos[id];
+
+            // Si el tema existe, lo inyecta en el HTML de la "pizarra"
+            if (info) {
+                pizarra.innerHTML = `
+                    <h2>${info.titulo}</h2>
+                    <p>${info.texto}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -3,280 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
+    <title>Habilidades Laborales | AcademiaCCED</title>
     
-    <!-- estilos propios de esta sola pagina -->
     <style>
-        /* colores */
         :root {
-            --color-principal: #e5322e;
+            /* COLOR PERSONALIZADO: Cambia este código hexadecimal (#...) 
+               para darle un color único a cada asignatura (ej: Azul para Matemáticas) */
+            --color-materia: #e5322e; 
+            
+            /* COLORES DE ESTRUCTURA: No suele ser necesario cambiarlos */
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
         }
 
-        /* estilos generales */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             background-color: var(--color-fondo);
+            color: #333;
         }
 
-        /* barra de navegacion superior */
-        .barra-superior {
+        /* BARRA DE NAVEGACIÓN: Controla la parte superior de la pantalla */
+        .nav-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 0 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
+            height: 70px;
+            position: sticky; /* Se queda fija al hacer scroll */
+            top: 0;
+            z-index: 1000;
         }
 
-        /* boton volver */
-        .boton-volver a {
+        /* ENLACE VOLVER: Estilo del botón de retroceso */
+        .volver a {
             text-decoration: none;
-            color: var(--color-principal);
+            color: var(--color-materia);
             font-weight: bold;
-            font-size: 1rem;
         }
 
-        /* titulo de la materia */
-        .titulo-materia {
+        /* TÍTULO PRINCIPAL: El nombre de la plataforma en la barra superior */
+        .titulo-app {
             font-weight: 800;
-            color: var(--color-principal);
-            font-size: 1.5rem;
+            color: var(--color-materia);
+            font-size: 1.4rem;
+            text-transform: uppercase;
         }
 
-        /* contenedor principal */
-        .contenedor {
+        /* CONTENEDOR FLEX: Divide la pantalla en Menú Lateral y Contenido */
+        .contenedor-principal {
             display: flex;
-            min-height: 100vh;
+            min-height: calc(100vh - 70px);
         }
 
-        /*barra lateral con foto del profesor */
-        .barra-lateral {
-            width: 300px;
-            background-color: var(--blanco);
-            border-right: 1px solid #ddd;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
-        .barra-lateral h3 {
-            margin: 10px 0;
-            color: var(--color-oscuro);
-        }
-
-        /* linea separadora */
-        .barra-lateral hr {
-            opacity: 0.2;
-            margin: 20px 0;
-        }
-
-        /* informacion del profesor */
-        .info-profesor {
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .info-profesor p {
-            margin: 10px 0;
-        }
-
-        /* zona principal */
-        .zona-herramientas {
-            flex: 1;
-            padding: 50px;
-            background-color: #f9f9fb;
-        }
-
-        /* encabezado en la zona */
-        .zona-herramientas h2 {
-            font-size: 2rem;
-            color: var(--color-oscuro);
-            margin: 0 0 10px 0;
-        }
-
-        .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
-        }
-
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        /* cada tarjeta */
-        .tarjeta-herramienta {
+        /* SIDEBAR: Panel izquierdo donde van los temas */
+        .sidebar {
+            width: 280px;
             background: var(--blanco);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
+            border-right: 1px solid #ddd;
+            padding: 25px;
+            box-sizing: border-box;
+            flex-shrink: 0; /* Evita que el menú se aplaste en pantallas pequeñas */
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            border-left: 4px solid var(--color-materia); /* Línea decorativa del color de la materia */
+            padding-left: 10px;
+        }
+
+        /* BOTONES DE TEMAS: Estilo de cada botón del menú */
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8f9fa;
             border: 1px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
             transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        /* EFECTO HOVER: Lo que pasa cuando pasas el ratón sobre un tema */
+        .btn-tema:hover {
+            background: var(--color-materia);
+            color: white;
+            transform: translateX(5px); /* Pequeño movimiento a la derecha */
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
+        /* VISOR DE CONTENIDO: El área grande donde se lee la información */
+        .visor-contenido {
+            flex: 1;
+            padding: 60px;
+            background: #fafbfc;
         }
 
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
+        /* PIZARRA: El cuadro de texto centralizado */
+        #pizarra {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease; /* Animación de aparición suave */
         }
 
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* pie de pagina */
+        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
+        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+
+        /* PIE DE PÁGINA */
         footer {
             text-align: center;
             padding: 20px;
-            background: white;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            color: #888;
+            background: var(--blanco);
+            border-top: 1px solid #eee;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
-
     </style>
-  
-
-
 </head>
 <body>
 
-    <!-- barra superior -->
-    <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Formacion Humana/PanelGeneral.html">← VOLVER ATRAS</a></div>
-        <div class="titulo-materia">Formacion Laboral</div>
-        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    <!-- NAVEGACIÓN: Puedes cambiar el enlace de "href" para que vuelva a la página correcta -->
+    <nav class="nav-superior">
+        <div class="volver"><a href="../index.html">← REGRESAR</a></div>
+        <div class="titulo-app">Biblioteca CCED</div>
+        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
     </nav>
 
-    <!-- contenido principal -->
-    <div class="contenedor">
+    <div class="contenedor-principal">
         
-        <!-- barra lateral -->
-        <aside class="barra-lateral">
-            <h3>Formacion laboral</h3>
-            <hr>
-    <div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Habilidades laborales</div>
-<br>
-<div class="tema" onclick="mostrar('Tema2')">Trabajo en equipo</div>
-<br>
-<div class="tema" onclick="mostrar('Tema3')">Comunicación</div>
-<br>
-<div class="tema" onclick="mostrar('Tema4')">Responsabilidad</div>
-<br>
-<div class="tema" onclick="mostrar('Tema5')">Puntualidad</div>
-<br>
-<div class="tema" onclick="mostrar('Tema6')">Resolución de problemas</div>
-</div>
-</aside>
+        <!-- MENÚ LATERAL: Aquí añades los botones para cada tema nuevo -->
+        <aside class="sidebar">
+            <h3>TEMARIO</h3>
+            <div class="lista-temas">
+                <!-- Para añadir un tema:
+                     1. Copia la línea del botón.
+                     2. Cambia el nombre (ej: "4. Nuevo Tema").
+                     3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
+                <button class="btn-tema" onclick="cargar('tema1')">Justicia</button>
+                <button class="btn-tema" onclick="cargar('tema2')">Igualdad</button>
+                <button class="btn-tema" onclick="cargar('tema3')">Habilidades Blandas</button>
+            </div>
+        </aside>
 
-<main class="zona-herramientas">
-<div id="contenido">
-<h2>Introducción a Habilidades Laborales</h2>
-<p>Selecciona un tema para aprender competencias importantes en el trabajo.</p>
-</div>
-</main>
+        <!-- ÁREA DE LECTURA: Aquí es donde el JavaScript "dibuja" la información -->
+        <main class="visor-contenido">
+            <div id="pizarra">
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+            </div>
+        </main>
 
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
+    </div>
 
-  if (tema === "Tema1") contenido.innerHTML = `
-    <h2>Habilidades laborales</h2>
-    <p>Son capacidades que permiten desempeñarse correctamente en un trabajo.</p>
-    <p>Incluyen habilidades sociales, técnicas y personales.</p>
-  `;
+    <footer>
+        &copy; 2026 AcademiaCCED - Desarrollado por Javier de los Santos
+    </footer>
 
-  if (tema === "Tema2") contenido.innerHTML = `
-    <h2>Trabajo en equipo</h2>
-    <p>Consiste en colaborar con otras personas para lograr objetivos comunes.</p>
-    <p>Requiere respeto, comunicación y cooperación.</p>
-  `;
+    <script>
+        /**
+         * FUNCIÓN CARGAR: Es la encargada de cambiar el texto de la pantalla.
+         * @param {string} id - El identificador del tema que queremos mostrar.
+         */
+        function cargar(id) {
+            const pizarra = document.getElementById("pizarra");
 
-  if (tema === "Tema3") contenido.innerHTML = `
-    <h2>Comunicación</h2>
-    <p>Es la capacidad de expresar ideas de forma clara.</p>
-    <p>Incluye escuchar y entender a los demás.</p>
-  `;
+            /* BASE DE DATOS: Aquí guardas toda la información de la materia.
+               Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
+            const baseDeDatos = {
+                'tema1': {
+                    titulo: "Justicia",
+                    texto: "Aquí va la descripción del primer tema. Puedes usar etiquetas HTML como <b>negrita</b> o listas."
+                },
+                'tema2': {
+                    titulo: "Igualdad",
+                    texto: "Contenido detallado del segundo tema seleccionado. Puedes escribir párrafos largos aquí."
+                },
+                'tema3': {
+                    titulo: "Habilidades Blandas",
+                    texto: "Descripción de las actividades prácticas o tareas para esta unidad."
+                }
+                /* Para añadir más, solo pon una coma al final del anterior y crea el nuevo:
+                'tema4': {
+                    titulo: "Título del tema 4",
+                    texto: "Texto del tema 4..."
+                } 
+                */
+            };
 
-  if (tema === "Tema4") contenido.innerHTML = `
-    <h2>Responsabilidad</h2>
-    <p>Cumplir con tareas y obligaciones asignadas.</p>
-    <p>Es clave para generar confianza en el trabajo.</p>
-  `;
+            // Busca en la base de datos el ID que pulsamos en el botón
+            const info = baseDeDatos[id];
 
-  if (tema === "Tema5") contenido.innerHTML = `
-    <h2>Puntualidad</h2>
-    <p>Llegar a tiempo y cumplir horarios.</p>
-    <p>Demuestra compromiso y respeto.</p>
-  `;
-
-  if (tema === "Tema6") contenido.innerHTML = `
-    <h2>Resolución de problemas</h2>
-    <p>Capacidad de encontrar soluciones a dificultades.</p>
-    <p>Implica analizar, pensar y actuar correctamente.</p>
-  `;
-}
-</script>
-</script>
+            // Si el tema existe, lo inyecta en el HTML de la "pizarra"
+            if (info) {
+                pizarra.innerHTML = `
+                    <h2>${info.titulo}</h2>
+                    <p>${info.texto}</p>
+                `;
+            }
+        }
+    </script>
 </body>
 </html>

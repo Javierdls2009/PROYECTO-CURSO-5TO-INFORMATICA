@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
-    <title>Formación Laboral | AcademiaCCED</title>
+    <title>Arte en la República Dominicana | AcademiaCCED</title>
     
     <style>
         :root {
@@ -152,15 +152,13 @@
                      1. Copia la línea del botón.
                      2. Cambia el nombre (ej: "4. Nuevo Tema").
                      3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
-                <button class="btn-tema" onclick="cargar('tema1')">Formación Humana</button>
-                <button class="btn-tema" onclick="cargar('tema2')">Valores Humanos</button>
-                <button class="btn-tema" onclick="cargar('tema3')">Ética y Moral</button>
-                <button class="btn-tema" onclick="cargar('tema4')">Proyecto de Vida</button>
-                <button class="btn-tema" onclick="cargar('tema5')">Educación Ciudadana</button>
-                <button class="btn-tema" onclick="cargar('tema6')">Salud Integral</button>
-                <button class="btn-tema" onclick="cargar('tema7')">Sexualidad</button>
-                <button class="btn-tema" onclick="cargar('tema8')">Educación Ambiental</button>
-
+                <button class="btn-tema" onclick="cargar('tema1')">Pintores Dominicanos</button>
+                <button class="btn-tema" onclick="cargar('tema2')">Escultores Dominicanos</button>
+                <button class="btn-tema" onclick="cargar('tema3')">Músicos Dominicanos</button>
+                <button class="btn-tema" onclick="cargar('tema4')">Teatro Dominicano</button>
+                <button class="btn-tema" onclick="cargar('tema5')">Danza Dominicana</button>
+                <button class="btn-tema" onclick="cargar('tema6')">Patrimonio Artístico Nacional</button>
+                <button class="btn-tema" onclick="cargar('tema7')">Arte contemporáneo en República Dominicana</button>
             </div>
         </aside>
 
@@ -190,37 +188,34 @@
                Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
             const baseDeDatos = {
                 'tema1': {
-                    titulo: "Formación Humana",
-                    texto: "Aquí va la descripción del primer tema. Puedes usar etiquetas HTML como <b>negrita</b> o listas."
+                    titulo: "Pintores Dominicanos",
+                    texto: "La pintura en la República Dominicana ha sido influenciada por diversas corrientes artísticas a lo largo de su historia. Destacan artistas como Celeste Woss y Gil, Jaime Colson, y Clara Ledesma, quienes han contribuido significativamente al desarrollo del arte pictórico en el país."
                 },
                 'tema2': {
-                    titulo: "Valores Humanos",
-                    texto: "Contenido detallado del segundo tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Escultores Dominicanos",
+                    texto: "La escultura en la República Dominicana ha sido una forma de expresión artística importante, con figuras como Juan de Ávila, José Ramírez Conde, y Darío Suro, quienes han creado obras que reflejan la identidad cultural y social del país."
                 },
                 'tema3': {
-                    titulo: "Ética y Moral",
-                    texto: "Contenido detallado del tercer tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Músicos Dominicanos",
+                    texto: "La música es una parte fundamental de la cultura dominicana, con géneros como el merengue, la bachata, y el son. Artistas como Juan Luis Guerra, Romeo Santos, y Milly Quezada han llevado la música dominicana a nivel internacional."
                 },
                 'tema4': {
-                    titulo: "Proyecto de Vida",
-                    texto: "Contenido detallado del cuarto tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Teatro Dominicano",
+                    texto: "El teatro en la República Dominicana ha sido un medio para explorar temas sociales y culturales. Destacan dramaturgos como René del Risco Bermúdez, Héctor Incháustegui Cabral, y Frank Báez, quienes han contribuido al desarrollo del teatro dominicano."
                 },
                 'tema5': {
-                    titulo: "Educación Ciudadana",
-                    texto: "Contenido detallado del quinto tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Danza Dominicana",
+                    texto: "La danza en la República Dominicana es una expresión artística que refleja la diversidad cultural del país. El merengue y la bachata son géneros de danza populares, y grupos como el Ballet Folklórico Nacional han promovido la danza tradicional dominicana."
                 },
                 'tema6': {
-                    titulo: "Salud Integral",
-                    texto: "Contenido detallado del sexto tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Patrimonio Artístico Nacional",
+                    texto: "El patrimonio artístico de la República Dominicana incluye una amplia gama de manifestaciones culturales, desde la arquitectura colonial hasta las artes visuales contemporáneas. Lugares como la Zona Colonial de Santo Domingo y el Museo de Arte Moderno son ejemplos de este rico patrimonio."
                 },
                 'tema7': {
-                    titulo: "Sexualidad",
-                    texto: "Contenido detallado del séptimo tema seleccionado. Puedes escribir párrafos largos aquí."
-                },
-                'tema8': {
-                    titulo: "Educación Ambiental",
-                    texto: "Contenido detallado del octavo tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Arte contemporáneo en República Dominicana",
+                    texto: "El arte contemporáneo en la República Dominicana ha experimentado un crecimiento significativo, con artistas como Firelei Báez, Raquel Paiewonsky, y José Bedia, quienes han explorado temas de identidad, migración, y cultura a través de sus obras."
                 }
+
                 /* Para añadir más, solo pon una coma al final del anterior y crea el nuevo:
                 'tema4': {
                     titulo: "Título del tema 4",

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
-    <title>Formación Laboral | AcademiaCCED</title>
+    <title>Artes Visuales | AcademiaCCED</title>
     
     <style>
         :root {
@@ -152,15 +152,17 @@
                      1. Copia la línea del botón.
                      2. Cambia el nombre (ej: "4. Nuevo Tema").
                      3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
-                <button class="btn-tema" onclick="cargar('tema1')">Formación Humana</button>
-                <button class="btn-tema" onclick="cargar('tema2')">Valores Humanos</button>
-                <button class="btn-tema" onclick="cargar('tema3')">Ética y Moral</button>
-                <button class="btn-tema" onclick="cargar('tema4')">Proyecto de Vida</button>
-                <button class="btn-tema" onclick="cargar('tema5')">Educación Ciudadana</button>
-                <button class="btn-tema" onclick="cargar('tema6')">Salud Integral</button>
-                <button class="btn-tema" onclick="cargar('tema7')">Sexualidad</button>
-                <button class="btn-tema" onclick="cargar('tema8')">Educación Ambiental</button>
-
+                <button class="btn-tema" onclick="cargar('tema1')">Dibujo</button>
+                <button class="btn-tema" onclick="cargar('tema2')">Pintura</button>
+                <button class="btn-tema" onclick="cargar('tema3')">Escultura</button>
+                <button class="btn-tema" onclick="cargar('tema4')">Grabado</button>
+                <button class="btn-tema" onclick="cargar('tema5')">Fotografía</button>
+                <button class="btn-tema" onclick="cargar('tema6')">Ilustración</button>
+                <button class="btn-tema" onclick="cargar('tema7')">Diseño gráfico</button>
+                <button class="btn-tema" onclick="cargar('tema8')">Arte digital</button>
+                <button class="btn-tema" onclick="cargar('tema9')">Arte urbano</button>
+                <button class="btn-tema" onclick="cargar('tema10')">Murales</button>
+                    <!-- Añade más temas aquí -->
             </div>
         </aside>
 
@@ -190,37 +192,45 @@
                Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
             const baseDeDatos = {
                 'tema1': {
-                    titulo: "Formación Humana",
-                    texto: "Aquí va la descripción del primer tema. Puedes usar etiquetas HTML como <b>negrita</b> o listas."
+                    titulo: "Dibujo",
+                    texto: "El dibujo es una forma de expresión artística que utiliza líneas para representar objetos, ideas o emociones. Es la base de muchas otras formas de arte y se puede realizar con diversos materiales como lápices, carboncillos o tintas."
                 },
                 'tema2': {
-                    titulo: "Valores Humanos",
-                    texto: "Contenido detallado del segundo tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Pintura",
+                    texto: "La pintura es una disciplina artística que consiste en aplicar pigmentos sobre una superficie para crear una imagen. A lo largo de la historia, la pintura ha evolucionado a través de diferentes estilos y técnicas, desde el realismo hasta el arte abstracto."
                 },
                 'tema3': {
-                    titulo: "Ética y Moral",
-                    texto: "Contenido detallado del tercer tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Escultura",
+                    texto: "La escultura es el arte de crear formas tridimensionales a través de la talla, modelado o ensamblaje de materiales como piedra, metal, madera o arcilla. Las esculturas pueden ser figurativas o abstractas y han sido una parte importante de la historia del arte."
                 },
-                'tema4': {
-                    titulo: "Proyecto de Vida",
-                    texto: "Contenido detallado del cuarto tema seleccionado. Puedes escribir párrafos largos aquí."
-                },
-                'tema5': {
-                    titulo: "Educación Ciudadana",
-                    texto: "Contenido detallado del quinto tema seleccionado. Puedes escribir párrafos largos aquí."
-                },
-                'tema6': {
-                    titulo: "Salud Integral",
-                    texto: "Contenido detallado del sexto tema seleccionado. Puedes escribir párrafos largos aquí."
-                },
-                'tema7': {
-                    titulo: "Sexualidad",
-                    texto: "Contenido detallado del séptimo tema seleccionado. Puedes escribir párrafos largos aquí."
-                },
-                'tema8': {
-                    titulo: "Educación Ambiental",
-                    texto: "Contenido detallado del octavo tema seleccionado. Puedes escribir párrafos largos aquí."
-                }
+                    'tema4': {
+                        titulo: "Grabado",
+                        texto: "El grabado es una técnica artística que implica la incisión de una imagen en una superficie, generalmente una placa de metal, madera o linóleo. La imagen grabada se puede reproducir varias veces mediante la impresión, lo que ha permitido la difusión masiva del arte a lo largo de la historia."
+                    },
+                    'tema5': {
+                        titulo: "Fotografía",
+                        texto: "La fotografía es el arte y la técnica de capturar imágenes mediante la acción de la luz sobre una superficie sensible. Desde su invención en el siglo XIX, la fotografía ha revolucionado la forma en que percibimos y documentamos el mundo, convirtiéndose en una herramienta fundamental para el arte, el periodismo y la comunicación visual."
+                    },
+                    'tema6': {
+                        titulo: "Ilustración",
+                        texto: "La ilustración es el arte de crear imágenes para acompañar o complementar un texto. Se utiliza en libros, revistas, publicidad y medios digitales para comunicar ideas, contar historias o embellecer contenidos. Las ilustraciones pueden ser realistas o estilizadas, dependiendo del propósito y el estilo del artista."
+                    },
+                    'tema7': {
+                        titulo: "Diseño gráfico",
+                        texto: "El diseño gráfico es una disciplina creativa que combina arte y tecnología para comunicar mensajes visuales. Los diseñadores gráficos utilizan tipografía, color, imágenes y composición para crear logotipos, carteles, sitios web y otros materiales visuales que transmiten información de manera efectiva."
+                    },
+                    'tema8': {
+                        titulo: "Arte digital",
+                        texto: "El arte digital es una forma de expresión artística que utiliza tecnologías digitales como herramientas principales para crear obras de arte. Esto incluye desde ilustraciones digitales hasta animaciones y arte generativo, permitiendo a los artistas explorar nuevas posibilidades creativas en el mundo virtual."
+                    },
+                    'tema9': {
+                        titulo: "Arte urbano",
+                        texto: "El arte urbano es una manifestación artística que se desarrolla en espacios públicos. Incluye graffiti, murales y otras formas de expresión visual que interactúan con el entorno urbano. El arte urbano a menudo aborda temas sociales y políticos, convirtiéndose en una voz importante para las comunidades locales."
+                    },
+                    'tema10': {
+                        titulo: "Murales",
+                        texto: "Los murales son pinturas o obras de arte realizadas directamente sobre paredes u otras superficies grandes. A lo largo de la historia, los murales han sido utilizados para contar historias, expresar ideas políticas o simplemente embellecer espacios públicos. Artistas como Diego Rivera y Banksy han llevado el arte mural a un reconocimiento mundial."
+                    }
                 /* Para añadir más, solo pon una coma al final del anterior y crea el nuevo:
                 'tema4': {
                     titulo: "Título del tema 4",

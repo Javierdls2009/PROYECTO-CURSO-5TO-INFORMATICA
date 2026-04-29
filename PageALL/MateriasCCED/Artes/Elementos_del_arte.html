@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
-    <title>Formación Laboral | AcademiaCCED</title>
+    <title>Elementos del Arte | AcademiaCCED</title>
     
     <style>
         :root {
@@ -152,15 +152,17 @@
                      1. Copia la línea del botón.
                      2. Cambia el nombre (ej: "4. Nuevo Tema").
                      3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
-                <button class="btn-tema" onclick="cargar('tema1')">Formación Humana</button>
-                <button class="btn-tema" onclick="cargar('tema2')">Valores Humanos</button>
-                <button class="btn-tema" onclick="cargar('tema3')">Ética y Moral</button>
-                <button class="btn-tema" onclick="cargar('tema4')">Proyecto de Vida</button>
-                <button class="btn-tema" onclick="cargar('tema5')">Educación Ciudadana</button>
-                <button class="btn-tema" onclick="cargar('tema6')">Salud Integral</button>
-                <button class="btn-tema" onclick="cargar('tema7')">Sexualidad</button>
-                <button class="btn-tema" onclick="cargar('tema8')">Educación Ambiental</button>
-
+                <button class="btn-tema" onclick="cargar('tema1')">Punto</button>
+                <button class="btn-tema" onclick="cargar('tema2')">Línea</button>
+                <button class="btn-tema" onclick="cargar('tema3')">Figura</button>
+                <button class="btn-tema" onclick="cargar('tema4')">Espacio</button>
+                <button class="btn-tema" onclick="cargar('tema5')">Textura</button>
+                <button class="btn-tema" onclick="cargar('tema6')">Color</button>
+                <button class="btn-tema" onclick="cargar('tema7')">Valor tonal</button>
+                <button class="btn-tema" onclick="cargar('tema8')">Volumen</button>
+                <button class="btn-tema" onclick="cargar('tema9')">Perspectiva</button>
+                <button class="btn-tema" onclick="cargar('tema10')">Composición Visual</button>
+                 <!-- Recuerda que cada tema debe tener un bloque en el Script de abajo con el mismo ID -->
             </div>
         </aside>
 
@@ -190,36 +192,44 @@
                Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
             const baseDeDatos = {
                 'tema1': {
-                    titulo: "Formación Humana",
-                    texto: "Aquí va la descripción del primer tema. Puedes usar etiquetas HTML como <b>negrita</b> o listas."
+                    titulo: "Punto",
+                    texto: "El punto es el elemento más básico del arte. No tiene dimensiones, solo posición. Es el inicio de toda creación visual y puede transmitir diferentes emociones dependiendo de su tamaño, color y ubicación."
                 },
                 'tema2': {
-                    titulo: "Valores Humanos",
-                    texto: "Contenido detallado del segundo tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Línea",
+                    texto: "La línea es una sucesión de puntos que crea una dirección. Puede ser recta, curva, horizontal, vertical o diagonal. Las líneas pueden expresar movimiento, estabilidad o tensión en una obra de arte."
                 },
                 'tema3': {
-                    titulo: "Ética y Moral",
-                    texto: "Contenido detallado del tercer tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Figura",
+                    texto: "La figura es una forma definida por líneas o por contraste de color. Puede ser geométrica (círculo, cuadrado) o orgánica (formas naturales). Las figuras son los bloques de construcción de las composiciones artísticas."
                 },
                 'tema4': {
-                    titulo: "Proyecto de Vida",
-                    texto: "Contenido detallado del cuarto tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Espacio",
+                    texto: "El espacio se refiere a la distancia o área entre, alrededor, por dentro o por fuera de los elementos de una obra. Puede ser positivo (ocupado por figuras) o negativo (vacío). El manejo del espacio crea profundidad y perspectiva."
                 },
                 'tema5': {
-                    titulo: "Educación Ciudadana",
-                    texto: "Contenido detallado del quinto tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Textura",
+                    texto: "La textura es la calidad superficial de una obra que se puede percibir visualmente o al tacto. Puede ser real (textura táctil) o sugerida (textura visual). La textura añade interés y realismo a las obras de arte."
                 },
                 'tema6': {
-                    titulo: "Salud Integral",
-                    texto: "Contenido detallado del sexto tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Color",
+                    texto: "El color es un elemento fundamental que se percibe a través de la luz. Tiene propiedades como el tono, la saturación y el valor. El color puede evocar emociones, crear armonía o contraste en una obra."
                 },
                 'tema7': {
-                    titulo: "Sexualidad",
-                    texto: "Contenido detallado del séptimo tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Valor tonal",
+                    texto: "El valor tonal se refiere a la claridad u oscuridad de un color. Es esencial para crear volumen, profundidad y contraste en una obra de arte. El manejo del valor tonal puede guiar la mirada del espectador y enfatizar ciertos elementos."
                 },
                 'tema8': {
-                    titulo: "Educación Ambiental",
-                    texto: "Contenido detallado del octavo tema seleccionado. Puedes escribir párrafos largos aquí."
+                    titulo: "Volumen",
+                    texto: "El volumen es la ilusión de tridimensionalidad en una obra de arte. Se puede crear a través del uso del valor tonal, la perspectiva y la superposición de elementos. El volumen da vida y realismo a las figuras."
+                },
+                'tema9': {
+                    titulo: "Perspectiva",
+                    texto: "La perspectiva es una técnica que permite representar objetos tridimensionales en una superficie bidimensional. Existen diferentes tipos de perspectiva, como la lineal, la atmosférica y la isométrica, cada una con sus propias reglas para crear profundidad."
+                },
+                'tema10': {
+                    titulo: "Composición Visual",
+                    texto: "La composición visual es la organización de los elementos dentro de una obra de arte. Incluye principios como el equilibrio, la proporción, el ritmo y la unidad. Una buena composición guía la mirada del espectador y crea una experiencia visual armoniosa."
                 }
                 /* Para añadir más, solo pon una coma al final del anterior y crea el nuevo:
                 'tema4': {
