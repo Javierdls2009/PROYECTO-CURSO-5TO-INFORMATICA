@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Física | AcademiaCCED</title>
+
+    <style>
+        /* Colores y Variables */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        /* Estilos Generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            overflow-x: hidden;
+        }
+
+        /* Barra de Navegación */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            height: 70px;
+            box-sizing: border-box;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* Contenedor Principal con Flexbox */
+        .contenedor {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* Barra Lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-shrink: 0; /* Evita que la barra se encoja */
+        }
+
+        .barra-lateral h3 {
+            margin: 10px 0;
+            color: var(--color-oscuro);
+            text-align: center;
+        }
+
+        .barra-lateral hr {
+            opacity: 0.2;
+            margin: 20px 0;
+        }
+
+        /* Listado de Temas */
+        .info-materia {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tema {
+            padding: 12px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .tema:hover {
+            background: var(--color-principal);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Zona de Contenido Principal */
+        .zona-herramientas {
+            flex: 1; /* Ocupa el resto del ancho disponible */
+            padding: 50px;
+            background-color: #f9f9fb;
+            box-sizing: border-box;
+        }
+
+        .zona-herramientas h2 {
+            font-size: 2.5rem;
+            color: var(--color-oscuro);
+            margin-top: 0;
+        }
+
+        .zona-herramientas p {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra Superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Ciencas Naturales/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">Física</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- Contenedor de la Aplicación -->
+    <div class="contenedor">
+        
+        <!-- Barra Lateral Izquierda -->
+        <aside class="barra-lateral">
+            <h3>Física</h3>
+            <hr>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('Tema1')">Física General</div>
+                <div class="tema" onclick="mostrar('Tema2')">Mecánica</div>
+                <div class="tema" onclick="mostrar('Tema3')">Termodinámica</div>
+                <div class="tema" onclick="mostrar('Tema4')">Electromagnetismo</div>
+                <div class="tema" onclick="mostrar('Tema5')">Acústica</div>
+                <div class="tema" onclick="mostrar('Tema6')">Física nuclear</div>
+            </div>
+        </aside>
+
+        <!-- Zona de Contenido a la Derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Introducción a Física</h2>
+                <p>Bienvenido al módulo de Física. Selecciona uno de los temas del menú lateral para comenzar tu aprendizaje sobre los principios y leyes que rigen el comportamiento del universo.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 AcademiaCCED - Ciencias de la Naturaleza
+    </footer>
+
+    <script>
+        /**
+         * Función para actualizar el contenido dinámicamente
+         * @param {string} tema - Identificador del tema seleccionado
+         */
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+
+            // Diccionario de temas para mantener el código limpio
+            const temasInfo = {
+                'Tema1': {
+                    titulo: "Física General",
+                    texto: "Es la ciencia que estudia los fenómenos físicos y las leyes que rigen el comportamiento de la materia y la energía en el universo."
+                },
+                'Tema2': {
+                    titulo: "Mecánica",
+                    texto: "Rama de la física que estudia el movimiento de los cuerpos y las fuerzas que lo producen. Incluye conceptos como cinemática, dinámica y estática."
+                },
+                'Tema3': {
+                    titulo: "Termodinámica",
+                    texto: "Estudia las relaciones entre el calor, el trabajo y otras formas de energía. Analiza procesos térmicos y la transferencia de calor."
+                },
+                'Tema4': {
+                    titulo: "Electromagnetismo",
+                    texto: "Rama de la física que estudia los fenómenos relacionados con las cargas eléctricas en movimiento y los campos magnéticos."
+                },
+                'Tema5': {
+                    titulo: "Acústica",
+                    texto: "Estudio de las ondas sonoras y su comportamiento en diferentes medios. Incluye conceptos como frecuencia, amplitud y velocidad del sonido."
+                },
+                'Tema6': {
+                    titulo: "Física Nuclear",
+                    texto: "Rama de la física que estudia el núcleo atómico, sus componentes y las fuerzas que lo mantienen unido."
+                }
+            };
+
+            const data = temasInfo[tema];
+
+            if (data) {
+                contenido.innerHTML = `
+                    <h2>${data.titulo}</h2>
+                    <p>${data.texto}</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+                    <p style="color: #888; font-size: 0.9rem;">Recurso educativo de AcademiaCCED.</p>
+                `;
+            }
+        }
+    </script>
+            
+</body>
+</html>

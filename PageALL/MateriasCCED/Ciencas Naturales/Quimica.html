@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Química | AcademiaCCED</title>
+    
+    <style>
+        /* Colores y Variables */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        /* Estilos Generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            overflow-x: hidden;
+        }
+
+        /* Barra de Navegación */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            height: 70px;
+            box-sizing: border-box;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* Contenedor Principal con Flexbox */
+        .contenedor {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* Barra Lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-shrink: 0; /* Evita que la barra se encoja */
+        }
+
+        .barra-lateral h3 {
+            margin: 10px 0;
+            color: var(--color-oscuro);
+            text-align: center;
+        }
+
+        .barra-lateral hr {
+            opacity: 0.2;
+            margin: 20px 0;
+        }
+
+        /* Listado de Temas */
+        .info-materia {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tema {
+            padding: 12px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .tema:hover {
+            background: var(--color-principal);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Zona de Contenido Principal */
+        .zona-herramientas {
+            flex: 1; /* Ocupa el resto del ancho disponible */
+            padding: 50px;
+            background-color: #f9f9fb;
+            box-sizing: border-box;
+        }
+
+        .zona-herramientas h2 {
+            font-size: 2.5rem;
+            color: var(--color-oscuro);
+            margin-top: 0;
+        }
+
+        .zona-herramientas p {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra Superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Ciencas Naturales/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">Ciencias de la naturaleza</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- Contenedor de la Aplicación -->
+    <div class="contenedor">
+        
+        <!-- Barra Lateral Izquierda -->
+        <aside class="barra-lateral">
+            <h3>Química</h3>
+            <hr>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('Tema1')">Química General</div>
+                <div class="tema" onclick="mostrar('Tema2')">Tabla Periódica</div>
+                <div class="tema" onclick="mostrar('Tema3')">Química Orgánica</div>
+                <div class="tema" onclick="mostrar('Tema4')">Química Inorgánica</div>
+                <div class="tema" onclick="mostrar('Tema5')">Química Analítica</div>
+                <div class="tema" onclick="mostrar('Tema6')">Química Ambiental</div>
+                <div class="tema" onclick="mostrar('Tema7')">Bioquímica</div>
+            </div>
+        </aside>
+
+        <!-- Zona de Contenido a la Derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Introducción a Química</h2>
+                <p>Bienvenido al módulo de Química. Selecciona uno de los temas del menú lateral para comenzar tu aprendizaje sobre los elementos y compuestos químicos .</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 AcademiaCCED - Ciencias de la Naturaleza
+    </footer>
+
+    <script>
+        /**
+         * Función para actualizar el contenido dinámicamente
+         * @param {string} tema - Identificador del tema seleccionado
+         */
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+
+            // Diccionario de temas para mantener el código limpio
+            const temasInfo = {
+                'Tema1': {
+                    titulo: "Química General",
+                    texto: "Es la rama de la química que estudia los principios fundamentales y las leyes que rigen el comportamiento de la materia y la energía en reacciones químicas."
+                },
+                'Tema2': {
+                    titulo: "La Célula",
+                    texto: "Es la unidad básica, estructural y funcional de todos los seres vivos. Se dividen principalmente en células procariotas y eucariotas (animal y vegetal)."
+                },
+                'Tema3': {
+                    titulo: "Ecología",
+                    texto: "Estudia las relaciones de los seres vivos entre sí y con su entorno físico. Analiza conceptos como cadenas tróficas, biomas y biodiversidad."
+                },
+                'Tema4': {
+                    titulo: "Anatomía",
+                    texto: "Se encarga del estudio de la estructura y forma de los seres vivos, centrándose en la organización de tejidos, órganos y sistemas."
+                },
+                'Tema5': {
+                    titulo: "Genética",
+                    texto: "Rama de la biología que estudia la herencia biológica y cómo los caracteres se transmiten de generación en generación a través del ADN."
+                },
+                'Tema6': {
+                    titulo: "Botánica",
+                    texto: "Ciencia dedicada al estudio de las plantas, incluyendo su clasificación, fisiología, reproducción y distribución geográfica."
+                },
+                'Tema7': {
+                    titulo: "Zoología",
+                    texto: "Estudio científico de los animales, cubriendo desde su comportamiento y fisiología hasta su evolución y taxonomía."
+                },
+                'Tema8': {
+                    titulo: "Citología",
+                    texto: "Especialidad biológica que se enfoca exclusivamente en el análisis de las células, sus componentes internos y sus funciones moleculares."
+                },
+                'Tema9': {
+                    titulo: "Paleontología",
+                    texto: "Estudia el pasado de la vida sobre la Tierra a través del análisis de restos fósiles, permitiendo reconstruir la historia evolutiva del planeta."
+                }
+            };
+
+            const data = temasInfo[tema];
+
+            if (data) {
+                contenido.innerHTML = `
+                    <h2>${data.titulo}</h2>
+                    <p>${data.texto}</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+                    <p style="color: #888; font-size: 0.9rem;">Recurso educativo de AcademiaCCED.</p>
+                `;
+            }
+        }
+    </script>
+            
+</body>
+</html>
