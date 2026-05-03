@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación Humana | AcademiaCCED</title>
+    
+    <style>
+        :root {
+            --color-materia: #e5322e; 
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            color: #333;
+        }
+
+        .nav-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .volver a {
+            text-decoration: none;
+            color: var(--color-materia);
+            font-weight: bold;
+        }
+
+        .titulo-app {
+            font-weight: 800;
+            color: var(--color-materia);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 25px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            border-left: 4px solid var(--color-materia);
+            padding-left: 10px;
+        }
+
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .btn-tema:hover {
+            background: var(--color-materia);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .visor-contenido {
+            flex: 1;
+            padding: 60px;
+            background: #fafbfc;
+        }
+
+        #pizarra {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
+        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #888;
+            background: var(--blanco);
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-superior">
+        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
+        <div class="titulo-app">Academia CCED</div>
+        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    </nav>
+
+    <div class="contenedor-principal">
+        
+        <aside class="sidebar">
+            <h3>TEMARIO</h3>
+            <div class="lista-temas">
+                <button class="btn-tema" onclick="cargar('formacion_humana')">Formación Humana</button>
+                <button class="btn-tema" onclick="cargar('vida_laboral')">Vida Laboral</button>
+                <button class="btn-tema" onclick="cargar('proyecto_vida')">Proyecto de Vida</button>
+                <button class="btn-tema" onclick="cargar('educacion_ciudadana')">Educación Ciudadana</button>
+            </div>
+        </aside>
+
+        <main class="visor-contenido">
+            <div id="pizarra">
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        &copy; 2026 AcademiaCCED - Desarrollado por Javier de los Santos
+    </footer>
+
+    <script>
+        function cargar(id) {
+            const pizarra = document.getElementById("pizarra");
+
+            const baseDeDatos = {
+                'formacion_humana': {
+                    titulo: "Formación Humana",
+                    texto: "La formación humana es el proceso integral mediante el cual una persona desarrolla sus valores, conocimientos, habilidades y actitudes para convivir de manera responsable en la sociedad. No se limita al aprendizaje académico, sino que también abarca el crecimiento emocional, social y ético. Busca formar individuos conscientes de sus derechos, deberes y responsabilidades. Promueve la reflexión, la empatía y la toma de decisiones acertadas. Además, fortalece el carácter y prepara a las personas para enfrentar los desafíos de la vida. Es fundamental para construir una sociedad justa, solidaria y respetuosa."
+                },
+                'vida_laboral': {
+                    titulo: "Vida Laboral",
+                    texto: "La vida laboral es la etapa en la que las personas aplican sus conocimientos y habilidades en una actividad productiva. Permite obtener ingresos, desarrollar talentos y contribuir al bienestar de la sociedad. El trabajo fomenta la responsabilidad, la disciplina y el crecimiento profesional. También fortalece la independencia económica y la realización personal. Prepararse adecuadamente es esencial para enfrentar el mundo laboral. Es una parte importante del proyecto de vida."
+                },
+                'proyecto_vida': {
+                    titulo: "Proyecto de Vida",
+                    texto: "El proyecto de vida es el conjunto de metas, sueños y objetivos que una persona se propone alcanzar. Sirve como guía para tomar decisiones y orientar el futuro. Incluye aspectos académicos, profesionales, familiares y personales. Ayuda a mantener la motivación y la perseverancia. Un proyecto de vida bien definido facilita el crecimiento y la superación. Es la herramienta que permite construir una vida con propósito y sentido."
+                },
+                'educacion_ciudadana': {
+                    titulo: "Educación Ciudadana",
+                    texto: "La educación ciudadana forma personas conscientes de sus derechos y deberes dentro de la sociedad. Promueve la participación democrática, el respeto a las leyes y la convivencia pacífica. Fomenta valores como la responsabilidad, la solidaridad y la tolerancia. También fortalece el compromiso con el bienestar común. Es esencial para construir una ciudadanía activa y responsable. Una democracia sólida depende de ciudadanos bien formados."
+                }
+            };
+
+            const info = baseDeDatos[id];
+
+            if (info) {
+                pizarra.innerHTML = `
+                    <h2>${info.titulo}</h2>
+                    <p>${info.texto}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

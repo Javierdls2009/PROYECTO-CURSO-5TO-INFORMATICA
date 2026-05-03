@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geografía Mundial | AcademiaCCED</title>
+    
+    <style>
+        :root {
+            --color-materia: #e5322e; 
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            color: #333;
+        }
+
+        .nav-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .volver a {
+            text-decoration: none;
+            color: var(--color-materia);
+            font-weight: bold;
+        }
+
+        .titulo-app {
+            font-weight: 800;
+            color: var(--color-materia);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 25px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            border-left: 4px solid var(--color-materia);
+            padding-left: 10px;
+        }
+
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .btn-tema:hover {
+            background: var(--color-materia);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .visor-contenido {
+            flex: 1;
+            padding: 60px;
+            background: #fafbfc;
+        }
+
+        #pizarra {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
+        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #888;
+            background: var(--blanco);
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-superior">
+        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
+        <div class="titulo-app">Academia CCED</div>
+        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    </nav>
+
+    <div class="contenedor-principal">
+        
+        <aside class="sidebar">
+            <h3>TEMARIO</h3>
+            <div class="lista-temas">
+                <button class="btn-tema" onclick="cargar('continentes')">Continentes</button>
+                <button class="btn-tema" onclick="cargar('eras_geologicas')">Eras Geológicas</button>
+                <button class="btn-tema" onclick="cargar('precambrico')">Precámbrico</button>
+                <button class="btn-tema" onclick="cargar('paleozoico')">Paleozoico</button>
+                <button class="btn-tema" onclick="cargar('mesozoico')">Mesozoico</button>
+                <button class="btn-tema" onclick="cargar('cenozoico')">Cenozoico</button>
+                <button class="btn-tema" onclick="cargar('paises_banderas')">Países y sus Banderas</button>
+            </div>
+        </aside>
+
+        <main class="visor-contenido">
+            <div id="pizarra">
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        &copy; 2026 AcademiaCCED - Desarrollado por Javier de los Santos
+    </footer>
+
+    <script>
+        function cargar(id) {
+            const pizarra = document.getElementById("pizarra");
+
+            const baseDeDatos = {
+                'continentes': {
+                    titulo: "Continentes",
+                    texto: "Los continentes son grandes extensiones de tierra separadas por océanos. Son América, Europa, Asia, África, Oceanía y la Antártida. Surgieron tras la fragmentación del supercontinente Pangea hace millones de años. Este proceso ocurrió durante la era Mesozoica debido al movimiento de las placas tectónicas. Cada continente posee características geográficas, climáticas y culturales únicas. Albergan la diversidad biológica y humana del planeta. Su estudio es esencial para comprender la organización del mundo."
+                },
+                'eras_geologicas': {
+                    titulo: "Eras Geológicas",
+                    texto: "Las eras geológicas son grandes divisiones del tiempo que permiten estudiar la evolución de la Tierra desde su formación hace aproximadamente 4,600 millones de años. Cada era se caracteriza por importantes cambios en el clima, la geografía, la vida y la composición del planeta. Gracias a estas divisiones, los científicos pueden comprender cómo surgieron los continentes, evolucionaron los seres vivos y apareció la humanidad. El estudio de las eras geológicas es fundamental para la geología, la paleontología y las ciencias naturales, ya que revela la historia profunda de nuestro planeta."
+                },
+                'precambrico': {
+                    titulo: "Precámbrico",
+                    texto: "El Precámbrico es la era más antigua y extensa de la historia terrestre, abarcando cerca del 88% del tiempo geológico. Durante esta etapa se formaron la corteza terrestre, los océanos y la atmósfera primitiva. Surgieron las primeras formas de vida, como bacterias y algas microscópicas. También aparecieron los primeros organismos multicelulares. Fue una época de intensa actividad volcánica y transformación planetaria. Constituye el origen de toda la vida en la Tierra."
+                },
+                'paleozoico': {
+                    titulo: "Paleozoico",
+                    texto: "La era Paleozoica, conocida como 'vida antigua', se desarrolló hace aproximadamente 541 a 252 millones de años. En este período surgieron una gran variedad de organismos marinos. Aparecieron los primeros peces, anfibios, reptiles e insectos. Las plantas comenzaron a colonizar la tierra firme, formando enormes bosques. Al final de esta era ocurrió una de las mayores extinciones masivas de la historia. El Paleozoico marcó la expansión de la vida compleja."
+                },
+                'mesozoico': {
+                    titulo: "Mesozoico",
+                    texto: "El Mesozoico, llamado 'era de los reptiles', transcurrió entre hace 252 y 66 millones de años. Fue la época en la que dominaron los dinosaurios. Durante esta era, Pangea comenzó a fragmentarse, dando origen a los continentes actuales. También aparecieron las primeras aves, mamíferos y plantas con flores. El clima fue generalmente cálido y favorable para la vida. Finalizó con la extinción de los dinosaurios causada por el impacto de un asteroide."
+                },
+                'cenozoico': {
+                    titulo: "Cenozoico",
+                    texto: "El Cenozoico es la era actual y comenzó hace aproximadamente 66 millones de años. Se le conoce como la 'era de los mamíferos', ya que estos se diversificaron ampliamente tras la extinción de los dinosaurios. Durante esta etapa se formaron muchas cordilleras modernas, como los Andes y el Himalaya. Aparecieron los primates y, finalmente, el ser humano. El clima experimentó grandes cambios, incluyendo las glaciaciones. Es la era en la que continúa desarrollándose la vida actual."
+                },
+                'paises_banderas': {
+                    titulo: "Países, Banderas y Capitales de Latinoamérica",
+                    texto: "<ul><li>Argentina — Buenos Aires</li><li>Bolivia — Sucre / La Paz</li><li>Brasil — Brasilia</li><li>Chile — Santiago</li><li>Colombia — Bogotá</li><li>Costa Rica — San José</li><li>Cuba — La Habana</li><li>Ecuador — Quito</li><li>El Salvador — San Salvador</li><li>Guatemala — Ciudad de Guatemala</li><li>Haití — Puerto Príncipe</li><li>Honduras — Tegucigalpa</li><li>México — Ciudad de México</li><li>Nicaragua — Managua</li><li>Panamá — Ciudad de Panamá</li><li>Paraguay — Asunción</li><li>Perú — Lima</li><li>República Dominicana — Santo Domingo</li><li>Uruguay — Montevideo</li><li>Venezuela — Caracas</li></ul>"
+                }
+            };
+
+            const info = baseDeDatos[id];
+
+            if (info) {
+                pizarra.innerHTML = `
+                    <h2>${info.titulo}</h2>
+                    <p>${info.texto}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

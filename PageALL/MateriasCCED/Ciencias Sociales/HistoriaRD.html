@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de RD | AcademiaCCED</title>
+    
+    <style>
+        :root {
+            --color-materia: #e5322e; 
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            color: #333;
+        }
+
+        .nav-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .volver a {
+            text-decoration: none;
+            color: var(--color-materia);
+            font-weight: bold;
+        }
+
+        .titulo-app {
+            font-weight: 800;
+            color: var(--color-materia);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 25px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            border-left: 4px solid var(--color-materia);
+            padding-left: 10px;
+        }
+
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .btn-tema:hover {
+            background: var(--color-materia);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .visor-contenido {
+            flex: 1;
+            padding: 60px;
+            background: #fafbfc;
+        }
+
+        #pizarra {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
+        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #888;
+            background: var(--blanco);
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-superior">
+        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
+        <div class="titulo-app">Academia CCED</div>
+        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    </nav>
+
+    <div class="contenedor-principal">
+        
+        <aside class="sidebar">
+            <h3>TEMARIO</h3>
+            <div class="lista-temas">
+                <button class="btn-tema" onclick="cargar('periodo_precolombino')">Período Precolombino</button>
+                <button class="btn-tema" onclick="cargar('llegada_espanoles')">Llegada de los Españoles</button>
+                <button class="btn-tema" onclick="cargar('epoca_colonial')">Época Colonial</button>
+                <button class="btn-tema" onclick="cargar('dominacion_haitiana')">Dominación Haitiana</button>
+                <button class="btn-tema" onclick="cargar('independencia')">Independencia Nacional</button>
+                <button class="btn-tema" onclick="cargar('restauracion')">La Restauración</button>
+                <button class="btn-tema" onclick="cargar('siglo_xx')">Siglo XX y Modernización</button>
+                <button class="btn-tema" onclick="cargar('rd_actual')">RD Actual</button>
+                <button class="btn-tema" onclick="cargar('clima_rd')">Clima RD</button>
+                <button class="btn-tema" onclick="cargar('geografia_rd')">Geografía RD</button>
+                <button class="btn-tema" onclick="cargar('sistemas_montanosos')">Sistema Montañoso</button>
+                <button class="btn-tema" onclick="cargar('tainos')">Taínos</button>
+                <button class="btn-tema" onclick="cargar('cacicazgos')">Cacicazgos</button>
+            </div>
+        </aside>
+
+        <main class="visor-contenido">
+            <div id="pizarra">
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        &copy; 2026 AcademiaCCED - Desarrollado por Javier de los Santos
+    </footer>
+
+    <script>
+        function cargar(id) {
+            const pizarra = document.getElementById("pizarra");
+
+            const baseDeDatos = {
+                'periodo_precolombino': {
+                    titulo: "Período Precolombino",
+                    texto: "Antes de la llegada de los europeos, la isla La Española estaba habitada por los taínos, pueblo indígena perteneciente a la familia arawak. Los taínos vivían organizados en cinco cacicazgos: Marién, Maguá, Maguana, Jaragua e Higüey. Cada uno era dirigido por un cacique, quien ejercía autoridad política, militar y religiosa. Su economía se basaba en la agricultura, la pesca y la caza. Cultivaban yuca, maíz, batata y otros productos. Además, poseían una rica cultura reflejada en sus costumbres, creencias religiosas, arte y organización social. Figuras como Anacaona, Caonabo y Guarionex son recordadas por su liderazgo y resistencia ante la conquista europea."
+                },
+                'llegada_espanoles': {
+                    titulo: "La Llegada de los Españoles",
+                    texto: "El 5 de diciembre de 1492, Christopher Columbus llegó a la isla durante su primer viaje al continente americano. Este acontecimiento marcó el inicio de la colonización europea en América. En 1496 se fundó la ciudad de Santo Domingo, considerada la primera ciudad europea permanente del Nuevo Mundo. Allí se establecieron las primeras instituciones coloniales, incluyendo la primera catedral, la primera universidad y el primer hospital de América. La colonización provocó profundos cambios en la vida de los taínos. Las enfermedades, los trabajos forzados y los abusos redujeron drásticamente la población indígena en pocas décadas."
+                },
+                'epoca_colonial': {
+                    titulo: "Época Colonial",
+                    texto: "Durante los siglos XVI y XVII, Santo Domingo fue un importante centro político y económico del Imperio Español. Sin embargo, con el tiempo perdió relevancia frente a otras colonias más ricas en minerales. La economía se orientó hacia la ganadería, la agricultura y el comercio. Durante este período también llegaron esclavos africanos, cuya presencia enriqueció la cultura y la composición étnica de la población. La mezcla entre taínos, africanos y españoles dio origen a la identidad cultural dominicana actual."
+                },
+                'dominacion_haitiana': {
+                    titulo: "Dominación Haitiana",
+                    texto: "En 1822, el presidente haitiano Jean-Pierre Boyer ocupó toda la isla, unificando el territorio bajo el dominio haitiano durante 22 años. Durante este período se abolió la esclavitud, pero también surgieron tensiones políticas, económicas y culturales entre dominicanos y haitianos. Estas diferencias impulsaron el deseo de independencia."
+                },
+                'independencia': {
+                    titulo: "Independencia Nacional",
+                    texto: "El 27 de febrero de 1844, gracias al liderazgo de Juan Pablo Duarte, Francisco del Rosario Sánchez y Ramón Matías Mella, se proclamó la independencia nacional en la Puerta del Conde. Este acontecimiento dio origen a la República Dominicana como nación libre, soberana e independiente. La sociedad secreta La Trinitaria jugó un papel esencial en la organización del movimiento independentista."
+                },
+                'restauracion': {
+                    titulo: "La Restauración",
+                    texto: "En 1861, el presidente Pedro Santana anexó el país nuevamente a España. Esta decisión generó un fuerte rechazo popular. La Guerra de la Restauración, liderada por patriotas como Gregorio Luperón, logró devolver la soberanía nacional en 1865, consolidando definitivamente la independencia dominicana."
+                },
+                'siglo_xx': {
+                    titulo: "Siglo XX y Modernización",
+                    texto: "El siglo XX estuvo marcado por intervenciones extranjeras, conflictos políticos y dictaduras. Destaca la ocupación militar estadounidense de 1916 a 1924. Posteriormente, la dictadura de Rafael Trujillo (1930-1961) representó uno de los períodos más autoritarios de la historia nacional. Tras su caída, el país inició un proceso de democratización, aunque enfrentó nuevos desafíos, incluyendo la Revolución de Abril de 1965 y otra intervención estadounidense."
+                },
+                'rd_actual': {
+                    titulo: "República Dominicana Actual",
+                    texto: "Hoy, la República Dominicana es una nación democrática, reconocida por su crecimiento económico, su riqueza cultural y su importancia turística en el Caribe. Su economía se sustenta principalmente en el turismo, las zonas francas, las remesas y los servicios. El país continúa fortaleciendo sus instituciones y enfrentando retos sociales y económicos propios del mundo moderno."
+                },
+                'clima_rd': {
+                    titulo: "Clima",
+                    texto: "El clima dominicano es tropical marítimo, cálido durante todo el año. Las temperaturas oscilan entre los 25 y 30 grados Celsius. Existen estaciones lluviosas y secas. La temporada ciclónica ocurre entre junio y noviembre. Las montañas influyen en las variaciones climáticas regionales. Este clima favorece la agricultura y el turismo. Es uno de los principales atractivos del país."
+                },
+                'geografia_rd': {
+                    titulo: "Geografía",
+                    texto: "La República Dominicana ocupa dos tercios de la isla La Española. Limita con Haití al oeste y está rodeada por el océano Atlántico y el mar Caribe. Posee montañas, valles, ríos, llanuras y extensas costas. Su posición estratégica la convierte en un punto clave del Caribe. Cuenta con abundantes recursos naturales y suelos fértiles. Su diversidad geográfica favorece múltiples actividades económicas. Es uno de los territorios más variados de la región."
+                },
+                'sistemas_montanosos': {
+                    titulo: "Sistemas Montañosos",
+                    texto: "La Cordillera Central es el sistema montañoso más importante del país. Allí se encuentra el Pico Duarte, la montaña más alta del Caribe. También destacan la Cordillera Septentrional y la Cordillera Oriental. Estas elevaciones influyen en el clima y la biodiversidad nacional. Son fuentes importantes de agua dulce. Además, sustentan actividades agrícolas y turísticas. Representan una parte esencial del paisaje dominicano."
+                },
+                'tainos': {
+                    titulo: "Taínos",
+                    texto: "Los taínos fueron los habitantes originarios de La Española. Su economía se basaba en la agricultura, la pesca y la caza. Cultivaban yuca, maíz, batata y otros alimentos. Vivían en aldeas organizadas y practicaban una rica vida espiritual. Desarrollaron arte, música y ceremonias religiosas. Líderes como Anacaona y Caonabo simbolizan su resistencia. Su legado permanece en la cultura dominicana."
+                },
+                'cacicazgos': {
+                    titulo: "Cacicazgos",
+                    texto: "La isla estaba dividida en cinco cacicazgos: Marién, Maguá, Maguana, Jaragua e Higüey. Cada uno era gobernado por un cacique. Esta organización facilitaba la administración política y social. Los caciques ejercían autoridad militar y religiosa. Los cacicazgos mantenían relaciones comerciales y alianzas. Eran la base del orden taíno. Representaban una estructura avanzada para su época."
+                }
+            };
+
+            const info = baseDeDatos[id];
+
+            if (info) {
+                pizarra.innerHTML = `
+                    <h2>${info.titulo}</h2>
+                    <p>${info.texto}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

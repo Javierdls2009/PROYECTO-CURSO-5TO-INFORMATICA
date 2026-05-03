@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origen de las Ciencias Sociales | AcademiaCCED</title>
+    
+    <style>
+        :root {
+            --color-materia: #e5322e; 
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            color: #333;
+        }
+
+        .nav-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .volver a {
+            text-decoration: none;
+            color: var(--color-materia);
+            font-weight: bold;
+        }
+
+        .titulo-app {
+            font-weight: 800;
+            color: var(--color-materia);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 25px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            border-left: 4px solid var(--color-materia);
+            padding-left: 10px;
+        }
+
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .btn-tema:hover {
+            background: var(--color-materia);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .visor-contenido {
+            flex: 1;
+            padding: 60px;
+            background: #fafbfc;
+        }
+
+        #pizarra {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
+        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #888;
+            background: var(--blanco);
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-superior">
+        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
+        <div class="titulo-app">Academia CCED</div>
+        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    </nav>
+
+    <div class="contenedor-principal">
+        
+        <aside class="sidebar">
+            <h3>TEMARIO</h3>
+            <div class="lista-temas">
+                <button class="btn-tema" onclick="cargar('origen_ciencias_sociales')">Origen de las Cs. Sociales</button>
+                <button class="btn-tema" onclick="cargar('historia')">Historia</button>
+                <button class="btn-tema" onclick="cargar('prehistoria')">Prehistoria</button>
+                <button class="btn-tema" onclick="cargar('geografia')">Geografía</button>
+                <button class="btn-tema" onclick="cargar('sociedad')">Sociedad</button>
+                <button class="btn-tema" onclick="cargar('economia')">Economía</button>
+                <button class="btn-tema" onclick="cargar('cultura')">Cultura</button>
+                <button class="btn-tema" onclick="cargar('paleolitico')">Paleolítico</button>
+                <button class="btn-tema" onclick="cargar('mesolitico')">Mesolítico</button>
+                <button class="btn-tema" onclick="cargar('neolitico')">Neolítico</button>
+                <button class="btn-tema" onclick="cargar('edad_metales')">Edad de los Metales</button>
+                <button class="btn-tema" onclick="cargar('demografia')">Demografía</button>
+                <button class="btn-tema" onclick="cargar('cartografia')">Cartografía</button>
+                <button class="btn-tema" onclick="cargar('relieve')">Relieve</button>
+                <button class="btn-tema" onclick="cargar('antropologia')">Antropología</button>
+            </div>
+        </aside>
+
+        <main class="visor-contenido">
+            <div id="pizarra">
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        &copy; 2026 AcademiaCCED - Desarrollado por Javier de los Santos
+    </footer>
+
+    <script>
+        function cargar(id) {
+            const pizarra = document.getElementById("pizarra");
+
+            const baseDeDatos = {
+                'origen_ciencias_sociales': {
+                    titulo: "Origen de las Ciencias Sociales",
+                    texto: "Las Ciencias Sociales surgieron del interés por comprender la vida en sociedad. Sus raíces se encuentran en la Antigua Grecia con pensadores como Sócrates, Platón y Aristóteles. Durante la Ilustración, adquirieron un enfoque científico. En el siglo XIX se consolidaron disciplinas como la sociología, la economía y la ciencia política. Su desarrollo respondió a los cambios provocados por la Revolución Industrial y las revoluciones políticas. Actualmente, son esenciales para analizar los problemas sociales contemporáneos. Permiten entender el comportamiento humano y las instituciones."
+                },
+                'historia': {
+                    titulo: "Historia",
+                    texto: "La historia es la ciencia social que estudia los acontecimientos del pasado humano. Su objetivo es comprender cómo evolucionaron las sociedades a lo largo del tiempo. Analiza causas, consecuencias y procesos históricos. No se limita a memorizar fechas, sino que interpreta cambios políticos, económicos, sociales y culturales. Permite entender el presente a partir de las experiencias del pasado. También fortalece la identidad de los pueblos y fomenta el pensamiento crítico. La historia nos enseña lecciones valiosas para construir un mejor futuro."
+                },
+                'prehistoria': {
+                    titulo: "Prehistoria",
+                    texto: "La prehistoria es el período más antiguo de la humanidad, comprendido desde la aparición de los primeros seres humanos hasta la invención de la escritura, alrededor del año 3500 a. C. Durante esta etapa, los seres humanos aprendieron a sobrevivir en un entorno lleno de desafíos, desarrollando herramientas de piedra, dominando el fuego y organizándose en grupos para cazar, recolectar alimentos y protegerse.<br><br>Este largo período se divide en tres etapas principales: el Paleolítico, caracterizado por el uso de herramientas de piedra tallada y la vida nómada; el Neolítico, cuando surgieron la agricultura, la ganadería y los primeros asentamientos permanentes; y la Edad de los Metales, marcada por el descubrimiento y uso del cobre, el bronce y el hierro. La prehistoria fue fundamental, ya que en ella se sentaron las bases del desarrollo humano, social y tecnológico que dieron origen a las primeras civilizaciones."
+                },
+                'geografia': {
+                    titulo: "Geografía",
+                    texto: "La geografía es la ciencia que estudia la Tierra como el espacio donde vive la humanidad. Analiza la relación entre el ser humano y su entorno natural, social y económico. Examina elementos como el clima, el relieve, los ríos, los océanos y los recursos naturales. También estudia la distribución de la población y las actividades económicas. Gracias a la geografía, comprendemos fenómenos como la urbanización, la migración y el cambio climático. Es una disciplina esencial para la planificación territorial y la conservación ambiental. Además, ayuda a entender cómo el espacio influye en la vida de las personas y en el desarrollo de las naciones."
+                },
+                'sociedad': {
+                    titulo: "Sociedad",
+                    texto: "La sociedad es el conjunto de personas que conviven y se organizan bajo normas, valores e instituciones. En ella se desarrollan relaciones familiares, económicas, políticas y culturales. La sociedad evoluciona constantemente debido a los avances tecnológicos y los cambios culturales. Es el espacio donde se forman identidades y se transmiten conocimientos. Permite la cooperación entre individuos para alcanzar objetivos comunes. Además, regula la convivencia y el orden social. Es la base de toda civilización."
+                },
+                'economia': {
+                    titulo: "Economía",
+                    texto: "La economía estudia cómo las personas, empresas y gobiernos administran recursos limitados. Analiza la producción, distribución y consumo de bienes y servicios. Explica fenómenos como la inflación, el desempleo y el crecimiento económico. También ayuda a comprender el funcionamiento de los mercados y las finanzas. Es fundamental para la toma de decisiones individuales y colectivas. La economía influye directamente en la calidad de vida de la población. Su estudio permite promover el desarrollo y la prosperidad."
+                },
+                'cultura': {
+                    titulo: "Cultura",
+                    texto: "La cultura comprende las costumbres, tradiciones, creencias, conocimientos y expresiones artísticas de un pueblo. Define la identidad colectiva de una sociedad. Se transmite de generación en generación mediante la educación y la convivencia. Incluye el idioma, la música, la gastronomía y las manifestaciones religiosas. La cultura evoluciona con el tiempo y se enriquece con el intercambio entre pueblos. Es un elemento esencial para la cohesión social. También fomenta el respeto a la diversidad."
+                },
+                'paleolitico': {
+                    titulo: "Paleolítico",
+                    texto: "Es la etapa más antigua de la humanidad. Los seres humanos eran nómadas y vivían de la caza, pesca y recolección. Fabricaban herramientas de piedra tallada. Descubrieron el fuego, lo que transformó su vida. Surgieron las primeras manifestaciones artísticas, como las pinturas rupestres. Fue una etapa de adaptación y supervivencia. Constituye la base del desarrollo humano."
+                },
+                'mesolitico': {
+                    titulo: "Mesolítico",
+                    texto: "Fue una etapa de transición entre el Paleolítico y el Neolítico. Mejoraron las herramientas de piedra. Los grupos humanos comenzaron a establecerse temporalmente. La pesca adquirió gran importancia. Se desarrollaron nuevas técnicas de caza. Fue un período de adaptación climática tras la última glaciación. Preparó el camino hacia la agricultura."
+                },
+                'neolitico': {
+                    titulo: "Neolítico",
+                    texto: "Conocido como la Revolución Neolítica. El ser humano se volvió sedentario. Surgieron la agricultura y la domesticación de animales. Se formaron las primeras aldeas permanentes. Apareció la cerámica y el tejido. La vida social se volvió más compleja. Fue un cambio decisivo en la historia humana."
+                },
+                'edad_metales': {
+                    titulo: "Edad de los Metales",
+                    texto: "En esta etapa se comenzó a trabajar el cobre, el bronce y el hierro. Las herramientas se hicieron más resistentes y eficaces. Surgieron ciudades y civilizaciones más avanzadas. El comercio se expandió considerablemente. También aparecieron nuevas formas de organización política. Fue el puente hacia la historia escrita. Marcó el inicio de las grandes civilizaciones."
+                },
+                'demografia': {
+                    titulo: "Demografía",
+                    texto: "La demografía estudia la población humana y sus características. Analiza aspectos como natalidad, mortalidad, migración y esperanza de vida. Permite conocer la estructura poblacional por edad y sexo. Es útil para planificar servicios de salud, educación y vivienda. También ayuda a prever necesidades futuras de la sociedad. Su aplicación es fundamental en las políticas públicas. La demografía es clave para el desarrollo sostenible."
+                },
+                'cartografia': {
+                    titulo: "Cartografía",
+                    texto: "La cartografía es la ciencia encargada de elaborar y estudiar mapas. Representa gráficamente la superficie terrestre y sus características. Facilita la ubicación de lugares, rutas y recursos. Es fundamental en la geografía, la navegación y la planificación urbana. La tecnología ha revolucionado esta disciplina mediante satélites y sistemas GPS. Hoy tiene aplicaciones en transporte, defensa y medio ambiente. Los mapas son herramientas indispensables en el mundo moderno."
+                },
+                'relieve': {
+                    titulo: "Relieve",
+                    texto: "El relieve está formado por las distintas formas de la superficie terrestre. Incluye montañas, llanuras, mesetas, valles y depresiones. Se origina por procesos internos como el vulcanismo y externos como la erosión. Influye en el clima, la agricultura y los asentamientos humanos. Determina la biodiversidad de cada región. También afecta las comunicaciones y actividades económicas. Es uno de los elementos más importantes del paisaje natural."
+                },
+                'antropologia': {
+                    titulo: "Antropología",
+                    texto: "La antropología estudia al ser humano desde una perspectiva integral. Analiza su origen, evolución biológica, cultura y organización social. Permite comprender las diferencias y similitudes entre las distintas sociedades. Investiga costumbres, lenguas, creencias y formas de vida. Promueve el respeto por la diversidad cultural. Es una ciencia esencial para entender la humanidad. Su aporte es invaluable en un mundo globalizado."
+                }
+            };
+
+            const info = baseDeDatos[id];
+
+            if (info) {
+                pizarra.innerHTML = `
+                    <h2>${info.titulo}</h2>
+                    <p>${info.texto}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
