@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formación Humana | AcademiaCCED</title>
+    <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
+    <title>Práctica Deportiva y Expresión Motriz | AcademiaCCED</title>
     
     <style>
         :root {
+            /* COLOR PERSONALIZADO: Cambia este código hexadecimal (#...) 
+               para darle un color único a cada asignatura (ej: Azul para Matemáticas) */
             --color-materia: #e5322e; 
+            
+            /* COLORES DE ESTRUCTURA: No suele ser necesario cambiarlos */
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
@@ -20,6 +25,7 @@
             color: #333;
         }
 
+        /* BARRA DE NAVEGACIÓN: Controla la parte superior de la pantalla */
         .nav-superior {
             display: flex;
             justify-content: space-between;
@@ -28,17 +34,19 @@
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
             height: 70px;
-            position: sticky;
+            position: sticky; /* Se queda fija al hacer scroll */
             top: 0;
             z-index: 1000;
         }
 
+        /* ENLACE VOLVER: Estilo del botón de retroceso */
         .volver a {
             text-decoration: none;
             color: var(--color-materia);
             font-weight: bold;
         }
 
+        /* TÍTULO PRINCIPAL: El nombre de la plataforma en la barra superior */
         .titulo-app {
             font-weight: 800;
             color: var(--color-materia);
@@ -46,28 +54,31 @@
             text-transform: uppercase;
         }
 
+        /* CONTENEDOR FLEX: Divide la pantalla en Menú Lateral y Contenido */
         .contenedor-principal {
             display: flex;
             min-height: calc(100vh - 70px);
         }
 
+        /* SIDEBAR: Panel izquierdo donde van los temas */
         .sidebar {
             width: 280px;
             background: var(--blanco);
             border-right: 1px solid #ddd;
             padding: 25px;
             box-sizing: border-box;
-            flex-shrink: 0;
+            flex-shrink: 0; /* Evita que el menú se aplaste en pantallas pequeñas */
         }
 
         .sidebar h3 {
             margin-bottom: 20px;
             font-size: 1.2rem;
             color: var(--color-oscuro);
-            border-left: 4px solid var(--color-materia);
+            border-left: 4px solid var(--color-materia); /* Línea decorativa del color de la materia */
             padding-left: 10px;
         }
 
+        /* BOTONES DE TEMAS: Estilo de cada botón del menú */
         .btn-tema {
             width: 100%;
             padding: 12px 15px;
@@ -82,22 +93,25 @@
             margin-bottom: 8px;
         }
 
+        /* EFECTO HOVER: Lo que pasa cuando pasas el ratón sobre un tema */
         .btn-tema:hover {
             background: var(--color-materia);
             color: white;
-            transform: translateX(5px);
+            transform: translateX(5px); /* Pequeño movimiento a la derecha */
         }
 
+        /* VISOR DE CONTENIDO: El área grande donde se lee la información */
         .visor-contenido {
             flex: 1;
             padding: 60px;
             background: #fafbfc;
         }
 
+        /* PIZARRA: El cuadro de texto centralizado */
         #pizarra {
             max-width: 800px;
             margin: 0 auto;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.5s ease; /* Animación de aparición suave */
         }
 
         @keyframes fadeIn {
@@ -108,6 +122,7 @@
         h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
         p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
 
+        /* PIE DE PÁGINA */
         footer {
             text-align: center;
             padding: 20px;
@@ -120,24 +135,31 @@
 </head>
 <body>
 
+    <!-- NAVEGACIÓN: Puedes cambiar el enlace de "href" para que vuelva a la página correcta -->
     <nav class="nav-superior">
-        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
+        <div class="volver"><a href="/PageALL/MateriasCCED/Educacion Fisica/PanelGeneral.html">← REGRESAR ATRAS</a></div>
         <div class="titulo-app">Academia CCED</div>
         <div style="font-weight: 600; color: #888;">Panel Educativo</div>
     </nav>
 
     <div class="contenedor-principal">
         
+        <!-- MENÚ LATERAL: Aquí añades los botones para cada tema nuevo -->
         <aside class="sidebar">
             <h3>TEMARIO</h3>
             <div class="lista-temas">
-                <button class="btn-tema" onclick="cargar('formacion_humana')">Formación Humana</button>
-                <button class="btn-tema" onclick="cargar('vida_laboral')">Vida Laboral</button>
-                <button class="btn-tema" onclick="cargar('proyecto_vida')">Proyecto de Vida</button>
-                <button class="btn-tema" onclick="cargar('educacion_ciudadana')">Educación Ciudadana</button>
+                <!-- Para añadir un tema:
+                     1. Copia la línea del botón.
+                     2. Cambia el nombre (ej: "4. Nuevo Tema").
+                     3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
+                <button class="btn-tema" onclick="cargar('tema1')">Deportes</button>
+                <button class="btn-tema" onclick="cargar('tema2')">Gimnasia</button>
+                <button class="btn-tema" onclick="cargar('tema3')">Recreación</button>
+                <button class="btn-tema" onclick="cargar('tema4')">Expresión Corporal</button>
             </div>
         </aside>
 
+        <!-- ÁREA DE LECTURA: Aquí es donde el JavaScript "dibuja" la información -->
         <main class="visor-contenido">
             <div id="pizarra">
                 <h2>Bienvenido</h2>
@@ -152,30 +174,44 @@
     </footer>
 
     <script>
+        /**
+         * FUNCIÓN CARGAR: Es la encargada de cambiar el texto de la pantalla.
+         * @param {string} id - El identificador del tema que queremos mostrar.
+         */
         function cargar(id) {
             const pizarra = document.getElementById("pizarra");
 
+            /* BASE DE DATOS: Aquí guardas toda la información de la materia.
+               Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
             const baseDeDatos = {
-                'formacion_humana': {
-                    titulo: "Formación Humana",
-                    texto: "La formación humana es el proceso integral mediante el cual una persona desarrolla sus valores, conocimientos, habilidades y actitudes para convivir de manera responsable en la sociedad. No se limita al aprendizaje académico, sino que también abarca el crecimiento emocional, social y ético. Busca formar individuos conscientes de sus derechos, deberes y responsabilidades. Promueve la reflexión, la empatía y la toma de decisiones acertadas. Además, fortalece el carácter y prepara a las personas para enfrentar los desafíos de la vida. Es fundamental para construir una sociedad justa, solidaria y respetuosa."
+                'tema1': {
+                    titulo: "Deportes",
+                    texto: ""
                 },
-                'vida_laboral': {
-                    titulo: "Vida Laboral",
-                    texto: "La vida laboral es la etapa en la que las personas aplican sus conocimientos y habilidades en una actividad productiva. Permite obtener ingresos, desarrollar talentos y contribuir al bienestar de la sociedad. El trabajo fomenta la responsabilidad, la disciplina y el crecimiento profesional. También fortalece la independencia económica y la realización personal. Prepararse adecuadamente es esencial para enfrentar el mundo laboral. Es una parte importante del proyecto de vida."
+                'tema2': {
+                    titulo: "Gimnasia",
+                    texto: ""
                 },
-                'proyecto_vida': {
-                    titulo: "Proyecto de Vida",
-                    texto: "El proyecto de vida es el conjunto de metas, sueños y objetivos que una persona se propone alcanzar. Sirve como guía para tomar decisiones y orientar el futuro. Incluye aspectos académicos, profesionales, familiares y personales. Ayuda a mantener la motivación y la perseverancia. Un proyecto de vida bien definido facilita el crecimiento y la superación. Es la herramienta que permite construir una vida con propósito y sentido."
+                'tema3': {
+                    titulo: "Recreación",
+                    texto: ""
                 },
-                'educacion_ciudadana': {
-                    titulo: "Educación Ciudadana",
-                    texto: "La educación ciudadana forma personas conscientes de sus derechos y deberes dentro de la sociedad. Promueve la participación democrática, el respeto a las leyes y la convivencia pacífica. Fomenta valores como la responsabilidad, la solidaridad y la tolerancia. También fortalece el compromiso con el bienestar común. Es esencial para construir una ciudadanía activa y responsable. Una democracia sólida depende de ciudadanos bien formados."
+                'tema4': {
+                    titulo: "Expresión Corporal",
+                    texto: ""
                 }
+                 /* Para añadir más temas, sigue el mismo formato:
+                    'tema5': {
+                        titulo: "Título del Tema 5",
+                        texto: "Contenido del Tema 5."
+                    },
+                */
             };
 
+            // Busca en la base de datos el ID que pulsamos en el botón
             const info = baseDeDatos[id];
 
+            // Si el tema existe, lo inyecta en el HTML de la "pizarra"
             if (info) {
                 pizarra.innerHTML = `
                     <h2>${info.titulo}</h2>
