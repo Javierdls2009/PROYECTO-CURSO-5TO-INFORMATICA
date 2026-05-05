@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Ensayo | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS (misma paleta que las páginas anteriores) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">EL ENSAYO</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y propósito del ensayo</div>
+                <div class="tema" data-tema="caracteristicas">Características del ensayo</div>
+                <div class="tema" data-tema="estructura">Estructura básica (introducción, desarrollo, conclusión)</div>
+                <div class="tema" data-tema="argumentativo">Ensayo argumentativo</div>
+                <div class="tema" data-tema="expositivo">Ensayo expositivo</div>
+                <div class="tema" data-tema="descriptivo">Ensayo descriptivo</div>
+                <div class="tema" data-tema="narrativo">Ensayo narrativo</div>
+                <div class="tema" data-tema="critico">Ensayo crítico</div>
+                <div class="tema" data-tema="cientifico">Ensayo científico</div>
+                <div class="tema" data-tema="diferencias">Diferencias entre tipos de ensayo</div>
+                <div class="tema" data-tema="ejemplos_comparativos">Ejemplos comparativos de cada tipo</div>
+                <div class="tema" data-tema="consejos">Cómo escribir un buen ensayo (pasos prácticos)</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario de términos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>El ensayo: definición y estructura</h2>
+                <p>El ensayo es un tipo de texto en el que una persona expresa sus ideas, opiniones o reflexiones sobre un tema determinado. No es solo información, sino que también incluye el punto de vista del autor, quien analiza, interpreta o argumenta sobre ese tema.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo sencillo:</strong> Un estudiante escribe sobre el uso excesivo del celular y explica por qué considera que afecta la concentración. Eso es un ensayo porque da su opinión con argumentos.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar todos los aspectos del ensayo.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · El ensayo: expresión de ideas, reflexión y argumentación.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y propósito del ensayo</h2>
+                <p>El <strong>ensayo</strong> es un género literario y académico que consiste en la exposición escrita de ideas, opiniones, reflexiones o análisis personales sobre un tema específico. No se limita a informar, sino que <strong>interpreta, argumenta y persuade</strong> desde la perspectiva del autor.</p>
+                <p>Puede tratar temas muy variados: sociales, científicos, literarios, filosóficos, políticos, culturales, etc. Se caracteriza por ser <strong>flexible</strong> (no sigue reglas tan rígidas como otros textos, como el informe o la monografía), pero mantiene una estructura lógica y coherencia interna.</p>
+                <p><strong>Propósito principal:</strong> Hacer reflexionar al lector, exponer un punto de vista, cuestionar ideas establecidas o proponer nuevas formas de entender un tema.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de inicio de ensayo:</strong> “En la actualidad, el uso excesivo del celular se ha convertido en un problema silencioso que afecta la concentración de los jóvenes, especialmente en el ámbito académico.”
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características del ensayo</h2>
+                <ul>
+                    <li><strong>Subjetividad:</strong> Expresa ideas y opiniones personales del autor. No es puramente objetivo, aunque puede apoyarse en datos.</li>
+                    <li><strong>Tema delimitado:</strong> Se enfoca en un aspecto concreto, no aborda temas demasiado amplios.</li>
+                    <li><strong>Lenguaje claro y organizado:</strong> Busca comunicar ideas de manera comprensible, aunque puede incluir tecnicismos según el tema.</li>
+                    <li><strong>Estructura flexible pero lógica:</strong> Suele tener introducción, desarrollo y conclusión, pero sin rigidez extrema.</li>
+                    <li><strong>Extensión variable:</strong> Puede ir desde una página hasta varias decenas, depende del propósito.</li>
+                    <li><strong>Intención persuasiva o reflexiva:</strong> Busca convencer, informar o generar pensamiento crítico en el lector.</li>
+                    <li><strong>Uso de ejemplos, argumentos y citas:</strong> Para reforzar la posición del autor.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    El ensayo no es un artículo científico (que exige método riguroso), ni una noticia (que solo informa). Es un espacio de libertad creativa con responsabilidad argumentativa.
+                </div>
+            `,
+            estructura: `
+                <h2>Estructura básica del ensayo</h2>
+                <p>Aunque es flexible, la mayoría de los ensayos respetan tres grandes apartados:</p>
+                <p><strong>1. Introducción:</strong> Presenta el tema, el enfoque del autor y generalmente la tesis (idea principal que se defenderá). Debe captar la atención del lector.</p>
+                <div class="bloque-ejemplo">
+                    “En la última década, las redes sociales han transformado la manera en que nos relacionamos. Sin embargo, también han generado problemas como la ansiedad digital y la desinformación. En este ensayo se argumentará que es necesario regular su uso en adolescentes.”
+                </div>
+                <p><strong>2. Desarrollo (o cuerpo argumentativo):</strong> Es la parte más extensa. Aquí se exponen los argumentos, ejemplos, datos, citas y reflexiones que apoyan la tesis. Se organiza en párrafos, cada uno con una idea central.</p>
+                <div class="bloque-ejemplo">
+                    “Por un lado, estudios de la Universidad de Stanford demuestran que pasar más de tres horas diarias en redes aumenta la ansiedad. Por ejemplo, muchos jóvenes comparan sus vidas con las publicaciones idealizadas de otros, generando baja autoestima...”
+                </div>
+                <p><strong>3. Conclusión:</strong> Cierra el ensayo retomando la tesis y ofreciendo una reflexión final o una propuesta. No introduce ideas nuevas, sino que sintetiza lo dicho y deja una impresión duradera.</p>
+                <div class="bloque-ejemplo">
+                    “En conclusión, si bien las redes sociales tienen ventajas comunicativas, su uso sin control perjudica la salud mental de los adolescentes. Por ello, padres y educadores deben fomentar hábitos digitales responsables.”
+                </div>
+            `,
+            argumentativo: `
+                <h2>Ensayo argumentativo</h2>
+                <p>Es el tipo más común. Su objetivo es <strong>defender una idea u opinión</strong> mediante argumentos lógicos, ejemplos, datos o citas de autoridad. Busca convencer al lector de adoptar la postura del autor.</p>
+                <p><strong>Características:</strong> Tiene una tesis clara; usa conectores lógicos (por lo tanto, sin embargo, en consecuencia); puede refutar objeciones.</p>
+                <p><strong>Ejemplo de fragmento:</strong></p>
+                <div class="bloque-ejemplo">
+                    “El uso del uniforme escolar es beneficioso porque reduce la presión social por la vestimenta, fomenta la igualdad entre estudiantes y disminuye el acoso por apariencia. Diversos estudios en escuelas de Chile y México han demostrado una mejora en el clima escolar tras implementarlo.”
+                </div>
+                <p><strong>Temas comunes:</strong> educación, políticas públicas, ética, medio ambiente, tecnología.</p>
+            `,
+            expositivo: `
+                <h2>Ensayo expositivo</h2>
+                <p>Se enfoca en <strong>explicar un tema de forma clara y objetiva</strong>, sin dar opiniones personales fuertes. Su propósito es informar y educar, no persuadir. Aunque el autor puede tener un punto de vista, lo deja implícito y prioriza los hechos.</p>
+                <p><strong>Ejemplo de fragmento:</strong></p>
+                <div class="bloque-ejemplo">
+                    “La contaminación ambiental se refiere a la presencia de agentes físicos, químicos o biológicos en el aire, agua o suelo que afectan la salud humana y los ecosistemas. Las principales fuentes son las emisiones industriales, el tráfico vehicular y la deforestación.”
+                </div>
+                <p><strong>Diferencias con el argumentativo:</strong> El expositivo no busca convencer, solo aclarar; es más neutro y didáctico.</p>
+            `,
+            descriptivo: `
+                <h2>Ensayo descriptivo</h2>
+                <p>Describe un tema, lugar, persona, objeto o situación con <strong>detalles sensoriales y subjetivos</strong>. No solo informa, sino que busca que el lector "vea" o "sienta" lo descrito. Es común en ensayos literarios y de viajes.</p>
+                <p><strong>Ejemplo de fragmento:</strong></p>
+                <div class="bloque-ejemplo">
+                    “El mercado municipal de mi ciudad es un laberinto de olores: el café recién molido se mezcla con el aroma de las flores, mientras los vendedores pregonan sus frutas con colores que parecen pintados al óleo. Cada puesto cuenta una historia, cada cliente es un personaje.”
+                </div>
+                <p>La intención es <strong>evocar</strong>, más que argumentar o informar fríamente.</p>
+            `,
+            narrativo: `
+                <h2>Ensayo narrativo</h2>
+                <p>Cuenta hechos o experiencias personales como una historia, pero con una <strong>reflexión o enseñanza</strong> al final. Combina elementos de la narración (personajes, tiempo, acción) con la intención analítica del ensayo.</p>
+                <p><strong>Ejemplo de fragmento:</strong></p>
+                <div class="bloque-ejemplo">
+                    “Recuerdo aquel verano en que mi abuelo me enseñó a pescar. No solo me mostró cómo lanzar la caña, sino que me habló de la paciencia, de esperar el momento justo. Ahora entiendo que esa lección aplica a muchos aspectos de la vida: a veces solo hay que saber esperar.”
+                </div>
+                <p>Es muy utilizado en blogs y revistas de desarrollo personal.</p>
+            `,
+            critico: `
+                <h2>Ensayo crítico</h2>
+                <p>Analiza y emite una <strong>opinión razonada</strong> sobre una obra, un evento, una tendencia cultural o una situación social. Se evalúan los aciertos y errores, fundamentando cada juicio. Muy común en crítica literaria, cinematográfica, musical o de arte.</p>
+                <p><strong>Ejemplo de fragmento (crítica de película):</strong></p>
+                <div class="bloque-ejemplo">
+                    “La película ‘Sueños de libertad’ presenta una fotografía impecable y una banda sonora emotiva, pero su guion cae en clichés predecibles. El personaje principal no evoluciona a lo largo de la historia, lo que reduce el impacto del mensaje de superación que pretende transmitir.”
+                </div>
+                <p>Debe evitar la simple opinión (“no me gustó”) y ofrecer argumentos sólidos.</p>
+            `,
+            cientifico: `
+                <h2>Ensayo científico</h2>
+                <p>Se basa en <strong>información comprobable, datos, investigaciones y lenguaje formal</strong>. Aunque incluye la interpretación del autor, se apoya en evidencia empírica y referencias académicas. No es un artículo de investigación experimental, sino una reflexión fundamentada sobre un tema científico.</p>
+                <p><strong>Ejemplo de fragmento:</strong></p>
+                <div class="bloque-ejemplo">
+                    “Según el último informe del IPCC (2023), el calentamiento global ha superado 1.1 grados centígrados desde la era preindustrial. Este incremento, aunque parece pequeño, ya está causando fenómenos extremos. Ante esta evidencia, se hace urgente repensar los modelos energéticos actuales.”
+                </div>
+                <p>Se publica en revistas de divulgación científica o como ensayo académico.</p>
+            `,
+            diferencias: `
+                <h2>Diferencias clave entre los tipos de ensayo</h2>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #ddd; margin:15px 0;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Tipo</th><th>Propósito principal</th><th>Lenguaje</th><th>Ejemplo de tema</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Argumentativo</td><td>Convencer</td><td>Persuasivo, con conectores lógicos</td><td>Beneficios del reciclaje obligatorio</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Expositivo</td><td>Informar/explicar</td><td>Objetivo, didáctico</td><td>Cómo funciona un motor eléctrico</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Descriptivo</td><td>Evocar sensaciones</td><td>Adjetivado, metafórico</td><td>La atmósfera de un café parisino</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Narrativo</td><td>Contar una experiencia reflexiva</td><td>Coloquial, con secuencia temporal</td><td>Lo que aprendí al viajar solo</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Crítico</td><td>Analizar y evaluar</td><td>Analítico, valorativo</td><td>Análisis de una obra literaria</td></tr>
+                    <tr><td>Científico</td><td>Reflexionar con base empírica</td><td>Formal, técnico, con citas</td><td>Impacto de la inteligencia artificial en la medicina</td></tr>
+                </table>
+            `,
+            ejemplos_comparativos: `
+                <h2>Ejemplos comparativos sobre el mismo tema</h2>
+                <p>Para entender mejor las diferencias, aquí se muestra el mismo tema ("El uso del celular en adolescentes") abordado desde distintos tipos de ensayo:</p>
+                <ul>
+                    <li><strong>Argumentativo:</strong> “El uso excesivo del celular afecta la salud mental porque genera dependencia y ansiedad. Por ello, los padres deben limitar su uso a dos horas diarias.”</li>
+                    <li><strong>Expositivo:</strong> “Un celular es un dispositivo electrónico que permite comunicación, acceso a internet y aplicaciones. En adolescentes, su uso ha aumentado un 40% en los últimos cinco años según datos de la UNESCO.”</li>
+                    <li><strong>Descriptivo:</strong> “La pantalla ilumina sus rostros en la penumbra; los dedos se deslizan rápidamente, mientras una sonrisa o un ceño se dibuja ante cada mensaje. El mundo exterior queda suspendido.”</li>
+                    <li><strong>Narrativo:</strong> “El año pasado, mi primo dejó de salir al parque; su nuevo celular lo atrapó. Un domingo, decidí hablar con él y descubrí que se sentía más seguro detrás de la pantalla. Esa conversación me hizo reflexionar.”</li>
+                    <li><strong>Crítico:</strong> “Aunque la industria tecnológica promueve el celular como herramienta educativa, estudios recientes demuestran que su abuso reduce la capacidad de atención. La película ‘El dilema de las redes’ ya advertía sobre la ingeniería de la adicción.”</li>
+                </ul>
+            `,
+            consejos: `
+                <h2>Cómo escribir un buen ensayo (pasos prácticos)</h2>
+                <ol>
+                    <li><strong>Elige un tema que te interese:</strong> La pasión por el tema se nota en la escritura. Delimítalo a un aspecto concreto.</li>
+                    <li><strong>Investiga y reúne ideas:</strong> Lee sobre el tema, anota datos, citas, ejemplos. También haz una lluvia de ideas propias.</li>
+                    <li><strong>Define tu tesis:</strong> Una frase que exprese tu postura o el enfoque principal. Ej: “La lectura diaria mejora la empatía en adolescentes”.</li>
+                    <li><strong>Estructura un esquema:</strong> 
+                        <br>Introducción: gancho + contexto + tesis.
+                        <br>Desarrollo: 3 o 4 párrafos, cada uno con una idea principal y ejemplos.
+                        <br>Conclusión: síntesis + reflexión final.
+                    </li>
+                    <li><strong>Escribe un borrador:</strong> No te preocupes por la perfección al inicio. Deja fluir las ideas.</li>
+                    <li><strong>Revisa y edita:</strong> Verifica coherencia, claridad, ortografía y gramática. Elimina repeticiones.</li>
+                    <li><strong>Pide retroalimentación:</strong> Otra persona puede detectar fallos lógicos o de estilo.</li>
+                </ol>
+                <div class="bloque-ejemplo">
+                    <strong>Consejo extra:</strong> Lee ensayos de autores reconocidos (Octavio Paz, Mario Vargas Llosa, Umberto Eco) para aprender estilos diferentes.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos para escribir ensayos</h2>
+                <p><strong>Ejercicio 1: Identifica el tipo de ensayo.</strong> Lee los siguientes fragmentos y di cuál es:</p>
+                <ol>
+                    <li>“La deforestación en el Amazonas alcanzó su punto más crítico en 2022, con 10.000 km² perdidos. Esto afecta la biodiversidad y el clima global.” → Expositivo</li>
+                    <li>“Las redes sociales nos han vuelto más solitarios. La evidencia es clara: mientras más tiempo pasamos en Instagram, menos interacciones cara a cara tenemos.” → Argumentativo</li>
+                    <li>“El olor a tierra mojada después de la lluvia me transporta a mi infancia en el campo. Es un aroma que ningún perfume puede igualar.” → Descriptivo</li>
+                </ol>
+                <p><strong>Ejercicio 2: Transforma oraciones.</strong> Convierte esta frase expositiva en argumentativa: “El plástico tarda 500 años en degradarse”. Respuesta posible: “El plástico tarda 500 años en degradarse; por tanto, debemos prohibir las bolsas de un solo uso ya mismo.”</p>
+                <p><strong>Ejercicio 3: Redacta un esquema.</strong> Elige un tema (ej: “La importancia del deporte en la escuela”) y escribe una tesis y tres ideas para el desarrollo.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de esquema resuelto:</strong><br>
+                    Tema: Importancia del deporte en la escuela.<br>
+                    Tesis: El deporte escolar es fundamental porque mejora la salud física, la disciplina y el trabajo en equipo.<br>
+                    Idea 1: Beneficios cardiovasculares y reducción de obesidad.<br>
+                    Idea 2: Enseñanza de valores como la perseverancia y el respeto a reglas.<br>
+                    Idea 3: Fomento de la integración social y prevención del acoso.
+                </div>
+                <p><strong>Ejercicio 4: Escribe un párrafo de conclusión</strong> para el tema “La inteligencia artificial en la educación”. Inventa una reflexión final.</p>
+            `,
+            glosario: `
+                <h2>Glosario de términos relacionados con el ensayo</h2>
+                <ul>
+                    <li><strong>Tesis:</strong> Idea principal que el autor defiende o desarrolla en el ensayo.</li>
+                    <li><strong>Argumento:</strong> Razonamiento que apoya la tesis, basado en hechos, ejemplos, datos o lógica.</li>
+                    <li><strong>Refutación:</strong> Anticipación y respuesta a posibles objeciones en contra de la tesis.</li>
+                    <li><strong>Cohesión:</strong> Uso de conectores y recursos que enlazan las oraciones y párrafos.</li>
+                    <li><strong>Coherencia:</strong> Organización lógica de las ideas para que el texto tenga sentido global.</li>
+                    <li><strong>Ensayo académico:</strong> El que se presenta en entornos universitarios, con mayor formalidad y referencias bibliográficas.</li>
+                    <li><strong>Ensayo literario:</strong> Privilegia el estilo artístico, las metáforas y la subjetividad; puede mezclar géneros.</li>
+                    <li><strong>Plagio:</strong> Copiar ideas o textos de otros sin citar. Es una falta ética grave en la escritura de ensayos.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    El dominio del ensayo es una habilidad transversal que sirve para la universidad, el trabajo y la expresión personal.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

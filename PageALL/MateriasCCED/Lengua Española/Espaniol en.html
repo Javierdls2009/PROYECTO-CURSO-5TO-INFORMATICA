@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Español en América, Europa y RD | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS BASADOS EN EL EJEMPLO ORIGINAL ========== */
+        :root {
+            --color-principal: #e5322e;   /* rojo característico */
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona de contenido principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">ESPAÑOL EN AMÉRICA, EUROPA Y RD</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <!-- barra lateral de temas -->
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición global del español</div>
+                <div class="tema" data-tema="europa">Español en Europa (España)</div>
+                <div class="tema" data-tema="america_latina">Español en América Latina</div>
+                <div class="tema" data-tema="republica_dominicana">Español en República Dominicana</div>
+                <div class="tema" data-tema="diferencias">Diferencias entre variantes</div>
+                <div class="tema" data-tema="diversidad">Importancia de la diversidad</div>
+                <div class="tema" data-tema="internacional">El español como lengua internacional</div>
+            </div>
+        </aside>
+
+        <!-- área dinámica de contenido -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Español en América Latina, Europa y República Dominicana</h2>
+                <p>El español es una lengua romance que forma parte de la familia de idiomas derivados del latín. Es uno de los idiomas más hablados del mundo y se utiliza como lengua oficial en numerosos países. Sin embargo, aunque todos comparten la misma base lingüística, el español presenta variaciones importantes según la región geográfica.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Dato clave:</strong> Más de 500 millones de personas hablan español en el mundo, con variantes que reflejan la historia, cultura e identidad de cada región.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar las características del español en Europa, América Latina y República Dominicana.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Variedades del español: Europa, América Latina y República Dominicana</p>
+    </footer>
+
+    <script>
+        // ========== CONTENIDO COMPLETO (basado en el texto proporcionado) ==========
+        const contenidos = {
+            definicion: `
+                <h2>Definición general del español como lengua global</h2>
+                <p>El español es una <strong>lengua romance</strong> que forma parte de la familia de idiomas derivados del latín. Es uno de los idiomas más hablados del mundo y se utiliza como lengua oficial en numerosos países. Sin embargo, aunque todos comparten la misma base lingüística, el español presenta <strong>variaciones importantes</strong> según la región geográfica, debido a factores históricos, sociales, culturales y políticos.</p>
+                <p>Estas diferencias dan lugar a lo que se conoce como <strong>variedades del español</strong>, las cuales se manifiestan en la pronunciación, el vocabulario, la gramática y el uso del idioma en distintos contextos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> La palabra "ordenador" se usa en España, mientras que en América Latina se dice "computadora" y en República Dominicana coloquialmente "compu".
+                </div>
+            `,
+            europa: `
+                <h2>El español en Europa (España)</h2>
+                <p>El español en Europa, específicamente en España, es conocido como <strong>español peninsular o castellano</strong>. Es considerado el punto de origen del idioma y la base normativa de muchas reglas lingüísticas.</p>
+                <p><strong>Características lingüísticas:</strong></p>
+                <ul>
+                    <li>Uso del pronombre <strong>vosotros</strong> para la segunda persona del plural (informal).</li>
+                    <li>Distinción en la pronunciación entre “s”, “c” y “z” (fenómeno conocido como <strong>distinción</strong>).</li>
+                    <li>Uso frecuente del tiempo verbal <strong>pretérito perfecto compuesto</strong> (ej: “he comido”).</li>
+                    <li>Entonación más marcada en algunas regiones.</li>
+                </ul>
+                <p><strong>Diversidad interna:</strong> En España existen varias variantes regionales como el español andaluz, castellano y canario. Cada una tiene diferencias en pronunciación y vocabulario.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Importancia cultural:</strong> El español europeo ha sido históricamente el modelo de referencia para la enseñanza del idioma, especialmente por instituciones como la Real Academia Española, encargada de regular y normar el uso del idioma.
+                </div>
+            `,
+            america_latina: `
+                <h2>El español en América Latina</h2>
+                <p>El español llegó a América Latina durante el proceso de colonización iniciado por España en el siglo XV. A partir de ese momento, el idioma se expandió y evolucionó en contacto con diversas culturas y lenguas indígenas, lo que dio lugar a una gran diversidad lingüística.</p>
+                <p><strong>Características generales:</strong></p>
+                <ul>
+                    <li>Uso de <strong>ustedes</strong> en lugar de “vosotros”.</li>
+                    <li>Simplificación de algunos sonidos (no se distingue entre “s”, “c” y “z”).</li>
+                    <li>Gran riqueza léxica (variedad de palabras según el país).</li>
+                    <li>Influencia de lenguas indígenas como el náhuatl, quechua o guaraní.</li>
+                </ul>
+                <p><strong>Diversidad regional:</strong> En América Latina existen múltiples variantes del español, entre ellas: español mexicano, español caribeño, español andino, español rioplatense. Cada uno presenta diferencias en pronunciación, vocabulario y expresiones culturales.</p>
+                <p><strong>Factores que influyen en la variación:</strong> historia colonial, influencia indígena, migraciones, nivel educativo y contexto social.</p>
+            `,
+            republica_dominicana: `
+                <h2>El español en República Dominicana</h2>
+                <p>El español de la República Dominicana forma parte del <strong>español caribeño</strong> y posee características propias que lo hacen único dentro del mundo hispanohablante.</p>
+                <p><strong>Características principales:</strong></p>
+                <ul>
+                    <li>Pronunciación rápida y fluida.</li>
+                    <li>Eliminación o debilitamiento de consonantes finales (ej: “cansao” por “cansado”).</li>
+                    <li>Sustitución de sonidos (ej: “l” por “r” o viceversa).</li>
+                    <li>Uso frecuente de diminutivos y expresiones coloquiales.</li>
+                </ul>
+                <p><strong>Léxico dominicano (dominicanismos):</strong></p>
+                <ul>
+                    <li>“Vaina” (cosa).</li>
+                    <li>“Jevi” (bueno, excelente).</li>
+                    <li>“Tiguere” (persona astuta).</li>
+                </ul>
+                <p><strong>Influencias lingüísticas:</strong> lenguas africanas (por la esclavitud), lenguas indígenas (taínos) e inglés (por influencia cultural y económica).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Importancia cultural:</strong> Esta variante del español es una expresión viva de la identidad dominicana y refleja su historia, su cultura y su forma de vida.
+                </div>
+            `,
+            diferencias: `
+                <h2>Diferencias entre las variantes del español</h2>
+                <p><strong>Nivel fonético (pronunciación):</strong></p>
+                <ul>
+                    <li>España: distingue sonidos.</li>
+                    <li>América Latina: simplifica sonidos.</li>
+                    <li>República Dominicana: reduce o modifica sonidos.</li>
+                </ul>
+                <p><strong>Nivel léxico (vocabulario):</strong></p>
+                <ul>
+                    <li>España: “ordenador”.</li>
+                    <li>América Latina: “computadora”.</li>
+                    <li>República Dominicana: “compu”.</li>
+                </ul>
+                <p><strong>Nivel gramatical:</strong></p>
+                <ul>
+                    <li>España: uso de “vosotros”.</li>
+                    <li>América Latina: uso de “ustedes”.</li>
+                    <li>República Dominicana: uso informal y flexible.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de frase en tres variantes:</strong><br>
+                    España: “Vosotros habéis comido muy bien.”<br>
+                    América Latina: “Ustedes han comido muy bien.”<br>
+                    República Dominicana: “Ustedes comieron bien.”
+                </div>
+            `,
+            diversidad: `
+                <h2>Importancia de la diversidad del español</h2>
+                <p>La diversidad del español no representa un problema, sino una <strong>riqueza cultural</strong>, ya que permite:</p>
+                <ul>
+                    <li>Adaptar el idioma a diferentes contextos.</li>
+                    <li>Expresar identidades culturales.</li>
+                    <li>Enriquecer el vocabulario global.</li>
+                    <li>Facilitar la evolución del idioma.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Cada variante del español es válida y refleja la historia y el sentir de sus hablantes. No existe una "mejor" forma de hablar español, sino diferentes formas de expresar la misma lengua.
+                </div>
+            `,
+            internacional: `
+                <h2>El español como lengua internacional</h2>
+                <p>El español es actualmente uno de los idiomas más importantes del mundo:</p>
+                <ul>
+                    <li>Más de <strong>500 millones de hablantes</strong>.</li>
+                    <li>Presente en varios continentes.</li>
+                    <li>Idioma oficial en múltiples países.</li>
+                </ul>
+                <p>Esto lo convierte en una lengua clave para:</p>
+                <ul>
+                    <li>La comunicación global.</li>
+                    <li>El comercio internacional.</li>
+                    <li>La cultura y la educación.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    El español es la segunda lengua materna más hablada del mundo, solo por detrás del chino mandarín.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+        }
+
+        // Asignar evento click a cada tema
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        // Mostrar tema por defecto
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

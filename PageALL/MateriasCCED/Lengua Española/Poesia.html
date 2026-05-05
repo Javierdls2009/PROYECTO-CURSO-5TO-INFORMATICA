@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Poesía | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS (misma paleta que las páginas anteriores) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">LA POESÍA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición de poesía</div>
+                <div class="tema" data-tema="caracteristicas">Características de la poesía</div>
+                <div class="tema" data-tema="tipos_contenido">Tipos según contenido</div>
+                <div class="tema" data-tema="tipos_forma">Tipos según forma</div>
+                <div class="tema" data-tema="tipos_estructura">Tipos según estructura (soneto, oda, etc.)</div>
+                <div class="tema" data-tema="tipos_modernos">Tipos modernos y actuales</div>
+                <div class="tema" data-tema="estructura_poema">Estructura del poema (verso, estrofa, métrica, rima)</div>
+                <div class="tema" data-tema="figuras_literarias">Figuras literarias en poesía</div>
+                <div class="tema" data-tema="poetas_dominicanos">Poetas dominicanos (biografías ampliadas)</div>
+                <div class="tema" data-tema="poetas_internacionales">Poetas internacionales (biografías ampliadas)</div>
+                <div class="tema" data-tema="movimientos_poeticos">Movimientos poéticos (Romanticismo, Modernismo, Vanguardias)</div>
+                <div class="tema" data-tema="analisis_poema">Cómo analizar un poema (paso a paso)</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario poético</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>La poesía: definición y visión general</h2>
+                <p>La poesía es un género literario que se distingue por el uso especial del lenguaje para expresar emociones, pensamientos, ideas y visiones del mundo de manera artística. A diferencia de otros géneros, la poesía no sólo comunica un mensaje, sino que también busca provocar sensaciones en el lector mediante el ritmo, la sonoridad y las imágenes.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Fragmento de Pedro Mir:</strong> “Hay un país en el mundo / colocado en el mismo trayecto del sol...” (Poema “Hay un país en el mundo”).
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar todos los aspectos de la poesía: tipos, estructura, poetas, movimientos y análisis.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · La poesía: el arte de la palabra emocionada.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición de poesía</h2>
+                <p>La <strong>poesía</strong> es una forma de expresión artística que utiliza el lenguaje en su dimensión estética y emocional. Se caracteriza por la concentración de significados, la musicalidad y el uso de imágenes potentes. No se limita a informar, sino que busca conmover, sugerir y hacer sentir al lector.</p>
+                <p>A lo largo de la historia, la poesía ha sido vehículo de identidad cultural, denuncia social, espiritualidad y reflexión existencial. Se escribe tanto en verso como en prosa poética.</p>
+                <div class="bloque-ejemplo">
+                    Esta definición se complementa con las palabras de Gustavo Adolfo Bécquer: “Poesía eres tú”.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características de la poesía</h2>
+                <ul>
+                    <li><strong>Expresividad:</strong> Transmite emociones y estados de ánimo.</li>
+                    <li><strong>Lenguaje figurado:</strong> Abundan metáforas, comparaciones, personificaciones.</li>
+                    <li><strong>Ritmo y musicalidad:</strong> Se logra mediante la rima, la métrica y los recursos fónicos (aliteración, onomatopeya).</li>
+                    <li><strong>Subjetividad:</strong> Refleja la visión personal del autor.</li>
+                    <li><strong>Brevedad e intensidad:</strong> En pocas palabras se concentra una gran carga significativa.</li>
+                    <li><strong>Estética:</strong> Busca la belleza formal y conceptual.</li>
+                    <li><strong>Uso de versos o prosa poética:</strong> Puede organizarse en líneas cortas (versos) o en párrafos con lenguaje lírico.</li>
+                </ul>
+            `,
+            tipos_contenido: `
+                <h2>Tipos de poesía según su contenido</h2>
+                <ul>
+                    <li><strong>Poesía lírica:</strong> Expresa sentimientos íntimos (amor, soledad, gozo). Es la más común. Ejemplo: las Rimas de Bécquer.</li>
+                    <li><strong>Poesía épica:</strong> Narra hazañas heroicas o eventos fundacionales de un pueblo. Ejemplo: La Ilíada, El Cantar de Mio Cid.</li>
+                    <li><strong>Poesía dramática:</strong> Presenta conflictos humanos en forma dialogada, escrita para ser representada. Ejemplo: los coros de las tragedias griegas.</li>
+                    <li><strong>Poesía narrativa:</strong> Cuenta una historia con personajes y acciones, pero en verso. Ejemplo: El gaucho Martín Fierro.</li>
+                    <li><strong>Poesía social:</strong> Denuncia injusticias y problemas colectivos. Ejemplo: “Poesía para la guerra” de César Vallejo.</li>
+                </ul>
+            `,
+            tipos_forma: `
+                <h2>Tipos de poesía según su forma</h2>
+                <ul>
+                    <li><strong>Poesía en verso:</strong> Escrita en líneas (versos) con ritmo, rima opcional.</li>
+                    <li><strong>Poesía en prosa:</strong> No tiene versos, pero emplea lenguaje poético y figurado. Ejemplo: “El libro de los seres imaginarios” de Borges (aunque es prosa, hay poemas en prosa).</li>
+                    <li><strong>Verso libre:</strong> No sigue reglas fijas de métrica ni rima. Walt Whitman fue su gran precursor.</li>
+                    <li><strong>Verso rimado:</strong> Puede ser rima consonante (coinciden vocales y consonantes) o asonante (solo vocales).</li>
+                </ul>
+            `,
+            tipos_estructura: `
+                <h2>Tipos de poesía según su estructura (formas fijas)</h2>
+                <ul>
+                    <li><strong>Soneto:</strong> 14 versos endecasílabos (once sílabas) organizados en dos cuartetos y dos tercetos. Rima consonante (ABBA ABBA CDC DCD, etc.).</li>
+                    <li><strong>Oda:</strong> Poema de tono elevado que exalta algo o a alguien. Ejemplo: “Oda a la cebolla” de Pablo Neruda.</li>
+                    <li><strong>Elegía:</strong> Expresa dolor por la pérdida de un ser querido o de algo valioso. Ejemplo: “Elegía a Ramón Sijé” de Miguel Hernández.</li>
+                    <li><strong>Égloga:</strong> De tema pastoril y amoroso, con naturaleza idealizada. Ejemplo: las Églogas de Garcilaso de la Vega.</li>
+                    <li><strong>Sátira:</strong> Poema que critica o ridiculiza vicios, a menudo con humor corrosivo. Ejemplo: las Sátiras de Quevedo.</li>
+                    <li><strong>Romance:</strong> Serie de versos octosílabos con rima asonante en los pares. Muy usado en la tradición española.</li>
+                </ul>
+            `,
+            tipos_modernos: `
+                <h2>Tipos modernos y actuales de poesía</h2>
+                <ul>
+                    <li><strong>Poesía surrealista:</strong> Explora el mundo onírico y lo irracional. Imágenes ilógicas y sorprendentes. Ejemplo: André Breton, “El amor loco”.</li>
+                    <li><strong>Poesía experimental:</strong> Rompe con las normas tipográficas, semánticas y sintácticas. Incluye caligramas, poemas visuales, etc.</li>
+                    <li><strong>Haiku:</strong> Poema japonés de tres versos (5-7-5 sílabas) que captura un instante de la naturaleza.</li>
+                    <li><strong>Poesía slam o spoken word:</strong> Poesía performática con ritmo y denuncia social, nacida en los barrios de Estados Unidos.</li>
+                    <li><strong>Micropoesía:</strong> Poemas brevísimos, a veces de un solo verso o incluso una palabra.</li>
+                </ul>
+            `,
+            estructura_poema: `
+                <h2>Estructura del poema</h2>
+                <p><strong>Verso:</strong> Cada línea del poema. Puede ser de arte mayor (9 o más sílabas) o arte menor (8 o menos). El cómputo silábico considera la sinalefa y la acentuación final.</p>
+                <p><strong>Estrofa:</strong> Conjunto de versos que se repiten con una estructura fija (pareados, tercetos, cuartetos, etc.).</p>
+                <p><strong>Métrica:</strong> Medición de los versos. En español, el verso más común es el octosílabo (8 sílabas) y el endecasílabo (11).</p>
+                <p><strong>Rima:</strong> Repetición de sonidos al final de los versos. Puede ser:</p>
+                <ul>
+                    <li><strong>Consonante:</strong> Coinciden vocales y consonantes (ej: “casa” - “masa”).</li>
+                    <li><strong>Asonante:</strong> Coinciden solo las vocales (ej: “casa” - “cama”).</li>
+                    <li><strong>Libre:</strong> No hay rima.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Ejemplo de cómputo silábico: “En el silencio de una noche oscura” → 11 sílabas (ende casílabo).
+                </div>
+            `,
+            figuras_literarias: `
+                <h2>Figuras literarias más usadas en poesía</h2>
+                <ul>
+                    <li><strong>Metáfora:</strong> Identificación de un término real con otro imaginario (“tus ojos son dos luceros”).</li>
+                    <li><strong>Símil o comparación:</strong> Relación explícita usando “como” (“fuerte como un león”).</li>
+                    <li><strong>Personificación:</strong> Atribuir cualidades humanas a objetos o animales (“el viento susurra”).</li>
+                    <li><strong>Hipérbole:</strong> Exageración (“te quiero hasta el infinito”).</li>
+                    <li><strong>Anáfora:</strong> Repetición de palabras al inicio de versos (“temprano levantó la muerte el vuelo”).</li>
+                    <li><strong>Aliteración:</strong> Repetición de sonidos con efecto expresivo (“el susurro sedoso del sonido”).</li>
+                    <li><strong>Onomatopeya:</strong> Imitación de sonidos reales (“tic-tac”, “pío-pío”).</li>
+                    <li><strong>Hipérbaton:</strong> Alteración del orden lógico de la oración (“volverán las oscuras golondrinas” → lo normal sería “las oscuras golondrinas volverán”).</li>
+                </ul>
+            `,
+            poetas_dominicanos: `
+                <h2>Poetas dominicanos destacados (biografías ampliadas)</h2>
+                <p><strong>Salomé Ureña (1850-1897):</strong> Nació en Santo Domingo. Fue poeta, educadora y pionera del feminismo en la República Dominicana. Fundó el primer centro de estudios superiores para mujeres, el Instituto de Señoritas. Su poesía combina el sentimiento íntimo con el patriotismo y la defensa de la educación. Entre sus obras: “A la patria”, “Ruinas”, “La fe en el porvenir”.</p>
+                <div class="bloque-ejemplo">
+                    Fragmento de “A la patria”:<br>
+                    “¡Quisqueya! tu gloria será eternamente / el faro que alumbre mi senda inmortal...”
+                </div>
+                <p><strong>Pedro Mir (1913-2000):</strong> Nació en San Pedro de Macorís. Declarado Poeta Nacional de la República Dominicana en 1984. Su obra refleja la identidad, la lucha social y la historia dominicana. Escribió “Hay un país en el mundo”, “Contracanto a Walt Whitman” y “El huracán Neruda”. Su poesía es de honda raíz colectiva.</p>
+                <div class="bloque-ejemplo">
+                    Fragmento de “Hay un país en el mundo”:<br>
+                    “Hay un país en el mundo / colocado en el mismo trayecto del sol / y no está en el mundo, / está en el corazón...”
+                </div>
+                <p><strong>Aída Cartagena Portalatín (1918-1994):</strong> Nació en Santo Domingo. Poeta, ensayista y narradora. Miembro de la Generación del 48. Su obra aborda el existencialismo, la identidad femenina y la crítica social. Obras: “La voz desatada”, “El tiempo es el fuego”, “Cultura femenina y creación literaria”.</p>
+                <div class="bloque-ejemplo">
+                    Fragmento de “Una mujer está sola”:<br>
+                    “Una mujer está sola. / Sola con su esperanza / y con su soledad.”
+                </div>
+                <p><strong>Manuel del Cabral (1907-1999):</strong> Nació en Santiago de los Caballeros. Su poesía aborda temas afroantillanos, sociales y la injusticia. Obras: “Compadre Mon”, “Trópico negro”, “El sacrificio del buey”. Fue también diplomático y ensayista.</p>
+                <div class="bloque-ejemplo">
+                    Fragmento de “Negro sin nada”:<br>
+                    “Negro sin nada en la vida / pero con toda la muerte...”
+                </div>
+                <p><strong>Juan Antonio Alix (1833-1918):</strong> Poeta popular y satírico. Escribía décimas improvisadas que criticaban costumbres y sucesos de su tiempo. Fue cronista de la vida cotidiana dominicana.</p>
+            `,
+            poetas_internacionales: `
+                <h2>Poetas internacionales destacados (biografías ampliadas)</h2>
+                <p><strong>Robert Frost (1874-1963):</strong> Nació en San Francisco, Estados Unidos. Ganador de cuatro Premios Pulitzer. Su poesía, aparentemente sencilla y rural, aborda dilemas humanos universales. Obras: “The Road Not Taken”, “Stopping by Woods on a Snowy Evening”.</p>
+                <div class="bloque-ejemplo">
+                    Fragmento de “The Road Not Taken”:<br>
+                    “Two roads diverged in a yellow wood, / And sorry I could not travel both...”
+                </div>
+                <p><strong>Pablo Neruda (1904-1973):</strong> Chileno, Premio Nobel de Literatura 1971. Poeta de la pasión, la naturaleza y la justicia social. Obras: “Veinte poemas de amor y una canción desesperada”, “Canto general”, “Odas elementales”.</p>
+                <p><strong>Gustavo Adolfo Bécquer (1836-1870):</strong> Español, máximo exponente del Romanticismo tardío. Autor de las “Rimas y Leyendas”. Su poesía intimista y melancólica influyó profundamente en la lírica hispánica.</p>
+                <p><strong>Federico García Lorca (1898-1936):</strong> Español de la Generación del 27. Poeta y dramaturgo. Obras: “Romancero gitano”, “Poeta en Nueva York”. Fue fusilado en la Guerra Civil.</p>
+                <p><strong>Walt Whitman (1819-1892):</strong> Estadounidense, pionero del verso libre. Autor de “Hojas de hierba”. Celebración del cuerpo, la naturaleza y la democracia.</p>
+                <p><strong>Emily Dickinson (1830-1886):</strong> Estadounidense, poeta excéntrica y visionaria. Sus poemas breves, con mayúsculas y guiones, exploran la muerte, la soledad y la eternidad.</p>
+            `,
+            movimientos_poeticos: `
+                <h2>Principales movimientos poéticos</h2>
+                <ul>
+                    <li><strong>Romanticismo (siglo XIX):</strong> Exaltación del yo, la libertad, la naturaleza y los sentimientos. Autores: Bécquer, Espronceda, Goethe, Lord Byron.</li>
+                    <li><strong>Modernismo (fines del XIX, principios del XX):</strong> Búsqueda de la belleza, exotismo, musicalidad. Máximo exponente: Rubén Darío.</li>
+                    <li><strong>Generación del 27 (España, 1920s):</strong> Fusión de tradición y vanguardia. Autores: Lorca, Alberti, Cernuda, Salinas.</li>
+                    <li><strong>Vanguardias (primer tercio del XX):</strong> Surrealismo, Dadaísmo, Creacionismo. Rompen con la lógica y la métrica convencional.</li>
+                    <li><strong>Poesía social (mediados del XX):</strong> Compromiso político y denuncia de injusticias. En España: Gabriel Celaya, Blas de Otero.</li>
+                    <li><strong>Posmodernismo (fines del XX):</strong> Mezcla de estilos, ironía y referencias a la cultura popular.</li>
+                </ul>
+            `,
+            analisis_poema: `
+                <h2>Cómo analizar un poema (paso a paso)</h2>
+                <ol>
+                    <li><strong>Lectura atenta y en voz alta:</strong> Para sentir el ritmo y la sonoridad.</li>
+                    <li><strong>Identificar el tema central:</strong> ¿De qué trata? (amor, muerte, naturaleza, esperanza...).</li>
+                    <li><strong>Analizar la estructura:</strong> Número de versos, estrofas, medida silábica (métrica), tipo de rima.</li>
+                    <li><strong>Observar el hablante lírico:</strong> ¿Quién habla en el poema? No es el autor necesariamente.</li>
+                    <li><strong>Identificar figuras literarias:</strong> Metáforas, comparaciones, personificaciones, etc.</li>
+                    <li><strong>Examinar el tono y la actitud:</strong> ¿Es nostálgico, alegre, irónico, triste, esperanzado?</li>
+                    <li><strong>Contexto histórico y biográfico:</strong> Saber datos del autor y época ayuda a interpretar.</li>
+                    <li><strong>Elaborar una interpretación global:</strong> Unir todos los elementos en un sentido coherente.</li>
+                </ol>
+                <div class="bloque-ejemplo">
+                    Ejemplo de aplicación: Al analizar el poema “En paz” de Amado Nervo, se observa métrica endecasílaba, rima consonante, tema de aceptación y agradecimiento, uso de metáforas y un tono sereno.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos sobre poesía</h2>
+                <p><strong>Ejercicio 1: Identifica la figura literaria.</strong> Lee estos versos y di qué figura es:</p>
+                <ul>
+                    <li>“Tus cabellos son de oro” → Metáfora.</li>
+                    <li>“El llanto de la noche” → Personificación.</li>
+                    <li>“Eres fuerte como un toro” → Símil.</li>
+                </ul>
+                <p><strong>Ejercicio 2: Mide los versos.</strong> Cuenta las sílabas del siguiente verso: “La luna vino a la fragua”. (Solución: 8 sílabas, octosílabo).</p>
+                <p><strong>Ejercicio 3: Escribe un haiku.</strong> Tema: la lluvia. Estructura: 5-7-5 sílabas.</p>
+                <div class="bloque-ejemplo">
+                    Ejemplo de haiku:<br>
+                    Lluvia fina cae (5)<br>
+                    sobre el árbol seco (7)<br>
+                    brota esperanza (5)
+                </div>
+                <p><strong>Ejercicio 4: Investiga la biografía de Salomé Ureña.</strong> Escribe un párrafo con los datos más importantes.</p>
+                <p><strong>Ejercicio 5: Analiza un poema corto.</strong> Elige “La canción del pirata” de Espronceda, identifica tema, métrica y figuras.</p>
+            `,
+            glosario: `
+                <h2>Glosario poético</h2>
+                <ul>
+                    <li><strong>Verso:</strong> Línea del poema.</li>
+                    <li><strong>Estrofa:</strong> Conjunto de versos.</li>
+                    <li><strong>Métrica:</strong> Medida de los versos.</li>
+                    <li><strong>Rima consonante:</strong> Coincidencia de vocales y consonantes finales.</li>
+                    <li><strong>Rima asonante:</strong> Coincidencia solo de vocales finales.</li>
+                    <li><strong>Sinalefa:</strong> Unión de la última vocal de una palabra con la primera de la siguiente para formar una sola sílaba métrica.</li>
+                    <li><strong>Hablante lírico:</strong> Voz que expresa sentimientos en el poema.</li>
+                    <li><strong>Figura literaria:</strong> Recurso estilístico (metáfora, hipérbole, etc.).</li>
+                    <li><strong>Endecasílabo:</strong> Verso de 11 sílabas.</li>
+                    <li><strong>Octosílabo:</strong> Verso de 8 sílabas.</li>
+                    <li><strong>Poema en prosa:</strong> Texto con lenguaje poético pero sin versos.</li>
+                </ul>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

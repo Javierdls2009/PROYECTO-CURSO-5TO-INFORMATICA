@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Ortografía | AcademiaCCED</title>
     
-    <!-- estilos propios de esta sola pagina -->
     <style>
         /* colores */
         :root {
@@ -17,7 +16,7 @@
 
         /* estilos generales */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-color: var(--color-fondo);
         }
@@ -30,6 +29,7 @@
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
         }
 
         /* boton volver */
@@ -38,6 +38,10 @@
             color: var(--color-principal);
             font-weight: bold;
             font-size: 1rem;
+            transition: 0.2s;
+        }
+        .boton-volver a:hover {
+            text-decoration: underline;
         }
 
         /* titulo de la materia */
@@ -53,50 +57,50 @@
             min-height: 100vh;
         }
 
-        /*barra lateral con foto del profesor */
+        /*barra lateral */
         .barra-lateral {
-            width: 300px;
+            width: 320px;
             background-color: var(--blanco);
             border-right: 1px solid #ddd;
             padding: 40px 20px;
             text-align: center;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
         }
 
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
         .barra-lateral h3 {
-            margin: 10px 0;
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
+            font-size: 1.4rem;
         }
 
-        /* linea separadora */
         .barra-lateral hr {
             opacity: 0.2;
             margin: 20px 0;
         }
 
-        /* informacion del profesor */
-        .info-profesor {
+        .info-materia {
             text-align: left;
             font-size: 0.9rem;
             color: #555;
+            margin: 10px 10px;
+            padding: 10px;
         }
 
-        .info-profesor p {
-            margin: 10px 0;
+        .tema {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
         /* zona principal */
@@ -104,70 +108,64 @@
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        /* encabezado en la zona */
         .zona-herramientas h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .zona-herramientas h3 {
+            color: var(--color-principal);
+            margin-top: 20px;
         }
 
         .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
+            margin: 15px 0;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 1rem;
         }
 
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.6;
         }
 
-        /* cada tarjeta */
-        .tarjeta-herramienta {
-            background: var(--blanco);
-            padding: 30px 20px;
+        .zona-herramientas li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .definicion-destacada {
+            background-color: #e9f0f9;
+            padding: 15px;
             border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            margin: 15px 0;
+            border: 1px solid #cbd5e0;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
-        }
-
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* pie de pagina */
         footer {
             text-align: center;
             padding: 20px;
@@ -176,141 +174,396 @@
             color: #666;
             font-size: 0.9rem;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
 
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
+        }
     </style>
-  
-
-
 </head>
 <body>
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
-        <div class="titulo-materia">LENGUA ESPAÑOLA</div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">ORTOGRAFÍA</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
     <!-- contenido principal -->
     <div class="contenedor">
-        
         <!-- barra lateral -->
         <aside class="barra-lateral">
-            <h3>Ortografía</h3>
+            <h3>Reglas Ortográficas</h3>
             <hr>
-     <div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Ortografía</div>
-<br>
-<div class="tema" onclick="mostrar('Tema2')">Uso de mayúsculas</div>
-<br>
-<div class="tema" onclick="mostrar('Tema3')">Uso de b y v</div>
-<br>
-<div class="tema" onclick="mostrar('Tema4')">Uso de c, s y z</div>
-<br>
-<div class="tema" onclick="mostrar('Tema5')">Acentuación</div>
-<br>
-<div class="tema" onclick="mostrar('Tema6')">Signos de puntuación</div>
-</div>
-</aside>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('definicion')">¿Qué es la Ortografía?</div>
+                <div class="tema" onclick="mostrar('mayusculas')">Uso de mayúsculas</div>
+                <div class="tema" onclick="mostrar('byv')">Uso de B y V</div>
+                <div class="tema" onclick="mostrar('csyz')">Uso de C, S y Z</div>
+                <div class="tema" onclick="mostrar('gyj')">Uso de G y J</div>
+                <div class="tema" onclick="mostrar('hrr')">Uso de H, R y RR</div>
+                <div class="tema" onclick="mostrar('acentuacion')">Reglas de acentuación (tildes)</div>
+                <div class="tema" onclick="mostrar('tilde_diacritica')">Tilde diacrítica</div>
+                <div class="tema" onclick="mostrar('puntuacion')">Signos de puntuación</div>
+                <div class="tema" onclick="mostrar('homofonas')">Palabras homófonas</div>
+                <div class="tema" onclick="mostrar('excepciones')">Excepciones comunes</div>
+                <div class="tema" onclick="mostrar('ejercicios')">Ejercicios prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')">Glosario ortográfico completo</div>
+            </div>
+        </aside>
 
-<!-- zona de texto en la derecha -->
-<main class="zona-herramientas">
-    <div id="contenido">
-        <h2>Introducción a Ortografía</h2> 
-        <p>Selecciona un tema del menú lateral para aprender a escribir correctamente.</p>
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Ortografía del español</h2>
+                <p>La ortografía es el conjunto de reglas que norman la escritura correcta de una lengua. A continuación, selecciona un tema del menú lateral para aprender las normas fundamentales.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Dato clave:</strong> La Real Academia Española (RAE) es la institución que regula la ortografía del español desde 1713.
+                </div>
+                <hr>
+                <p>Explora cada tema: desde el uso de mayúsculas hasta la tilde diacrítica y las palabras homófonas. Domina las reglas y escribe con precisión.</p>
+            </div>
+        </main>
     </div>
-</main>
 
-</div>
+    <footer>
+        <p>© 2025 AcademiaCCED · Ortografía: escribir bien para comunicar mejor.</p>
+    </footer>
 
-<!-- pie de pagina -->
-<footer>
-    <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-</footer>
+    <script>
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
 
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
+            if (tema === "definicion") {
+                html = `
+                    <h2>¿Qué es la Ortografía?</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La <strong>ortografía</strong> (del griego <em>orthos</em> 'correcto' y <em>graphos</em> 'escritura') es la rama de la gramática que establece las normas para el uso correcto de las letras, los signos de puntuación, las mayúsculas, la acentuación y las palabras en la escritura de un idioma.
+                    </div>
+                    <p>La ortografía es esencial porque permite una comunicación clara, evita ambigüedades y proyecta una imagen de cuidado, educación y profesionalismo. Un texto con buena ortografía es más fácil de leer y comprender, mientras que los errores ortográficos pueden distorsionar el mensaje y generar malentendidos.</p>
+                    <p><strong>Importancia de la ortografía:</strong></p>
+                    <ul>
+                        <li><strong>Claridad:</strong> Ayuda a que el mensaje sea entendido sin confusiones.</li>
+                        <li><strong>Credibilidad:</strong> Una buena ortografía da confianza y seriedad al escritor.</li>
+                        <li><strong>Unidad lingüística:</strong> Permite que todos los hablantes de español se entiendan por escrito.</li>
+                        <li><strong>Preservación del idioma:</strong> Mantiene las reglas y la riqueza de nuestra lengua.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo de falta grave:</strong> "Haber" vs "a ver" / "hecho" vs "echo". La confusión cambia por completo el significado de la oración.
+                    </div>
+                `;
+            }
+            else if (tema === "mayusculas") {
+                html = `
+                    <h2>Uso de mayúsculas</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> Las mayúsculas son letras de mayor tamaño que se utilizan al inicio de un texto, después de punto, en nombres propios y en ciertos casos especiales. No llevan tilde a menos que la palabra lo requiera por reglas generales (ej: ÁFRICA).
+                    </div>
+                    <p><strong>Se escriben con mayúscula inicial:</strong></p>
+                    <ul>
+                        <li><strong>Inicio de escrito o después de punto:</strong> "Hoy es lunes. <strong>M</strong>añana será martes."</li>
+                        <li><strong>Nombres propios:</strong> Personas, animales, lugares: <strong>J</strong>uan, <strong>M</strong>éxico, <strong>R</strong>oma, <strong>L</strong>assie.</li>
+                        <li><strong>Apellidos:</strong> <strong>G</strong>arcía, <strong>L</strong>ópez, <strong>M</strong>ateo.</li>
+                        <li><strong>Títulos y cargos (como nombres propios):</strong> <strong>R</strong>ey <strong>F</strong>elipe, <strong>P</strong>residente <strong>A</strong>bdo.</li>
+                        <li><strong>Instituciones y organismos:</strong> <strong>O</strong>NU, <strong>U</strong>NESCO, <strong>M</strong>useo del <strong>P</strong>rado.</li>
+                        <li><strong>Títulos de obras (libros, películas):</strong> <strong>L</strong>a <strong>G</strong>uerra de los <strong>M</strong>undos, <strong>C</strong>ien años de <strong>S</strong>oledad.</li>
+                        <li><strong>Nombres de disciplinas como asignaturas:</strong> <strong>M</strong>atemáticas, <strong>H</strong>istoria, <strong>L</strong>engua.</li>
+                        <li><strong>Festividades y días importantes:</strong> <strong>N</strong>avidad, <strong>D</strong>ía de la <strong>I</strong>ndependencia.</li>
+                        <li><strong>Atributos divinos y nombres sagrados:</strong> <strong>D</strong>ios, <strong>Alá</strong>, <strong>B</strong>iblia.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Error común:</strong> "la capital de españa es madrid" → Correcto: "La capital de <strong>E</strong>spaña es <strong>M</strong>adrid".<br>
+                        <strong>Atención:</strong> Los días de la semana y meses se escriben con minúscula: lunes, enero, a menos que sean parte de una fecha festiva.
+                    </div>
+                `;
+            }
+            else if (tema === "byv") {
+                html = `
+                    <h2>Uso de B y V</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La B y la V representan el mismo sonido bilabial /b/ en español (excepto en zonas donde se distingue). Sin embargo, las reglas ortográficas definen cuándo usar cada una.
+                    </div>
+                    <h3>Reglas para usar <span style="color:#e5322e;">B</span>:</h3>
+                    <ul>
+                        <li>Palabras que empiezan por <strong>abu-, abo-</strong>: abuelo, abogado, abonar.</li>
+                        <li>Verbos terminados en <strong>-bir</strong>: escribir, recibir, describir (excepto hervir, servir, vivir).</li>
+                        <li>Terminaciones del pretérito imperfecto: <strong>-aba, -abas, -ábamos, -abais, -aban</strong>: cantaba, jugabas, amábamos.</li>
+                        <li>Palabras que empiezan por <strong>bu-, bur-, bus-</strong>: bueno, burbuja, buscar, buhardilla.</li>
+                        <li>Después de <strong>m</strong> se escribe <strong>b</strong>: tambor, cambio, embajada, ambiente.</li>
+                        <li>Palabras que empiezan por <strong>bibl-, bili-</strong>: biblioteca, bilingüe, bilis.</li>
+                    </ul>
+                    <h3>Reglas para usar <span style="color:#e5322e;">V</span>:</h3>
+                    <ul>
+                        <li>Después de <strong>n</strong> se escribe <strong>v</strong>: enviar, invasión, convertir.</li>
+                        <li>Después de <strong>l</strong> se escribe <strong>v</strong>: olvidar, polvo, solución.</li>
+                        <li>Palabras que comienzan por <strong>di-, vi-</strong>: divisor, vibrar, visible (excepto dibujo y derivados).</li>
+                        <li>Verbos andar, estar, tener en pretérito: anduve, estuve, tuve, anduviste.</li>
+                        <li>Adjetivos terminados en <strong>-ave, -avo, -eva, -evo, -ivo</strong>: suave, esclavo, nueva, nuevo, activo, efectivo.</li>
+                        <li>Palabras que empiezan por <strong>vice-, villa-</strong>: vicepresidente, villano, villancico.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplos:</strong> "El <u>b</u>arco <u>v</u>iajó hacia el <u>b</u>osque." / "<u>B</u>eneficio, <u>v</u>ivir, <u>b</u>uena <u>v</u>entura."
+                    </div>
+                `;
+            }
+            else if (tema === "csyz") {
+                html = `
+                    <h2>Uso de C, S y Z</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> El español presenta variaciones regionales en la pronunciación de C y Z (seseo y ceceo), pero las reglas de escritura son universales.
+                    </div>
+                    <h3>Uso de <span style="color:#e5322e;">C</span>:</h3>
+                    <ul>
+                        <li>Antes de e, i suena como /θ/ en España y /s/ en América: cebolla, circo, cima.</li>
+                        <li>Terminaciones <strong>-ción, -cia, -cio</strong>: canción, gracia, silencio, acción.</li>
+                        <li>Verbos terminados en <strong>-cer, -cir</strong>: conocer, agradecer, decir (conjugaciones como conozco, digo).</li>
+                        <li>En el diminutivo <strong>-cito, -cilla</strong> (cuando la palabra original no termina en s): pez → pececito, luz → lucecilla.</li>
+                    </ul>
+                    <h3>Uso de <span style="color:#e5322e;">S</span>:</h3>
+                    <ul>
+                        <li>Terminaciones de superlativos <strong>-ísimo, -ísima</strong>: altísimo, bellísima, rapidísimo.</li>
+                        <li>Adjetivos terminados en <strong>-oso, -osa</strong>: cariñoso, hermosa, peligroso.</li>
+                        <li>Palabras que empiezan por <strong>es-</strong>: escuela, espacio, espejo, esfera.</li>
+                        <li>Terminaciones <strong>-ense, -ista</strong> para gentilicios y oficios: canadiense, artista, periodista.</li>
+                        <li>Prefijos <strong>des-, dis-</strong>: deshacer, distraer, desorden.</li>
+                    </ul>
+                    <h3>Uso de <span style="color:#e5322e;">Z</span>:</h3>
+                    <ul>
+                        <li>Antes de a, o, u: zapato, zorro, azul, zanahoria.</li>
+                        <li>Sustantivos terminados en <strong>-anza, -ez, -eza</strong>: esperanza, vejez, belleza, pureza.</li>
+                        <li>Sufijo <strong>-azo, -aza</strong> (golpe o aumento): portazo, manaza, pelotazo.</li>
+                        <li>En verbos terminados en <strong>-ecer, -acer, -ocer</strong> cuando se conjugan cambian c→z antes de o: nacer → nazco, agradecer → agradezco.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejercicio mental:</strong> Completa: "La <strong>c</strong>iudad tiene una gran <strong>s</strong>uperficie. El <strong>z</strong>apato es de cuero. La <strong>z</strong>anahoria es <strong>s</strong>aludable."
+                    </div>
+                `;
+            }
+            else if (tema === "gyj") {
+                html = `
+                    <h2>Uso de G y J</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La G tiene sonido suave (gusano) o fuerte (gente, similar a J). La J siempre tiene sonido fuerte. Las reglas ayudan a decidir cuál usar.
+                    </div>
+                    <h3>Reglas para <span style="color:#e5322e;">G</span>:</h3>
+                    <ul>
+                        <li>Palabras que empiezan por <strong>geo-</strong>: geografía, geometría, geología.</li>
+                        <li>Verbos terminados en <strong>-ger, -gir</strong>: coger, escoger, dirigir, proteger (excepto tejer, crujir).</li>
+                        <li>Palabras terminadas en <strong>-gen</strong>: origen, margen, imagen, virgen.</li>
+                        <li>Terminaciones <strong>-gia, -gio, -gión</strong>: magia, colegio, región, religión.</li>
+                        <li>Palabras que empiezan por <strong>gest-, leg-</strong>: gesto, gestión, legal, legítimo.</li>
+                    </ul>
+                    <h3>Reglas para <span style="color:#e5322e;">J</span>:</h3>
+                    <ul>
+                        <li>Formas verbales de verbos cuyo infinitivo no tiene g ni j (decir → dije, traer → traje, producir → produje).</li>
+                        <li>Palabras terminadas en <strong>-aje, -eje, -jero, -jería</strong>: viaje, hereje, relojero, cerrajería, mensaje.</li>
+                        <li>Palabras que empiezan por <strong>aje-, eje-</strong>: ajeno, ejemplo, ejercicio, ejecutar.</li>
+                        <li>Palabras que terminan en <strong>-jear</strong>: hojear, canjear, cojear.</li>
+                        <li>Los sonidos ja, je, ji, jo, ju en verbos sin g en infinitivo: trabajar → trabajé, empujar → empujé.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplos:</strong> "El <u>g</u>entío <u>j</u>aleaba al <u>g</u>rupo. El <u>j</u>efe <u>g</u>estionó la crisis. <u>J</u>uan <u>g</u>iraba la <u>j</u>arra."
+                    </div>
+                `;
+            }
+            else if (tema === "hrr") {
+                html = `
+                    <h2>Uso de H, R y RR</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La H es una letra muda que no representa sonido, pero su presencia es obligatoria. La R y RR representan el sonido vibrante simple o múltiple.
+                    </div>
+                    <h3>Reglas para <span style="color:#e5322e;">H</span> (muda):</h3>
+                    <ul>
+                        <li>Palabras que empiezan por <strong>hie-, hue-</strong>: hierro, hueso, huerta, huevo, hielo.</li>
+                        <li>Formas de los verbos <strong>haber</strong> (he, has, ha, hemos, habéis, han) y <strong>hacer</strong> (hago, hace, hice, hecho).</li>
+                        <li>Palabras derivadas de otras con h: huevo → huevera, hermoso → hermosura, huir → huida.</li>
+                        <li>Después de prefijos <strong>ex-, pro-, pre-</strong> delante de vocal: exhalar, prohijar, prehistoria, exiliar.</li>
+                        <li>Interjecciones: ¡ah!, ¡oh!, ¡eh!, ¡huy!</li>
+                    </ul>
+                    <h3>Reglas para <span style="color:#e5322e;">R y RR</span>:</h3>
+                    <ul>
+                        <li><strong>R vibrante simple (suave)</strong> entre vocales: cara, pero, pera, toro.</li>
+                        <li><strong>R vibrante múltiple (fuerte)</strong> al inicio de palabra: ratón, rosa, risa, romper.</li>
+                        <li><strong>RR siempre entre vocales</strong> (sonido fuerte): carro, perro, tierra, arroz, hierro.</li>
+                        <li>R múltiple después de consonantes <strong>n, l, s</strong>: enredo, alrededor, Israel, sonrisa.</li>
+                        <li>En palabras compuestas, si el segundo elemento empieza con R, se duplica: hispanorromano, autorretrato.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Pares mínimos:</strong> "caro" (costoso) vs "carro" (vehículo) / "pero" (conjunción) vs "perro" (animal) / "coro" (grupo) vs "corro" (del verbo correr).
+                    </div>
+                `;
+            }
+            else if (tema === "acentuacion") {
+                html = `
+                    <h2>Reglas de acentuación (tildes)</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La tilde o acento ortográfico es una marca (´) que se coloca sobre una vocal para indicar la sílaba tónica de una palabra cuando esta no sigue las reglas generales.
+                    </div>
+                    <p><strong>Palabras agudas:</strong> la sílaba tónica es la última. Llevan tilde cuando terminan en <strong>n, s o vocal</strong>. Ej: canción, compás, café, sofá, estrés.</p>
+                    <p><strong>Palabras graves o llanas:</strong> la sílaba tónica es la penúltima. Llevan tilde cuando <strong>NO terminan en n, s o vocal</strong>. Ej: árbol, césped, fácil, lápiz, mártir.</p>
+                    <p><strong>Palabras esdrújulas:</strong> la sílaba tónica es la antepenúltima. <strong>Siempre llevan tilde</strong>. Ej: pájaro, esdrújula, América, música, matemáticas.</p>
+                    <p><strong>Palabras sobresdrújulas:</strong> la sílaba tónica está antes de la antepenúltima. <strong>Siempre llevan tilde</strong> (generalmente verbos con pronombres). Ej: cómpramelo, devuélvemelo, llévaselo, dígamelo.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Casos especiales:</strong> Los adverbios terminados en -mente conservan la tilde si el adjetivo original la llevaba: fácil → fácilmente, rápido → rápidamente.<br>
+                        Los monosílabos solo llevan tilde diacrítica (té, sí, él, más, etc.).
+                    </div>
+                `;
+            }
+            else if (tema === "tilde_diacritica") {
+                html = `
+                    <h2>Tilde diacrítica</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La tilde diacrítica se usa para diferenciar palabras que se escriben igual (homónimas) pero tienen diferente categoría gramatical y significado. No sigue las reglas generales de acentuación.
+                    </div>
+                    <ul>
+                        <li><strong>tú</strong> (pronombre personal) vs <strong>tu</strong> (posesivo). Ej: <u>Tú</u> tienes <u>tu</u> libro.</li>
+                        <li><strong>él</strong> (pronombre personal) vs <strong>el</strong> (artículo). Ej: <u>Él</u> es <u>el</u> mejor.</li>
+                        <li><strong>mí</strong> (pronombre personal) vs <strong>mi</strong> (posesivo / nota musical). Ej: Para <u>mí</u> es <u>mi</u> idea.</li>
+                        <li><strong>sí</strong> (afirmación / pronombre reflexivo) vs <strong>si</strong> (condicional / nota musical). Ej: <u>Sí</u>, lo haré <u>si</u> puedo.</li>
+                        <li><strong>té</strong> (bebida) vs <strong>te</strong> (pronombre / letra). Ej: Quiero <u>té</u> para <u>te</u>.</li>
+                        <li><strong>sé</strong> (verbo saber o ser) vs <strong>se</strong> (pronombre). Ej: <u>Sé</u> que <u>se</u> fue.</li>
+                        <li><strong>dé</strong> (verbo dar) vs <strong>de</strong> (preposición). Ej: Espero que <u>dé</u> el paso <u>de</u> la fe.</li>
+                        <li><strong>más</strong> (cantidad / adición) vs <strong>mas</strong> (pero, conjunción adversativa). Ej: Quiero <u>más</u>, <u>mas</u> no puedo.</li>
+                        <li><strong>aún</strong> (todavía) vs <strong>aun</strong> (incluso / hasta). Ej: <u>Aún</u> no llega, <u>aun</u> con retraso.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo integrador:</strong> "¿<u>Tú</u> te tomarás <u>té</u> con <u>él</u>? <u>Sé</u> que <u>sí</u>, <u>mas</u> <u>aún</u> no <u>dé</u> su respuesta."
+                    </div>
+                `;
+            }
+            else if (tema === "puntuacion") {
+                html = `
+                    <h2>Signos de puntuación</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> Los signos de puntuación son marcas gráficas que organizan el discurso escrito, indican pausas, entonación, estructura lógica y evitan ambigüedades.
+                    </div>
+                    <ul>
+                        <li><strong>Punto (.)</strong> → Cierra un enunciado. Tipos: punto y seguido (sigue en la misma línea), punto y aparte (cambia de párrafo), punto final (termina el texto).</li>
+                        <li><strong>Coma (,)</strong> → Pausa breve. Separa elementos de una lista, incisos, vocativos, elipsis, aposiciones. Ej: "Llegó, vio, venció." / "Juan, ven aquí."</li>
+                        <li><strong>Punto y coma (;)</strong> → Pausa mayor que la coma pero menor que el punto. Separa oraciones relacionadas semánticamente. Ej: "Unos van; otros vienen."</li>
+                        <li><strong>Dos puntos (:)</strong> → Anuncian una enumeración, cita textual, explicación o conclusión. Ej: "Tres cosas amo: la paz, el amor y la justicia."</li>
+                        <li><strong>Signos de interrogación (¿?)</strong> → Encierran preguntas directas. En español se usan al inicio y al final. Ej: "¿Cómo estás?"</li>
+                        <li><strong>Signos de exclamación (¡!)</strong> → Encierran emociones (alegría, sorpresa, dolor, mandato). Ej: "¡Qué sorpresa!" / "¡Silencio!"</li>
+                        <li><strong>Comillas ("", '')</strong> → Para citas textuales, títulos de obras menores o palabras con sentido especial. Ej: "Dijo 'vendré mañana'."</li>
+                        <li><strong>Paréntesis ( )</strong> → Aíslan incisos, aclaraciones, fechas o datos complementarios. Ej: "El perro (un labrador) ladra fuerte."</li>
+                        <li><strong>Corchetes [ ]</strong> → Se usan dentro de los paréntesis o para hacer modificaciones en citas. Ej: "Él [el doctor] llegó tarde."</li>
+                        <li><strong>Raya o guión largo (—)</strong> → Introduce diálogos o incisos más enfáticos. Ej: "—Ven aquí —dijo él—, por favor."</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "homofonas") {
+                html = `
+                    <h2>Palabras homófonas</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> Las palabras homófonas son aquellas que se pronuncian igual pero tienen diferente escritura y significado. Su correcto uso evita errores graves.
+                    </div>
+                    <ul>
+                        <li><strong>a ver / haber</strong>: "Voy a ver la tele" (examinar) / "Debe haber llovido" (existencia o auxiliar).</li>
+                        <li><strong>hecho / echo</strong>: "He hecho la tarea" (participio de hacer) / "Echo de menos" (de echar/arrojar).</li>
+                        <li><strong>bello / vello</strong>: "Paisaje bello" (hermoso) / "Vello corporal" (pelo fino).</li>
+                        <li><strong>revelar / rebelar</strong>: "Revelar una foto o un secreto" (descubrir) / "Rebelarse contra la autoridad" (sublevarse).</li>
+                        <li><strong>sabia / savia</strong>: "Mujer sabia" (inteligente) / "Savia vegetal" (líquido nutritivo).</li>
+                        <li><strong>tubo / tuvo</strong>: "Tubo de ensayo" (objeto cilíndrico) / "Ella tuvo un sueño" (verbo tener).</li>
+                        <li><strong>cabe / cave</strong>: "Aquí cabe todo" (Querer) / "Cave un hoyo" (excavar).</li>
+                        <li><strong>honda / onda</strong>: "Honda tristeza" (profunda) o "Honda (tirachinas)" / "Onda expansiva o de mar".</li>
+                        <li><strong>gravar / grabar</strong>: "Gravar impuestos" (aplicar tributos) / "Grabar un video" (registrar imagen).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Error típico:</strong> "Hoy <u>echo</u> de menos a mi mamá" (correcto: echo, no hecho).<br>
+                        <strong>Truco:</strong> Sustituye por "echar" (lanzar) para saber si va "echo".
+                    </div>
+                `;
+            }
+            else if (tema === "excepciones") {
+                html = `
+                    <h2>Excepciones comunes en ortografía</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> Las excepciones son palabras que no cumplen las reglas ortográficas generales y deben memorizarse o consultarse en el diccionario.
+                    </div>
+                    <ul>
+                        <li><strong>Excepción de "b" tras "m":</strong> móvil, moco, miel, mueble (no llevan b, aunque la regla dice "después de m va b").</li>
+                        <li><strong>Verbos "hervir, servir, vivir"</strong> se escriben con <strong>v</strong> a pesar de terminar en -vir (la regla dice -bir).</li>
+                        <li><strong>Palabras con "ex-", "extra-"</strong> no llevan h a menos que el prefijo ex se una a vocal: examen, extra, exhalar (sí lleva h).</li>
+                        <li><strong>Adjetivos terminados en -ívoro, -ívora:</strong> Llevan tilde cuando la sílaba tónica recae en la i: carnívoro, herbívoro, omnívoro.</li>
+                        <li><strong>"solo"</strong> (adverbio = solamente) ya no lleva tilde obligatoria según la RAE, solo si hay ambigüedad. Se recomienda no tildarlo.</li>
+                        <li><strong>Los demostrativos (este, ese, aquel)</strong> ya no llevan tilde, ni siquiera con función pronominal. Ej: "Este es mi libro."</li>
+                        <li><strong>"sé" del verbo ser/saber vs "se"</strong> es una excepción a los monosílabos que no se tildan.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "ejercicios") {
+                html = `
+                    <h2>Ejercicios prácticos de ortografía</h2>
+                    <div class="definicion-destacada">
+                        <strong>Instrucción:</strong> Resuelve cada ejercicio mentalmente o en tu cuaderno. Las respuestas están al final de cada sección.
+                    </div>
+                    <p><strong>1. Completa con B o V:</strong><br>
+                    "El _arco _iajó al _osque. El estudiante reci_ía una _uena nota. Después _ebía _er la _erda."</p>
+                    <div class="bloque-ejemplo">
+                        Respuesta: "El <u>b</u>arco <u>v</u>iajó al <u>b</u>osque. El estudiante rec<u>b</u>ía una <u>b</u>uena nota. Después de<u>b</u>ía <u>v</u>er la <u>c</u>uerda."
+                    </div>
+                    <p><strong>2. Acentúa las palabras que lo necesiten:</strong><br>
+                    "cancion, arbol, lapiz, pagina, reloj, examen, camion, ultimo, heroe, aereo"</p>
+                    <div class="bloque-ejemplo">
+                        Respuesta: "canción, árbol, lápiz, página, reloj (no tilde, termina en j), examen (no tilde, grave en n), camión, último, héroe, aéreo".
+                    </div>
+                    <p><strong>3. Corrige los errores de mayúsculas:</strong><br>
+                    "el presidente de la república dominicana, luis abinader, visitó la onu. la semana pasada estuvo en nueva york."</p>
+                    <div class="bloque-ejemplo">
+                        Respuesta: "El presidente de la República Dominicana, Luis Abinader, visitó la ONU. La semana pasada estuvo en Nueva York."
+                    </div>
+                    <p><strong>4. Elige la palabra correcta (homófonas):</strong><br>
+                    "Voy a (ver / haber) la película. Debe (haber / a ver) trabajo. (Hecho / Echo) la carta al buzón."</p>
+                    <div class="bloque-ejemplo">
+                        Respuesta: "Voy a <u>ver</u> la película. Debe <u>haber</u> trabajo. <u>Echo</u> la carta al buzón."
+                    </div>
+                    <p><strong>5. Escribe la tilde diacrítica donde corresponda:</strong><br>
+                    "Si tu te esfuerzas, el triunfo es para ti. El quiere te o cafe? Mas si, no se lo des."</p>
+                    <div class="bloque-ejemplo">
+                        Respuesta: "Si <u>tú</u> te esfuerzas, el triunfo es para <u>mí</u>. ¿<u>Él</u> quiere <u>té</u> o <u>café</u>? <u>Más</u> <u>sí</u>, no <u>se</u> lo des."
+                    </div>
+                `;
+            }
+            else if (tema === "glosario") {
+                html = `
+                    <h2>Glosario ortográfico completo</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición de glosario:</strong> Un glosario es una lista de términos especializados con sus definiciones, ordenados alfabéticamente, que ayuda a comprender el vocabulario técnico de una materia.
+                    </div>
+                    <ul>
+                        <li><strong>Acentuación:</strong> Conjunto de reglas que determinan la colocación de la tilde (acento ortográfico) en las palabras según la posición de la sílaba tónica.</li>
+                        <li><strong>Acento prosódico:</strong> Es la mayor intensidad o fuerza con que se pronuncia una sílaba dentro de una palabra, independientemente de si lleva tilde o no.</li>
+                        <li><strong>Tilde diacrítica:</strong> Acento ortográfico que sirve para diferenciar palabras homónimas (que se escriben y suenan igual) pero tienen distinta función gramatical, como "tú" (pronombre) y "tu" (posesivo).</li>
+                        <li><strong>Homófonas:</strong> Palabras que suenan igual pero se escriben diferente y tienen distinto significado. Ejemplo: "a ver" (de ver) y "haber" (verbo haber).</li>
+                        <li><strong>Homónimas:</strong> Palabras que se escriben igual pero tienen diferentes significados (homógrafas). Ejemplo: "vino" (bebida) y "vino" (del verbo venir).</li>
+                        <li><strong>Mayúscula:</strong> Letra de mayor tamaño que se usa al inicio de un texto, después de punto, en nombres propios, títulos y siglas. No llevan tilde salvo reglas generales.</li>
+                        <li><strong>Signos de puntuación:</strong> Marcas gráficas (coma, punto, punto y coma, etc.) que estructuran el texto, indican pausas, entonación y relaciones entre ideas.</li>
+                        <li><strong>Falta ortográfica:</strong> Error en la escritura que incumple una norma establecida, ya sea de letras, tildes, puntuación o mayúsculas.</li>
+                        <li><strong>RAE:</strong> Real Academia Española. Institución fundada en 1713 que vela por la unidad y corrección del idioma español, publicando diccionarios, gramáticas y ortografías oficiales.</li>
+                        <li><strong>Prefijo:</strong> Partícula que se antepone a una palabra para formar otra con significado diferente (ej: pre- ver, anti- social). Su escritura afecta reglas ortográficas.</li>
+                        <li><strong>Sufijo:</strong> Terminación que se añade al final de una raíz para formar palabras derivadas (ej: -ción, -ito, -eza).</li>
+                        <li><strong>Diptongo:</strong> Secuencia de dos vocales en una misma sílaba (ej: cau-sa, ai-re). Afecta las reglas de acentuación.</li>
+                        <li><strong>Hiato:</strong> Secuencia de dos vocales que se pronuncian en sílabas distintas (ej: ca-í-da, a-é-re-o). Generalmente lleva tilde en la vocal cerrada.</li>
+                        <li><strong>Sílaba tónica:</strong> La sílaba que se pronuncia con mayor intensidad dentro de una palabra. Su posición clasifica las palabras en agudas, graves, esdrújulas y sobresdrújulas.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Recomendación:</strong> Consulta siempre el "Diccionario de la Lengua Española" (DLE) de la RAE o su "Ortografía básica" para resolver dudas.
+                    </div>
+                `;
+            }
+            else {
+                html = `<h2>Ortografía</h2><p>Selecciona un tema del menú lateral para ver su contenido detallado.</p>`;
+            }
+            contenido.innerHTML = html;
+        }
 
-  if (tema === "Tema1") {
-    contenido.innerHTML = `
-      <h2>Ortografía</h2>
-      <p><strong>Definición:</strong> Conjunto de reglas que enseñan a escribir correctamente.</p>
-      <p>Incluye uso de letras, acentos y signos de puntuación.</p>
-    `;
-  }
-
-  if (tema === "Tema2") {
-    contenido.innerHTML = `
-      <h2>Uso de mayúsculas</h2>
-      <ul>
-        <li>Al inicio de una oración</li>
-        <li>Nombres propios (Juan, República Dominicana)</li>
-        <li>Títulos y nombres de lugares</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema3") {
-    contenido.innerHTML = `
-      <h2>Uso de b y v</h2>
-      <ul>
-        <li>Se escribe con b después de m (también)</li>
-        <li>Se usa v en palabras como "vivir" o "volver"</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema4") {
-    contenido.innerHTML = `
-      <h2>Uso de c, s y z</h2>
-      <ul>
-        <li>c: casa, cielo</li>
-        <li>s: sol, mesa</li>
-        <li>z: zapato, azul</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema5") {
-    contenido.innerHTML = `
-      <h2>Acentuación</h2>
-      <ul>
-        <li>Agudas: llevan tilde si terminan en n, s o vocal</li>
-        <li>Llanas: llevan tilde si NO terminan en n, s o vocal</li>
-        <li>Esdrújulas: siempre llevan tilde</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema6") {
-    contenido.innerHTML = `
-      <h2>Signos de puntuación</h2>
-      <ul>
-        <li>Punto (.)</li>
-        <li>Coma (,)</li>
-        <li>Signos de interrogación (¿?)</li>
-        <li>Signos de exclamación (¡!)</li>
-      </ul>
-    `;
-  }
-}
-</script>
+        // Mostrar tema por defecto
+        window.onload = function() {
+            mostrar('definicion');
+        };
+    </script>
 </body>
 </html>

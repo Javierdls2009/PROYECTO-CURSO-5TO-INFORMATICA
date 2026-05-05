@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producción Escrita | AcademiaCCED</title>
+    
+    <style>
+        /* colores */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        /* estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra de navegacion superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        /* boton volver */
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* titulo de la materia */
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .barra-lateral hr {
+            margin: 15px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido h3 {
+            color: var(--color-oscuro);
+            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        #contenido h4 {
+            color: var(--color-principal);
+            margin: 15px 0 8px 0;
+            font-size: 1.1rem;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.6;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        /* bloque para destacar ejemplos */
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .bloque-ejemplo strong {
+            color: var(--color-principal);
+        }
+
+        .tabla-textos {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tabla-textos th, .tabla-textos td {
+            border: 1px solid var(--gris-borde);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tabla-textos th {
+            background: var(--color-principal);
+            color: white;
+            font-weight: bold;
+        }
+
+        .tabla-textos tr:nth-child(even) {
+            background: var(--gris-claro);
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">PRODUCCIÓN ESCRITA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        
+        <!-- barra lateral con temas -->
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">📝 Definición de producción escrita</div>
+                <div class="tema" data-tema="importancia">⭐ Importancia de la producción escrita</div>
+                <div class="tema" data-tema="etapas">📋 Etapas del proceso de escritura</div>
+                <div class="tema" data-tema="propiedades">🔗 Propiedades del texto</div>
+                <div class="tema" data-tema="tipos_textos">📚 Tipos de textos</div>
+                <div class="tema" data-tema="estructura">🏗️ Estructura de un texto</div>
+                <div class="tema" data-tema="ortografia_puntuacion">✍️ Ortografía y puntuación</div>
+                <div class="tema" data-tema="vocabulario">📖 Importancia del vocabulario</div>
+                <div class="tema" data-tema="tecnologia">💻 Influencia de la tecnología</div>
+                <div class="tema" data-tema="estrategias">🎯 Estrategias para mejorar</div>
+                <div class="tema" data-tema="errores_comunes">⚠️ Errores comunes</div>
+                <div class="tema" data-tema="conclusion">🎓 Conclusión general</div>
+            </div>
+        </aside>
+
+        <!-- zona de contenido dinámico -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Producción Escrita</h2>
+                <p>La producción escrita es el proceso mediante el cual una persona expresa ideas, pensamientos, conocimientos, opiniones o emociones a través de un texto. No se trata solo de escribir palabras, sino de construir un mensaje con sentido completo, coherente y adecuado a una intención comunicativa.</p>
+                <div class="bloque-ejemplo">
+                    <strong>📖 Dato importante:</strong> Es una habilidad fundamental porque permite dejar constancia de lo que se piensa y facilita la comunicación en distintos contextos como el académico, el profesional y el personal.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para aprender sobre cada aspecto de la producción escrita.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- pie de pagina -->
+    <footer>
+        <p>© 2025 AcademiaCCED · Proyecto de Producción Escrita · Lengua Española · 5to Informática</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición de la producción escrita</h2>
+                <p>La <strong>producción escrita</strong> es el proceso mediante el cual una persona expresa ideas, pensamientos, conocimientos, opiniones o emociones a través de un texto. No se trata solo de escribir palabras, sino de construir un mensaje con sentido completo, coherente y adecuado a una intención comunicativa.</p>
+                <p>Es una habilidad fundamental porque permite dejar constancia de lo que se piensa y facilita la comunicación en distintos contextos como el <strong>académico</strong>, el <strong>profesional</strong> y el <strong>personal</strong>.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Escribir una carta, un correo electrónico, un ensayo o un mensaje de texto son formas de producción escrita.
+                </div>
+            `,
+            importancia: `
+                <h2>Importancia de la producción escrita</h2>
+                <p>La producción escrita es esencial en la vida diaria. Permite:</p>
+                <ul>
+                    <li>Comunicarse de manera clara y precisa</li>
+                    <li>Transmitir información de forma organizada</li>
+                    <li>Conservar ideas a lo largo del tiempo</li>
+                </ul>
+                <h3>En el ámbito educativo:</h3>
+                <p>Es clave para realizar tareas, exámenes, ensayos y trabajos de investigación.</p>
+                <h3>En el ámbito laboral:</h3>
+                <p>Se utiliza para redactar informes, correos, proyectos y documentos formales.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Beneficio:</strong> Una buena escritura refleja orden mental, pensamiento crítico y dominio del lenguaje, lo que puede abrir oportunidades académicas y profesionales.
+                </div>
+            `,
+            etapas: `
+                <h2>Etapas del proceso de escritura</h2>
+                <p>La producción escrita no ocurre de manera improvisada, sino que sigue un proceso estructurado que incluye varias etapas:</p>
+                
+                <h3>📝 3.1 Planificación</h3>
+                <p>En esta etapa se define el tema, el propósito del texto y el público al que va dirigido. Se generan ideas mediante lluvia de ideas, esquemas o mapas conceptuales. También se selecciona la información más importante y se organiza de forma lógica.</p>
+                
+                <h3>✍️ 3.2 Redacción</h3>
+                <p>Consiste en transformar las ideas en palabras, oraciones y párrafos. Aquí se desarrolla el contenido del texto, cuidando la claridad, la coherencia y el orden. Se debe utilizar un lenguaje adecuado al contexto y evitar ambigüedades.</p>
+                
+                <h3>🔍 3.3 Revisión</h3>
+                <p>En esta fase se corrigen errores de ortografía, gramática y puntuación. También se mejora la redacción, se eliminan repeticiones innecesarias y se verifica que el texto cumpla con su objetivo. Es una etapa clave para asegurar la calidad del escrito.</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Consejo:</strong> No intentes revisar mientras escribes. Primero escribe todas tus ideas, luego revisa con calma.
+                </div>
+            `,
+            propiedades: `
+                <h2>Propiedades del texto</h2>
+                <p>Para que un texto sea efectivo, debe cumplir con ciertas características fundamentales:</p>
+                
+                <h3>🔗 4.1 Coherencia</h3>
+                <p>Se refiere a la relación lógica entre las ideas. Un texto coherente presenta un tema claro y mantiene un orden que facilita su comprensión.</p>
+                
+                <h3>🧩 4.2 Cohesión</h3>
+                <p>Es la conexión entre las partes del texto mediante el uso de conectores, pronombres y otros recursos lingüísticos. Permite que el texto fluya de manera natural.</p>
+                
+                <h3>🎯 4.3 Adecuación</h3>
+                <p>Consiste en adaptar el lenguaje según el contexto, el propósito y el destinatario. No se escribe igual en un mensaje informal que en un documento académico.</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de coherencia:</strong> Un texto que habla de perros no debe de repente hablar de astronomía sin una conexión lógica.
+                </div>
+            `,
+            tipos_textos: `
+                <h2>Tipos de textos en la producción escrita</h2>
+                <p>Existen diversos tipos de textos, cada uno con características específicas:</p>
+                
+                <table class="tabla-textos">
+                    <thead>
+                        <tr><th>Tipo de texto</th><th>Características</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Narrativo</strong></td><td>Relata hechos reales o imaginarios. Incluye personajes, tiempo, espacio y secuencia de acontecimientos.</td><td>Cuento, novela, crónica</td></tr>
+                        <tr><td><strong>Descriptivo</strong></td><td>Detalla características de personas, objetos, lugares o situaciones.</td><td>Retrato de una persona, descripción de un paisaje</td></tr>
+                        <tr><td><strong>Expositivo</strong></td><td>Explica un tema de forma clara y objetiva.</td><td>Libros de estudio, enciclopedias, artículos informativos</td></tr>
+                        <tr><td><strong>Argumentativo</strong></td><td>Busca convencer al lector mediante razones, opiniones y evidencias.</td><td>Ensayo, artículo de opinión, debate</td></tr>
+                    </tbody>
+                </table>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Una noticia es un texto expositivo, mientras que una carta al director es un texto argumentativo.
+                </div>
+            `,
+            estructura: `
+                <h2>Estructura de un texto</h2>
+                <p>Todo texto bien organizado presenta tres partes principales:</p>
+                
+                <h3>📌 6.1 Introducción</h3>
+                <p>Presenta el tema y capta la atención del lector. Puede incluir una idea general o una pregunta inicial.</p>
+                
+                <h3>📄 6.2 Desarrollo</h3>
+                <p>Expone las ideas principales y secundarias. Es la parte más extensa y donde se profundiza el contenido.</p>
+                
+                <h3>🔚 6.3 Conclusión</h3>
+                <p>Cierra el texto, resume lo más importante o presenta una reflexión final.</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Estructura de un ensayo:</strong><br>
+                    Introducción: "En este ensayo se abordará el cambio climático..."<br>
+                    Desarrollo: Explicación de causas, consecuencias y soluciones<br>
+                    Conclusión: "Por todo lo anterior, es urgente tomar medidas..."
+                </div>
+            `,
+            ortografia_puntuacion: `
+                <h2>Uso correcto de la ortografía y la puntuación</h2>
+                <p>La <strong>ortografía</strong> garantiza que las palabras estén escritas correctamente, mientras que la <strong>puntuación</strong> ayuda a organizar las ideas y darles sentido.</p>
+                <p>El uso adecuado de comas, puntos y otros signos es fundamental para evitar confusiones. Una mala puntuación puede cambiar completamente el significado de un mensaje.</p>
+                
+                <h3>Ejemplos de cambios de sentido por la puntuación:</h3>
+                <ul>
+                    <li>"Vamos a comer niños" ❌ (significa que nos comemos a los niños)</li>
+                    <li>"Vamos a comer, niños" ✔️ (invitamos a los niños a comer)</li>
+                </ul>
+                
+                <h3>Signos de puntuación básicos:</h3>
+                <ul>
+                    <li><strong>Punto (.)</strong> → Finaliza una oración</li>
+                    <li><strong>Coma (,)</strong> → Separa elementos o hace pausa breve</li>
+                    <li><strong>Punto y coma (;)</strong> → Pausa mayor que la coma</li>
+                    <li><strong>Dos puntos (:)</strong> → Introducen una explicación o lista</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Consejo:</strong> Lee tu texto en voz alta para identificar dónde faltan comas o puntos.
+                </div>
+            `,
+            vocabulario: `
+                <h2>Importancia del vocabulario</h2>
+                <p>Un <strong>vocabulario amplio</strong> permite expresar ideas con mayor precisión y riqueza. Evitar repeticiones y utilizar sinónimos mejora la calidad del texto.</p>
+                <p>También es importante elegir palabras adecuadas al nivel del lector y al contexto.</p>
+                
+                <h3>Ejemplo de mejora de vocabulario:</h3>
+                <ul>
+                    <li><strong>Aburrido:</strong> "El libro es bueno" → "El libro es fascinante"</li>
+                    <li><strong>Con sinónimos:</strong> "El niño estaba contento, feliz, alegre"</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Recomendación:</strong> Usa el diccionario y el tesauro para ampliar tu vocabulario diariamente.
+                </div>
+            `,
+            tecnologia: `
+                <h2>Influencia de la tecnología en la escritura</h2>
+                <p>Hoy en día, la producción escrita se ha transformado con el uso de herramientas digitales. Se escribe en redes sociales, correos electrónicos, blogs y plataformas educativas.</p>
+                <p>Aunque esto facilita la comunicación, también exige <strong>mayor cuidado</strong> en la redacción para evitar malentendidos o errores.</p>
+                
+                <h3>Herramientas útiles:</h3>
+                <ul>
+                    <li>Correctores ortográficos (Word, Google Docs)</li>
+                    <li>Diccionarios en línea (RAE, WordReference)</li>
+                    <li>Procesadores de texto con sugerencias de estilo</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Precaución:</strong> No confíes solo en el corrector automático. Siempre revisa manualmente tu texto.
+                </div>
+            `,
+            estrategias: `
+                <h2>Estrategias para mejorar la producción escrita</h2>
+                <p>Para escribir mejor, se recomienda:</p>
+                <ul>
+                    <li><strong>Leer con frecuencia:</strong> La lectura mejora la ortografía y el estilo.</li>
+                    <li><strong>Practicar la escritura:</strong> Escribe diarios, resúmenes o cuentos.</li>
+                    <li><strong>Ampliar el vocabulario:</strong> Aprende palabras nuevas cada día.</li>
+                    <li><strong>Revisar los textos:</strong> Antes de entregar, revisa varias veces.</li>
+                    <li><strong>Recibir opiniones:</strong> Pide a otros que lean tus escritos y te den retroalimentación.</li>
+                    <li><strong>Estudiar gramática:</strong> Conocer las reglas te ayuda a aplicarlas correctamente.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Rutina recomendada:</strong> Dedica 15 minutos diarios a escribir y 15 minutos a leer. ¡Verás mejora en un mes!
+                </div>
+            `,
+            errores_comunes: `
+                <h2>Errores comunes en la producción escrita</h2>
+                <p>Entre los errores más frecuentes se encuentran:</p>
+                <ul>
+                    <li><strong>Faltas de ortografía:</strong> Confusión entre b/v, c/s/z, uso incorrecto de tildes</li>
+                    <li><strong>Falta de coherencia:</strong> Ideas que no se relacionan entre sí</li>
+                    <li><strong>Uso incorrecto de conectores:</strong> "Y", "pero", "porque" usados inadecuadamente</li>
+                    <li><strong>Repetición excesiva de palabras:</strong> Usar la misma palabra muchas veces</li>
+                    <li><strong>Mala organización de ideas:</strong> Párrafos desordenados o sin sentido</li>
+                    <li><strong>Ausencia de puntuación:</strong> Textos sin comas ni puntos</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Identificarlos es el primer paso para mejorar.</strong> Lleva un registro de tus errores frecuentes y practica específicamente esas reglas.
+                </div>
+            `,
+            conclusion: `
+                <h2>Conclusión general</h2>
+                <p>La <strong>producción escrita</strong> es una habilidad compleja pero esencial. Implica organizar ideas, expresarlas con claridad y adaptarlas a diferentes contextos.</p>
+                <p>Su dominio permite comunicarse de manera efectiva, desarrollar el pensamiento crítico y participar activamente en la sociedad. Es una competencia que se fortalece con la <strong>práctica constante</strong> y el <strong>aprendizaje continuo</strong>.</p>
+                
+                <h3>Puntos clave para recordar:</h3>
+                <ul>
+                    <li>Planifica antes de escribir</li>
+                    <li>Redacta con claridad y coherencia</li>
+                    <li>Revisa siempre tu trabajo</li>
+                    <li>Lee mucho para mejorar</li>
+                    <li>Practica todos los días</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>📖 Reflexión final:</strong> "Escribir es la forma más profunda de leer la realidad" - Toda buena escritura comienza con la práctica constante.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+                contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+        }
+
+        // Asignar evento click a cada tema
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        // Cargar tema por defecto
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variantes Lingüísticas | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS BASADOS EN EL EJEMPLO ORIGINAL ========== */
+        :root {
+            --color-principal: #e5322e;   /* rojo característico */
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona de contenido principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        /* bloque para destacar ejemplos o citas (sin emojis) */
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: normal;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior exactamente igual al ejemplo -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">VARIANTES LINGÜÍSTICAS</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <!-- barra lateral con temas -->
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y concepto</div>
+                <div class="tema" data-tema="lengua_habla_norma">Lengua, habla y norma</div>
+                <div class="tema" data-tema="importancia">Importancia de las variantes</div>
+                <div class="tema" data-tema="factores">Factores que originan variantes</div>
+                <div class="tema" data-tema="geografica">Variante geográfica</div>
+                <div class="tema" data-tema="social">Variante social</div>
+                <div class="tema" data-tema="situacional">Variante situacional</div>
+                <div class="tema" data-tema="historica">Variante histórica</div>
+                <div class="tema" data-tema="niveles">Niveles de variación</div>
+                <div class="tema" data-tema="estandar">Lengua estándar vs variantes</div>
+                <div class="tema" data-tema="ventajas">Ventajas y dificultades</div>
+            </div>
+        </aside>
+
+        <!-- zona dinámica -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Variantes Lingüísticas</h2>
+                <p>Las lenguas son sistemas vivos y cambian según la región, el grupo social, el contexto y el tiempo. A continuación se presentan los conceptos fundamentales para comprender la diversidad del idioma.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Referencia:</strong> “Una lengua es un dialecto con un ejército y una marina” (Max Weinreich). La variación es inherente a cualquier idioma.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar cada aspecto en detalle.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Proyecto de Variantes Lingüísticas · Lengua Española</p>
+    </footer>
+
+    <script>
+        // ====================== CONTENIDO COMPLETO SIN EMOJIS ======================
+        const contenidos = {
+            definicion: `
+                <h2>Definición amplia y profunda de variantes lingüísticas</h2>
+                <p>Las <strong>variantes lingüísticas</strong> son las diferentes formas en que una lengua se manifiesta en la realidad, dependiendo de múltiples factores como el lugar donde se habla, el grupo social, la situación comunicativa y el momento histórico.</p>
+                <p>Desde una perspectiva lingüística, una lengua no es un sistema fijo ni uniforme, sino un sistema dinámico, flexible y en constante evolución. Por esta razón, el español no se habla igual en todos los países, ni siquiera dentro de un mismo país, ni tampoco de la misma forma en situaciones formales e informales.</p>
+                <p>Las variantes reflejan la adaptación del lenguaje a la realidad social, cultural y geográfica.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> “auto” en Argentina, “coche” en España, “carro” en México y “vehículo” en contextos formales.
+                </div>
+            `,
+            lengua_habla_norma: `
+                <h2>Lengua, habla y norma</h2>
+                <p><strong>Lengua:</strong> Sistema general de signos y reglas compartido por una comunidad (ejemplo: el español).</p>
+                <p><strong>Habla:</strong> Uso individual que cada persona hace de la lengua. Cada individuo tiene su forma particular de hablar.</p>
+                <p><strong>Norma:</strong> Conjunto de reglas que determinan el uso correcto del idioma en contextos formales.</p>
+                <p>Las variantes lingüísticas surgen principalmente en el <strong>habla</strong>, ya que cada persona y grupo adapta el idioma a su manera.</p>
+                <hr>
+                <p>Ejemplo: La norma indica “estacionamiento”, pero en el habla cotidiana de España se dice “aparcamiento”.</p>
+            `,
+            importancia: `
+                <h2>Importancia de las variantes lingüísticas</h2>
+                <ul>
+                    <li>Reflejan la identidad cultural de los pueblos. La forma de hablar indica origen, nivel social y entorno.</li>
+                    <li>Enriquecen el idioma, aportando nuevas palabras, expresiones y formas de comunicación.</li>
+                    <li>Permiten que el lenguaje se adapte a diferentes situaciones (formales, informales, profesionales).</li>
+                    <li>Ayudan a estudiar la evolución del idioma a lo largo del tiempo.</li>
+                </ul>
+                <div class="bloque-ejemplo">Sin variantes, el idioma sería rígido y no reflejaría la diversidad humana.</div>
+            `,
+            factores: `
+                <h2>Factores que originan las variantes lingüísticas</h2>
+                <ul>
+                    <li><strong>Factor geográfico:</strong> separación física entre comunidades → diferentes acentos y palabras.</li>
+                    <li><strong>Factor social:</strong> nivel educativo, profesión, edad, grupo social.</li>
+                    <li><strong>Factor cultural:</strong> tradiciones, costumbres y creencias influyen en el uso del idioma.</li>
+                    <li><strong>Factor histórico:</strong> evolución natural del idioma con el paso del tiempo.</li>
+                    <li><strong>Factor situacional:</strong> contexto formal o informal.</li>
+                </ul>
+                <p>Ejemplo: “tortilla” puede ser de patata (España) o de harina (México).</p>
+            `,
+            geografica: `
+                <h2>Variante geográfica (dialecto)</h2>
+                <p><strong>Definición:</strong> Variación del idioma debida a la ubicación geográfica. Incluye cambios en pronunciación, vocabulario y entonación.</p>
+                <p><strong>Características:</strong> diferencias fonéticas, léxicas, entonación característica, influencia de otras lenguas locales.</p>
+                <p><strong>Ejemplos detallados:</strong></p>
+                <ul>
+                    <li>España: “coche”, “ordenador”, “vale”.</li>
+                    <li>América Latina: “carro” o “auto”, “computadora”, “bien”.</li>
+                    <li>República Dominicana: “vehículo” o “carro”, con seseo y aspiración de la 's'.</li>
+                </ul>
+                <div class="bloque-ejemplo">El seseo (pronunciar “caza” como “casa”) es un rasgo geográfico de la mayor parte de América y Canarias.</div>
+            `,
+            social: `
+                <h2>Variante social (sociolecto)</h2>
+                <p><strong>Definición:</strong> Variación del lenguaje según el grupo social: nivel educativo, profesión, edad, estrato económico.</p>
+                <p><strong>Características:</strong> uso de tecnicismos, jergas, cambios en pronunciación y modismos propios del grupo.</p>
+                <p><strong>Ejemplos:</strong></p>
+                <ul>
+                    <li>Lenguaje científico: preciso, técnico.</li>
+                    <li>Lenguaje juvenil: informal, creativo (ej: “chido”, “guay”, “bro”).</li>
+                    <li>Lenguaje de abogados: latinismos y formalidad.</li>
+                </ul>
+                <p>Permite adaptar el lenguaje para comunicarse eficazmente dentro del grupo.</p>
+            `,
+            situacional: `
+                <h2>Variante situacional (registro)</h2>
+                <p><strong>Definición:</strong> El lenguaje cambia según la situación comunicativa (contexto, relación entre hablantes, propósito).</p>
+                <p><strong>Registro formal:</strong> lenguaje cuidado, gramática precisa. Ejemplo: exposición académica, documento oficial.</p>
+                <p><strong>Registro informal:</strong> lenguaje cotidiano, coloquial, relajado. Ejemplo: conversación entre amigos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Mismo mensaje, dos registros:</strong><br>
+                    Formal: “Estimado señor, le solicito amablemente que revise el informe.”<br>
+                    Informal: “Oye, échale un ojo al informe, por favor.”
+                </div>
+            `,
+            historica: `
+                <h2>Variante histórica (diacrónica)</h2>
+                <p><strong>Definición:</strong> Variación del idioma a lo largo del tiempo. El español antiguo no es igual al moderno.</p>
+                <p><strong>Características:</strong> evolución del vocabulario, cambios gramaticales, transformación fonética.</p>
+                <p><strong>Ejemplos:</strong></p>
+                <ul>
+                    <li>Latín “oculus” → español “ojo”.</li>
+                    <li>Español antiguo: “fijo” → moderno “hijo”.</li>
+                    <li>“Vos” como pronombre de respeto en el Siglo de Oro → hoy voseo en algunas regiones.</li>
+                </ul>
+                <p>Gracias a las variantes históricas podemos entender documentos antiguos y la evolución del idioma.</p>
+            `,
+            niveles: `
+                <h2>Niveles de variación lingüística</h2>
+                <ul>
+                    <li><strong>Nivel fonético-fonológico:</strong> diferencias en pronunciación y acentos. Ejemplo: yeísmo (calló/cayó), aspiración de la 's' en el Caribe.</li>
+                    <li><strong>Nivel léxico-semántico:</strong> palabras distintas para el mismo concepto. Ejemplo: “fresa” (España) vs “frutilla” (Argentina).</li>
+                    <li><strong>Nivel morfosintáctico:</strong> cambios en la estructura de las oraciones. Ejemplo: voseo (“vos tenés” en lugar de “tú tienes”).</li>
+                </ul>
+                <hr>
+                <p>Un hablante puede variar en todos estos niveles según su origen y situación.</p>
+            `,
+            estandar: `
+                <h2>Lengua estándar vs variantes</h2>
+                <p><strong>Lengua estándar:</strong> Variedad codificada, considerada “correcta” o de prestigio. Se usa en educación, medios de comunicación, documentos oficiales.</p>
+                <p><strong>Variantes (dialectos, sociolectos, registros):</strong> Formas reales y cotidianas que usan los hablantes. Son igualmente válidas y ricas.</p>
+                <p>Ambas coexisten y son necesarias: el estándar da unidad, las variantes dan diversidad y autenticidad.</p>
+                <div class="bloque-ejemplo">No existe una variante “mejor” que otra; todas son sistemas completos y funcionales.</div>
+            `,
+            ventajas: `
+                <h2>Ventajas y dificultades de las variantes lingüísticas</h2>
+                <p><strong>Ventajas:</strong></p>
+                <ul>
+                    <li>Enriquecen el idioma con creatividad y matices.</li>
+                    <li>Reflejan diversidad cultural e identidad.</li>
+                    <li>Permiten adaptar el lenguaje a cada contexto (mayor eficacia comunicativa).</li>
+                </ul>
+                <p><strong>Posibles dificultades:</strong></p>
+                <ul>
+                    <li>Malentendidos entre hablantes de distintas regiones (ej: “coger” en España vs América).</li>
+                    <li>Problemas de interpretación en contextos formales si no se conoce el registro adecuado.</li>
+                    <li>Prejuicios lingüísticos (considerar una variante inferior).</li>
+                </ul>
+                <div class="bloque-ejemplo">La conciencia lingüística ayuda a valorar todas las variantes y a adaptarse según la situación.</div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema.</p>`;
+            }
+        }
+
+        // Asignar evento click a cada tema
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        // Cargar tema por defecto (definición)
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

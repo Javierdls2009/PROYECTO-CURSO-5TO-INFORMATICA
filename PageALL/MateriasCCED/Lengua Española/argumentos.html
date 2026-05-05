@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Argumentos | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS (misma paleta que las páginas anteriores) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">LOS ARGUMENTOS</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición de argumento</div>
+                <div class="tema" data-tema="caracteristicas">Características de los argumentos</div>
+                <div class="tema" data-tema="autoridad">Argumento de autoridad</div>
+                <div class="tema" data-tema="ejemplo">Argumento de ejemplo</div>
+                <div class="tema" data-tema="causa_efecto">Argumento de causa y efecto</div>
+                <div class="tema" data-tema="comparacion">Argumento de comparación</div>
+                <div class="tema" data-tema="datos">Argumento de datos o estadístico</div>
+                <div class="tema" data-tema="experiencia">Argumento de experiencia personal</div>
+                <div class="tema" data-tema="logico">Argumento lógico</div>
+                <div class="tema" data-tema="emocional">Argumento emocional</div>
+                <div class="tema" data-tema="diferencias_tipos">Tabla comparativa de tipos</div>
+                <div class="tema" data-tema="falacias">Falacias (errores de argumentación)</div>
+                <div class="tema" data-tema="estructura">Estructura de un buen argumento</div>
+                <div class="tema" data-tema="importancia">Importancia de los argumentos</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario de términos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Los argumentos: definición y tipos</h2>
+                <p>Los argumentos son ideas, razones, explicaciones o pruebas que se utilizan para defender una opinión, demostrar una afirmación o convencer a otras personas sobre un punto de vista. Son esenciales en textos como el ensayo, especialmente en el argumentativo, ya que permiten que las ideas tengan fundamento y no se queden en simples afirmaciones.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Decir “El celular es malo” es solo una opinión. Decir “El uso excesivo del celular afecta la concentración porque distrae con redes sociales y juegos” ya es un argumento, pues explica y justifica.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar los tipos de argumentos, sus características, falacias y cómo usarlos correctamente.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Los argumentos: la base de la persuasión y el pensamiento crítico.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición de argumento</h2>
+                <p>Un <strong>argumento</strong> es un razonamiento o conjunto de razones que se expone con el objetivo de demostrar o justificar una afirmación (tesis), convencer a alguien, o refutar una posición contraria. No se limita a dar una opinión, sino que aporta <strong>evidencias, ejemplos, datos o lógica</strong> para sostenerla.</p>
+                <p>Todo argumento tiene dos componentes esenciales: la <strong>premisa</strong> (información o hecho base) y la <strong>conclusión</strong> (la idea que se quiere probar). Por ejemplo: Premisa: “Los estudiantes que duermen menos de 6 horas tienen bajo rendimiento”. Conclusión: “Por lo tanto, es necesario garantizar al menos 8 horas de sueño”.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Diferencia entre opinión y argumento:</strong><br>
+                    Opinión: “Los videojuegos son malos”.<br>
+                    Argumento: “Los videojuegos en exceso pueden afectar el rendimiento académico, ya que reducen el tiempo de estudio y la concentración, según estudios de la Universidad de Harvard.”
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características de los argumentos</h2>
+                <ul>
+                    <li><strong>Buscan convencer o persuadir:</strong> Están orientados a influir en la opinión del receptor.</li>
+                    <li><strong>Se basan en razones, evidencias o pruebas:</strong> No son meras afirmaciones sin respaldo.</li>
+                    <li><strong>Deben ser claros y coherentes:</strong> La información debe entenderse y no contradecirse.</li>
+                    <li><strong>Están relacionados con una tesis:</strong> Todo argumento sostiene una idea principal.</li>
+                    <li><strong>Utilizan ejemplos, datos, comparaciones, autoridades o lógica:</strong> Cada tipo de argumento emplea un recurso diferente.</li>
+                    <li><strong>Pueden ser objetivos o subjetivos:</strong> Los objetivos se basan en hechos verificables; los subjetivos, en experiencias o puntos de vista personales.</li>
+                    <li><strong>Deben evitar falacias:</strong> Errores de razonamiento que debilitan su validez.</li>
+                </ul>
+            `,
+            autoridad: `
+                <h2>Argumento de autoridad</h2>
+                <p>Se apoya en la opinión, conocimiento o declaración de una persona experta, profesional o institución reconocida en un tema específico. Aporta credibilidad porque la fuente tiene estudios o experiencia demostrada.</p>
+                <p><strong>Cuándo usarlo:</strong> En textos académicos, científicos o formales. Es muy efectivo cuando la audiencia respeta a la autoridad citada.</p>
+                <p><strong>Ejemplo detallado:</strong> “La Organización Mundial de la Salud (OMS) afirma que el sedentarismo es una de las principales causas de enfermedades no transmisibles. Por ello, los gobiernos deben promover la actividad física en escuelas.”</p>
+                <div class="bloque-ejemplo">
+                    <strong>Cuidado:</strong> La autoridad debe ser genuina y pertinente al tema. Citar a un actor de cine sobre medicina no es un argumento de autoridad válido.
+                </div>
+            `,
+            ejemplo: `
+                <h2>Argumento de ejemplo</h2>
+                <p>Utiliza casos concretos, situaciones reales o ejemplos cotidianos para ilustrar y apoyar una idea. Facilita la comprensión porque muestra cómo se aplica la idea en la práctica.</p>
+                <p><strong>Características:</strong> Puede basarse en ejemplos reales, hipotéticos o anécdotas. Cuanto más representativo sea el ejemplo, más sólido será el argumento.</p>
+                <p><strong>Ejemplo:</strong> “El uso excesivo del celular afecta el rendimiento escolar. Por ejemplo, muchos estudiantes revisan redes sociales mientras hacen tareas, lo que disminuye su concentración y aumenta el tiempo necesario para terminar.”</p>
+                <div class="bloque-ejemplo">
+                    <strong>Consejo:</strong> Usa ejemplos variados y evita los casos aislados que no representen la tendencia general.
+                </div>
+            `,
+            causa_efecto: `
+                <h2>Argumento de causa y efecto</h2>
+                <p>Explica la relación entre un hecho (causa) y sus consecuencias (efecto). Permite entender por qué ocurre algo y qué impacto tiene, mostrando una conexión lógica.</p>
+                <p><strong>Estructura:</strong> Si A (causa), entonces B (efecto). Es muy convincente cuando la relación es clara y verificable.</p>
+                <p><strong>Ejemplo:</strong> “El uso constante del celular antes de dormir causa problemas de sueño, ya que la luz azul de la pantalla inhibe la producción de melatonina, la hormona del sueño.”</p>
+                <div class="bloque-ejemplo">
+                    <strong>Precaución:</strong> Asegurarse de que la causa realmente produzca el efecto y no sea solo una correlación (por ejemplo: “las horas de estudio aumentan y las calificaciones mejoran” no siempre es causalidad directa).
+                </div>
+            `,
+            comparacion: `
+                <h2>Argumento de comparación</h2>
+                <p>Compara dos o más elementos para destacar sus semejanzas o diferencias, con el fin de explicar mejor una idea. Puede usar analogías (comparaciones simbólicas) para hacer más comprensible un concepto complejo.</p>
+                <p><strong>Ejemplo por analogía:</strong> “Estudiar con distracciones es como intentar correr con pesas: hace más difícil avanzar.”</p>
+                <p><strong>Ejemplo de comparación directa:</strong> “A diferencia de las redes sociales, la lectura de libros fomenta la concentración prolongada, como lo demuestran los niveles de atención en niños que leen diariamente.”</p>
+                <div class="bloque-ejemplo">
+                    Las comparaciones efectivas usan elementos conocidos por el lector para explicar algo menos familiar.
+                </div>
+            `,
+            datos: `
+                <h2>Argumento de datos o estadístico</h2>
+                <p>Se basa en cifras, porcentajes, estudios, encuestas o información verificable. Es uno de los argumentos más sólidos porque aporta objetividad y pruebas concretas.</p>
+                <p><strong>Ejemplo:</strong> “El 70% de los estudiantes encuestados reconoce que se distrae con el celular mientras estudia, según un estudio de la Universidad Autónoma de México (2022).”</p>
+                <div class="bloque-ejemplo">
+                    <strong>Importante:</strong> Los datos deben ser actuales, verificables y provenir de fuentes confiables. Un dato sin fuente no es un buen argumento estadístico.
+                </div>
+            `,
+            experiencia: `
+                <h2>Argumento de experiencia personal</h2>
+                <p>Se basa en vivencias propias del autor o de personas cercanas. Aunque es subjetivo, puede ser convincente porque muestra una experiencia real y cercana, generando empatía.</p>
+                <p><strong>Ejemplo:</strong> “En mi experiencia, cuando dejo el celular en otra habitación mientras estudio, logro concentrarme mejor y terminar mis tareas en la mitad del tiempo.”</p>
+                <div class="bloque-ejemplo">
+                    Este argumento funciona bien en ensayos personales o reflexivos, pero no es suficiente para demostrar verdades generales; debe complementarse con otros tipos.
+                </div>
+            `,
+            logico: `
+                <h2>Argumento lógico</h2>
+                <p>Se fundamenta en el razonamiento coherente y en la relación entre ideas. No depende de emociones ni de fuentes externas, sino de la propia estructura lógica (deducción o inducción).</p>
+                <p><strong>Ejemplo deductivo:</strong> Premisa 1: “El uso del celular sin límites reduce la capacidad de atención.” Premisa 2: “María usa el celular sin límites.” Conclusión: “Por lo tanto, María tiene reducida su capacidad de atención.”</p>
+                <p><strong>Ejemplo inductivo:</strong> “He observado que cinco estudiantes que usan el celular más de 5 horas diarias tienen malas calificaciones. Por lo tanto, probablemente el uso excesivo del celular afecta el rendimiento.”</p>
+                <div class="bloque-ejemplo">
+                    La lógica es la base de la argumentación sólida. Si las premisas son verdaderas y la estructura es válida, la conclusión será convincente.
+                </div>
+            `,
+            emocional: `
+                <h2>Argumento emocional</h2>
+                <p>Busca persuadir apelando a sentimientos como miedo, tristeza, felicidad, empatía o preocupación. No se basa tanto en datos, sino en generar una reacción emocional en el lector para inclinar su opinión.</p>
+                <p><strong>Ejemplo:</strong> “El uso excesivo del celular puede alejar a las personas de sus familias, haciendo que se pierdan momentos importantes como cumpleaños o conversaciones significativas.”</p>
+                <div class="bloque-ejemplo">
+                    <strong>Advertencia:</strong> El argumento emocional es efectivo, pero si se usa en exceso o manipulativamente, puede considerarse falaz. Es preferible combinarlo con argumentos lógicos o de datos.
+                </div>
+            `,
+            diferencias_tipos: `
+                <h2>Tabla comparativa de tipos de argumentos</h2>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #ddd; margin:15px 0;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Tipo</th><th>Base</th><th>Ventaja</th><th>Limitación</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Autoridad</td><td>Cita de expertos</td><td>Alta credibilidad</td><td>Requiere fuentes confiables</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Ejemplo</td><td>Casos concretos</td><td>Facilita comprensión</td><td>Puede ser anecdótico</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Causa-efecto</td><td>Relación lógica</td><td>Explica consecuencias</td><td>Peligro de falsa causalidad</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Comparación</td><td>Semejanzas/diferencias</td><td>Aclara ideas complejas</td><td>Las analogías no son pruebas</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Datos</td><td>Cifras verificables</td><td>Objetividad</td><td>Datos desactualizados</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Experiencia personal</td><td>Vivencias subjetivas</td><td>Genera empatía</td><td>No generalizable</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Lógico</td><td>Razonamiento formal</td><td>Demostración rigurosa</td><td>Requiere premisas verdaderas</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Emocional</td><td>Sentimientos</td><td>Impacta rápidamente</td><td>Puede ser manipulador</td></tr>
+                </table>
+            `,
+            falacias: `
+                <h2>Falacias: errores comunes en los argumentos</h2>
+                <p>Una <strong>falacia</strong> es un error de razonamiento que hace que un argumento sea inválido o engañoso, aunque aparentemente pueda parecer convincente. Identificarlas es clave para construir buenos argumentos y detectar malos razonamientos.</p>
+                <ul>
+                    <li><strong>Falacia ad hominem:</strong> Atacar a la persona en lugar de refutar sus argumentos. Ej: “No le hagas caso, es un ignorante”.</li>
+                    <li><strong>Falacia de falsa causa:</strong> Asumir que porque un evento sucede después de otro, el primero causa el segundo. Ej: “Me puse este amuleto y gané el partido; el amuleto me dio suerte”.</li>
+                    <li><strong>Falacia de autoridad falsa:</strong> Citar a alguien que no es experto en el tema. Ej: “Un famoso actor dice que esta crema cura el cáncer”.</li>
+                    <li><strong>Falacia de generalización apresurada:</strong> Concluir algo con muy pocos ejemplos. Ej: “Conocí a dos personas groseras de esa ciudad; todos los de esa ciudad son groseros”.</li>
+                    <li><strong>Falacia del hombre de paja:</strong> Distorsionar el argumento del oponente para refutarlo fácilmente. Ej: “Dices que hay que reducir el uso del celular, entonces quieres prohibir la tecnología”.</li>
+                    <li><strong>Falacia emocional (argumento ad passiones):</strong> Apelar solo a las emociones sin evidencia. Ej: “Si no donas, los niños sufrirán”.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de falacia en debate cotidiano:</strong> “No puedo creer lo que dices sobre el cambio climático, porque tú conduces un coche grande”. Eso es ad hominem y no refuta el contenido del argumento.
+                </div>
+            `,
+            estructura: `
+                <h2>Estructura de un buen argumento</h2>
+                <p>Un argumento bien construido suele seguir estos pasos:</p>
+                <ol>
+                    <li><strong>Afirmación (tesis):</strong> La idea que se quiere defender. Ej: “El reciclaje debería ser obligatorio en las escuelas”.</li>
+                    <li><strong>Datos o evidencia:</strong> Hechos, ejemplos, estadísticas o citas que apoyan la afirmación. Ej: “Según el Ministerio de Ambiente, solo el 20% de las escuelas reciclan”.</li>
+                    <li><strong>Garantía o razonamiento:</strong> Explicación que conecta los datos con la afirmación. Ej: “Si más escuelas reciclaran, se reducirían toneladas de residuos y se educaría a los jóvenes en sostenibilidad”.</li>
+                    <li><strong>Respaldo (opcional):</strong> Fuentes adicionales o ejemplos concretos. Ej: “En Colombia, las escuelas que implementaron reciclaje obligatorio redujeron sus desechos en un 40%”.</li>
+                    <li><strong>Conclusión parcial:</strong> Reiterar cómo lo expuesto prueba la tesis.</li>
+                </ol>
+                <div class="bloque-ejemplo">
+                    Esta estructura permite que cualquier lector siga la lógica y evalúe la solidez del argumento.
+                </div>
+            `,
+            importancia: `
+                <h2>Importancia de los argumentos</h2>
+                <p>Los argumentos son fundamentales porque:</p>
+                <ul>
+                    <li>Permiten defender ideas con fundamento y no solo con opiniones.</li>
+                    <li>Ayudan a convencer a otras personas de manera ética y razonada.</li>
+                    <li>Dan credibilidad a un texto oral o escrito.</li>
+                    <li>Evitan afirmaciones vacías o sin explicación.</li>
+                    <li>Desarrollan el pensamiento crítico y la capacidad de análisis.</li>
+                    <li>Son la base del debate democrático y la resolución de conflictos mediante la palabra.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Un buen argumento no siempre gana, pero siempre enseña. Saber argumentar es una habilidad transversal para la vida académica, profesional y ciudadana.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos sobre argumentos</h2>
+                <p><strong>Ejercicio 1: Identificar el tipo de argumento.</strong> Lee cada enunciado y di qué tipo es (autoridad, ejemplo, causa-efecto, etc.):</p>
+                <ol>
+                    <li>“Según la NASA, el calentamiento global es un hecho irrefutable.” → Autoridad</li>
+                    <li>“Fumar causa cáncer de pulmón, como lo demuestran millones de casos clínicos.” → Causa-efecto</li>
+                    <li>“El 90% de los estudiantes que usan técnicas de estudio activas aprueban los exámenes.” → Datos</li>
+                    <li>“Dejar las tareas para última hora es como intentar construir una casa sin planos.” → Comparación</li>
+                </ol>
+                <p><strong>Ejercicio 2: Detecta la falacia.</strong> ¿Qué falacia hay en cada frase?</p>
+                <ul>
+                    <li>“Mi abuelo fumó toda su vida y vivió hasta los 95 años, por eso fumar no es malo.” → Generalización apresurada / falsa causalidad</li>
+                    <li>“No puedes opinar sobre medio ambiente porque no tienes un auto eléctrico.” → Ad hominem</li>
+                </ul>
+                <p><strong>Ejercicio 3: Construye un argumento completo.</strong> Elige una tesis (ej: “La educación sexual debe enseñarse en la escuela”) y escribe un argumento que incluya una premisa, evidencia y conclusión.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Posible respuesta:</strong><br>
+                    Tesis: La educación sexual debe enseñarse en la escuela.<br>
+                    Premisa: Los adolescentes reciben información errónea de fuentes no confiables.<br>
+                    Evidencia: Un estudio de la OMS muestra que el 60% de los embarazos adolescentes ocurren por falta de información precisa.<br>
+                    Conclusión: Por tanto, la escuela debe proporcionar educación sexual basada en ciencia para reducir riesgos.
+                </div>
+                <p><strong>Ejercicio 4: Transforma opinión en argumento.</strong> Convierte “El plástico es malo” en un argumento usando dos tipos diferentes.</p>
+            `,
+            glosario: `
+                <h2>Glosario de términos sobre argumentación</h2>
+                <ul>
+                    <li><strong>Argumentación:</strong> Proceso de dar razones para apoyar o refutar una posición.</li>
+                    <li><strong>Tesis:</strong> Idea central que se defiende mediante argumentos.</li>
+                    <li><strong>Premisa:</strong> Proposición inicial que sirve de base para un razonamiento.</li>
+                    <li><strong>Conclusión:</strong> Resultado lógico que se obtiene de las premisas.</li>
+                    <li><strong>Falacia:</strong> Error de razonamiento que invalida un argumento.</li>
+                    <li><strong>Persuasión:</strong> Capacidad de convencer a alguien usando argumentos.</li>
+                    <li><strong>Refutación:</strong> Argumento que demuestra la falsedad o debilidad de otro argumento.</li>
+                    <li><strong>Evidencia:</strong> Conjunto de hechos o datos que respaldan una afirmación.</li>
+                    <li><strong>Debate:</strong> Intercambio ordenado de argumentos entre dos o más posturas.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Dominar la argumentación mejora la escritura académica, la oratoria y el pensamiento crítico en todos los ámbitos.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

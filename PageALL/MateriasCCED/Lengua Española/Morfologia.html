@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Morfología | AcademiaCCED</title>
     
-    <!-- estilos propios de esta sola pagina -->
     <style>
         /* colores */
         :root {
@@ -53,50 +52,49 @@
             min-height: 100vh;
         }
 
-        /*barra lateral con foto del profesor */
+        /*barra lateral */
         .barra-lateral {
-            width: 300px;
+            width: 320px;
             background-color: var(--blanco);
             border-right: 1px solid #ddd;
             padding: 40px 20px;
             text-align: center;
         }
 
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
         .barra-lateral h3 {
-            margin: 10px 0;
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
+            font-size: 1.4rem;
         }
 
-        /* linea separadora */
         .barra-lateral hr {
             opacity: 0.2;
             margin: 20px 0;
         }
 
-        /* informacion del profesor */
-        .info-profesor {
+        .info-materia {
             text-align: left;
             font-size: 0.9rem;
             color: #555;
+            margin: 10px 10px;
+            padding: 10px;
         }
 
-        .info-profesor p {
-            margin: 10px 0;
+        .tema {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
         /* zona principal */
@@ -104,70 +102,51 @@
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        /* encabezado en la zona */
         .zona-herramientas h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
         .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #4a5568;
+            font-size: 1rem;
         }
 
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.5;
         }
 
-        /* cada tarjeta */
-        .tarjeta-herramienta {
-            background: var(--blanco);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        .zona-herramientas li {
+            margin: 8px 0;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
         }
 
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* pie de pagina */
         footer {
             text-align: center;
             padding: 20px;
@@ -176,138 +155,333 @@
             color: #666;
             font-size: 0.9rem;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
 
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
+        }
     </style>
-  
-
-
 </head>
 <body>
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
-        <div class="titulo-materia">Morfología</div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">MORFOLOGÍA</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
     <!-- contenido principal -->
     <div class="contenedor">
-        
         <!-- barra lateral -->
         <aside class="barra-lateral">
-            <h3>Materia</h3>
+            <h3>Estructura de la palabra</h3>
             <hr>
-  <div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Morfología</div>
-<br>
-<div class="tema" onclick="mostrar('Tema2')">Lexema y morfema</div>
-<br>
-<div class="tema" onclick="mostrar('Tema3')">Prefijos</div>
-<br>
-<div class="tema" onclick="mostrar('Tema4')">Sufijos</div>
-<br>
-<div class="tema" onclick="mostrar('Tema5')">Interfijos</div>
-<br>
-<div class="tema" onclick="mostrar('Tema6')">Formación de palabras</div>
-</div>
-</aside>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('definicion')">1. ¿Qué es la Morfología?</div>
+                <div class="tema" onclick="mostrar('lexema_morfema')">2. Lexema y Morfema</div>
+                <div class="tema" onclick="mostrar('tipos_morfemas')">3. Tipos de morfemas (flexivos / derivativos)</div>
+                <div class="tema" onclick="mostrar('prefijos')">4. Prefijos (lista y ejemplos)</div>
+                <div class="tema" onclick="mostrar('sufijos')">5. Sufijos (lista y ejemplos)</div>
+                <div class="tema" onclick="mostrar('interfijos')">6. Interfijos (o infijos)</div>
+                <div class="tema" onclick="mostrar('derivacion')">7. Derivación</div>
+                <div class="tema" onclick="mostrar('composicion')">8. Composición</div>
+                <div class="tema" onclick="mostrar('parasintesis')">9. Parasíntesis</div>
+                <div class="tema" onclick="mostrar('acronimia')">10. Acronimia, siglas y abreviaturas</div>
+                <div class="tema" onclick="mostrar('prestamos')">11. Préstamos lingüísticos</div>
+                <div class="tema" onclick="mostrar('analisis_morfologico')">12. Análisis morfológico paso a paso</div>
+                <div class="tema" onclick="mostrar('ejercicios')">13. Ejercicios prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')">14. Glosario morfológico</div>
+            </div>
+        </aside>
 
-<!-- zona de texto en la derecha -->
-<main class="zona-herramientas">
-    <div id="contenido">
-        <h2>Introducción a Morfología</h2> 
-        <p>Selecciona un tema del menú lateral para aprender cómo se forman las palabras.</p>
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Morfología del español</h2>
+                <p>La morfología es la rama de la lingüística que estudia la estructura interna de las palabras, sus componentes (lexemas y morfemas) y las reglas para formarlas. A continuación, selecciona un tema para aprender en profundidad.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Dato clave:</strong> La palabra "panadero" se compone de "pan" (lexema), "ad" (vocal de enlace), "er" (sufijo) y "o" (morfema de género masculino).
+                </div>
+                <hr>
+                <p>Explora cada tema: desde los componentes mínimos hasta la formación de palabras complejas.</p>
+            </div>
+        </main>
     </div>
-</main>
 
-</div>
+    <footer>
+        <p>© 2025 AcademiaCCED · Morfología: la anatomía de las palabras.</p>
+    </footer>
 
-<!-- pie de pagina -->
-<footer>
-    <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-</footer>
+    <script>
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
 
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
+            if (tema === "definicion") {
+                html = `
+                    <h2>¿Qué es la Morfología?</h2>
+                    <p>La <strong>morfología</strong> (del griego <em>morphé</em> 'forma' y <em>logos</em> 'estudio') es la disciplina lingüística que analiza la estructura de las palabras, sus componentes mínimos con significado (morfemas) y las reglas de combinación para formar nuevas palabras.</p>
+                    <p>Se divide en dos grandes áreas:</p>
+                    <ul>
+                        <li><strong>Morfología flexiva:</strong> estudia cómo las palabras cambian su forma para expresar género, número, tiempo, modo, etc. (ej: niño/niños, canto/cantaba).</li>
+                        <li><strong>Morfología derivativa o léxica:</strong> estudia cómo se crean nuevas palabras mediante prefijos, sufijos e interfijos (ej: pan → panadero).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo de análisis morfológico:</strong> "corríamos" → lexema "corr-", morfema de tiempo "ía", morfema de número "mos". Tres componentes con significado.
+                    </div>
+                `;
+            }
+            else if (tema === "lexema_morfema") {
+                html = `
+                    <h2>Lexema y Morfema</h2>
+                    <p><strong>Lexema (o raíz):</strong> es la parte de la palabra que aporta el significado fundamental. Permanece invariable en todas las palabras de una misma familia. Ej: <strong>pan</strong> en panadero, panadería, empanar.</p>
+                    <p><strong>Morfema:</strong> es la unidad mínima con significado gramatical que se añade al lexema para modificarlo o añadir información. Ej: en "panadería", "-er-" es sufijo que indica oficio, "-ía" indica lugar.</p>
+                    <p><strong>Ejemplos de familias léxicas:</strong></p>
+                    <ul>
+                        <li>Flor: floral, florero, florista, desflorar (lexema: flor-).</li>
+                        <li>Mar: marítimo, marinero, submarino (lexema: mar-).</li>
+                        <li>Niño: niñez, niñera, aniñado (lexema: niñ-).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Identifica: "terremoto" → lexemas "tierr-" (tierra) y "mot-" (movimiento). Es palabra compuesta.
+                    </div>
+                `;
+            }
+            else if (tema === "tipos_morfemas") {
+                html = `
+                    <h2>Tipos de morfemas</h2>
+                    <p><strong>Morfemas flexivos (desinencias):</strong> añaden información gramatical (género, número, persona, tiempo). No crean palabras nuevas, solo formas.</p>
+                    <ul>
+                        <li>Género: -o (masculino), -a (femenino). Ej: niño/niña.</li>
+                        <li>Número: -s, -es (plural). Ej: niño/niños, flor/flores.</li>
+                        <li>Verbos: -é (pretérito perfecto simple, 1ª persona): canté, -ré (futuro).</li>
+                    </ul>
+                    <p><strong>Morfemas derivativos (afijos):</strong> crean palabras nuevas. Pueden ser:</p>
+                    <ul>
+                        <li><strong>Prefijos:</strong> van antes del lexema. Ej: <strong>re</strong>hacer, <strong>pre</strong>decir.</li>
+                        <li><strong>Sufijos:</strong> van después del lexema. Ej: flaut<strong>ista</strong>, cas<strong>ita</strong>.</li>
+                        <li><strong>Interfijos (infijos):</strong> van entre el lexema y el sufijo, sin significado propio. Ej: caf<strong>ec</strong>ito (café → cafecito).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En "ensombrecer": prefijo "en-" + lexema "sombra" + sufijo "-ecer". Palabra derivada con prefijo y sufijo.
+                    </div>
+                `;
+            }
+            else if (tema === "prefijos") {
+                html = `
+                    <h2>Prefijos (lista extensa)</h2>
+                    <p>Los prefijos son morfemas que se anteponen al lexema. Aportan matices de negación, posición, cantidad, etc.</p>
+                    <ul>
+                        <li><strong>Negación:</strong> in- (inútil), des- (deshacer), a- (amoral), anti- (antihéroe).</li>
+                        <li><strong>Cantidad:</strong> multi- (multicolor), pluri- (pluricultural), mono- (monótono), bi- (bilingüe), tri- (triángulo).</li>
+                        <li><strong>Posición / ubicación:</strong> pre- (preescolar), post- (posguerra), sub- (submarino), super- (supermercado), inter- (internacional).</li>
+                        <li><strong>Tiempo:</strong> ante- (anteayer), pre- (prehistoria), post- (postmoderno).</li>
+                        <li><strong>Reiteración:</strong> re- (rehacer, repasar).</li>
+                        <li><strong>Intensidad:</strong> archi- (archiconocido), hiper- (hiperactivo), ultra- (ultrasonido).</li>
+                        <li><strong>Opuesto:</strong> contra- (contraataque), ex- (exmarido).</li>
+                        <li><strong>Compañía / unión:</strong> co- (copiloto), con- (conjuntar).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Ejemplo con varios prefijos: "reconstruir" (re- + construir). "desconocido" (des- + conocido).
+                    </div>
+                `;
+            }
+            else if (tema === "sufijos") {
+                html = `
+                    <h2>Sufijos (lista extensa)</h2>
+                    <p>Los sufijos se colocan después del lexema. Indican oficio, lugar, acción, cualidad, relación, etc.</p>
+                    <ul>
+                        <li><strong>Ofiicios / agentes:</strong> -ero (panadero), -ista (dentista), -dor (pintor), -ante (estudiante).</li>
+                        <li><strong>Lugar:</strong> -ería (panadería), -ero (sombrero no es lugar; mejor -torio: laboratorio). Ej: dormitorio, comedor.</li>
+                        <li><strong>Cualidad (abstractos):</strong> -eza (belleza), -ez (vejez), -ía (alegría).</li>
+                        <li><strong>Acción / efecto:</strong> -ción (educación), -miento (sentimiento), -aje (maquillaje).</li>
+                        <li><strong>Diminutivos / aumentativos:</strong> -ito/a, -illo/a, -ón/a, -azo/a. Ej: casita, grandote, perrazo.</li>
+                        <li><strong>Adjetivos de relación:</strong> -al (nacional), -ico (atmosférico), -il (infantil).</li>
+                        <li><strong>Verbos derivados:</strong> -izar (realizar), -ificar (clasificar), -ear (pasear).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En "terremoto" no hay sufijos, es composición. En "contradicción": sufijo -ción sobre el verbo contradecir (supresión de -ir).
+                    </div>
+                `;
+            }
+            else if (tema === "interfijos") {
+                html = `
+                    <h2>Interfijos (o infijos)</h2>
+                    <p>Los interfijos son segmentos que se insertan entre el lexema y el sufijo para facilitar la pronunciación o mejorar la eufonía. Por sí mismos no tienen significado, pero permiten la unión.</p>
+                    <ul>
+                        <li><strong>-c-:</strong> café → cafecito (café + -c- + -ito).</li>
+                        <li><strong>-ec-:</strong> pie → piecito (pie + -ec- + -ito).</li>
+                        <li><strong>-l-:</strong> pobre → pobretón (pobre + -l- + -ón) (no es común; mejor ejemplo: villorrio, pero es sufijo).</li>
+                        <li><strong>-it-:</strong> en "pobre" no; mejor "abogadito" (abogado + -it- + -o? No, es sufijo diminutivo -ito directamente sin interfijo. A veces se considera interfijo en palabras como "polvareda" (polvo + -ar- + -eda, -ar- sería interfijo).</li>
+                    </ul>
+                    <p>Ejemplos reales más claros:</p>
+                    <ul>
+                        <li>polv<strong>ar</strong>eda (polvo + -ar- + -eda).</li>
+                        <li>hum<strong>ar</strong>eda (humo + -ar- + -eda).</li>
+                        <li>caf<strong>ec</strong>ito (café + -ec- + -ito).</li>
+                        <li>flor<strong>ec</strong>illa (flor + -ec- + -illa).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Importante: los interfijos no se confundan con sufijos; no añaden significado, solo son conectores.
+                    </div>
+                `;
+            }
+            else if (tema === "derivacion") {
+                html = `
+                    <h2>Derivación</h2>
+                    <p>La derivación es el proceso de formar una palabra nueva añadiendo uno o varios afijos (prefijos, sufijos o ambos) a un lexema.</p>
+                    <ul>
+                        <li><strong>Por prefijación:</strong> existir → preexistir, hacer → rehacer.</li>
+                        <li><strong>Por sufijación:</strong> flor → florero, pan → panadero.</li>
+                        <li><strong>Por parasíntesis (prefijo + sufijo simultáneamente):</strong> enrojecer (en- + roj- + -ecer), aunque lo veremos aparte.</li>
+                    </ul>
+                    <p>Palabras derivadas mantienen el lexema original pero cambian de categoría gramatical o significado.</p>
+                    <div class="bloque-ejemplo">
+                        Ejemplo: "nación" → "nacional" (sufijo -al, adjetivo), "internacional" (prefijo inter-), "internacionalizar" (prefijo inter- + sufijo -izar). Cadena derivativa.
+                    </div>
+                `;
+            }
+            else if (tema === "composicion") {
+                html = `
+                    <h2>Composición</h2>
+                    <p>La composición consiste en unir dos o más lexemas (o palabras) para formar una nueva palabra. Pueden ser:</p>
+                    <ul>
+                        <li><strong>Composición propia (sin guiones):</strong> sacacorchos (saca + corchos), paraguas (para + aguas), telaraña (tela + araña).</li>
+                        <li><strong>Composición con guión:</strong> teórico-práctico, físico-químico.</li>
+                        <li><strong>Compuestos cultos:</strong> con raíces grecolatinas: antropología (anthropos + logos), biblioteca (biblion + theke).</li>
+                        <li><strong>Compuestos sintagmáticos:</strong> es el caso de "café teatro", "ciudad dormitorio" (dos palabras independientes).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        "Ciempiés" (cien + pies), "limpiaparabrisas" (limpia + para + brisas). La composición puede acumular varios elementos.
+                    </div>
+                `;
+            }
+            else if (tema === "parasintesis") {
+                html = `
+                    <h2>Parasíntesis</h2>
+                    <p>La parasíntesis es un proceso mixto: se añaden <strong>simultáneamente</strong> un prefijo y un sufijo a una base. Si se añadieran por separado, la palabra intermedia no existiría.</p>
+                    <p>Ejemplos clásicos:</p>
+                    <ul>
+                        <li>enrojecer (en- + rojo + -ecer). No existe *rojecer ni *enrojo con esos significados.</li>
+                        <li>aterrizar (a- + tierra + -izar).</li>
+                        <li>empobrecer (em- + pobre + -ecer).</li>
+                        <li>amontonar (a- + montón + -ar).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Otro caso: "esclarecer" (es- + claro + -ecer). Sin parasíntesis, *clarecer no es palabra común. Por tanto, es parasíntesis.
+                    </div>
+                `;
+            }
+            else if (tema === "acronimia") {
+                html = `
+                    <h2>Acronimia, siglas y abreviaturas</h2>
+                    <ul>
+                        <li><strong>Abreviatura:</strong> representación abreviada de una palabra (ej: Sr. por señor, Dr. por doctor). No se lee como palabra nueva.</li>
+                        <li><strong>Sigla:</strong> conjunto de letras iniciales que se leen de forma separada o como palabra. Ej: ONU (O-N-U), OEA (O-E-A).</li>
+                        <li><strong>Acrónimo:</strong> sigla que se lee como una palabra corriente. Ej: UNESCO, OTAN, SIDA, RAE.</li>
+                        <li><strong>Acronimia léxica:</strong> fusión de partes de dos palabras. Ej: "pódcast" (iPod + broadcast), "sitcom" (situation + comedy), "informática" (información + automática).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En español: "emoticono" (emotion + icon), aunque no es muy productivo. También "gentrificación" (gentry + clasificación?).
+                    </div>
+                `;
+            }
+            else if (tema === "prestamos") {
+                html = `
+                    <h2>Préstamos lingüísticos</h2>
+                    <p>Son palabras que una lengua toma de otra. Pueden adaptarse o no a la ortografía española.</p>
+                    <ul>
+                        <li><strong>Anglicismos:</strong> computadora (computer), fútbol (football), email (correo electrónico, pero se usa "email").</li>
+                        <li><strong>Galicismos:</strong> pantalón (pantalon), chalet, hotel.</li>
+                        <li><strong>Italianismos:</strong> piano, soneto, novela.</li>
+                        <li><strong>Arabismos:</strong> almohada, aceite, alcohol.</li>
+                        <li><strong>Indigenismos americanos:</strong> chocolate (náhuatl), papa (quechua), hamaca (taíno).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Muchos préstamos se adaptan: "bistec" de beef steak. Otros se mantienen en cursiva: "software", "hardware".
+                    </div>
+                `;
+            }
+            else if (tema === "analisis_morfologico") {
+                html = `
+                    <h2>Análisis morfológico paso a paso</h2>
+                    <p>Para analizar una palabra, sigue estos pasos:</p>
+                    <ol>
+                        <li>Identificar el <strong>lexema</strong> (la parte que no varía y da el significado básico).</li>
+                        <li>Separar los <strong>morfemas flexivos</strong> (género, número, persona, tiempo).</li>
+                        <li>Reconocer los <strong>prefijos y sufijos</strong> derivativos.</li>
+                        <li>Determinar si hay <strong>interfijos</strong>.</li>
+                        <li>Decidir el <strong>proceso de formación</strong> (derivación, composición, parasíntesis).</li>
+                    </ol>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo resuelto:</strong> "recalentamiento"<br>
+                        - Lexema: "calent" (de calentar).<br>
+                        - Prefijo: "re-" (repetición).<br>
+                        - Sufijos: "-amiento" (acción/efecto).<br>
+                        - Morfema flexivo: ninguno (es sustantivo masculino, género gramatical implícito).<br>
+                        - Formación: derivación por prefijo y sufijo.
+                    </div>
+                    <p>Otro ejemplo: "desconocidas"</p>
+                    <ul>
+                        <li>Lexema: "conoc" (saber).</li>
+                        <li>Prefijo: "des-" (negación).</li>
+                        <li>Sufijo derivativo: "-id-" (participio).</li>
+                        <li>Morfemas flexivos: "-a" (femenino), "-s" (plural).</li>
+                        <li>Formación: derivación.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "ejercicios") {
+                html = `
+                    <h2>Ejercicios prácticos de morfología</h2>
+                    <p><strong>1. Separa lexema y morfemas en:</strong> "niñitas"</p>
+                    <div class="bloque-ejemplo">
+                        Lexema: "niñ-", morfemas: "-it-" (diminutivo), "-a" (femenino), "-s" (plural).
+                    </div>
+                    <p><strong>2. Escribe dos palabras derivadas con prefijos y dos con sufijos.</strong> (Ejemplo: prefijos: "prever", "antisocial"; sufijos: "cajita", "florero")</p>
+                    <p><strong>3. Indica si las siguientes palabras son compuestas o derivadas:</strong> "lavavajillas", "panadero", "ciempiés", "enrojecer".</p>
+                    <div class="bloque-ejemplo">
+                        lavavajillas → compuesta (lava + vajillas). panadero → derivada (sufijo -ero). ciempiés → compuesta (cien + pies). enrojecer → parasintética (en- + roj- + -ecer).
+                    </div>
+                    <p><strong>4. Realiza el análisis morfológico de:</strong> "subterráneo"</p>
+                    <div class="bloque-ejemplo">
+                        Lexema: "terr" (tierra). Prefijo: "sub-" (debajo). Sufijo: "-áneo" (pertenencia). Morfemas flexivos: "-o" (masculino singular). Formación: derivación.
+                    </div>
+                    <p><strong>5. Investiga un anglicismo y un arabismo usado en español diario.</strong></p>
+                `;
+            }
+            else if (tema === "glosario") {
+                html = `
+                    <h2>Glosario morfológico</h2>
+                    <ul>
+                        <li><strong>Lexema:</strong> núcleo semántico de la palabra.</li>
+                        <li><strong>Morfema:</strong> unidad mínima con significado gramatical.</li>
+                        <li><strong>Afijo:</strong> morfema derivativo (prefijo, sufijo, interfijo).</li>
+                        <li><strong>Prefijo:</strong> afijo antepuesto al lexema.</li>
+                        <li><strong>Sufijo:</strong> afijo pospuesto al lexema.</li>
+                        <li><strong>Interfijo:</strong> segmento sin significado que aparece entre lexema y sufijo.</li>
+                        <li><strong>Derivación:</strong> formación de palabras mediante afijos.</li>
+                        <li><strong>Composición:</strong> unión de dos o más lexemas.</li>
+                        <li><strong>Parasíntesis:</strong> añadido simultáneo de prefijo y sufijo.</li>
+                        <li><strong>Morfema flexivo:</strong> indica género, número, persona, tiempo, modo.</li>
+                        <li><strong>Familia léxica:</strong> conjunto de palabras que comparten el mismo lexema.</li>
+                        <li><strong>Acrónimo:</strong> sigla que se pronuncia como una palabra (OTAN).</li>
+                        <li><strong>Préstamo:</strong> palabra tomada de otro idioma.</li>
+                    </ul>
+                `;
+            }
+            else {
+                html = `<h2>Morfología</h2><p>Selecciona un tema del menú lateral.</p>`;
+            }
+            contenido.innerHTML = html;
+        }
 
-  if (tema === "Tema1") {
-    contenido.innerHTML = `
-      <h2>Morfología</h2>
-      <p><strong>Definición:</strong> Es la rama que estudia la estructura y formación de las palabras.</p>
-      <p>Analiza cómo se construyen y cómo cambian.</p>
-    `;
-  }
-
-  if (tema === "Tema2") {
-    contenido.innerHTML = `
-      <h2>Lexema y morfema</h2>
-      <p><strong>Lexema:</strong> Parte principal que contiene el significado (ej: "pan" en panadero).</p>
-      <p><strong>Morfema:</strong> Parte que añade información (ej: "-ero").</p>
-    `;
-  }
-
-  if (tema === "Tema3") {
-    contenido.innerHTML = `
-      <h2>Prefijos</h2>
-      <p><strong>Definición:</strong> Se colocan al inicio de la palabra.</p>
-      <ul>
-        <li>in- (infeliz)</li>
-        <li>des- (deshacer)</li>
-        <li>re- (rehacer)</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema4") {
-    contenido.innerHTML = `
-      <h2>Sufijos</h2>
-      <p><strong>Definición:</strong> Se colocan al final de la palabra.</p>
-      <ul>
-        <li>-ito (casita)</li>
-        <li>-ción (educación)</li>
-        <li>-ero (panadero)</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema5") {
-    contenido.innerHTML = `
-      <h2>Interfijos</h2>
-      <p><strong>Definición:</strong> Se colocan entre el lexema y el sufijo.</p>
-      <p><strong>Ejemplo:</strong> cafecito (caf + ec + ito)</p>
-    `;
-  }
-
-  if (tema === "Tema6") {
-    contenido.innerHTML = `
-      <h2>Formación de palabras</h2>
-      <p><strong>Tipos:</strong></p>
-      <ul>
-        <li>Derivación: pan → panadero</li>
-        <li>Composición: sacapuntas</li>
-        <li>Parasíntesis: enrojecer</li>
-      </ul>
-    `;
-  }
-}
-</script>
+        // Mostrar tema por defecto
+        window.onload = function() {
+            mostrar('definicion');
+        };
+    </script>
 </body>
 </html>

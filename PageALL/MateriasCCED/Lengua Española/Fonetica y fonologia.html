@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Fonética y Fonología | AcademiaCCED</title>
     
-    <!-- estilos propios de esta sola pagina -->
     <style>
         /* colores */
         :root {
@@ -53,50 +52,49 @@
             min-height: 100vh;
         }
 
-        /*barra lateral con foto del profesor */
+        /*barra lateral */
         .barra-lateral {
-            width: 300px;
+            width: 320px;
             background-color: var(--blanco);
             border-right: 1px solid #ddd;
             padding: 40px 20px;
             text-align: center;
         }
 
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
         .barra-lateral h3 {
-            margin: 10px 0;
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
+            font-size: 1.4rem;
         }
 
-        /* linea separadora */
         .barra-lateral hr {
             opacity: 0.2;
             margin: 20px 0;
         }
 
-        /* informacion del profesor */
-        .info-profesor {
+        .info-materia {
             text-align: left;
             font-size: 0.9rem;
             color: #555;
+            margin: 10px 10px;
+            padding: 10px;
         }
 
-        .info-profesor p {
-            margin: 10px 0;
+        .tema {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
         /* zona principal */
@@ -104,70 +102,51 @@
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        /* encabezado en la zona */
         .zona-herramientas h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
         .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #4a5568;
+            font-size: 1rem;
         }
 
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.5;
         }
 
-        /* cada tarjeta */
-        .tarjeta-herramienta {
-            background: var(--blanco);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        .zona-herramientas li {
+            margin: 8px 0;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
         }
 
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* pie de pagina */
         footer {
             text-align: center;
             padding: 20px;
@@ -176,139 +155,289 @@
             color: #666;
             font-size: 0.9rem;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
 
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
+        }
     </style>
-  
-
-
 </head>
 <body>
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
         <div class="titulo-materia">FONÉTICA Y FONOLOGÍA</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
     <!-- contenido principal -->
     <div class="contenedor">
-        
         <!-- barra lateral -->
         <aside class="barra-lateral">
-            <h3>Fonética y Fonología</h3>
+            <h3>Los sonidos del habla</h3>
             <hr>
-<div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Fonética</div>
-<br>
-<div class="tema" onclick="mostrar('Tema2')">Fonología</div>
-<br>
-<div class="tema" onclick="mostrar('Tema3')">Aparato fonador</div>
-<br>
-<div class="tema" onclick="mostrar('Tema4')">Vocales y consonantes</div>
-<br>
-<div class="tema" onclick="mostrar('Tema5')">Sílabas</div>
-<br>
-<div class="tema" onclick="mostrar('Tema6')">Acentuación</div>
-</div>
-</aside>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('definicion')">1. Fonética y Fonología (diferencias)</div>
+                <div class="tema" onclick="mostrar('fono_fonema')">2. Fono, fonema y alófono</div>
+                <div class="tema" onclick="mostrar('aparato')">3. Aparato fonador (órganos y función)</div>
+                <div class="tema" onclick="mostrar('clasif_vocales')">4. Clasificación de las vocales</div>
+                <div class="tema" onclick="mostrar('clasif_consonantes')">5. Clasificación de las consonantes</div>
+                <div class="tema" onclick="mostrar('punto_articulacion')">6. Punto de articulación (consonantes)</div>
+                <div class="tema" onclick="mostrar('modo_articulacion')">7. Modo de articulación (consonantes)</div>
+                <div class="tema" onclick="mostrar('sonoridad')">8. Sonoridad (sordas vs sonoras)</div>
+                <div class="tema" onclick="mostrar('silabas')">9. La sílaba: estructura y tipos</div>
+                <div class="tema" onclick="mostrar('diptongo_triptongo')">10. Diptongo, triptongo y hiato</div>
+                <div class="tema" onclick="mostrar('acentuacion')">11. Acentuación y tipos de acento</div>
+                <div class="tema" onclick="mostrar('transcripcion')">12. Transcripción fonética (AFI)</div>
+                <div class="tema" onclick="mostrar('ejercicios')">13. Ejercicios prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')">14. Glosario fonético-fonológico</div>
+            </div>
+        </aside>
 
-<!-- zona de texto en la derecha -->
-<main class="zona-herramientas">
-    <div id="contenido">
-        <h2>Introducción a Fonética y Fonología</h2> 
-        <p>Selecciona un tema del menú lateral para aprender más sobre los sonidos del lenguaje.</p>
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Fonética y Fonología</h2>
+                <p>La fonética estudia los sonidos del habla desde el punto de vista físico y articulatorio; la fonología estudia cómo esos sonidos se organizan en un sistema lingüístico con valor distintivo. A continuación, selecciona un tema.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Dato clave:</strong> La diferencia entre "casa" /kasa/ y "caza" /kaθa/ en España es fonológica (cambia el significado). Mientras que la forma de pronunciar la /r/ en diferentes posiciones es un hecho fonético.
+                </div>
+                <hr>
+                <p>Explora desde los órganos del aparato fonador hasta la transcripción con el Alfabeto Fonético Internacional.</p>
+            </div>
+        </main>
     </div>
-</main>
 
-</div>
+    <footer>
+        <p>© 2025 AcademiaCCED · Fonética y Fonología: los sonidos del lenguaje.</p>
+    </footer>
 
-<!-- pie de pagina -->
-<footer>
-    <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-</footer>
+    <script>
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
 
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
+            if (tema === "definicion") {
+                html = `
+                    <h2>Fonética vs Fonología</h2>
+                    <p><strong>Fonética:</strong> Estudia los sonidos del lenguaje desde el punto de vista físico (cómo se producen, se transmiten y se perciben). Se ocupa de los <em>fonos</em> (sonidos reales).</p>
+                    <p><strong>Fonología:</strong> Estudia los sonidos en función de su valor distintivo dentro de una lengua. Se ocupa de los <em>fonemas</em> (unidades abstractas que diferencian significados).</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo:</strong> En español, la /b/ y /p/ son fonemas porque cambian significado (bala/pala). La diferencia entre una /b/ oclusiva inicial y una /β/ fricativa intervocálica es fonética (no cambia significado).
+                    </div>
+                `;
+            }
+            else if (tema === "fono_fonema") {
+                html = `
+                    <h2>Fono, fonema y alófono</h2>
+                    <ul>
+                        <li><strong>Fono:</strong> Sonido concreto, físico, producido por un hablante. Se representa entre corchetes [ ]. Ej: [d], [ð̞].</li>
+                        <li><strong>Fonema:</strong> Imagen mental abstracta de un sonido con capacidad distintiva. Se representa entre barras / /. Ej: /d/.</li>
+                        <li><strong>Alófono:</strong> Cada una de las variantes de realización de un fonema. Ej: el fonema /b/ tiene alófonos [b] (inicial) y [β̞] (intervocálico).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En "dedo": /dedo/ (fonológicamente). Pero al pronunciar, la primera /d/ es [d] (oclusiva) y la segunda es [ð̞] (aproximante). Ambas son alófonos del mismo fonema /d/.
+                    </div>
+                `;
+            }
+            else if (tema === "aparato") {
+                html = `
+                    <h2>El aparato fonador</h2>
+                    <p>El aparato fonador es el conjunto de órganos del cuerpo humano que intervienen en la producción de la voz y los sonidos del habla. Se divide en tres partes:</p>
+                    <ul>
+                        <li><strong>Órganos de respiración:</strong> pulmones, diafragma, tráquea. Aportan la corriente de aire.</li>
+                        <li><strong>Órganos de fonación:</strong> laringe, cuerdas vocales. Producen la voz (sonido sonoro cuando vibran).</li>
+                        <li><strong>Órganos de articulación:</strong> lengua, paladar, dientes, labios, velo del paladar. Modifican el sonido creando las diferentes vocales y consonantes.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        La lengua es el órgano más móvil; puede tocar los dientes (dentales), el paladar (palatales) o la campanilla (velares).
+                    </div>
+                `;
+            }
+            else if (tema === "clasif_vocales") {
+                html = `
+                    <h2>Clasificación de las vocales</h2>
+                    <p>Las vocales se clasifican según tres criterios:</p>
+                    <ul>
+                        <li><strong>Según la abertura (apertura):</strong> abiertas (a), medias (e, o), cerradas (i, u).</li>
+                        <li><strong>Según la posición de la lengua (anterioridad):</strong> anteriores (e, i), central (a), posteriores (o, u).</li>
+                        <li><strong>Según la intervención de los labios (redondeamiento):</strong> redondeadas (o, u), no redondeadas (a, e, i).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En español solo hay 5 fonemas vocálicos. En inglés hay más de 12, por eso a los hispanohablantes nos cuesta distinguir ship/sheep.
+                    </div>
+                `;
+            }
+            else if (tema === "clasif_consonantes") {
+                html = `
+                    <h2>Clasificación de las consonantes</h2>
+                    <p>Las consonantes se clasifican mediante tres parámetros: <strong>punto de articulación</strong> (dónde), <strong>modo de articulación</strong> (cómo) y <strong>sonoridad</strong> (vibración o no de cuerdas).</p>
+                    <p>En español hay alrededor de 19 fonemas consonánticos: /p, t, k, b, d, g, f, θ, s, x, tʃ, m, n, ɲ, l, ʎ, r, ɾ, ʝ/.</p>
+                    <div class="bloque-ejemplo">
+                        Clasifica /p/ : bilabial, oclusivo, sordo. /m/ : bilabial, nasal, sonoro.
+                    </div>
+                `;
+            }
+            else if (tema === "punto_articulacion") {
+                html = `
+                    <h2>Punto de articulación (consonantes)</h2>
+                    <ul>
+                        <li><strong>Bilabiales:</strong> /p/, /b/, /m/. Se juntan ambos labios.</li>
+                        <li><strong>Labiodentales:</strong> /f/. Labio inferior con dientes superiores.</li>
+                        <li><strong>Dentales:</strong> /t/, /d/. Lengua contra dientes superiores.</li>
+                        <li><strong>Interdental:</strong> /θ/ (España). Lengua entre los dientes.</li>
+                        <li><strong>Alveolares:</strong> /s/, /n/, /l/, /r/ (simple). Lengua contra los alvéolos.</li>
+                        <li><strong>Palatales:</strong> /tʃ/, /ɲ/, /ʝ/, /ʎ/. Lengua contra el paladar duro.</li>
+                        <li><strong>Velares:</strong> /k/, /g/, /x/. Lengua contra el velo del paladar.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Palabras: "papa" (bilabial), "casa" (velar + alveolar), "ñandú" (palatal).
+                    </div>
+                `;
+            }
+            else if (tema === "modo_articulacion") {
+                html = `
+                    <h2>Modo de articulación (consonantes)</h2>
+                    <ul>
+                        <li><strong>Oclusivos:</strong> el aire se detiene completamente y luego se libera. /p/, /t/, /k/, /b/, /d/, /g/.</li>
+                        <li><strong>Fricativos:</strong> el aire pasa por un canal estrecho produciendo fricción. /f/, /s/, /x/, /θ/.</li>
+                        <li><strong>Africados:</strong> comienzan como oclusivos y terminan como fricativos. /tʃ/ (como "ch").</li>
+                        <li><strong>Nasales:</strong> el aire sale por la nariz. /m/, /n/, /ɲ/.</li>
+                        <li><strong>Laterales:</strong> el aire sale por los lados de la lengua. /l/, /ʎ/.</li>
+                        <li><strong>Vibrantes:</strong> la lengua golpea rápidamente. /r/ (simple) y /ɾ/ (múltiple).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Diferencia: "pero" (/ɾ/ simple) vs "perro" (/r/ múltiple). El modo vibrante distingue significado.
+                    </div>
+                `;
+            }
+            else if (tema === "sonoridad") {
+                html = `
+                    <h2>Sonoridad: consonantes sordas y sonoras</h2>
+                    <ul>
+                        <li><strong>Sordas:</strong> las cuerdas vocales no vibran. /p/, /t/, /k/, /f/, /s/, /θ/, /tʃ/, /x/.</li>
+                        <li><strong>Sonoras:</strong> las cuerdas vocales vibran. /b/, /d/, /g/, /m/, /n/, /ɲ/, /l/, /ʎ/, /r/, /ɾ/, /ʝ/.</li>
+                    </ul>
+                    <p>Para comprobarlo, coloca la mano en la laringe mientras pronuncias "ssss" (sorda) y luego "zzzz" (sonora, aunque en español no hay /z/). Con "ffff" (sorda) y "vvvv" (sonora, inglés).</p>
+                    <div class="bloque-ejemplo">
+                        En español, la diferencia sonoridad es distintiva: /b/ vs /p/ (bala/pala), /d/ vs /t/ (dama/tama), /g/ vs /k/ (goma/coma).
+                    </div>
+                `;
+            }
+            else if (tema === "silabas") {
+                html = `
+                    <h2>La sílaba: estructura y tipos</h2>
+                    <p>La sílaba es la unidad de pronunciación formada por uno o varios fonemas. Tiene un núcleo vocálico (obligatorio) y puede tener ataque y coda consonánticos.</p>
+                    <p><strong>Estructura:</strong> (Ataque) + Núcleo + (Coda). Ej: "casa" → /k/ (ataque), /a/ (núcleo), /s/ (coda en la segunda sílaba).</p>
+                    <p><strong>Tipos de sílaba:</strong></p>
+                    <ul>
+                        <li><strong>Libre o abierta:</strong> termina en vocal. Ej: "ca-", "le-".</li>
+                        <li><strong>Trabada o cerrada:</strong> termina en consonante. Ej: "col-", "con-".</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        "Amor" tiene dos sílabas: a-mor. Primera abierta, segunda cerrada. La división silábica afecta la acentuación.
+                    </div>
+                `;
+            }
+            else if (tema === "diptongo_triptongo") {
+                html = `
+                    <h2>Diptongo, triptongo y hiato</h2>
+                    <ul>
+                        <li><strong>Diptongo:</strong> dos vocales seguidas en la misma sílaba. Puede ser: vocal abierta + cerrada (ai, au, ei, eu, oi, ou); cerrada + abierta (ia, ie, io, ua, ue, uo); o dos cerradas diferentes (iu, ui). Ej: "pai-sa-je", "cau-sa".</li>
+                        <li><strong>Triptongo:</strong> tres vocales en la misma sílaba: cerrada + abierta + cerrada. Ej: "a-ve-ri-guáis" (guáis).</li>
+                        <li><strong>Hiato:</strong> dos vocales que pertenecen a sílabas distintas. Puede ser: dos abiertas (a-e: a-é-re-o), o cerrada tónica + abierta (dí-a, rí-o).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Ejemplos: "ciudad" → ciu-dad (diptongo ui). "poeta" → po-e-ta (hiato de dos abiertas). "averiguáis" → a-ve-ri-guáis (triptongo guái).
+                    </div>
+                `;
+            }
+            else if (tema === "acentuacion") {
+                html = `
+                    <h2>Acentuación y tipos de acento</h2>
+                    <p><strong>Acento prosódico:</strong> Mayor intensidad o fuerza de voz sobre una sílaba. Puede ser fonético (siempre lo tiene toda palabra) y ortográfico (tilde).</p>
+                    <p><strong>Clasificación por posición de la sílaba tónica:</strong></p>
+                    <ul>
+                        <li><strong>Agudas:</strong> tónica en última sílaba. Llevan tilde si terminan en n, s o vocal. Ej: canción, compás, café.</li>
+                        <li><strong>Graves o llanas:</strong> tónica en penúltima sílaba. Llevan tilde si NO terminan en n, s o vocal. Ej: árbol, césped, difícil.</li>
+                        <li><strong>Esdrújulas:</strong> tónica en antepenúltima sílaba. Siempre llevan tilde. Ej: pájaro, esdrújula, teléfono.</li>
+                        <li><strong>Sobreesdrújulas:</strong> tónica anterior a la antepenúltima (verbos con pronombres). Siempre tilde. Ej: cómpramelo, devuélvemelo.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        "Examen" es grave terminada en n → no tilde. "Árbol" es grave terminada en l → sí tilde.
+                    </div>
+                `;
+            }
+            else if (tema === "transcripcion") {
+                html = `
+                    <h2>Transcripción fonética y AFI</h2>
+                    <p>El <strong>Alfabeto Fonético Internacional (AFI)</strong> es un sistema de símbolos que representa todos los sonidos de las lenguas humanas. Se usa para transcripciones precisas.</p>
+                    <p>Ejemplos de transcripción fonológica (entre / /):</p>
+                    <ul><li>"casa" → /kasa/</li><li>"zapato" (España) → /θapato/</li></ul>
+                    <p>Transcripción fonética (entre [ ]) incluye variantes alofónicas:</p>
+                    <ul><li>"dedo" → [deð̞o]</li><li>"lado" → [lað̞o]</li></ul>
+                    <div class="bloque-ejemplo">
+                        La transcripción es muy útil para aprender la pronunciación exacta de otros idiomas y para la corrección fonética de trastornos del habla.
+                    </div>
+                `;
+            }
+            else if (tema === "ejercicios") {
+                html = `
+                    <h2>Ejercicios prácticos</h2>
+                    <p><strong>1. Clasifica los siguientes sonidos según punto y modo:</strong> /t/, /l/, /x/, /m/.</p>
+                    <div class="bloque-ejemplo">
+                        /t/ : dental, oclusivo, sordo.<br>
+                        /l/ : alveolar, lateral, sonoro.<br>
+                        /x/ : velar, fricativo, sordo.<br>
+                        /m/ : bilabial, nasal, sonoro.
+                    </div>
+                    <p><strong>2. Separa en sílabas y di si hay diptongo, hiato o triptongo:</strong> "cuento", "poesía", "vehículo".</p>
+                    <div class="bloque-ejemplo">
+                        cuen-to (diptongo ue), po-e-sí-a (hiatos o-e, í-a), ve-hí-cu-lo (hiato í-u? No, cu es sílaba /ku/; hiato en ve-hí: í abierta tónica).
+                    </div>
+                    <p><strong>3. Coloca la tilde donde corresponda:</strong> "cancion", "lapiz", "pagina".</p>
+                    <div class="bloque-ejemplo">
+                        canción, lápiz, página.
+                    </div>
+                    <p><strong>4. Identifica fonemas en "perro":</strong> ¿cuántos fonemas?</p>
+                    <div class="bloque-ejemplo">
+                        4 fonemas: /p/, /e/, /r/ (múltiple), /o/. La rr es un solo fonema vibrante múltiple.
+                    </div>
+                `;
+            }
+            else if (tema === "glosario") {
+                html = `
+                    <h2>Glosario fonético-fonológico</h2>
+                    <ul>
+                        <li><strong>Fonética:</strong> estudio de los sonidos físicos.</li>
+                        <li><strong>Fonología:</strong> estudio de los fonemas y sus funciones.</li>
+                        <li><strong>Fonema:</strong> unidad abstracta distintiva.</li>
+                        <li><strong>Fono:</strong> realización concreta de un sonido.</li>
+                        <li><strong>Alófono:</strong> variante contextual de un fonema.</li>
+                        <li><strong>Aparato fonador:</strong> conjunto de órganos que producen el habla.</li>
+                        <li><strong>Punto de articulación:</strong> lugar donde se produce el obstáculo.</li>
+                        <li><strong>Modo de articulación:</strong> manera en que se produce.</li>
+                        <li><strong>Sonoridad:</strong> vibración o no de las cuerdas vocales.</li>
+                        <li><strong>Sílaba:</strong> unidad de pronunciación.</li>
+                        <li><strong>Diptongo:</strong> dos vocales en la misma sílaba.</li>
+                        <li><strong>Hiato:</strong> dos vocales en sílabas distintas.</li>
+                        <li><strong>Acento:</strong> mayor intensidad en una sílaba.</li>
+                        <li><strong>AFI:</strong> Alfabeto Fonético Internacional.</li>
+                    </ul>
+                `;
+            }
+            else {
+                html = `<h2>Fonética y Fonología</h2><p>Selecciona un tema del menú lateral.</p>`;
+            }
+            contenido.innerHTML = html;
+        }
 
-  if (tema === "Tema1") {
-    contenido.innerHTML = `
-      <h2>Fonética</h2>
-      <p><strong>Definición:</strong> Estudia los sonidos del lenguaje y cómo se producen.</p>
-      <p>Se enfoca en la pronunciación y en el uso del aparato fonador.</p>
-      <p><strong>Ejemplo:</strong> Cómo se pronuncia la letra "r".</p>
-    `;
-  }
-
-  if (tema === "Tema2") {
-    contenido.innerHTML = `
-      <h2>Fonología</h2>
-      <p><strong>Definición:</strong> Estudia cómo funcionan los sonidos dentro del idioma.</p>
-      <p>Analiza cómo los sonidos cambian el significado.</p>
-      <p><strong>Ejemplo:</strong> "casa" y "caza".</p>
-    `;
-  }
-
-  if (tema === "Tema3") {
-    contenido.innerHTML = `
-      <h2>Aparato fonador</h2>
-      <p><strong>Definición:</strong> Conjunto de órganos que permiten producir sonidos.</p>
-      <ul>
-        <li>Pulmones</li>
-        <li>Laringe</li>
-        <li>Cuerdas vocales</li>
-        <li>Lengua</li>
-        <li>Labios</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema4") {
-    contenido.innerHTML = `
-      <h2>Vocales y consonantes</h2>
-      <p><strong>Vocales:</strong> Se pronuncian sin obstáculos (a, e, i, o, u).</p>
-      <p><strong>Consonantes:</strong> Tienen interrupción del aire.</p>
-    `;
-  }
-
-  if (tema === "Tema5") {
-    contenido.innerHTML = `
-      <h2>Sílabas</h2>
-      <p><strong>Definición:</strong> Son grupos de sonidos que se pronuncian juntos.</p>
-      <p><strong>Ejemplo:</strong> "ca-sa" tiene 2 sílabas.</p>
-    `;
-  }
-
-  if (tema === "Tema6") {
-    contenido.innerHTML = `
-      <h2>Acentuación</h2>
-      <p><strong>Definición:</strong> Es la fuerza de voz en una sílaba.</p>
-      <p><strong>Tipos:</strong></p>
-      <ul>
-        <li>Agudas</li>
-        <li>Llanas</li>
-        <li>Esdrújulas</li>
-      </ul>
-    `;
-  }
-}
-</script>
+        // Mostrar tema por defecto
+        window.onload = function() {
+            mostrar('definicion');
+        };
+    </script>
 </body>
 </html>

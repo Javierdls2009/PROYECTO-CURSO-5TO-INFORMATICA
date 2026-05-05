@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literatura | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS BASADOS EN EL EJEMPLO ORIGINAL ========== */
+        :root {
+            --color-principal: #e5322e;   /* rojo característico */
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona de contenido principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">LITERATURA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y origen</div>
+                <div class="tema" data-tema="importancia">Importancia de la literatura</div>
+                <div class="tema" data-tema="caracteristicas">Características esenciales</div>
+                <div class="tema" data-tema="generos">Géneros literarios</div>
+                <div class="tema" data-tema="elementos">Elementos de la obra literaria</div>
+                <div class="tema" data-tema="figuras">Figuras literarias</div>
+                <div class="tema" data-tema="funciones">Funciones de la literatura</div>
+                <div class="tema" data-tema="sociedad">Relación con la sociedad</div>
+                <div class="tema" data-tema="movimientos">Movimientos literarios</div>
+                <div class="tema" data-tema="autores">Autores destacados</div>
+                <div class="tema" data-tema="analisis">Cómo analizar una obra</div>
+                <div class="tema" data-tema="culta_popular">Literatura culta y popular</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Literatura</h2>
+                <p>La literatura es una manifestación artística del ser humano que utiliza el lenguaje como medio principal para expresar ideas, emociones, pensamientos, experiencias y visiones del mundo. A través de ella, las personas pueden comunicar sentimientos profundos, reflexiones sobre la vida, críticas sociales y representaciones de la realidad o de mundos imaginarios.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Fragmento literario:</strong> “Buscaba en la literatura una evasión de la realidad, pero descubrí que era la realidad misma la que se evadía en la literatura.” — Mario Vargas Llosa.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar el fascinante mundo de la literatura.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · El arte de la palabra: literatura, expresión y cultura.</p>
+    </footer>
+
+    <script>
+        // ========== CONTENIDO COMPLETO AMPLIADO ==========
+        const contenidos = {
+            definicion: `
+                <h2>Definición y origen de la literatura</h2>
+                <p>La <strong>literatura</strong> es una manifestación artística que utiliza el lenguaje como medio principal para expresar ideas, emociones, pensamientos, experiencias y visiones del mundo. Se caracteriza por el uso creativo y estético del lenguaje, mediante recursos como metáforas, comparaciones, símbolos y otras figuras literarias.</p>
+                <p><strong>Origen y evolución:</strong> La literatura tiene su origen en la <strong>tradición oral</strong>, cuando las primeras civilizaciones contaban historias, mitos, leyendas y cantos para explicar el mundo. Con la invención de la escritura, estas historias comenzaron a registrarse. A lo largo de la historia, la literatura ha pasado por diferentes etapas: antigua, medieval, moderna y contemporánea. Hoy se adapta a nuevos formatos como libros digitales, blogs y redes sociales.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de literatura oral:</strong> La épica de Gilgamesh (tablillas sumerias, c. 2100 a.C.) es una de las primeras obras literarias conocidas.
+                </div>
+            `,
+            importancia: `
+                <h2>Importancia de la literatura</h2>
+                <p>La literatura es fundamental en la formación del ser humano porque:</p>
+                <ul>
+                    <li>Permite comprender mejor la realidad y la sociedad.</li>
+                    <li>Desarrolla la capacidad de análisis y reflexión.</li>
+                    <li>Enriquece el lenguaje y la comunicación.</li>
+                    <li>Fomenta la empatía al ponerse en el lugar de otros personajes.</li>
+                    <li>Ayuda a expresar emociones que a veces son difíciles de decir directamente.</li>
+                    <li>Preserva la memoria histórica y cultural de los pueblos.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Leer literatura no solo entretiene, sino que también educa y transforma la manera en que las personas piensan.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características esenciales de la literatura</h2>
+                <ul>
+                    <li><strong>Creatividad:</strong> el autor utiliza la imaginación para crear historias o expresar ideas.</li>
+                    <li><strong>Subjetividad:</strong> cada obra refleja el punto de vista del autor.</li>
+                    <li><strong>Intención estética:</strong> busca belleza en el uso del lenguaje.</li>
+                    <li><strong>Interpretación abierta:</strong> cada lector puede entenderla de forma distinta.</li>
+                    <li><strong>Uso de recursos literarios:</strong> metáforas, símbolos, ironía, etc.</li>
+                    <li><strong>Universalidad:</strong> aborda temas que trascienden el tiempo y el espacio (amor, muerte, justicia, libertad).</li>
+                </ul>
+            `,
+            generos: `
+                <h2>Géneros literarios</h2>
+                <p><strong>Narrativo:</strong> Se basa en contar historias reales o ficticias. Incluye narrador, personajes y conflicto. Ejemplos: novela, cuento, mito, leyenda, fábula, epopeya. Se centra en “qué sucede”.</p>
+                <div class="bloque-ejemplo">
+                    Fragmento de novela: “Muchos años después, frente al pelotón de fusilamiento, el coronel Aureliano Buendía había de recordar aquella tarde remota en que su padre lo llevó a conocer el hielo.” — Gabriel García Márquez, <em>Cien años de soledad</em>.
+                </div>
+                <p><strong>Lírico:</strong> Expresa sentimientos, emociones o estados de ánimo del autor. Suele escribirse en verso y con ritmo. Ejemplos: poema, oda, soneto, elegía. Se centra en “qué se siente”.</p>
+                <div class="bloque-ejemplo">
+                    “Podrá nublarse el sol eternamente; / podrá secarse en un instante el mar; / podrá romperse el eje de la tierra / como un débil cristal. / ¡Todo sucederá! Podrá la muerte / cubrirme con su fúnebre crespón; / pero jamás en mí podrá apagarse / la llama de tu amor.” — Gustavo Adolfo Bécquer.
+                </div>
+                <p><strong>Dramático:</strong> Está escrito para ser representado en teatro. Utiliza diálogos y acotaciones. Ejemplos: tragedia, comedia, drama. Se centra en “cómo se actúa”.</p>
+                <div class="bloque-ejemplo">
+                    “La vida es sueño, y los sueños, sueños son.” — Pedro Calderón de la Barca, <em>La vida es sueño</em>.
+                </div>
+            `,
+            elementos: `
+                <h2>Elementos de la obra literaria</h2>
+                <ul>
+                    <li><strong>Autor:</strong> persona que crea la obra.</li>
+                    <li><strong>Narrador:</strong> voz que cuenta la historia (puede ser protagonista, testigo u omnisciente).</li>
+                    <li><strong>Personajes:</strong> principales (protagonista), secundarios y antagonista.</li>
+                    <li><strong>Tiempo:</strong> momento en que ocurren los hechos (lineal, circular, con saltos).</li>
+                    <li><strong>Espacio:</strong> lugar físico o imaginario donde se desarrolla la acción.</li>
+                    <li><strong>Tema:</strong> idea central de la obra.</li>
+                    <li><strong>Conflicto:</strong> problema que impulsa la historia.</li>
+                    <li><strong>Trama:</strong> secuencia de eventos organizados.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    En <em>Don Quijote de la Mancha</em>, el narrador es omnisciente, los personajes principales son Don Quijote y Sancho Panza, el espacio es La Mancha, el tema es la locura y la realidad, y el conflicto surge entre la imaginación y el mundo real.
+                </div>
+            `,
+            figuras: `
+                <h2>Figuras literarias (recursos estilísticos)</h2>
+                <ul>
+                    <li><strong>Metáfora:</strong> identifica un objeto con otro por su semejanza. Ej: “Tus ojos son dos luceros” (en realidad, los ojos brillan como luceros).</li>
+                    <li><strong>Símil o comparación:</strong> usa “como” para relacionar. Ej: “Eres fuerte como un león”.</li>
+                    <li><strong>Personificación:</strong> atribuye cualidades humanas a objetos o animales. Ej: “El sol nos sonrió esta mañana”.</li>
+                    <li><strong>Hipérbole:</strong> exageración. Ej: “Te he llamado un millón de veces”.</li>
+                    <li><strong>Anáfora:</strong> repetición de palabras al inicio de versos u oraciones. Ej: “Temprano levantó la muerte el vuelo, / temprano madrugó la madrugada”.</li>
+                    <li><strong>Aliteración:</strong> repetición de sonidos. Ej: “El susurro del viento”.</li>
+                    <li><strong>Epíteto:</strong> adjetivo que resalta una cualidad inherente. Ej: “blanca nieve”, “verde prado”.</li>
+                    <li><strong>Ironía:</strong> expresar lo contrario de lo que se piensa. Ej: “Qué bonito día para salir” (cuando llueve torrencialmente).</li>
+                </ul>
+            `,
+            funciones: `
+                <h2>Funciones de la literatura</h2>
+                <ul>
+                    <li><strong>Estética:</strong> busca belleza y placer a través del lenguaje.</li>
+                    <li><strong>Expresiva:</strong> transmite emociones y sentimientos del autor.</li>
+                    <li><strong>Social:</strong> refleja problemas, valores y aspiraciones de la sociedad.</li>
+                    <li><strong>Cultural:</strong> preserva y transmite tradiciones, historia y cosmovisión.</li>
+                    <li><strong>Educativa:</strong> enseña valores, conocimientos y reflexión crítica.</li>
+                    <li><strong>Evasiva:</strong> permite al lector escapar de la realidad y sumergirse en otros mundos.</li>
+                    <li><strong>Crítica:</strong> denuncia injusticias y cuestiona el orden establecido.</li>
+                </ul>
+            `,
+            sociedad: `
+                <h2>Relación de la literatura con la sociedad</h2>
+                <p>La literatura está profundamente conectada con la sociedad, ya que refleja las ideas, costumbres, conflictos y cambios de cada época. Muchas obras han servido para denunciar injusticias, cuestionar normas sociales o inspirar movimientos de cambio.</p>
+                <ul>
+                    <li><em>La cabaña del tío Tom</em> (Harriet Beecher Stowe) contribuyó a la abolición de la esclavitud en Estados Unidos.</li>
+                    <li><em>1984</em> (George Orwell) advierte sobre los peligros del totalitarismo y la vigilancia masiva.</li>
+                    <li><em>El Quijote</em> (Cervantes) critica los ideales caballerescos obsoletos.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La literatura no solo es un espejo de la sociedad, sino también una herramienta para transformarla.
+                </div>
+            `,
+            movimientos: `
+                <h2>Principales movimientos literarios</h2>
+                <ul>
+                    <li><strong>Clasicismo (Grecia y Roma):</strong> ideal de equilibrio, armonía y razón. Autores: Homero, Sófocles, Virgilio.</li>
+                    <li><strong>Edad Media:</strong> literatura religiosa y épica. Cantares de gesta, <em>El Cantar de Mio Cid</em>.</li>
+                    <li><strong>Renacimiento (siglos XV-XVI):</strong> antropocentrismo, amor idealizado. Autores: Shakespeare, Cervantes, Garcilaso.</li>
+                    <li><strong>Barroco (siglo XVII):</strong> complejidad, contraste, desengaño. Autores: Quevedo, Góngora, Calderón.</li>
+                    <li><strong>Neoclasicismo (siglo XVIII):</strong> didactismo, reglas estrictas.</li>
+                    <li><strong>Romanticismo (siglo XIX):</strong> exaltación de los sentimientos, libertad, naturaleza. Autores: Bécquer, Goethe, Lord Byron.</li>
+                    <li><strong>Realismo y Naturalismo (siglo XIX):</strong> retrato objetivo de la realidad, crítica social. Autores: Galdós, Flaubert, Zola.</li>
+                    <li><strong>Modernismo (fines del XIX):</strong> búsqueda de la belleza, exotismo, musicalidad. Autores: Rubén Darío.</li>
+                    <li><strong>Vanguardias (siglo XX):</strong> experimentación, ruptura. Surrealismo, dadaísmo, etc.</li>
+                    <li><strong>Literatura contemporánea:</strong> diversidad, temas urbanos, hibridación de géneros.</li>
+                </ul>
+            `,
+            autores: `
+                <h2>Autores destacados de la literatura universal</h2>
+                <ul>
+                    <li><strong>Miguel de Cervantes:</strong> <em>Don Quijote de la Mancha</em> (considerada la primera novela moderna).</li>
+                    <li><strong>William Shakespeare:</strong> <em>Hamlet, Romeo y Julieta, Macbeth</em>.</li>
+                    <li><strong>Gabriel García Márquez:</strong> <em>Cien años de soledad, El amor en los tiempos del cólera</em>.</li>
+                    <li><strong>Jorge Luis Borges:</strong> <em>Ficciones, El Aleph</em>.</li>
+                    <li><strong>Pablo Neruda:</strong> <em>Veinte poemas de amor y una canción desesperada</em>.</li>
+                    <li><strong>Julio Cortázar:</strong> <em>Rayuela, Bestiario</em>.</li>
+                    <li><strong>Mario Vargas Llosa:</strong> <em>La ciudad y los perros, La fiesta del Chivo</em>.</li>
+                    <li><strong>Isabel Allende:</strong> <em>La casa de los espíritus</em>.</li>
+                    <li><strong>Federico García Lorca:</strong> <em>Romancero gitano, Bodas de sangre</em>.</li>
+                    <li><strong>Gustavo Adolfo Bécquer:</strong> <em>Rimas y leyendas</em>.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Cada autor aporta una visión única del mundo y deja una huella imborrable en la cultura.
+                </div>
+            `,
+            analisis: `
+                <h2>Cómo analizar una obra literaria paso a paso</h2>
+                <ol>
+                    <li><strong>Lectura atenta:</strong> leer la obra completa, subrayar pasajes clave.</li>
+                    <li><strong>Identificar género y corriente:</strong> ¿es novela, cuento, poema, teatro? ¿a qué movimiento pertenece?</li>
+                    <li><strong>Analizar estructura:</strong> capítulos, versos, actos, organización temporal.</li>
+                    <li><strong>Estudiar personajes:</strong> protagonista, antagonista, secundarios; sus motivaciones y evolución.</li>
+                    <li><strong>Determinar narrador:</strong> primera persona, tercera persona, omnisciente, testigo.</li>
+                    <li><strong>Extraer tema principal y subtemas:</strong> amor, muerte, justicia, identidad, etc.</li>
+                    <li><strong>Reconocer recursos literarios:</strong> metáforas, símbolos, ironía, hipérbole.</li>
+                    <li><strong>Contexto histórico y social:</strong> ¿cuándo se escribió? ¿qué influencias recibió el autor?</li>
+                    <li><strong>Opinión personal:</strong> ¿qué me transmitió? ¿cómo se relaciona con mi realidad?</li>
+                </ol>
+                <div class="bloque-ejemplo">
+                    Analizar literatura no es buscar una respuesta única, sino enriquecer la experiencia de lectura y desarrollar pensamiento crítico.
+                </div>
+            `,
+            culta_popular: `
+                <h2>Literatura culta y literatura popular</h2>
+                <p><strong>Literatura culta:</strong> también llamada "alta cultura" o "canónica". Se caracteriza por:</p>
+                <ul>
+                    <li>Autores reconocidos y formación intelectual.</li>
+                    <li>Complejidad estilística y temática.</li>
+                    <li>Publicación en circuitos formales (editoriales, premios).</li>
+                    <li>Ejemplos: Cervantes, Shakespeare, García Márquez.</li>
+                </ul>
+                <p><strong>Literatura popular:</strong> dirigida a un público amplio, a menudo con fines de entretenimiento.</p>
+                <ul>
+                    <li>Lenguaje más sencillo, tramas ágiles.</li>
+                    <li>Géneros como novela rosa, policíaca, ciencia ficción comercial, historieta.</li>
+                    <li>Se difunde en formatos masivos (pulp, fanzines, best sellers).</li>
+                    <li>Ejemplos: Agatha Christie, J.K. Rowling, Stephen King.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La frontera entre literatura culta y popular es cada vez más difusa. Muchas obras populares han sido revalorizadas como arte (por ejemplo, la obra de Edgar Allan Poe o H.P. Lovecraft).
+                </div>
+                <p>Ambas formas enriquecen el mundo literario y responden a diferentes necesidades del público.</p>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

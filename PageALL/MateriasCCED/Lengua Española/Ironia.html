@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ironía | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS BASADOS EN EL EJEMPLO ORIGINAL ========== */
+        :root {
+            --color-principal: #e5322e;   /* rojo característico */
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona de contenido principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">IRONÍA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición profunda de ironía</div>
+                <div class="tema" data-tema="caracteristicas">Características esenciales</div>
+                <div class="tema" data-tema="verbal">Ironía verbal (la más común)</div>
+                <div class="tema" data-tema="situacional">Ironía situacional</div>
+                <div class="tema" data-tema="dramatica">Ironía dramática</div>
+                <div class="tema" data-tema="socratica">Ironía socrática</div>
+                <div class="tema" data-tema="sarcasmo">Diferencia entre ironía y sarcasmo</div>
+                <div class="tema" data-tema="literatura">Ironía en la literatura (ejemplos)</div>
+                <div class="tema" data-tema="cotidiana">Ironía en la vida cotidiana</div>
+                <div class="tema" data-tema="redes_sociales">Ironía en redes sociales</div>
+                <div class="tema" data-tema="funcion">Función comunicativa de la ironía</div>
+                <div class="tema" data-tema="identificar">Cómo identificar la ironía</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario de términos relacionados</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>La ironía: definición amplia y ejemplos</h2>
+                <p>La ironía es una figura del lenguaje que consiste en expresar una idea diciendo algo que, en apariencia, significa lo contrario o algo diferente a lo que realmente se quiere comunicar. Su sentido real no está en las palabras literales, sino en la intención, el contexto y la forma en que se dice.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clásico:</strong> Si alguien llega muy tarde y le dicen “Qué puntual eres”, no se está elogiando, sino señalando lo contrario.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar en profundidad todos los aspectos de la ironía.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · La ironía: doble sentido, crítica sutil y creatividad lingüística.</p>
+    </footer>
+
+    <script>
+        // ========== CONTENIDO EXTREMADAMENTE AMPLIADO SOBRE IRONÍA ==========
+        const contenidos = {
+            definicion: `
+                <h2>Definición profunda de la ironía</h2>
+                <p>La <strong>ironía</strong> (del griego <em>eirōneía</em>, ‘disimulo’ o ‘ficción’) es una figura retórica y un recurso comunicativo mediante el cual se expresa algo dando a entender lo contrario o algo distinto de lo que literalmente se dice. Su efecto depende del reconocimiento por parte del receptor de esa contradicción entre el sentido literal y el sentido real.</p>
+                <p>La ironía no es simplemente mentira ni engaño: es un <strong>guiño cómplice</strong> entre emisor y receptor. Quien habla espera que el otro entienda que lo dicho no es lo que realmente piensa. Por eso la ironía requiere <strong>contexto, tono de voz</strong> (si es oral) o <strong>marcas textuales</strong> (si es escrita).</p>
+                <p><strong>Origen filosófico:</strong> En la antigua Grecia, Sócrates usaba la ironía como método pedagógico: fingía ignorancia para que sus interlocutores descubrieran sus propias contradicciones. De ahí nace la llamada “ironía socrática”.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo más complejo:</strong> “Agradezco tu ayuda para desordenar toda la habitación” (cuando alguien, en lugar de ayudar, ha ensuciado más). La frase literal es un agradecimiento, pero el significado real es una queja.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características esenciales de la ironía</h2>
+                <ul>
+                    <li><strong>Doble sentido:</strong> Hay una discrepancia entre lo que se dice y lo que se quiere comunicar.</li>
+                    <li><strong>Requiere interpretación:</strong> No es literal; el receptor debe inferir el significado real.</li>
+                    <li><strong>Depende del contexto:</strong> La misma frase puede ser irónica o no según la situación.</li>
+                    <li><strong>Depende del tono:</strong> En el lenguaje oral, la entonación, las pausas o los gestos son claves.</li>
+                    <li><strong>No siempre es negativa:</strong> Puede ser humorística, crítica, reflexiva o incluso afectuosa (“Eres un genio” dicho con cariño tras un error pequeño).</li>
+                    <li><strong>Puede ser sutil o evidente:</strong> A veces la ironía es muy obvia (“¡Qué bien!” ante una noticia mala); otras veces es tan fina que solo la perciben personas con un conocimiento compartido.</li>
+                    <li><strong>Aparece en casi todos los ámbitos:</strong> Literatura, teatro, cine, conversaciones cotidianas, publicidad, política y redes sociales.</li>
+                </ul>
+            `,
+            verbal: `
+                <h2>Ironía verbal (la más común)</h2>
+                <p>La <strong>ironía verbal</strong> es aquella en la que el hablante dice algo pero quiere dar a entender exactamente lo contrario. Es la forma más frecuente y la que usamos a diario. Para que funcione, debe existir una <strong>marca irónica</strong> (un tono especial, una sonrisa, un guiño, o en la escritura las comillas o cursivas).</p>
+                <p><strong>Ejemplos detallados:</strong></p>
+                <ul>
+                    <li>Un estudiante entrega un trabajo lleno de errores y el profesor comenta: “Este trabajo es una obra maestra de la precisión”. → Realmente está diciendo que es muy malo.</li>
+                    <li>Estás empapado por la lluvia y alguien dice: “Buen día para usar impermeable, ¿eh?”.</li>
+                    <li>Después de un partido en el que tu equipo perdió 5-0, dices: “Jugamos espectacular”.</li>
+                    <li>Alguien olvidó tu cumpleaños y tú le dices: “Qué memoria tan prodigiosa tienes”.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ironía verbal en la literatura:</strong> En <em>El ingenioso hidalgo Don Quijote de la Mancha</em>, Cervantes hace decir a Sancho: “Bien has dicho, señor; pero con todo eso, si yo fuera vuesa merced, no me engañaría tan sin provecho”. La afirmación literal es de aprobación, pero el tono y el contexto muestran que Sancho está criticando a Don Quijote.
+                </div>
+            `,
+            situacional: `
+                <h2>Ironía situacional</h2>
+                <p>La <strong>ironía situacional</strong> (o de destino) ocurre cuando el resultado de una serie de acciones es radicalmente opuesto a lo que se esperaba lógica o normalmente. No depende de lo que alguien dice, sino de los <strong>hechos mismos</strong>. Es como una broma del destino.</p>
+                <p><strong>Ejemplos claros:</strong></p>
+                <ul>
+                    <li>Un bombero se quema la casa porque su propia chimenea estaba mal instalada.</li>
+                    <li>Una persona que evade impuestos gana la lotería y todo el premio se lo quita el fisco para pagar deudas.</li>
+                    <li>Un profesor de seguridad vial es multado por no llevar el cinturón.</li>
+                    <li>Un hospital es asaltado… y los ladrones se roban todos los medicamentos contra la tos.</li>
+                    <li>Compras una alarma antirrobo muy cara y al día siguiente te roban la alarma.</li>
+                </ul>
+                <p>La ironía situacional suele provocar sorpresa, humor negro o reflexión sobre la imprevisibilidad de la vida.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Casos famosos:</strong> En 1912, el Titanic fue anunciado como “insumergible” (ironía trágica). Otro: el creador del primer cinturón de seguridad murió en un accidente de tráfico por no usarlo.
+                </div>
+            `,
+            dramatica: `
+                <h2>Ironía dramática (o trágica)</h2>
+                <p>La <strong>ironía dramática</strong> es un recurso narrativo en el que el público (lector o espectador) sabe algo que los personajes de la historia desconocen. Esto genera tensión, suspense o lástima. Es muy común en el teatro griego, el cine y las novelas.</p>
+                <p><strong>Características:</strong> El espectador o lector posee información privilegiada; los personajes toman decisiones basadas en su ignorancia; a menudo el desenlace es trágico o cómico por ese contraste.</p>
+                <p><strong>Ejemplos clásicos:</strong></p>
+                <ul>
+                    <li>En <em>Edipo Rey</em> de Sófocles, el público sabe que Edipo ha matado a su padre y se ha casado con su madre, pero él lo ignora mientras jura encontrar al asesino.</li>
+                    <li>En <em>Romeo y Julieta</em>, el público sabe que Julieta ha tomado un fármaco que simula la muerte, pero Romeo no lo sabe y se suicida creyéndola muerta.</li>
+                    <li>En las películas de terror, vemos al asesino escondido detrás de la puerta, pero el personaje entra confiado.</li>
+                    <li>En una serie, el espectador sabe que el mejor amigo es el traidor, pero el protagonista sigue confiando en él.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ironía dramática en comedia:</strong> Un personaje se pone unos auriculares y no oye a otro que planea una broma pesada contra él; el público lo oye todo y ríe porque sabe lo que va a pasar.
+                </div>
+            `,
+            socratica: `
+                <h2>Ironía socrática</h2>
+                <p>La <strong>ironía socrática</strong> es una técnica de interrogación que consiste en <strong>fingir ignorancia</strong> para hacer que el interlocutor revele sus propias contradicciones o para guiarlo hacia el conocimiento. Su nombre proviene de Sócrates, quien usaba este método para desmontar falsas certezas.</p>
+                <p><strong>Mecanismo:</strong> El ironista simula no saber sobre un tema y pregunta con aparente ingenuidad. Las respuestas del otro van mostrando su falta de fundamento o sus errores lógicos. Al final, el ironista puede refutar o hacer que el mismo interlocutor se dé cuenta del error.</p>
+                <p><strong>Ejemplos claros:</strong></p>
+                <ul>
+                    <li>Un profesor le dice a un alumno que dio una respuesta incorrecta: “Explícame eso con más detalle, porque no termino de entender cómo llegaste a esa conclusión”. En realidad sí lo entiende y sabe que está mal, busca que el alumno reflexione.</li>
+                    <li>Un amigo afirma que todos los políticos son corruptos. Otro le pregunta: “¿Incluso el alcalde de tu pueblo, que dona su sueldo a un comedor infantil?”. El primero duda y empieza a matizar.</li>
+                    <li>En un debate, alguien dice: “La tierra es plana”. Otro responde con aparente curiosidad: “¿Y cómo explicas los viajes alrededor del mundo?”.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clásico (Platón, Diálogos):</strong> Sócrates pregunta a un político qué es la justicia. El político da una definición. Sócrates, con humildad fingida, aplica ejemplos y contraejemplos hasta que el político se contradice. Sócrates nunca da la respuesta, solo muestra que el otro no sabe.
+                </div>
+            `,
+            sarcasmo: `
+                <h2>Diferencia entre ironía y sarcasmo</h2>
+                <p>A menudo se confunden, pero no son lo mismo. El <strong>sarcasmo</strong> (del griego <em>sarkasmós</em>, ‘desgarrar la carne’) es una forma de ironía <strong>más agresiva y mordaz</strong>, cuyo objetivo es herir, burlarse o ridiculizar a alguien. Toda expresión sarcástica es irónica, pero no toda ironía es sarcástica.</p>
+                <p><strong>Diferencias clave:</strong></p>
+                <ul>
+                    <li><strong>Intención:</strong> La ironía puede ser juguetona, reflexiva o crítica suave; el sarcasmo es ofensivo o humillante.</li>
+                    <li><strong>Tono:</strong> El sarcasmo es más amargo, cortante, con un matiz de desprecio.</li>
+                    <li><strong>Relación entre hablantes:</strong> El sarcasmo suele darse entre personas con cierta hostilidad o confianza agresiva.</li>
+                </ul>
+                <p><strong>Ejemplos para distinguir:</strong></p>
+                <ul>
+                    <li><strong>Ironía no sarcástica:</strong> Alguien tropieza y dice: “Vaya, qué elegante”. (suave, autocrítica sin daño).</li>
+                    <li><strong>Sarcasmo:</strong> Alguien tropieza a propósito por torpeza y otro comenta: “Eres la persona más coordinada del universo”. (evidente burla hiriente).</li>
+                    <li><strong>Ironía sutil:</strong> Hace frío y dices: “Qué clima tan tropical”.</li>
+                    <li><strong>Sarcasmo:</strong> Hace frío y alguien te ve sin abrigo y dice: “Qué bien que no trajiste abrigo, porque aquí hace un calor de horno”. (con tono de reproche).</li>
+                </ul>
+            `,
+            literatura: `
+                <h2>La ironía en la literatura (grandes ejemplos)</h2>
+                <p>Los escritores usan la ironía para crear múltiples capas de significado, crítica social y conectar con el lector inteligente. Desde la épica hasta la novela posmoderna, la ironía es un recurso central.</p>
+                <p><strong>Ejemplos famosos:</strong></p>
+                <ul>
+                    <li><strong>Miguel de Cervantes, <em>Don Quijote</em>:</strong> El narrador dice que los manuscritos de Cide Hamete Benengeli son “mentirosos” pero al mismo tiempo los toma como fuente; ironía sobre la veracidad de las crónicas.</li>
+                    <li><strong>Jane Austen, <em>Orgullo y prejuicio</em>:</strong> Primera frase: “Es una verdad universalmente reconocida que un hombre soltero en posesión de una gran fortuna necesita una esposa”. En realidad, son las mujeres quienes buscan a ese hombre; ironía sobre la sociedad patriarcal.</li>
+                    <li><strong>Jonathan Swift, <em>Una modesta proposición</em>:</strong> Propone “vender a los niños pobres como alimento” para criticar la indiferencia británica hacia los irlandeses. Ironía brutal y satírica.</li>
+                    <li><strong>Gabriel García Márquez:</strong> En <em>El coronel no tiene quien le escriba</em>, la esperanza del coronel es completamente irónica porque el lector sabe que nunca llegará la carta.</li>
+                    <li><strong>Franz Kafka, <em>La metamorfosis</em>:</strong> Gregor Samsa se convierte en insecto y su familia lo trata como una molestia; ironía sobre la deshumanización capitalista.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ironía estructural:</strong> En la novela <em>Lolita</em> de Nabokov, el narrador es un pederasta que intenta justificarse, pero el lector percibe la condena entre líneas. Todo el libro está construido sobre una gran ironía trágica.
+                </div>
+            `,
+            cotidiana: `
+                <h2>Ironía en la vida cotidiana (ejemplos reales)</h2>
+                <p>La usamos casi sin darnos cuenta, en casa, en el trabajo, con amigos. Reconocerla ayuda a mejorar la comunicación y el sentido del humor.</p>
+                <ul>
+                    <li>Llegas tarde a una cita importante y tu amigo te dice: “Menos mal que eres tan puntual”.</li>
+                    <li>Tu hermano derrama leche en la mesa y tú exclamabas: “Eres todo un profesional de la limpieza”.</li>
+                    <li>Ves una noticia: “Un ladrón llamó a la policía porque le robaron las herramientas para robar”.</li>
+                    <li>Después de un atasco de tres horas, el locutor de radio dice: “Hoy el tráfico está fluido, ¿verdad?”.</li>
+                    <li>Rompes sin querer un plato y dices: “Qué bien, justo necesitaba uno menos”.</li>
+                    <li>Un fumador con enfisema lee un cartel que dice “El tabaco mata” y comenta: “Menos mal que yo fumo poco”.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La ironía cotidiana suele ser verbal y se reconoce por el tono sarcástico (cuando es amable) o por el contexto evidente. Es un mecanismo de defensa contra la frustración.
+                </div>
+            `,
+            redes_sociales: `
+                <h2>Ironía en redes sociales (meme y comunicación escrita)</h2>
+                <p>En entornos digitales como Twitter, Facebook o Instagram, la ironía es moneda corriente. Pero al carecer de tono de voz, se usan <strong>marcadores gráficos</strong> para indicarla: comillas, cursivas, mayúsculas intercaladas, o el famoso “/s” (indica sarcasmo).</p>
+                <p><strong>Ejemplos típicos:</strong></p>
+                <ul>
+                    <li>Un tuit: “Me encanta cuando el gobierno promete algo y no lo cumple. Qué sorpresa”. (ironía obvia).</li>
+                    <li>Comentario en Facebook: “Claro que tu perro es el más inteligente, por algo se come los zapatos”.</li>
+                    <li>Hashtag irónico: #Genial, #GraciasPorNada, #MeEncanta.</li>
+                    <li>Texto con mayúsculas intercaladas (SpongeBob mock): “E s t u d i a s t e  muuuucho para el examen”.</li>
+                </ul>
+                <p><strong>Riesgos:</strong> Sin las marcas adecuadas, la ironía puede no entenderse y generar malentendidos. Por eso muchos usuarios añaden “(es broma)” o emojis de guiño 😉 (aunque aquí evitamos emojis por estilo).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Regla práctica:</strong> Si no estás seguro de que tu ironía se vaya a entender en redes, es mejor ser directo o añadir un “/s” al final.
+                </div>
+            `,
+            funcion: `
+                <h2>Función comunicativa de la ironía</h2>
+                <p>La ironía cumple múltiples funciones en la interacción humana. No es solo un adorno lingüístico, sino una herramienta pragmática.</p>
+                <ul>
+                    <li><strong>Crítica social o política:</strong> Permite denunciar sin ser explícito, evitando censura (ejemplos: sátira, chistes políticos).</li>
+                    <li><strong>Humor:</strong> Crea complicidad y aligera tensiones. Una observación irónica bien dicha puede ser más divertida que una broma directa.</li>
+                    <li><strong>Reflexión:</strong> Obliga al receptor a pensar más allá de las palabras literal, estimula la inteligencia.</li>
+                    <li><strong>Cortesía (ironía atenuadora):</strong> En lugar de decir “Lo hiciste mal”, se dice “Interesante técnica”. Suaviza la crítica.</li>
+                    <li><strong>Autodefensa:</strong> Usar ironía sobre uno mismo permite quitar hierro a errores propios (“Soy un peligro para la electricidad” tras quemar una bombilla).</li>
+                    <li><strong>Establecimiento de complicidad:</strong> Compartir un código irónico fortalece vínculos de grupo (por ejemplo, entre amigos que se entienden sin aclaraciones).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La ironía efectiva requiere que el receptor esté “en sintonía”. Si no hay confianza o conocimiento mutuo, puede resultar ofensiva o incomprensible.
+                </div>
+            `,
+            identificar: `
+                <h2>Cómo identificar la ironía (claves para no confundirse)</h2>
+                <p>Detectar la ironía no siempre es fácil, sobre todo en la escritura. Estas pistas pueden ayudar:</p>
+                <ul>
+                    <li><strong>Contradicción con la realidad:</strong> Si lo que se dice choca evidentemente con lo que se ve o se sabe, probablemente es ironía.</li>
+                    <li><strong>Exageración absurda:</strong> “El examen fue tan fácil que resolví todo en dos minutos” (si el examen era larguísimo y difícil).</li>
+                    <li><strong>Tono de voz especial (en oral):</strong> entonación más lenta, pausas, cierto cansancio o falsa admiración.</li>
+                    <li><strong>Marcas textuales en escritura:</strong> comillas irónicas (“me encantó ese espectáculo”), cursivas, signos de exclamación seguidos de puntos suspensivos (“¡Qué bien!”...).</li>
+                    <li><strong>Conocimiento del contexto:</strong> Saber qué espera realmente el hablante es fundamental. Si una persona odia las fiestas y dice “qué divertido”, es irónico.</li>
+                    <li><strong>Reacción posterior:</strong> Si el emisor se ríe, guiña o hace un gesto, confirmará la ironía.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio mental:</strong> Lee esta frase: “Agradezco mucho que hayas traído bebida para todos, aunque tú solo bebiste dos litros”. ¿Es literal o irónica? Depende: si quien habla se ríe y todos se estaban quejando, es ironía. Si lo dice en serio y molesto, puede ser un reproche directo.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos para reconocer y crear ironía</h2>
+                <p><strong>Ejercicio 1: Identificar ironía en frases.</strong> Indica si cada frase es irónica (I) o literal (L):</p>
+                <ol>
+                    <li>“Después de tres horas esperando, el autobús llega justo cuando me voy. Perfecto.” → (I)</li>
+                    <li>“El agua moja las superficies.” → (L)</li>
+                    <li>“Qué inteligente eres, metiste la maleta en el horno.” → (I)</li>
+                    <li>“Hoy es lunes, día de trabajo.” → (L)</li>
+                </ol>
+                <p><strong>Ejercicio 2: Transformar frases literales en irónicas.</strong></p>
+                <ul>
+                    <li>Literal: “Reprobaste el examen.” → Ironía: “Has sido el mejor de la clase, sin duda.”</li>
+                    <li>Literal: “Llovió todo el día.” → Ironía: “Qué bonito día de playa, ¿verdad?”</li>
+                    <li>Literal: “Perdí las llaves otra vez.” → Ironía: “Eres un campeón de la organización.”</li>
+                </ul>
+                <p><strong>Ejercicio 3: Crear una situación irónica.</strong> Escribe una breve historia de tres líneas donde ocurra una ironía situacional (resultado opuesto a lo esperado).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de solución:</strong> “Juan compró un perro guardián para sentirse seguro. Al día siguiente, el perro le ladró a los amigos de Juan, pero se hizo amigo del ladrón que entró de noche.”
+                </div>
+                <p><strong>Ejercicio 4: Analizar ironía en un texto corto.</strong> Busca un chiste irónico en internet o en un libro e identifica qué tipo de ironía es (verbal, situacional o dramática).</p>
+            `,
+            glosario: `
+                <h2>Glosario de términos relacionados con la ironía</h2>
+                <ul>
+                    <li><strong>Antifrasis:</strong> Figura que consiste en decir lo contrario de lo que se piensa, casi sinónimo de ironía verbal muy marcada. Ej: “Eres todo un caballero” (a un grosero).</li>
+                    <li><strong>Sátira:</strong> Género literario o recurso que usa la ironía, el sarcasmo y la burla para criticar vicios o defectos sociales o individuales.</li>
+                    <li><strong>Humor negro:</strong> Tipo de humor irónico que trata temas tabú (muerte, enfermedad) de manera deliberadamente transgresora.</li>
+                    <li><strong>Paradoja:</strong> Declaración que parece contradictoria pero puede encerrar una verdad. No es lo mismo que ironía, aunque a veces se superponen. Ej: “Esta sentencia es falsa”.</li>
+                    <li><strong>Cinismo:</strong> Actitud que consiste en negar o burlarse de las normas sociales con descaro. A menudo se expresa con ironía cruel.</li>
+                    <li><strong>Figura retórica:</strong> Recurso del lenguaje que embellece o modifica la expresión. La ironía es una de ellas.</li>
+                    <li><strong>Distopía:</strong> Género literario donde a menudo se usa ironía estructural para mostrar sociedades perfectas que en realidad son opresivas (ej: <em>Un mundo feliz</em>).</li>
+                    <li><strong>Eufemismo:</strong> Sustitución de una expresión desagradable por una más suave. A veces se combina con ironía (ej: “descansar” por morir, irónicamente).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Dato extra:</strong> El Día de la Ironía se celebra en algunos países el 1 de abril (junto con el Día de los Inocentes). Pero cada día podemos practicarla con cuidado y respeto.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

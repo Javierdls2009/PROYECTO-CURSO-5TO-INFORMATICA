@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géneros Literarios | AcademiaCCED</title>
+    
+    <style>
+        /* colores */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        /* estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra de navegacion superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+        }
+
+        /* boton volver */
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* titulo de la materia */
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.4rem;
+        }
+
+        .barra-lateral hr {
+            opacity: 0.2;
+            margin: 20px 0;
+        }
+
+        .info-materia {
+            text-align: left;
+            font-size: 0.9rem;
+            color: #555;
+            margin: 10px 10px;
+            padding: 10px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(5px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        .zona-herramientas h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .zona-herramientas p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        .zona-herramientas li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">GÉNEROS LITERARIOS</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <!-- barra lateral -->
+        <aside class="barra-lateral">
+            <h3>Clasificación de la literatura</h3>
+            <hr>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('definicion')">1. ¿Qué son los géneros literarios?</div>
+                <div class="tema" onclick="mostrar('caracteristicas')">2. Características generales</div>
+                <div class="tema" onclick="mostrar('narrativo')">3. Género narrativo (novela, cuento, fábula, leyenda)</div>
+                <div class="tema" onclick="mostrar('elementos_narrativo')">4. Elementos del género narrativo</div>
+                <div class="tema" onclick="mostrar('dramatico')">5. Género dramático (tragedia, comedia, drama)</div>
+                <div class="tema" onclick="mostrar('elementos_dramatico')">6. Elementos y estructura teatral</div>
+                <div class="tema" onclick="mostrar('lirico')">7. Género lírico (oda, elegía, soneto, etc.)</div>
+                <div class="tema" onclick="mostrar('recursos_lirico')">8. Recursos del lenguaje lírico</div>
+                <div class="tema" onclick="mostrar('epico')">9. Género épico (epopeya, cantar de gesta)</div>
+                <div class="tema" onclick="mostrar('didactico')">10. Género didáctico (ensayo, fábula, texto expositivo)</div>
+                <div class="tema" onclick="mostrar('tabla_comparativa')">11. Tabla comparativa de los 5 géneros</div>
+                <div class="tema" onclick="mostrar('evolucion')">12. Evolución e importancia</div>
+                <div class="tema" onclick="mostrar('ejercicios')">13. Ejercicios prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')">14. Glosario literario</div>
+            </div>
+        </aside>
+
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Géneros literarios</h2>
+                <p>Los géneros literarios son categorías que permiten clasificar las obras según su forma, contenido, intención y estilo. Esta clasificación tiene su origen en la antigüedad, especialmente con Aristóteles en su obra "Poética".</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "El Quijote" es narrativo (novela), "La casa de Bernarda Alba" es dramático, y "Rimas" de Bécquer es lírico.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para conocer en detalle cada género literario, sus subgéneros, elementos y obras representativas.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Los géneros literarios: organización y estudio de la literatura.</p>
+    </footer>
+
+    <script>
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
+
+            if (tema === "definicion") {
+                html = `
+                    <h2>¿Qué son los géneros literarios?</h2>
+                    <p>Los <strong>géneros literarios</strong> son categorías o modelos que agrupan las obras literarias de acuerdo con su <strong>estructura, contenido, intención comunicativa y estilo</strong>. Permiten clasificar y estudiar la literatura de manera ordenada, facilitando la comprensión de los textos.</p>
+                    <p>El origen de esta clasificación se remonta a la <strong>Antigua Grecia</strong>, donde <strong>Aristóteles</strong> (384-322 a.C.) en su obra <em>Poética</em> propuso la división fundamental en tres géneros: épico (narrativo), lírico y dramático. Con el tiempo se añadieron otros como el didáctico.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Frase célebre:</strong> "El género literario es el molde en el que se vierte la creación artística del escritor."
+                    </div>
+                `;
+            }
+            else if (tema === "caracteristicas") {
+                html = `
+                    <h2>Características generales de los géneros literarios</h2>
+                    <ul>
+                        <li><strong>Estructura propia:</strong> Cada género tiene una organización particular (versos, actos, capítulos).</li>
+                        <li><strong>Lenguaje específico:</strong> El narrativo usa prosa; el lírico, verso con recursos poéticos; el dramático, diálogos.</li>
+                        <li><strong>Intención comunicativa:</strong> Narrar (épico/narrativo), expresar sentimientos (lírico), representar acciones (dramático), enseñar (didáctico).</li>
+                        <li><strong>Presencia de un narrador o voz poética:</strong> En narrativa hay narrador; en lírica, hablante lírico; en drama no hay narrador.</li>
+                        <li><strong>Subgéneros:</strong> Cada género se divide en formas más específicas (novela, cuento, tragedia, oda, etc.).</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "narrativo") {
+                html = `
+                    <h2>Género narrativo (épico en origen)</h2>
+                    <p>El <strong>género narrativo</strong> se basa en contar historias (reales o ficticias) mediante un narrador que relata los hechos. Incluye personajes, espacio, tiempo y trama. Su forma habitual es la prosa, aunque existen narraciones en verso (epopeya).</p>
+                    <p><strong>Subgéneros principales:</strong></p>
+                    <ul>
+                        <li><strong>Novela:</strong> Narración extensa con argumento complejo, múltiples personajes y subtramas. Ej: <em>Cien años de soledad</em> de García Márquez.</li>
+                        <li><strong>Cuento:</strong> Narración breve con pocos personajes y un solo conflicto central. Ej: <em>El Aleph</em> de Borges.</li>
+                        <li><strong>Fábula:</strong> Narración breve con moraleja final, protagonizada por animales. Ej: <em>La liebre y la tortuga</em> (Esopo).</li>
+                        <li><strong>Leyenda:</strong> Relato que mezcla hechos reales con elementos fantásticos, transmitido por tradición oral. Ej: Leyenda del Cid.</li>
+                        <li><strong>Epopeya / poema épico:</strong> Narración en verso de hazañas heroicas (también considerada género épico). Ej: <em>La Ilíada</em>.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        "El Quijote" de Cervantes es una novela (género narrativo) que también contiene elementos de parodia de la épica.
+                    </div>
+                `;
+            }
+            else if (tema === "elementos_narrativo") {
+                html = `
+                    <h2>Elementos del género narrativo</h2>
+                    <ul>
+                        <li><strong>Narrador:</strong> Voz que cuenta la historia. Puede ser en 1ª persona (protagonista o testigo), 2ª persona (raro) o 3ª persona (omnisciente, limitado o testigo).</li>
+                        <li><strong>Personajes:</strong> Protagonista (héroe), antagonista (oponente), secundarios, incidentales. Pueden ser planos o redondos.</li>
+                        <li><strong>Trama (argumento):</strong> Secuencia de hechos. Estructura: planteamiento, nudo, desenlace. Incluye conflicto, clímax y resolución.</li>
+                        <li><strong>Espacio:</strong> Lugar o lugares donde ocurre la acción (físico, social, psicológico).</li>
+                        <li><strong>Tiempo:</strong> Época histórica, duración de la historia, orden cronológico (lineal, flashback, flashforward).</li>
+                        <li><strong>Estilo y tono:</strong> Lenguaje empleado (formal, coloquial, poético) y actitud del narrador (irónico, serio, cómico).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En "Crónica de una muerte anunciada" de García Márquez, el narrador es testigo (1ª persona plural), la trama no es lineal y el tiempo se rompe constantemente.
+                    </div>
+                `;
+            }
+            else if (tema === "dramatico") {
+                html = `
+                    <h2>Género dramático (teatro)</h2>
+                    <p>El <strong>género dramático</strong> está destinado a la representación escénica. No tiene narrador; la historia se desarrolla mediante diálogos, monólogos y acotaciones. Se organiza en actos y escenas.</p>
+                    <p><strong>Subgéneros principales:</strong></p>
+                    <ul>
+                        <li><strong>Tragedia:</strong> Conflicto grave que lleva a un final desdichado (muerte, locura). Provoca catarsis (purificación). Ej: <em>Edipo Rey</em> de Sófocles.</li>
+                        <li><strong>Comedia:</strong> Aborda conflictos de forma ligera y humorística, con final feliz. Ej: <em>El médico a palos</em> de Molière.</li>
+                        <li><strong>Drama:</strong> Mezcla elementos trágicos y cómicos, con personajes más realistas. Ej: <em>La casa de Bernarda Alba</em> de Lorca.</li>
+                        <li><strong>Tragicomedia:</strong> Fusión de tragedia y comedia.</li>
+                        <li><strong>Auto sacramental:</strong> Obra religiosa alegórica (Calderón de la Barca).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        "Romeo y Julieta" de Shakespeare combina elementos trágicos (muerte) y cómicos (personajes como Mercucio).
+                    </div>
+                `;
+            }
+            else if (tema === "elementos_dramatico") {
+                html = `
+                    <h2>Elementos y estructura del género dramático</h2>
+                    <p><strong>Elementos del texto dramático:</strong></p>
+                    <ul>
+                        <li><strong>Diálogo:</strong> Intercambio verbal entre personajes.</li>
+                        <li><strong>Monólogo:</strong> Un personaje habla solo, expresando sus pensamientos.</li>
+                        <li><strong>Aparte:</strong> Frase que un personaje dice para sí (o al público) sin que los otros lo oigan.</li>
+                        <li><strong>Acotaciones:</strong> Indicaciones del autor sobre escenografía, gestos, tono de voz, etc. (suelen ir en cursiva o entre paréntesis).</li>
+                    </ul>
+                    <p><strong>Estructura externa:</strong> Actos (divisiones mayores) y escenas (cambio de personajes en escena).</p>
+                    <p><strong>Estructura interna:</strong> Planteamiento (presentación de personajes y conflicto), nudo (desarrollo) y desenlace (resolución).</p>
+                    <div class="bloque-ejemplo">
+                        En "La vida es sueño" de Calderón, el monólogo "¡Ay, mísero de mí!" es famoso: "¿Qué es la vida? Un frenesí..."
+                    </div>
+                `;
+            }
+            else if (tema === "lirico") {
+                html = `
+                    <h2>Género lírico (poesía)</h2>
+                    <p>El <strong>género lírico</strong> expresa sentimientos, emociones y pensamientos del autor (o de un hablante lírico). Es subjetivo, con predominio de la función poética del lenguaje. Generalmente se escribe en verso, aunque existe la prosa poética.</p>
+                    <p><strong>Formas líricas principales:</strong></p>
+                    <ul>
+                        <li><strong>Oda:</strong> Poema que exalta a una persona, objeto o idea. Ej: <em>Oda a la cebolla</em> de Pablo Neruda.</li>
+                        <li><strong>Elegía:</strong> Expresa dolor por la pérdida de un ser querido. Ej: <em>Elegía a Ramón Sijé</em> de Miguel Hernández.</li>
+                        <li><strong>Soneto:</strong> 14 versos endecasílabos (11 sílabas) con rima consonante. Ej: Sonetos de Garcilaso, Quevedo o Lope.</li>
+                        <li><strong>Himno:</strong> Canto que celebra valores patrióticos, religiosos o colectivos. Ej: Himno Nacional.</li>
+                        <li><strong>Egloga:</strong> Poema pastoril con diálogo entre pastores idealizados.</li>
+                        <li><strong>Canción:</strong> Poema de origen medieval que combina versos y estribillo.</li>
+                        <li><strong>Haiku:</strong> Poema japonés de 3 versos (5-7-5 sílabas) sobre la naturaleza.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Ejemplo de soneto: "En paz" de Amado Nervo: "Muy cerca de mi ocaso, yo te bendigo, vida..."
+                    </div>
+                `;
+            }
+            else if (tema === "recursos_lirico") {
+                html = `
+                    <h2>Recursos del lenguaje lírico (figuras literarias)</h2>
+                    <ul>
+                        <li><strong>Metáfora:</strong> Identificación de un término real con otro imaginario ("tus ojos son dos luceros").</li>
+                        <li><strong>Símil o comparación:</strong> Relación explícita con "como" ("fuerte como un león").</li>
+                        <li><strong>Personificación:</strong> Atribuir cualidades humanas a objetos o animales ("el viento susurra").</li>
+                        <li><strong>Hipérbole:</strong> Exageración ("te quiero hasta el infinito").</li>
+                        <li><strong>Anáfora:</strong> Repetición de palabras al inicio de versos ("temprano levantó la muerte el vuelo, / temprano madrugó la madrugada").</li>
+                        <li><strong>Aliteración:</strong> Repetición de sonidos ("el susurro sedoso del sonido").</li>
+                        <li><strong>Rima:</strong> Repetición de sonidos finales (consonante o asonante).</li>
+                        <li><strong>Métrica:</strong> Medida de los versos (octosílabos, endecasílabos, etc.).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En "Rima XI" de Bécquer: "Yo sé un himno gigante y extraño / que anuncia en la noche del alma una aurora" → metáforas y personificación.
+                    </div>
+                `;
+            }
+            else if (tema === "epico") {
+                html = `
+                    <h2>Género épico (poesía heroica)</h2>
+                    <p>El <strong>género épico</strong> narra las hazañas de héroes y hechos fundacionales de un pueblo, con intervención de dioses o elementos sobrenaturales. Se escribía originalmente en verso (hexámetros). Es el antecedente de la novela moderna.</p>
+                    <p><strong>Obras representativas:</strong></p>
+                    <ul>
+                        <li><em>La Ilíada</em> y <em>La Odisea</em> de Homero (Grecia).</li>
+                        <li><em>La Eneida</em> de Virgilio (Roma).</li>
+                        <li><em>El Cantar de Mio Cid</em> (España, anónimo).</li>
+                        <li><em>El Poema de Gilgamesh</em> (Mesopotamia).</li>
+                        <li><em>El Mahabharata</em> (India).</li>
+                    </ul>
+                    <p><strong>Características:</strong> héroe virtuoso (Aquiles, Eneas, Cid), invocación a la musa, lenguaje elevado, epítetos ("Aquiles el de los pies ligeros"), largas descripciones (catálogos).</p>
+                    <div class="bloque-ejemplo">
+                        Fragmento de la Ilíada: "Canta, oh diosa, la cólera del Pelida Aquiles; cólera funesta que causó infinitos males a los aqueos."
+                    </div>
+                `;
+            }
+            else if (tema === "didactico") {
+                html = `
+                    <h2>Género didáctico</h2>
+                    <p>El <strong>género didáctico</strong> tiene como propósito enseñar, transmitir conocimientos o reflexionar sobre un tema. Prioriza la función informativa o persuasiva sobre la estética, aunque puede usar recursos artísticos.</p>
+                    <p><strong>Tipos principales:</strong></p>
+                    <ul>
+                        <li><strong>Ensayo:</strong> Exposición personal y subjetiva sobre un tema. Ej: <em>Los ensayos</em> de Montaigne, <em>El laberinto de la soledad</em> de Octavio Paz.</li>
+                        <li><strong>Texto expositivo:</strong> Explica información de forma clara y objetiva (libros de texto, artículos divulgativos).</li>
+                        <li><strong>Discurso argumentativo:</strong> Busca convencer mediante razones (discursos políticos, debates).</li>
+                        <li><strong>Fábula:</strong> Aunque es narrativa, tiene intención didáctica (moraleja).</li>
+                        <li><strong>Diálogo filosófico:</strong> Platón (La República).</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        "El Príncipe" de Maquiavelo es un tratado didáctico sobre política. "Carta a la Tierra" de Félix Rodríguez de la Fuente tiene fin educativo ambiental.
+                    </div>
+                `;
+            }
+            else if (tema === "tabla_comparativa") {
+                html = `
+                    <h2>Tabla comparativa de los géneros literarios principales</h2>
+                    <table border="1" cellpadding="8" style="border-collapse:collapse; width:100%; background:#fff; margin:15px 0;">
+                        <tr style="background:#e5322e; color:#fff;"><th>Género</th><th>Intención</th><th>Forma habitual</th><th>Presencia de narrador</th><th>Ejemplo</th></tr>
+                        <tr><td>Narrativo</td><td>Contar historias</td><td>Prosa (novela, cuento)</td><td>Sí (1ª,3ª persona)</td><td><em>Cien años de soledad</em></td></tr>
+                        <tr><td>Dramático</td><td>Representar acciones</td><td>Diálogos + acotaciones</td><td>No</td><td><em>La casa de Bernarda Alba</em></td></tr>
+                        <tr><td>Lírico</td><td>Expresar sentimientos</td><td>Verso (poesía)</td><td>Hablante lírico</td><td><em>Rimas</em> de Bécquer</td></tr>
+                        <tr><td>Épico</td><td>Exaltar hazañas</td><td>Verso (epopeya)</td><td>Sí (musa, poeta)</td><td><em>La Ilíada</em></td></tr>
+                        <tr><td>Didáctico</td><td>Enseñar / reflexionar</td><td>Prosa argumentativa</td><td>Voz autoral</td><td><em>Ensayos</em> de Montaigne</td></tr>
+                    </table>
+                `;
+            }
+            else if (tema === "evolucion") {
+                html = `
+                    <h2>Evolución e importancia de los géneros literarios</h2>
+                    <p><strong>Evolución histórica:</strong> Los géneros no han sido estáticos. En el Romanticismo se mezclaron géneros (prosa poética). En el siglo XX, las vanguardias rompieron esquemas. Hoy coexisten formas híbridas: <strong>novela gráfica</strong>, <strong>literatura digital</strong>, <strong>poesía visual</strong>, <strong>microcuento</strong>.</p>
+                    <p><strong>Importancia:</strong></p>
+                    <ul>
+                        <li>Facilitan la clasificación y estudio de las obras.</li>
+                        <li>Ayudan a reconocer estructuras y estilos.</li>
+                        <li>Desarrollan habilidades de comprensión, análisis y escritura crítica.</li>
+                        <li>Permiten al lector elegir según sus preferencias.</li>
+                        <li>Son fundamentales en la educación literaria.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Actualmente, obras como "Rayuela" de Cortázar mezclan narrativa, lirismo y ensayo, desafiando la pureza genérica.
+                    </div>
+                `;
+            }
+            else if (tema === "ejercicios") {
+                html = `
+                    <h2>Ejercicios prácticos sobre géneros literarios</h2>
+                    <p><strong>1. Clasifica las siguientes obras por género:</strong> "El Cantar de Mio Cid", "Oda a la vida retirada" (Fray Luis de León), "El sí de las niñas" (Moratín).</p>
+                    <div class="bloque-ejemplo">
+                        - El Cantar de Mio Cid → épico / narrativo.<br>
+                        - Oda a la vida retirada → lírico (oda).<br>
+                        - El sí de las niñas → dramático (comedia neoclásica).
+                    </div>
+                    <p><strong>2. Indica qué tipo de narrador hay en:</strong> "Me llamo Ismael. Hace algún tiempo, no importa cuánto exactamente..." (Moby Dick).</p>
+                    <div class="bloque-ejemplo">
+                        Narrador en primera persona (protagonista). El "yo" cuenta su propia historia.
+                    </div>
+                    <p><strong>3. Identifica la figura literaria en el verso:</strong> "El silencio me habla con su voz de terciopelo".</p>
+                    <div class="bloque-ejemplo">
+                        Personificación y metáfora (el silencio habla).
+                    </div>
+                    <p><strong>4. Escribe un microcuento (10 líneas máximo) de género narrativo.</strong></p>
+                    <p><strong>5. Investiga la definición de "tragedia griega" y escribe sus elementos principales.</strong></p>
+                `;
+            }
+            else if (tema === "glosario") {
+                html = `
+                    <h2>Glosario literario</h2>
+                    <ul>
+                        <li><strong>Género literario:</strong> Categoría que agrupa obras por forma y contenido.</li>
+                        <li><strong>Narrador:</strong> Voz que relata los hechos en una narración.</li>
+                        <li><strong>Hablante lírico:</strong> Voz que expresa sentimientos en un poema (no es el autor).</li>
+                        <li><strong>Acto (teatro):</strong> División mayor de una obra dramática.</li>
+                        <li><strong>Acotación:</strong> Indicación escénica del autor.</li>
+                        <li><strong>Epíteto:</strong> Adjetivo que resalta una cualidad del nombre ("blanca nieve").</li>
+                        <li><strong>Catarsis:</strong> Purificación emocional que produce la tragedia en el espectador.</li>
+                        <li><strong>Moraleja:</strong> Enseñanza moral al final de una fábula.</li>
+                        <li><strong>Novela gráfica:</strong> Formato híbrido que combina cómic y novela.</li>
+                        <li><strong>Clímax:</strong> Momento de máxima tensión en la trama.</li>
+                        <li><strong>Flashback:</strong> Salto atrás en el tiempo narrativo.</li>
+                    </ul>
+                `;
+            }
+            else {
+                html = `<h2>Géneros literarios</h2><p>Selecciona un tema del menú lateral.</p>`;
+            }
+            contenido.innerHTML = html;
+        }
+
+        window.onload = function() {
+            mostrar('definicion');
+        };
+    </script>
+</body>
+</html>

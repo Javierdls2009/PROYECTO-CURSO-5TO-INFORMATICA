@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escritores Dominicanos | AcademiaCCED</title>
+    
+    <style>
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 30px 15px;
+            overflow-y: auto;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.3rem;
+            text-align: center;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-autores {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .autor {
+            padding: 12px 15px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .autor:hover {
+            background: #ffe8e7;
+            transform: translateX(5px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-contenido {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 10px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        #contenido ul {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-cita {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-contenido { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">ESCRITORES DOMINICANOS</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Grandes plumas de la literatura dominicana</h3>
+            <div class="lista-autores">
+                <div class="autor" onclick="mostrar('bosch')">Juan Bosch</div>
+                <div class="autor" onclick="mostrar('mir')">Pedro Mir</div>
+                <div class="autor" onclick="mostrar('urena_s')">Salomé Ureña</div>
+                <div class="autor" onclick="mostrar('urena_p')">Pedro Henríquez Ureña</div>
+                <div class="autor" onclick="mostrar('cabral')">Manuel del Cabral</div>
+                <div class="autor" onclick="mostrar('cartagena')">Aída Cartagena Portalatín</div>
+                <div class="autor" onclick="mostrar('veloz')">Marcio Veloz Maggiolo</div>
+                <div class="autor" onclick="mostrar('diaz_grullon')">Virgilio Díaz Grullón</div>
+                <div class="autor" onclick="mostrar('contreras')">Hilma Contreras</div>
+                <div class="autor" onclick="mostrar('j_diaz')">Junot Díaz</div>
+            </div>
+        </aside>
+
+        <main class="zona-contenido">
+            <div id="contenido">
+                <h2>Literatura dominicana: sus figuras esenciales</h2>
+                <p>La República Dominicana ha producido a lo largo de su historia una constelación de escritores excepcionales que han enriquecido las letras hispanoamericanas. Desde poetas fundacionales hasta narradores contemporáneos, estas figuras han abordado la identidad nacional, la injusticia social, la condición humana y la memoria histórica.</p>
+                <div class="bloque-cita">
+                    “La patria es una comunidad de seres humanos que llevan el mismo recuerdo y la misma esperanza.” – Juan Bosch (paráfrasis)
+                </div>
+                <hr>
+                <p>Haz clic en cualquier nombre del menú lateral para conocer a fondo su vida, obra y legado.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Biografías ampliadas de escritores dominicanos.</p>
+    </footer>
+
+    <script>
+        function mostrar(autor) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
+
+            if (autor === "bosch") {
+                html = `
+                    <h2>Juan Bosch (1909-2001)</h2>
+                    <p><strong>Nacimiento:</strong> 30 de junio de 1909, La Vega, República Dominicana. <strong>Fallecimiento:</strong> 1 de noviembre de 2001, Santo Domingo.</p>
+                    <p>Fue cuentista, ensayista, político y uno de los intelectuales más influyentes del país. Durante la dictadura de Trujillo vivió exiliado en Cuba, Puerto Rico, Costa Rica y Chile, donde escribió gran parte de su obra. Su estilo narrativo se caracteriza por la claridad, el realismo social y la profunda humanidad.</p>
+                    <p><strong>Obras destacadas:</strong></p>
+                    <ul>
+                        <li><em>La Mañosa</em> (1936) – novela sobre la guerra campesina contra la invasión estadounidense.</li>
+                        <li><em>Cuentos escritos en el exilio</em> (1962) – relatos de denuncia social.</li>
+                        <li><em>El oro y la paz</em> (1955) – ensayo histórico.</li>
+                        <li><em>David, biografía de un caudillo</em> (1971) – crítica al autoritarismo.</li>
+                        <li><em>Cuentos de Navidad</em> – recopilación de relatos breves.</li>
+                    </ul>
+                    <p>Fue presidente de la República Dominicana en 1963 durante siete meses, derrocado por un golpe de Estado. Su gobierno, de inspiración socialdemócrata, buscó reformas agrarias y educativas. Fundó el Partido Revolucionario Dominicano (PRD) y más tarde el Partido de la Liberación Dominicana (PLD). Su legado literario y político es fundamental para entender el siglo XX dominicano.</p>
+                    <div class="bloque-cita">
+                        Fragmento de <em>La Mañosa</em>: "El hombre está solo, rodeado de montañas y de hombres que no lo entienden. Pero tiene la esperanza, y la esperanza es lo único que no se puede matar."
+                    </div>
+                `;
+            } 
+            else if (autor === "mir") {
+                html = `
+                    <h2>Pedro Mir (1913-2000)</h2>
+                    <p><strong>Nacimiento:</strong> 3 de junio de 1913, San Pedro de Macorís. <strong>Fallecimiento:</strong> 11 de julio de 2000, Santo Domingo.</p>
+                    <p>Poeta, abogado y profesor universitario. Fue declarado <strong>Poeta Nacional de la República Dominicana</strong> en 1984 por la importancia de su obra en la construcción de la identidad cultural. Su poesía combina denuncia social, amor patrio y reflexión histórica.</p>
+                    <p><strong>Obras más importantes:</strong></p>
+                    <ul>
+                        <li><em>Hay un país en el mundo</em> (1949) – poema largo que describe el sufrimiento y la esperanza del pueblo dominicano.</li>
+                        <li><em>Contracanto a Walt Whitman</em> (1952) – diálogo crítico con el poeta estadounidense.</li>
+                        <li><em>El huracán Neruda</em> (1975) – análisis de la influencia de Pablo Neruda.</li>
+                        <li><em>Poemas a la madre</em> (1981).</li>
+                        <li><em>Cuando amaban las tierras comuneras</em> (1988) – ensayo histórico.</li>
+                    </ul>
+                    <p>También escribió novelas y ensayos. Su obra es esencial para entender la conciencia histórica dominicana. Fue miembro de la Academia Dominicana de la Lengua. Su poema <em>Hay un país en el mundo</em> es uno de los más recitados en el país.</p>
+                    <div class="bloque-cita">
+                        <em>Hay un país en el mundo</em> (fragmento):<br>
+                        "Hay un país en el mundo / colocado en el mismo trayecto del sol, / y no está en el mundo, / está en el corazón."
+                    </div>
+                `;
+            }
+            else if (autor === "urena_s") {
+                html = `
+                    <h2>Salomé Ureña (1850-1897)</h2>
+                    <p><strong>Nacimiento:</strong> 21 de octubre de 1850, Santo Domingo. <strong>Fallecimiento:</strong> 6 de marzo de 1897, Santo Domingo.</p>
+                    <p>Poetisa y educadora. Es considerada la fundadora de la poesía lírica dominicana del siglo XIX y una de las voces femeninas más importantes de Hispanoamérica. Su obra aborda el patriotismo, la familia y la espiritualidad, con influencias del romanticismo.</p>
+                    <p><strong>Obras principales:</strong></p>
+                    <ul>
+                        <li><em>Poesías</em> (1880) – recopilación de sus mejores versos.</li>
+                        <li><em>Ruinas</em> (1881) – poema melancólico sobre la destrucción y la esperanza.</li>
+                        <li><em>La fe en el porvenir</em> – poema patriótico.</li>
+                        <li><em>Anacaona</em> – poema en homenaje a la cacica taína.</li>
+                    </ul>
+                    <p>Fundó en 1881 el <strong>Instituto de Señoritas</strong>, primera institución de educación superior para mujeres en el país, rompiendo barreras sociales. Fue madre de los también intelectuales Pedro Henríquez Ureña y Max Henríquez Ureña. Su legado educador y poético sigue vigente.</p>
+                    <div class="bloque-cita">
+                        Fragmento de <em>Ruinas</em>:<br>
+                        "Ved esas ruinas que el azote impío / de la tormenta destrozó brutal; / vedlas: al golpe del furor bravío / dobló su frente el colosal gigante."
+                    </div>
+                `;
+            }
+            else if (autor === "urena_p") {
+                html = `
+                    <h2>Pedro Henríquez Ureña (1884-1946)</h2>
+                    <p><strong>Nacimiento:</strong> 29 de junio de 1884, Santo Domingo. <strong>Fallecimiento:</strong> 11 de mayo de 1946, Buenos Aires, Argentina.</p>
+                    <p>Ensayista, filólogo, crítico literario, filósofo e historiador de las ideas. Es uno de los humanistas más completos de América Latina. Exiliado por la dictadura de Trujillo, desarrolló su carrera en México, Cuba, Estados Unidos y Argentina, donde fue profesor en la Universidad de Buenos Aires.</p>
+                    <p><strong>Obras fundamentales:</strong></p>
+                    <ul>
+                        <li><em>Ensayos críticos</em> (1905).</li>
+                        <li><em>La utopía de América</em> (1925).</li>
+                        <li><em>Seis ensayos en busca de nuestra expresión</em> (1928) – análisis de la identidad cultural hispanoamericana.</li>
+                        <li><em>Historia de la cultura en la América Hispánica</em> (1947, póstumo).</li>
+                        <li><em>El español en Santo Domingo</em> (1940) – estudio lingüístico fundamental.</li>
+                    </ul>
+                    <p>Colaboró con Alfonso Reyes y otros intelectuales del Ateneo de la Juventud en México. Su pensamiento sobre la identidad latinoamericana sigue siendo referente. Fue miembro de El Colegio Nacional de México y de la Academia Argentina de Letras.</p>
+                    <div class="bloque-cita">
+                        “Nuestra América no debe imitar, sino crear. La expresión propia es la única que puede dar cuenta de nuestra realidad.”
+                    </div>
+                `;
+            }
+            else if (autor === "cabral") {
+                html = `
+                    <h2>Manuel del Cabral (1907-1999)</h2>
+                    <p><strong>Nacimiento:</strong> 7 de marzo de 1907, Santiago de los Caballeros. <strong>Fallecimiento:</strong> 14 de mayo de 1999, Santo Domingo.</p>
+                    <p>Poeta, narrador y diplomático. Considerado el máximo representante de la <strong>poesía afroantillana</strong>, junto a Nicolás Guillén, Luis Palés Matos y Emilio Ballagas. Su obra aborda la herencia africana, la injusticia racial y la identidad caribeña.</p>
+                    <p><strong>Obras destacadas:</strong></p>
+                    <ul>
+                        <li><em>Trópico negro</em> (1942) – poemas que retratan la vida y la opresión del negro en el Caribe.</li>
+                        <li><em>Compadre Mon</em> (1943) – denuncia de la explotación campesina.</li>
+                        <li><em>El sacrificio del buey</em> (1948) – poema narrativo.</li>
+                        <li><em>Doce poemas negros</em> (1956).</li>
+                        <li><em>Antología</em> (varias ediciones).</li>
+                    </ul>
+                    <p>También escribió cuentos y novelas. Fue embajador en varios países. Su estilo es rítmico, de gran potencia expresiva. Recibió el Premio Nacional de Literatura (1992).</p>
+                    <div class="bloque-cita">
+                        Fragmento de <em>Trópico negro</em>:<br>
+                        "Negro sin nada en la vida / pero con toda la muerte / y con las manos vacías / y con los pies en la tierra."
+                    </div>
+                `;
+            }
+            else if (autor === "cartagena") {
+                html = `
+                    <h2>Aída Cartagena Portalatín (1918-1994)</h2>
+                    <p><strong>Nacimiento:</strong> 18 de junio de 1918, Santo Domingo. <strong>Fallecimiento:</strong> 3 de junio de 1994, Santo Domingo.</p>
+                    <p>Poeta, ensayista, narradora y crítica literaria. Fue una de las voces más innovadoras e inconformistas de la literatura dominicana. Perteneció a la <strong>Generación del 48</strong>, un grupo que renovó las letras nacionales con temas existencialistas y sociales.</p>
+                    <p><strong>Obras relevantes:</strong></p>
+                    <ul>
+                        <li><em>La voz desatada</em> (1962) – poesía comprometida.</li>
+                        <li><em>El tiempo es el fuego</em> (1975).</li>
+                        <li><em>La tarde en que murió Estefanía</em> (1984) – novela corta.</li>
+                        <li><em>Desde un costado de la piel</em> (1987) – poemario.</li>
+                        <li><em>Cultura femenina y creación literaria</em> (ensayo).</li>
+                    </ul>
+                    <p>Fue feminista y crítica de la desigualdad de género. Utilizó el surrealismo y la introspección psicológica. Fue la primera mujer en ocupar un sillón en la Academia Dominicana de la Lengua (1976).</p>
+                    <div class="bloque-cita">
+                        Fragmento de <em>La voz desatada</em>:<br>
+                        "Una mujer está sola. / Sola con su esperanza / y con su soledad. / Inventa una mañana / para los que no tienen / ni siquiera un lugar."
+                    </div>
+                `;
+            }
+            else if (autor === "veloz") {
+                html = `
+                    <h2>Marcio Veloz Maggiolo (1936-2021)</h2>
+                    <p><strong>Nacimiento:</strong> 28 de agosto de 1936, Santo Domingo. <strong>Fallecimiento:</strong> 10 de abril de 2021, Santo Domingo.</p>
+                    <p>Novelista, cuentista, ensayista, arqueólogo y antropólogo. Una de las figuras más completas de la literatura dominicana contemporánea. Su obra integra la historia, la arqueología precolombina, la antropología cultural y la crítica social.</p>
+                    <p><strong>Obras más importantes:</strong></p>
+                    <ul>
+                        <li><em>El prófugo</em> (1962) – novela sobre el exilio político.</li>
+                        <li><em>La mosca soldado</em> (1964) – cuentos.</li>
+                        <li><em>Los ángeles de hueso</em> (1976) – novela histórica.</li>
+                        <li><em>El hombre del acordeón</em> (1981).</li>
+                        <li><em>De donde vienen los cantores</em> (1988) – ensayo antropológico.</li>
+                    </ul>
+                    <p>Escribió más de 30 libros. Su enfoque científico le permitió recrear con precisión el pasado dominicano. Fue miembro de número de la Academia Dominicana de la Lengua y recibió el Premio Nacional de Literatura (1994).</p>
+                    <div class="bloque-cita">
+                        “La novela es una forma de conocimiento, una indagación en los pliegues del ser humano y de la historia.”
+                    </div>
+                `;
+            }
+            else if (autor === "diaz_grullon") {
+                html = `
+                    <h2>Virgilio Díaz Grullón (1924-2001)</h2>
+                    <p><strong>Nacimiento:</strong> 1 de enero de 1924, Santiago de los Caballeros. <strong>Fallecimiento:</strong> 18 de julio de 2001, Santo Domingo.</p>
+                    <p>Cuentista y médico. Es considerado el <strong>introductor de la narrativa psicológica moderna</strong> en República Dominicana. Influenciado por el existencialismo y el psicoanálisis, sus cuentos exploran la complejidad de la mente humana, las neurosis y los conflictos irresueltos.</p>
+                    <p><strong>Obras principales:</strong></p>
+                    <ul>
+                        <li><em>Una cigarra llamada Carlota</em> (1965) – cuentos donde los personajes están atrapados en sus propias obsesiones.</li>
+                        <li><em>La máscara y el tiempo</em> (1970).</li>
+                        <li><em>Los algarrobos también sueñan</em> (1984).</li>
+                        <li><em>Cuentos completos</em> (1990).</li>
+                    </ul>
+                    <p>Su técnica narrativa rompió con el realismo costumbrista dominicano. Utilizó el monólogo interior y la fragmentación temporal. Fue miembro de la Academia Dominicana de la Lengua y ganó el Premio Nacional de Literatura (1997).</p>
+                    <div class="bloque-cita">
+                        Fragmento de <em>Una cigarra llamada Carlota</em>: "El miedo estaba allí, compacto, como un animal agazapado en la penumbra. No se podía gritar, no se podía huir: sólo esperar."
+                    </div>
+                `;
+            }
+            else if (autor === "contreras") {
+                html = `
+                    <h2>Hilma Contreras (1913-2006)</h2>
+                    <p><strong>Nacimiento:</strong> 8 de diciembre de 1913, San Francisco de Macorís. <strong>Fallecimiento:</strong> 14 de enero de 2006, Santo Domingo.</p>
+                    <p>Escritora de cuentos. Es una de las voces más singulares y originales de la literatura dominicana del siglo XX. Su obra se caracteriza por el <strong>introspectivismo</strong>, la exploración psicológica de los personajes y un estilo depurado, casi minimalista.</p>
+                    <p><strong>Obras destacadas:</strong></p>
+                    <ul>
+                        <li><em>Doce cuentos</em> (1973).</li>
+                        <li><em>Cuatro cuentos</em> (1977).</li>
+                        <li><em>La tierra está bramando</em> (1986).</li>
+                        <li><em>Entre dos silencios</em> (1999).</li>
+                    </ul>
+                    <p>Fue la <strong>primera mujer en recibir el Premio Nacional de Literatura</strong> (1990), lo que abrió camino a otras escritoras. Su obra, poco conocida durante décadas, fue reivindicada por su calidad y profundidad psicológica.</p>
+                    <div class="bloque-cita">
+                        Fragmento: “La soledad no duele; lo que duele es haber amado y perder. Pero si nunca se ha amado, la soledad es como un espejo vacío.”
+                    </div>
+                `;
+            }
+            else if (autor === "j_diaz") {
+                html = `
+                    <h2>Junot Díaz (1968 - )</h2>
+                    <p><strong>Nacimiento:</strong> 31 de diciembre de 1968, Santo Domingo. Reside en Estados Unidos desde los seis años.</p>
+                    <p>Escritor de novelas y cuentos. Es el autor dominicano de mayor proyección internacional. Su obra aborda la <strong>experiencia migratoria</strong>, la identidad dominicana en Estados Unidos, el choque cultural, la pobreza y la búsqueda de pertenencia. Combina el español y el inglés (spanglish) para reflejar la realidad de la diáspora.</p>
+                    <p><strong>Obras principales:</strong></p>
+                    <ul>
+                        <li><em>Drown</em> (1996) – colección de cuentos sobre la vida de inmigrantes dominicanos en Nueva Jersey.</li>
+                        <li><em>The Brief Wondrous Life of Oscar Wao</em> (2007) – novela galardonada con el <strong>Premio Pulitzer de Ficción</strong> (2008) y el National Book Critics Circle Award. Narra la historia de una familia dominicana bajo el influjo de la dictadura trujillista.</li>
+                        <li><em>This Is How You Lose Her</em> (2012) – cuentos sobre el amor, la infidelidad y la identidad.</li>
+                        <li><em>Monstro</em> (2012) – relato de ciencia ficción.</li>
+                    </ul>
+                    <p>Fue profesor del MIT (Massachusetts Institute of Technology) y ha sido becario MacArthur (genius grant). Su activismo y sus ensayos sobre racismo, migración y cultura pop también son relevantes. Ha influido en una generación de escritores latinos en Estados Unidos.</p>
+                    <div class="bloque-cita">
+                        Fragmento de <em>La maravillosa vida breve de Óscar Wao</em>: "Dicen que fue un jodido quedao, pero yo sé que fue nuestro sabelotodo. Y aunque nunca consiguió novia, amó con una desesperación que haría palidecer a los más grandes románticos."
+                    </div>
+                `;
+            }
+            else {
+                html = `<h2>Escritores dominicanos</h2><p>Selecciona un autor del menú lateral.</p>`;
+            }
+
+            contenido.innerHTML = html;
+        }
+
+        window.onload = function() {
+            mostrar('bosch');
+        };
+    </script>
+</body>
+</html>

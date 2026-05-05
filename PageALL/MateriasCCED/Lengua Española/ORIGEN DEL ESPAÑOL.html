@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origen del Español | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS BASADOS EN EL EJEMPLO ORIGINAL ========== */
+        :root {
+            --color-principal: #e5322e;   /* rojo característico */
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona de contenido principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        /* bloque para destacar ejemplos o citas */
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: normal;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior exactamente igual al ejemplo -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">ORIGEN DEL ESPAÑOL</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <!-- barra lateral con temas -->
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición general del origen</div>
+                <div class="tema" data-tema="latin">El latín como base del español</div>
+                <div class="tema" data-tema="prerromanas">Lenguas prerromanas</div>
+                <div class="tema" data-tema="imperio_romano">Influencia del Imperio Romano</div>
+                <div class="tema" data-tema="evolucion">Evolución del latín al castellano</div>
+                <div class="tema" data-tema="germanicos">Influencia de los pueblos germánicos</div>
+                <div class="tema" data-tema="arabe">Influencia del árabe</div>
+                <div class="tema" data-tema="nacimiento">Nacimiento del castellano</div>
+                <div class="tema" data-tema="expansion_castilla">Importancia de la expansión de Castilla</div>
+                <div class="tema" data-tema="normalizacion">Normalización del idioma</div>
+                <div class="tema" data-tema="expansion_mundo">Expansión del español al mundo</div>
+                <div class="tema" data-tema="caracteristicas">Características como lengua romance</div>
+                <div class="tema" data-tema="importancia_historica">Importancia histórica del origen</div>
+            </div>
+        </aside>
+
+        <!-- zona dinámica -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Origen del Español</h2>
+                <p>El español es una lengua romance nacida del latín vulgar, transformada a lo largo de siglos por la historia, las culturas y los pueblos que habitaron la península ibérica.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Dato clave:</strong> El español actual es hablado por más de 500 millones de personas en el mundo, pero su origen se remonta a pequeños reinos del norte de España.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar cada aspecto en detalle.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Historia y evolución del idioma español · Lengua Española</p>
+    </footer>
+
+    <script>
+        // ========== CONTENIDO COMPLETO (basado en el texto proporcionado) ==========
+        const contenidos = {
+            definicion: `
+                <h2>Definición general del origen del español</h2>
+                <p>El <strong>origen del español</strong> se refiere al proceso histórico y lingüístico mediante el cual esta lengua se formó y evolucionó a partir de otros idiomas más antiguos, principalmente del <strong>latín vulgar</strong>, hasta convertirse en el idioma que conocemos hoy.</p>
+                <p>El español no surgió de manera repentina, sino que es el resultado de siglos de cambios, transformaciones e influencias culturales, sociales y políticas. Es una lengua que ha pasado por múltiples etapas, incorporando elementos de diferentes pueblos y civilizaciones.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Palabras como "guerra" (germánica), "almohada" (árabe) y "carro" (latina) conviven en el español actual, mostrando su origen mixto.
+                </div>
+            `,
+            latin: `
+                <h2>El latín como base del español</h2>
+                <p>El español pertenece a las <strong>lenguas romances</strong> (derivadas del latín). La base es el <strong>latín vulgar</strong>, la forma hablada por el pueblo común del Imperio Romano.</p>
+                <p><strong>¿Qué era el latín vulgar?</strong> Era más sencillo que el latín clásico, se usaba en la vida cotidiana y variaba según la región. Cuando los romanos conquistaron la península ibérica (siglo III a.C.), llevaron este idioma, que con el tiempo comenzó a transformarse.</p>
+                <ul>
+                    <li>Ejemplo de evolución: "oculus" (latín) → "ojo" (español).</li>
+                    <li>"hominem" → "hombre".</li>
+                </ul>
+                <hr>
+                <p>El latín vulgar impregnó todas las áreas de la vida: leyes, religión, comercio y cultura.</p>
+            `,
+            prerromanas: `
+                <h2>Lenguas prerromanas (antes del latín)</h2>
+                <p>Antes de la llegada de los romanos, en la península ibérica se hablaban diversas lenguas conocidas como <strong>lenguas prerromanas</strong>.</p>
+                <p><strong>Principales lenguas prerromanas:</strong> íbero, celta, tartesio y vasco (única que aún existe).</p>
+                <p><strong>Influencia en el español:</strong> aunque el latín reemplazó la mayoría, algunas dejaron huellas en la pronunciación, el léxico (palabras como "izquierda" – del vasco "ezkerra") y nombres de lugares (Salamanca, Segovia).</p>
+                <div class="bloque-ejemplo">
+                    El vasco es la única lengua prerromana viva y ha aportado palabras como "pizarra" y "cachorro".
+                </div>
+            `,
+            imperio_romano: `
+                <h2>Influencia del Imperio Romano</h2>
+                <p>La expansión del Imperio Romano fue clave. Roma conquistó la península ibérica (Hispania) alrededor del siglo III a.C., imponiendo su cultura, organización e idioma.</p>
+                <p><strong>Consecuencias:</strong> El latín se convirtió en la lengua dominante, se mezcló con las lenguas locales y comenzó un proceso de transformación lingüística que, con el tiempo, dejó de ser uniforme y empezó a variar en cada región.</p>
+                <ul>
+                    <li>La romanización no fue homogénea: algunas zonas conservaron rasgos prerromanos.</li>
+                    <li>El latín trajo el alfabeto, la literatura y el derecho.</li>
+                </ul>
+            `,
+            evolucion: `
+                <h2>La evolución del latín al castellano</h2>
+                <p>Después de la caída del Imperio Romano, el latín vulgar siguió evolucionando de forma independiente en diferentes territorios, dando origen a nuevas lenguas.</p>
+                <p><strong>Etapas de evolución:</strong></p>
+                <ol>
+                    <li><strong>Latín vulgar:</strong> idioma base hablado por el pueblo.</li>
+                    <li><strong>Romance hispánico:</strong> forma intermedia del idioma en la península ibérica.</li>
+                    <li><strong>Castellano medieval:</strong> primeras formas reconocibles del español (siglos IX-XII).</li>
+                    <li><strong>Español moderno:</strong> idioma estructurado con reglas más definidas (a partir del siglo XVI).</li>
+                </ol>
+                <div class="bloque-ejemplo">
+                    Texto en castellano medieval: "el rey don Alfonso" (Cantar de Mio Cid). Moderno: "el rey don Alfonso".
+                </div>
+            `,
+            germanicos: `
+                <h2>Influencia de los pueblos germánicos</h2>
+                <p>Tras la caída del Imperio Romano, pueblos germánicos como los <strong>visigodos</strong> invadieron la península ibérica.</p>
+                <p><strong>Aportes al español:</strong> palabras como <em>guerra, ropa, espía, ganar, brotar</em>. También influyeron en la organización social y en nombres propios (Fernando, Rodrigo).</p>
+                <p>Aunque su impacto lingüístico no fue tan fuerte como el del latín, sí dejaron huellas importantes en el vocabulario militar y cotidiano.</p>
+            `,
+            arabe: `
+                <h2>Influencia del árabe</h2>
+                <p>Uno de los aportes más importantes al español proviene del <strong>árabe</strong>, debido a la presencia musulmana en la península ibérica durante casi 800 años (711-1492).</p>
+                <p><strong>Características:</strong> gran cantidad de palabras añadidas al español, influencia en la ciencia, matemáticas y agricultura.</p>
+                <p><strong>Ejemplos de palabras de origen árabe:</strong> <em>almohada, azúcar, aceite, álgebra, alcalde, alfombra, ojalá</em>.</p>
+                <div class="bloque-ejemplo">
+                    Muchas palabras en español que comienzan con "al-" provienen del árabe, como "alcohol", "almacén" y "alquiler".
+                </div>
+            `,
+            nacimiento: `
+                <h2>Nacimiento del castellano</h2>
+                <p>El castellano surgió en la región de <strong>Castilla</strong>, en el norte de la península ibérica, como una variante del latín que se fue diferenciando de otras (leonés, aragonés, navarro).</p>
+                <p><strong>Características:</strong> evolución propia, influencia de otros dialectos, y posterior expansión política y cultural gracias al Reino de Castilla.</p>
+                <p>Uno de los primeros textos escritos en castellano son las <em>Glosas Emilianenses</em> (siglo X), anotaciones en los márgenes de un manuscrito latino.</p>
+            `,
+            expansion_castilla: `
+                <h2>La importancia de la expansión de Castilla</h2>
+                <p>El crecimiento del reino de Castilla fue clave para la difusión del idioma.</p>
+                <p><strong>Factores importantes:</strong> la Reconquista (expansión territorial hacia el sur), el uso del castellano en la administración real y el desarrollo cultural y literario promovido por la corte.</p>
+                <p>Esto permitió que el castellano se consolidara como lengua oficial y que desplazara a otras lenguas romances como el leonés o el aragonés.</p>
+                <div class="bloque-ejemplo">
+                    Alfonso X el Sabio (siglo XIII) impulsó el castellano como lengua de la ciencia, la historia y las leyes.
+                </div>
+            `,
+            normalizacion: `
+                <h2>La normalización del idioma</h2>
+                <p>Uno de los momentos más importantes en la historia del español fue cuando se comenzaron a establecer reglas fijas.</p>
+                <p><strong>Hechos clave:</strong></p>
+                <ul>
+                    <li>Publicación de la primera gramática castellana por <strong>Antonio de Nebrija</strong> en 1492.</li>
+                    <li>Estandarización del idioma a través de la imprenta.</li>
+                    <li>Uso en documentos oficiales y obras literarias.</li>
+                </ul>
+                <p>Esta normalización marcó el inicio del español como lengua formal y estructurada, con reglas claras de ortografía y gramática.</p>
+            `,
+            expansion_mundo: `
+                <h2>Expansión del español al mundo</h2>
+                <p>Con la llegada de los españoles a América en el siglo XV (1492), el idioma se expandió fuera de Europa.</p>
+                <p><strong>Consecuencias:</strong> mezcla con lenguas indígenas (náhuatl, quechua, taíno, etc.), creación de nuevas variantes americanas y expansión global del español.</p>
+                <p>Esto dio origen al español en América Latina, con aportes léxicos como "chocolate", "tomate", "canoa", "hamaca".</p>
+                <div class="bloque-ejemplo">
+                    Actualmente, el español es la segunda lengua materna más hablada del mundo, después del chino mandarín.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características del español como lengua romance</h2>
+                <p>El español comparte rasgos con otras lenguas romances como el francés, italiano, portugués, rumano y catalán.</p>
+                <p><strong>Características principales:</strong></p>
+                <ul>
+                    <li>Uso de género gramatical (masculino/femenino).</li>
+                    <li>Conjugación verbal compleja (modos y tiempos).</li>
+                    <li>Estructura sintáctica sujeto-verbo-objeto, con gran flexibilidad.</li>
+                    <li>Sistema vocálico simple (5 vocales).</li>
+                </ul>
+                <p>Estas características provienen directamente del latín, aunque con simplificaciones y cambios propios.</p>
+            `,
+            importancia_historica: `
+                <h2>Importancia histórica del origen del español</h2>
+                <p>Conocer el origen del español permite entender:</p>
+                <ul>
+                    <li>Por qué existen diferentes formas de hablarlo (variantes geográficas y sociales).</li>
+                    <li>Cómo se formó su vocabulario (riqueza de préstamos del árabe, germánico e indígenas).</li>
+                    <li>La influencia de otras culturas en la lengua y la identidad hispana.</li>
+                </ul>
+                <p>También ayuda a comprender la riqueza lingüística del idioma y su capacidad de adaptación a lo largo del tiempo.</p>
+                <div class="bloque-ejemplo">
+                    El estudio histórico nos muestra que el español no es "puro", sino un mosaico de influencias que lo enriquecen.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+        }
+
+        // Asignar evento click a cada tema
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        // Cargar tema por defecto (definición general)
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

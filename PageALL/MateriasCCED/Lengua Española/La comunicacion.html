@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Comunicación | AcademiaCCED</title>
+    
+    <style>
+        /* colores */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        /* estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra de navegacion superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        /* boton volver */
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* titulo de la materia */
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .barra-lateral hr {
+            margin: 15px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido h3 {
+            color: var(--color-oscuro);
+            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        #contenido h4 {
+            color: var(--color-principal);
+            margin: 15px 0 8px 0;
+            font-size: 1.1rem;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.6;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        /* bloque para destacar ejemplos */
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .bloque-ejemplo strong {
+            color: var(--color-principal);
+        }
+
+        .tabla-elementos {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tabla-elementos th, .tabla-elementos td {
+            border: 1px solid var(--gris-borde);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tabla-elementos th {
+            background: var(--color-principal);
+            color: white;
+            font-weight: bold;
+        }
+
+        .tabla-elementos tr:nth-child(even) {
+            background: var(--gris-claro);
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">LA COMUNICACIÓN</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        
+        <!-- barra lateral con temas -->
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">💬 ¿Qué es la comunicación?</div>
+                <div class="tema" data-tema="caracteristicas">✨ Características de la comunicación</div>
+                <div class="tema" data-tema="tipos_comunicacion">📋 Tipos de comunicación</div>
+                <div class="tema" data-tema="comunicacion_verbal">🗣️ Comunicación verbal</div>
+                <div class="tema" data-tema="comunicacion_no_verbal">🤚 Comunicación no verbal</div>
+                <div class="tema" data-tema="elementos">🔧 Elementos de la comunicación</div>
+                <div class="tema" data-tema="proceso">🔄 Proceso de la comunicación</div>
+                <div class="tema" data-tema="barreras">🚧 Barreras de la comunicación</div>
+                <div class="tema" data-tema="funciones">🎯 Funciones de la comunicación</div>
+                <div class="tema" data-tema="importancia">⭐ Importancia de la comunicación</div>
+                <div class="tema" data-tema="medios">📺 Medios de comunicación</div>
+                <div class="tema" data-tema="ciencias">🎓 Ciencias de la Comunicación</div>
+                <div class="tema" data-tema="verbal_no_verbal">🔄 Comunicación verbal y no verbal</div>
+                <div class="tema" data-tema="conclusion">📝 Conclusión</div>
+            </div>
+        </aside>
+
+        <!-- zona de contenido dinámico -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>La Comunicación</h2>
+                <p>La comunicación es la transmisión de información entre dos o más individuos, puesto que un participante le envía un mensaje a otro. Todos los seres vivos presentan alguna forma de comunicación, ya sea mediante palabras, señales químicas, sonidos o movimientos. Sin embargo, solo el ser humano tiene la capacidad para elaborar mensajes empleando un lenguaje.</p>
+                <div class="bloque-ejemplo">
+                    <strong>📖 Dato importante:</strong> El fenómeno de la comunicación es materia de estudio de numerosas disciplinas, como la lingüística, la antropología, la sociología y la psicología.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para aprender sobre cada aspecto de la comunicación.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- pie de pagina -->
+    <footer>
+        <p>© 2025 AcademiaCCED · Proyecto de La Comunicación · Lengua Española · 5to Informática</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>¿Qué es la comunicación?</h2>
+                <p>La <strong>comunicación</strong> es la transmisión de información entre dos o más individuos, puesto que un participante le envía un mensaje a otro. Todos los seres vivos presentan alguna forma de comunicación, ya sea mediante palabras, señales químicas, sonidos o movimientos. Sin embargo, solo el ser humano tiene la capacidad para elaborar mensajes empleando un lenguaje.</p>
+                <p>El fenómeno de la comunicación es materia de estudio de numerosas disciplinas, como la <strong>lingüística</strong>, la <strong>antropología</strong>, la <strong>sociología</strong> y la <strong>psicología</strong>.</p>
+                <p>Además, como elemento común a todos los seres vivos, también es abordada desde las ciencias biológicas, que estudian cómo se produce este intercambio de información entre distintos individuos de una especie. Por ejemplo, se estudian las posturas, los movimientos y los sonidos de los felinos para indicar qué tipo de información le transmiten a sus pares.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> El uso de la tecnología llevó a ampliar el concepto de comunicación porque se incluyeron aspectos técnicos como la transmisión de datos y la conexión de dispositivos.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características de la comunicación</h2>
+                <p>A grandes rasgos, la comunicación se caracteriza por:</p>
+                <ul>
+                    <li><strong>Presencia de un emisor y un receptor:</strong> Para que se produzca la comunicación, debe haber alguien que emita un mensaje y alguien que lo reciba.</li>
+                    <li><strong>Intercambio de información:</strong> Los participantes transmiten mensajes para expresar conocimientos, experiencias, sentimientos, entre otros.</li>
+                    <li><strong>Transmisión inmediata o diferida:</strong> Puede establecerse de manera directa e inmediata (cara a cara) o indirecta y diferida (carta, correo electrónico, mensaje de voz).</li>
+                    <li><strong>Posibilidad de retroalimentación:</strong> Puede incluir el proceso de retroalimentación, en el que los roles del receptor y del emisor se intercambian.</li>
+                    <li><strong>Búsqueda de respuesta:</strong> Si bien puede tener muy variados propósitos, la comunicación casi siempre tiene el objetivo de provocar una respuesta en el o los interlocutores.</li>
+                    <li><strong>Organización social:</strong> Sirve para que los seres humanos puedan establecer reglas e interactuar de forma ordenada dentro de una sociedad.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> En una conversación, el emisor y receptor intercambian roles constantemente mediante la retroalimentación.
+                </div>
+            `,
+            tipos_comunicacion: `
+                <h2>Tipos de comunicación</h2>
+                <p>La comunicación puede clasificarse, de acuerdo con los elementos que se emplean para transmitir el mensaje, en <strong>comunicación verbal</strong> y <strong>comunicación no verbal</strong>.</p>
+                
+                <table class="tabla-elementos">
+                    <thead>
+                        <tr><th>Tipo</th><th>Descripción</th><th>Ejemplos</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Comunicación verbal</strong></td>
+                        <td>Se da mediante palabras, es decir, signos lingüísticos</td>
+                        <td>Oral: conversaciones, llamadas<br>Escrita: cartas, correos, libros</td>
+                        </tr>
+                        <tr><td><strong>Comunicación no verbal</strong></td>
+                        <td>No depende de la palabra, sino de gestos, movimientos, sonidos o imágenes</td>
+                        <td>Expresiones faciales, posturas, gestos, distancia</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Importante:</strong> Ambos tipos de comunicación suelen complementarse en cualquier interacción humana.
+                </div>
+            `,
+            comunicacion_verbal: `
+                <h2>Comunicación verbal</h2>
+                <p>La <strong>comunicación verbal</strong> es la que se da mediante palabras, es decir, signos lingüísticos. Puede ser:</p>
+                
+                <h3>🗣️ Comunicación oral</h3>
+                <p>Se realiza a través de la palabra hablada, ya sea cara a cara o con algún medio auditivo, como el teléfono, los mensajes de voz o la radio.</p>
+                <p>En la comunicación oral intervienen elementos como la <strong>pronunciación</strong>, la <strong>fluidez</strong>, el <strong>ritmo</strong> al hablar y el <strong>tono de voz</strong>. No es solo lo que se dice, sino cómo se dice.</p>
+                
+                <h3>✍️ Comunicación escrita</h3>
+                <p>Tiene lugar a través de la palabra escrita o cualquier otro código escrito (por ejemplo, un pictograma). Suele ser diferida en el tiempo y el espacio, y es duradera.</p>
+                <p>Requiere <strong>organización de ideas</strong>, buena <strong>ortografía</strong> y <strong>coherencia</strong> para que el mensaje sea comprendido correctamente. Incluye medios como libros, correos electrónicos, mensajes de texto y documentos.</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Una misma frase puede tener significados distintos dependiendo de la entonación o la intensidad con que se exprese: "¡Qué bien!" (entusiasmo) vs "Qué bien..." (sarcasmo).
+                </div>
+            `,
+            comunicacion_no_verbal: `
+                <h2>Comunicación no verbal</h2>
+                <p>La <strong>comunicación no verbal</strong> es aquella que no depende de la palabra para transmitir un mensaje, sino de gestos, movimientos, sonidos o imágenes, y puede ser voluntaria o involuntaria.</p>
+                
+                <h3>🤔 Tipos de comunicación no verbal:</h3>
+                <ul>
+                    <li><strong>Comunicación paralingüística:</strong> Producida por los sonidos que complementan la comunicación verbal (tono, volumen, pausas).</li>
+                    <li><strong>Comunicación kinésica:</strong> Producida por los movimientos corporales (gestos, posturas, expresiones faciales).</li>
+                    <li><strong>Comunicación proxémica:</strong> Producida por la distancia entre emisor y receptor (uso del espacio personal).</li>
+                    <li><strong>Contacto visual:</strong> Mantener la mirada puede indicar interés, seguridad o sinceridad.</li>
+                </ul>
+                
+                <h3>🎭 Elementos importantes:</h3>
+                <ul>
+                    <li><strong>Expresión facial:</strong> Refleja emociones como alegría, tristeza, enojo o sorpresa.</li>
+                    <li><strong>Lenguaje corporal:</strong> Postura erguida (confianza) vs encorvada (inseguridad).</li>
+                    <li><strong>Proxémica:</strong> La distancia con los demás comunica cercanía, respeto o incomodidad.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Una persona puede decir "estoy bien" con un tono de voz apagado y evitando la mirada; los demás creerán más en su comunicación no verbal.
+                </div>
+            `,
+            elementos: `
+                <h2>Elementos de la comunicación</h2>
+                <p>En la comunicación, se pueden distinguir los siguientes elementos:</p>
+                
+                <table class="tabla-elementos">
+                    <thead>
+                        <tr><th>Elemento</th><th>Definición</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Emisor</strong></td><td>Participante que inicia el acto comunicativo</td><td>Un hablante, un locutor de radio</td></tr>
+                        <tr><td><strong>Receptor</strong></td><td>Participante que capta y decodifica el mensaje</td><td>Alguien que escucha, un animal</td></tr>
+                        <tr><td><strong>Mensaje</strong></td><td>Información que se transmite</td><td>Una petición de ayuda, una noticia</td></tr>
+                        <tr><td><strong>Código</strong></td><td>Sistema de signos y reglas utilizado</td><td>Idioma español, señales de tránsito</td></tr>
+                        <tr><td><strong>Canal</strong></td><td>Medio físico para transmitir el mensaje</td><td>El aire, papel, televisión, computadora</td></tr>
+                        <tr><td><strong>Contexto</strong></td><td>Situación o circunstancias del evento</td><td>Una oficina, una conversación cotidiana</td></tr>
+                    </tbody>
+                </table>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Cuando alguien dice "Hola" por teléfono: emisor (la persona), receptor (quien escucha), mensaje ("Hola"), código (español), canal (teléfono), contexto (llamada informal).
+                </div>
+            `,
+            proceso: `
+                <h2>Proceso de la comunicación</h2>
+                <p>El proceso de la comunicación es el procedimiento mediante el que un individuo transmite un mensaje a otro. Este proceso consta de tres etapas:</p>
+                
+                <h3>1️⃣ Codificación</h3>
+                <p>Etapa en la que el emisor compone un mensaje, es decir, pasa sus ideas a los signos o las señales de un código. Por ejemplo, cuando una persona quiere transmitir la idea de saludo, selecciona la palabra "Hola" para elaborar el mensaje.</p>
+                
+                <h3>2️⃣ Transmisión</h3>
+                <p>Etapa en la que un participante le envía un mensaje a otro. Por ejemplo, cuando el emisor dice "Hola" y el mensaje viaja por el aire hasta llegar al receptor.</p>
+                
+                <h3>3️⃣ Decodificación</h3>
+                <p>Etapa en la que el receptor interpreta los signos o las señales del mensaje para comprender su sentido. Por ejemplo, cuando el receptor comprende que "Hola" significa que el emisor quiso saludar.</p>
+                
+                <h3>🔄 Retroalimentación</h3>
+                <p>En algunos casos, puede aparecer la retroalimentación, que consiste en que el receptor le responde al emisor y cambian sus roles. Por ejemplo: "Hola, ¿cómo estás?"</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo completo:</strong> Juan (emisor) codifica "¿Qué hora es?" → transmite por el aire → María (receptora) decodifica y responde "Son las 3" (retroalimentación).
+                </div>
+            `,
+            barreras: `
+                <h2>Barreras de la comunicación</h2>
+                <p>Las <strong>barreras de la comunicación</strong> son interferencias que no permiten que el proceso comunicativo se lleve a cabo correctamente, porque entorpecen o impiden que un mensaje se codifique, se transmita o se decodifique.</p>
+                
+                <h3>Tipos de barreras:</h3>
+                <ul>
+                    <li><strong>Barreras del canal:</strong> El ruido del ambiente que entorpece la transmisión.</li>
+                    <li><strong>Barreras del código:</strong> Cuando emisor y receptor no comparten el mismo idioma o código.</li>
+                    <li><strong>Barreras psicológicas:</strong> Prejuicios, emociones o estados de ánimo que afectan la interpretación.</li>
+                    <li><strong>Barreras físicas:</strong> Distancia, condiciones climáticas o problemas técnicos.</li>
+                    <li><strong>Barreras semánticas:</strong> Cuando las palabras tienen diferentes significados para cada persona.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Cuando dos personas conversan en la calle con mucho ruido de fondo (barrera del canal) o cuando alguien usa tecnicismos que el otro no entiende (barrera del código).
+                </div>
+            `,
+            funciones: `
+                <h2>Funciones de la comunicación</h2>
+                <p>La comunicación tiene diversas funciones:</p>
+                
+                <h3>📊 Función informativa</h3>
+                <p>Es la que tiene como propósito principal transmitir información relacionada con aspectos de la realidad.</p>
+                
+                <h3>❤️ Función afectiva</h3>
+                <p>Aquella centrada en la expresión de impresiones subjetivas, sentimientos, emociones o estados de ánimo.</p>
+                
+                <h3>⚖️ Función reguladora</h3>
+                <p>Aquella que sirve para evaluar o modificar las acciones de los demás.</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de función afectiva:</strong> "Me siento muy feliz de verte" (expresa una emoción).<br>
+                    <strong>Ejemplo de función reguladora:</strong> "Por favor, apaga la luz" (modifica la acción del otro).
+                </div>
+            `,
+            importancia: `
+                <h2>Importancia de la comunicación</h2>
+                <p>No existe forma de vida que no se comunique de un modo u otro. Se trata, por lo tanto, de un proceso fundamental de la existencia.</p>
+                
+                <p>En el caso de los seres humanos, la comunicación es importante en los planos:</p>
+                <ul>
+                    <li><strong>Escolar:</strong> Permite aprender y compartir conocimientos.</li>
+                    <li><strong>Laboral:</strong> Facilita el trabajo en equipo y la productividad.</li>
+                    <li><strong>Personal:</strong> Permite interactuar con otros, expresar ideas, opiniones y emociones.</li>
+                    <li><strong>Social:</strong> Ayuda a establecer normas de convivencia y participar en la sociedad.</li>
+                </ul>
+                <p>Además, es fundamental para planificar y llevar a cabo objetivos, difundir conocimiento y transmitir información cultural, entre otros.</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Reflexión:</strong> La comunicación es la base de todas las relaciones humanas y del funcionamiento de la sociedad.
+                </div>
+            `,
+            medios: `
+                <h2>Medios de comunicación</h2>
+                <p>Los <strong>medios de comunicación</strong> son los instrumentos o dispositivos que permiten que la comunicación se desarrolle de forma más sencilla, porque facilitan la transmisión de información.</p>
+                
+                <h3>📞 Medios interpersonales</h3>
+                <p>Se emplean entre dos personas o un grupo reducido. Ejemplo: el teléfono permite que dos individuos en sitios distintos se comuniquen instantáneamente.</p>
+                
+                <h3>📺 Medios masivos de comunicación</h3>
+                <p>Sirven para que un emisor envíe un mensaje a un gran número de receptores. En estos casos, la comunicación es <strong>unidireccional</strong>, porque no suele haber una respuesta directa.</p>
+                <ul>
+                    <li><strong>Televisión:</strong> Transmite información, entretenimiento y noticias a millones de personas.</li>
+                    <li><strong>Radio:</strong> Difunde contenido auditivo a grandes audiencias.</li>
+                    <li><strong>Periódico:</strong> El periodista envía un mensaje a múltiples lectores.</li>
+                    <li><strong>Internet:</strong> Redes sociales, blogs y plataformas digitales.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Diferencia:</strong> Una llamada telefónica es bidireccional (los dos hablan), mientras que la televisión es unidireccional (el televidente solo recibe).
+                </div>
+            `,
+            ciencias: `
+                <h2>Ciencias de la Comunicación</h2>
+                <p>Las <strong>Ciencias de la Comunicación</strong> es el estudio de los diferentes aspectos de la comunicación humana. Es un enfoque interdisciplinario en el que confluyen conceptos y teorías provenientes de la sociología, la semiótica, la psicología, la antropología y la lingüística, entre otros campos del conocimiento.</p>
+                
+                <h3>📚 Áreas de aplicación:</h3>
+                <ul>
+                    <li>Periodismo</li>
+                    <li>Comunicación empresarial</li>
+                    <li>Publicidad y marketing</li>
+                    <li>Comunicación institucional</li>
+                    <li>Comunicación política</li>
+                    <li>Comunicación digital e Internet</li>
+                    <li>Divulgación del conocimiento científico</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Dato:</strong> Dado que la comunicación está presente en todas las esferas de la actividad humana, los estudios relacionados con las Ciencias de la Comunicación se han ampliado a más ámbitos como la medicina y la economía.
+                </div>
+            `,
+            verbal_no_verbal: `
+                <h2>Comunicación verbal y no verbal</h2>
+                <p>La comunicación es un proceso fundamental en la vida humana, ya que permite intercambiar ideas, emociones, pensamientos e información. Se divide principalmente en comunicación verbal y comunicación no verbal, y ambas se complementan constantemente en cualquier interacción.</p>
+                
+                <h3>🔄 Coherencia entre ambos tipos</h3>
+                <p>Cuando son coherentes, el mensaje se entiende mejor y genera confianza. Por ejemplo, si alguien dice que está feliz y además sonríe, el mensaje resulta creíble. Pero si hay contradicción, como decir que todo está bien con un tono de voz apagado y evitando la mirada, las personas tienden a creer más en la comunicación no verbal.</p>
+                
+                <h3>💡 Importancia de dominarlos:</h3>
+                <ul>
+                    <li>En la educación, facilita el aprendizaje y la enseñanza.</li>
+                    <li>En el trabajo, mejora las relaciones profesionales y la productividad.</li>
+                    <li>En la vida personal, fortalece los vínculos y evita malentendidos.</li>
+                    <li>En entrevistas, exposiciones o negociaciones, es esencial.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de coherencia:</strong> Decir "Estoy emocionado" con una sonrisa y los ojos brillantes.<br>
+                    <strong>Ejemplo de contradicción:</strong> Decir "Estoy bien" con la mirada hacia abajo y los brazos cruzados.
+                </div>
+            `,
+            conclusion: `
+                <h2>Conclusión</h2>
+                <p>La comunicación verbal y no verbal son herramientas esenciales que usamos constantemente. Entender cómo funcionan y aprender a utilizarlas de manera adecuada permite expresarse con claridad, interpretar mejor a los demás y construir relaciones más efectivas.</p>
+                
+                <h3>🎯 Puntos clave para recordar:</h3>
+                <ul>
+                    <li>La comunicación es la transmisión de información entre dos o más individuos.</li>
+                    <li>Existen elementos clave: emisor, receptor, mensaje, código, canal y contexto.</li>
+                    <li>Los tipos principales son comunicación verbal (oral y escrita) y no verbal.</li>
+                    <li>La comunicación no verbal incluye gestos, expresiones faciales, posturas y distancia.</li>
+                    <li>Ambos tipos deben ser coherentes para una comunicación efectiva.</li>
+                    <li>Las barreras pueden interferir en el proceso comunicativo.</li>
+                    <li>Dominar la comunicación mejora todas las áreas de la vida.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>📖 Reflexión final:</strong> "La comunicación es el puente que conecta a las personas. Sin ella, no hay sociedad, no hay relaciones, no hay progreso."
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+                contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+        }
+
+        // Asignar evento click a cada tema
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        // Cargar tema por defecto
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

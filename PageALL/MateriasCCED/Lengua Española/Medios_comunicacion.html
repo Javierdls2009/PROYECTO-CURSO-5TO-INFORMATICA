@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medios de Comunicación | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS BASE ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">MEDIOS DE COMUNICACIÓN</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición general</div>
+                <div class="tema" data-tema="importancia">Importancia en la sociedad</div>
+                <div class="tema" data-tema="elementos">Elementos del proceso comunicativo</div>
+                <div class="tema" data-tema="clasificacion_alcance">Clasificación por alcance (interpersonales / masivos)</div>
+                <div class="tema" data-tema="clasificacion_tecnologia">Clasificación por tecnología (impresos, audiovisuales, sonoros, digitales)</div>
+                <div class="tema" data-tema="funciones">Funciones de los medios</div>
+                <div class="tema" data-tema="ventajas_desventajas">Ventajas y desventajas</div>
+                <div class="tema" data-tema="evolucion">Evolución histórica (etapas)</div>
+                <div class="tema" data-tema="impacto">Impacto en la sociedad (cultura, política, economía)</div>
+                <div class="tema" data-tema="teoricos">Teóricos de los medios (biografías ampliadas)</div>
+                <div class="tema" data-tema="fake_news">Desinformación y fake news</div>
+                <div class="tema" data-tema="regulacion">Regulación y ética de los medios</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Medios de comunicación</h2>
+                <p>Los medios de comunicación son el conjunto de herramientas, sistemas, tecnologías y canales que permiten la transmisión de información entre un emisor y uno o varios receptores, ya sea de forma masiva o interpersonal. Constituyen un sistema social complejo que selecciona, presenta e interpreta la realidad, influyendo directamente en la opinión pública y en la construcción del conocimiento colectivo.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de impacto:</strong> La cobertura mediática de un desastre natural puede movilizar ayuda internacional y presionar a los gobiernos para actuar con rapidez.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para explorar todos los aspectos de los medios de comunicación.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Los medios de comunicación como espejo y constructor de la realidad.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición general de los medios de comunicación</h2>
+                <p>Los <strong>medios de comunicación</strong> son el conjunto de herramientas, sistemas, tecnologías y canales organizados que permiten la transmisión de información entre un emisor y uno o varios receptores, ya sea de forma directa, indirecta, individual o masiva. Su función no se limita a enviar mensajes, sino que implica interpretar la realidad, influir en la sociedad y construir conocimiento colectivo.</p>
+                <p>Los medios seleccionan qué información se transmite, determinan cómo se presenta, influyen en la interpretación del público y contribuyen a la formación de la opinión pública. Por eso son considerados una de las principales fuerzas que influyen en el comportamiento humano y en la organización de las sociedades modernas.</p>
+            `,
+            importancia: `
+                <h2>Importancia de los medios de comunicación en la sociedad</h2>
+                <ul>
+                    <li>Permiten el acceso a información actualizada, esencial para la toma de decisiones.</li>
+                    <li>Cumplen una función educativa mediante documentales, programas culturales y artículos.</li>
+                    <li>Influyen en la formación de valores, creencias y actitudes.</li>
+                    <li>Son clave en la democracia, ya que informan sobre temas políticos y sociales.</li>
+                    <li>Facilitan la comunicación global y conectan culturas diversas.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Sin medios, sería imposible conocer lo que ocurre en el país o el mundo de forma inmediata. Actúan como el "cuarto poder" en las sociedades democráticas.
+                </div>
+            `,
+            elementos: `
+                <h2>Elementos del proceso comunicativo en los medios</h2>
+                <ul>
+                    <li><strong>Emisor:</strong> Persona, institución o empresa que crea y transmite el mensaje (canal de TV, periódico, plataforma digital).</li>
+                    <li><strong>Receptor:</strong> Audiencia, público que recibe e interpreta el mensaje.</li>
+                    <li><strong>Mensaje:</strong> Información transmitida (noticia, anuncio, programa).</li>
+                    <li><strong>Canal:</strong> Medio físico o tecnológico (televisión, radio, papel, internet).</li>
+                    <li><strong>Código:</strong> Sistema de signos (idioma, imágenes, sonidos).</li>
+                    <li><strong>Contexto:</strong> Entorno situacional que afecta la interpretación.</li>
+                    <li><strong>Retroalimentación:</strong> Respuesta del receptor (limitada en medios tradicionales, inmediata en digitales).</li>
+                </ul>
+            `,
+            clasificacion_alcance: `
+                <h2>Clasificación según su alcance</h2>
+                <p><strong>Medios interpersonales:</strong> Comunicación directa entre dos o más personas. Ejemplos: conversación cara a cara, llamada telefónica, mensajería instantánea. Permiten retroalimentación inmediata y expresividad emocional.</p>
+                <p><strong>Medios de comunicación masiva:</strong> Transmiten información a grandes audiencias simultáneamente. Ejemplos: televisión, radio, prensa escrita. Tienen gran capacidad de influencia y alcance planetario.</p>
+                <div class="bloque-ejemplo">
+                    Un tuit viral puede considerarse un medio masivo, aunque nació como interpersonal. Hoy las fronteras se difuminan.
+                </div>
+            `,
+            clasificacion_tecnologia: `
+                <h2>Clasificación según tecnología o formato</h2>
+                <ul>
+                    <li><strong>Medios impresos:</strong> Periódicos, revistas, libros. Información detallada, permanente, sin necesidad de tecnología eléctrica.</li>
+                    <li><strong>Medios audiovisuales:</strong> Televisión, cine. Combinan imagen y sonido, alto impacto visual.</li>
+                    <li><strong>Medios sonoros:</strong> Radio. Solo audio, accesible y económico, permite multitarea.</li>
+                    <li><strong>Medios digitales:</strong> Redes sociales (Facebook, Instagram, TikTok, YouTube), sitios web, podcasts. Interactividad, inmediatez, acceso global, posibilidad de ser prosumidor (productor+consumidor).</li>
+                </ul>
+            `,
+            funciones: `
+                <h2>Funciones de los medios de comunicación</h2>
+                <ul>
+                    <li><strong>Informativa:</strong> Transmitir hechos y acontecimientos actuales.</li>
+                    <li><strong>Educativa:</strong> Difundir conocimientos científicos, culturales y sociales.</li>
+                    <li><strong>Formadora de opinión:</strong> Influir en la interpretación de la realidad y en las decisiones ciudadanas.</li>
+                    <li><strong>Entretenimiento:</strong> Proveer diversión mediante programas, series, música y contenidos lúdicos.</li>
+                    <li><strong>Publicitaria:</strong> Promover productos, servicios o ideas, impulsando el consumo.</li>
+                </ul>
+            `,
+            ventajas_desventajas: `
+                <h2>Ventajas y desventajas de los medios</h2>
+                <p><strong>Ventajas:</strong> acceso rápido a información, comunicación global, promoción de educación, diversidad de contenido, conexión entre culturas, empoderamiento ciudadano (en medios digitales).</p>
+                <p><strong>Desventajas:</strong> difusión de información falsa (fake news), generación de dependencia o adicción, manipulación de la opinión pública, reducción de interacción cara a cara, afectación de la privacidad, brecha digital.</p>
+                <div class="bloque-ejemplo">
+                    Las noticias falsas durante la pandemia de COVID-19 causaron pánico y conductas de riesgo, demostrando el poder destructivo de la desinformación.
+                </div>
+            `,
+            evolucion: `
+                <h2>Evolución histórica de los medios de comunicación</h2>
+                <ul>
+                    <li><strong>Etapa oral:</strong> Transmisión de conocimientos mediante tradición oral, mitos y leyendas. El emisor y receptor compartían el mismo espacio.</li>
+                    <li><strong>Etapa escrita:</strong> Invención de la escritura (sumerios, egipcios) y posteriormente la imprenta de Gutenberg (1440). Posibilitó la reproducción masiva de textos y el acceso al conocimiento.</li>
+                    <li><strong>Etapa audiovisual/eléctrica:</strong> Telégrafo (1837), teléfono (1876), radio (1895), televisión (1920s). Los medios electrónicos acortaron distancias.</li>
+                    <li><strong>Etapa digital:</strong> Internet (1969, popularizado en los 90), redes sociales, teléfonos inteligentes. Convergencia de todos los medios anteriores y aparición del prosumidor.</li>
+                </ul>
+            `,
+            impacto: `
+                <h2>Impacto de los medios en la sociedad</h2>
+                <p>Los medios influyen en la cultura, la educación, la política y la economía. Construyen identidades colectivas, establecen agendas temáticas (agenda setting) y pueden perpetuar estereotipos o promover cambios sociales.</p>
+                <ul>
+                    <li><strong>En política:</strong> Las campañas electorales dependen de los medios; la mediatización de la política ha transformado la relación entre gobernantes y ciudadanos.</li>
+                    <li><strong>En economía:</strong> La publicidad mueve miles de millones; los medios digitales han creado nuevas industrias (influencers, marketing de contenidos).</li>
+                    <li><strong>En cultura:</strong> Los medios globalizan costumbres pero también pueden homogenizar o, por el contrario, visibilizar culturas locales.</li>
+                </ul>
+            `,
+            teoricos: `
+                <h2>Teóricos y pensadores de los medios de comunicación (biografías ampliadas)</h2>
+                <p><strong>Marshall McLuhan (1911-1980):</strong> Canadiense, profesor de literatura. Acuñó frases como “el medio es el mensaje” y “aldea global”. Sostuvo que las tecnologías de comunicación extienden los sentidos humanos y transforman la sociedad. Su obra más importante: “Comprender los medios de comunicación” (1964).</p>
+                <div class="bloque-ejemplo">
+                    McLuhan predijo internet cuando habló de la “aldea global” y de una conciencia planetaria interconectada.
+                </div>
+                <p><strong>Jürgen Habermas (1929-):</strong> Filósofo y sociólogo alemán. Desarrolló la teoría de la “esfera pública” como espacio de debate racional y democrático. Criticó que los medios comerciales han degradado esa esfera al convertir al ciudadano en consumidor.</p>
+                <p><strong>Noam Chomsky (1928-):</strong> Lingüista y activista estadounidense. Junto con Edward Herman, propuso el “modelo de propaganda”, que explica cómo los medios masivos sirven a los intereses de las élites económicas y políticas a través de cinco filtros (concentración de propiedad, publicidad, fuentes oficiales, etc.).</p>
+                <p><strong>Manuel Castells (1942-):</strong> Sociólogo español. Acuñó el concepto de “sociedad red”. Analizó cómo internet y las redes sociales han transformado el poder, los movimientos sociales y la comunicación política.</p>
+                <p><strong>Elisabeth Noelle-Neumann (1916-2010):</strong> Científica política alemana. Desarrolló la teoría de la “espiral del silencio”, que sugiere que las personas ocultan sus opiniones cuando creen que son minoritarias por miedo al aislamiento, y los medios amplifican esa percepción.</p>
+            `,
+            fake_news: `
+                <h2>Desinformación y fake news</h2>
+                <p>Las <strong>fake news</strong> (noticias falsas) son contenidos engañosos creados para ser difundidos masivamente, a menudo con fines políticos, económicos o de desestabilización. Los medios digitales facilitan su propagación debido a la velocidad de compartición y la falta de filtros editoriales tradicionales.</p>
+                <p><strong>Consecuencias:</strong> Polarización social, desconfianza en instituciones, riesgos para la salud (ej. antivacunas), ataques a la democracia.</p>
+                <p><strong>Soluciones:</strong> Educación mediática (alfabetización digital), verificación de hechos (fact-checking), regulación de plataformas, códigos de ética periodística.</p>
+                <div class="bloque-ejemplo">
+                    Un ejemplo célebre: “Pizzagate” (2016), una teoría conspirativa que llevó a un hombre a disparar dentro de una pizzería en Washington D.C.
+                </div>
+            `,
+            regulacion: `
+                <h2>Regulación y ética de los medios</h2>
+                <p>En muchos países existen leyes que regulan los medios de comunicación para garantizar la libertad de expresión, el derecho a la información y la protección de menores. También hay códigos deontológicos periodísticos (veracidad, independencia, no injerencia en la privacidad).</p>
+                <p>Sin embargo, el equilibrio entre regulación y censura es delicado. Organizaciones como Reporteros Sin Fronteras vigilan la libertad de prensa en el mundo.</p>
+                <p>En el ámbito digital, las plataformas tienen sus propias políticas comunitarias, pero su aplicación es criticada por ser arbitraria o insuficiente.</p>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos sobre medios de comunicación</h2>
+                <p><strong>Ejercicio 1: Identifica los elementos.</strong> Elige una noticia de un periódico digital y señala emisor, receptor, mensaje, canal, código, contexto, retroalimentación (si la hay).</p>
+                <p><strong>Ejercicio 2: Compara coberturas.</strong> Busca una misma noticia en un medio impreso, uno televisivo y uno digital. Anota diferencias en titulares, profundidad y tono.</p>
+                <p><strong>Ejercicio 3: Detecta fake news.</strong> Encuentra una noticia falsa en redes (puede ser una cadena de WhatsApp). Explica por qué es falsa y qué repercusión pudo tener.</p>
+                <div class="bloque-ejemplo">
+                    Ejemplo resuelto: Un mensaje que dice “La OMS recomienda no tomar agua fría para evitar el coronavirus” es falso. Se puede verificar en la página oficial de la OMS y en sitios de fact-checking como Maldita.es o Snopes.
+                </div>
+                <p><strong>Ejercicio 4: Crea un plan de consumo crítico.</strong> Redacta 5 acciones concretas para consumir medios de manera responsable y evitar desinformación.</p>
+            `,
+            glosario: `
+                <h2>Glosario de términos sobre medios de comunicación</h2>
+                <ul>
+                    <li><strong>Agenda setting:</strong> Capacidad de los medios para determinar qué temas son importantes en la opinión pública.</li>
+                    <li><strong>Audiencia:</strong> Conjunto de receptores de un mensaje mediático.</li>
+                    <li><strong>Convergencia:</strong> Integración de distintos medios (texto, audio, vídeo) en una sola plataforma.</li>
+                    <li><strong>Desinformación:</strong> Difusión intencionada de información falsa.</li>
+                    <li><strong>Fact-checking:</strong> Verificación de datos y declaraciones públicas.</li>
+                    <li><strong>Medios alternativos:</strong> Aquellos no controlados por grandes corporaciones, a menudo comunitarios o independientes.</li>
+                    <li><strong>Prosumidor:</strong> Usuario que consume y produce contenido simultáneamente (típico de redes sociales).</li>
+                    <li><strong>Esfera pública:</strong> Espacio ideal de discusión racional sobre asuntos de interés común.</li>
+                    <li><strong>Cuarto poder:</strong> Denominación de los medios como poder fáctico junto al ejecutivo, legislativo y judicial.</li>
+                </ul>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lengua Española | AcademiaCCED</title>
     
-    <!-- estilos propios de esta sola pagina -->
     <style>
         /* colores */
         :root {
@@ -118,10 +117,10 @@
             margin: 0 0 40px 0;
         }
 
-        /* grid de herramientas */
+        /* grid de herramientas - MODIFICADO: 3 columnas fijas */
         .grid-herramientas {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
@@ -146,25 +145,22 @@
             border-color: var(--color-principal);
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
-        }
-
         /* titulo de la tarjeta */
         .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
+            margin: 0 0 12px 0;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            text-align: center;
+            font-weight: 700;
         }
 
-        /* descripción de la tarjeta */
+        /* descripción de la tarjeta (frase corta) */
         .tarjeta-herramienta p {
             margin: 0;
             font-size: 0.9rem;
             color: #666;
+            text-align: center;
+            line-height: 1.3;
         }
 
         /* pie de pagina */
@@ -177,6 +173,18 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive: en pantallas pequeñas que se ponga a 2 o 1 columna */
+        @media (max-width: 900px) {
+            .grid-herramientas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-herramientas {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -191,10 +199,10 @@
     <!-- contenido principal -->
     <div class="contenedor">
         
-        <!-- barra lateral -->
+        <!-- barra lateral del profesor -->
         <aside class="barra-lateral">
             <div class="foto-profesor">
-                <img src="/PageALL/ImgALL/Surelis.jpeg" alt="Profesor Ariel" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                <img src="/PageALL/ImgALL/Surelis.jpeg" alt="Profesora Surelis" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
             </div>
             <h3>Surelys Cabrera Made</h3>
             <hr>
@@ -207,52 +215,145 @@
 
         <!-- zona de herramientas -->
         <main class="zona-herramientas">
-            <h2>Herramientas Educativas</h2>
-            <p>Selecciona una herramienta para comenzar.</p>
+            <h2 style="text-align: center;">Herramientas Educativas</h2>
+            <p style="text-align: center;">Selecciona una herramienta para comenzar a aprender.</p>
 
             <!-- grid de herramientas -->
             <div class="grid-herramientas">
                 
-                <!-- tarjeta 1 ejercicios -->
-                <a href="" class="tarjeta-herramienta">
-                    <div class="icono">∑</div>
-                    <h3>Ejercicios</h3>
-                    <p>Práctica de comprensión lectora.</p>
+                <!-- 1. Ortografía -->
+                <a href="Ortografia.html" class="tarjeta-herramienta">
+                    <h3>✍️ Ortografía</h3>
+                    <p>Escribe sin errores, comunica con precisión.</p>
                 </a>
 
-                <!-- tarjeta 2 ortografía -->
-                <a href="ortografia.html" class="tarjeta-herramienta">
-                    <div class="icono">⊿</div>
-                    <h3>Ortografía</h3>
-                    <p>Práctica de reglas ortográficas.</p>
-                </a>
-                   <!-- tarjeta 3 fonetica -->
+                <!-- 2. Fonética y Fonología -->
                 <a href="Fonetica y fonologia.html" class="tarjeta-herramienta">
-                    <div class="icono">=</div>
-                    <h3>Fonetica y Fonología</h3>
-                    <p>Práctica de reglas fonéticas y fonológicas.</p>
+                    <h3>🔊 Fonética y Fonología</h3>
+                    <p>Los sonidos que dan vida a las palabras.</p>
                 </a>
-                   <!-- tarjeta 4 sintaxis -->
+
+                <!-- 3. Sintaxis -->
                 <a href="sintaxis.html" class="tarjeta-herramienta">
-                    <div class="icono">°</div>
-                    <h3>Sintaxis</h3>
-                    <p>Práctica de reglas sintácticas.</p>
-                       <!-- tarjeta 5 morfología -->
+                    <h3>📐 Sintaxis</h3>
+                    <p>La estructura lógica de las oraciones.</p>
+                </a>
+
+                <!-- 4. Morfología -->
                 <a href="Morfologia.html" class="tarjeta-herramienta">
-                    <div class="icono">−</div>
-                    <h3>Morfología</h3>
-                    <p>Práctica de reglas morfológicas.</p>
+                    <h3>🧩 Morfología</h3>
+                    <p>La anatomía de las palabras.</p>
                 </a>
+
+                <!-- 5. Variantes Lingüísticas -->
+                <a href="VARIANTES LINGÜÍSTICAS.html" class="tarjeta-herramienta">
+                    <h3>🗺️ Variantes Lingüísticas</h3>
+                    <p>Un mismo idioma, muchas formas de decirlo.</p>
                 </a>
+
+                <!-- 6. Origen del Español -->
+                <a href="ORIGEN DEL ESPAÑOL.html" class="tarjeta-herramienta">
+                    <h3>📜 Origen del Español</h3>
+                    <p>De dónde viene nuestra lengua.</p>
+                </a>
+
+                <!-- 7. Español en RD, Europa y Latinoamérica -->
+                <a href="Espaniol en.html" class="tarjeta-herramienta">
+                    <h3>🌎 Español en RD, Europa y LATAM</h3>
+                    <p>Un idioma que nos une y nos diversifica.</p>
+                </a>
+
+                <!-- 8. Literatura -->
+                <a href="literatura.html" class="tarjeta-herramienta">
+                    <h3>📖 Literatura</h3>
+                    <p>El arte que usa las palabras como pinceles.</p>
+                </a>
+
+                <!-- 9. Ironía -->
+                <a href="Ironia.html" class="tarjeta-herramienta">
+                    <h3>😏 Ironía</h3>
+                    <p>Decir lo contrario para hacer pensar.</p>
+                </a>
+
+                <!-- 10. Sarcasmo -->
+                <a href="El sarcarmo.html" class="tarjeta-herramienta">
+                    <h3>🤐 Sarcasmo</h3>
+                    <p>La ironía con filo.</p>
+                </a>
+
+                <!-- 11. Ensayo -->
+                <a href="ensayo.html" class="tarjeta-herramienta">
+                    <h3>📝 Ensayo</h3>
+                    <p>Argumenta, reflexiona y convence.</p>
+                </a>
+
+                <!-- 12. Argumentos -->
+                <a href="argumentos.html" class="tarjeta-herramienta">
+                    <h3>⚖️ Argumentos</h3>
+                    <p>Razones sólidas para defender tus ideas.</p>
+                </a>
+
+                <!-- 13. Fonemas (tarjeta solicitada, con emoji y frase) -->
+                <a href="Fonemas.html" class="tarjeta-herramienta">
+                    <h3>🎵 Fonemas</h3>
+                    <p>Las unidades mínimas de sonido.</p>
+                </a>
+
+                <!-- 14. Poesía -->
+                <a href="Poesia.html" class="tarjeta-herramienta">
+                    <h3>🌸 Poesía</h3>
+                    <p>Emoción hecha palabra.</p>
+                </a>
+
+                <!-- 15. Medios de Comunicación -->
+                <a href="Medios_comunicacion.html" class="tarjeta-herramienta">
+                    <h3>📻 Medios de Comunicación</h3>
+                    <p>El puente entre la información y la sociedad.</p>
+                </a>
+
+                <!-- 16. Géneros Literarios -->
+                <a href="Generos_literarios.html" class="tarjeta-herramienta">
+                    <h3>🎭 Géneros Literarios</h3>
+                    <p>Clasifica la literatura y entiende su esencia.</p>
+                </a>
+
+                <!-- 17. Escritores Dominicanos -->
+                <a href="Escritores_dominicanos.html" class="tarjeta-herramienta">
+                    <h3>✍️🇩🇴 Escritores Dominicanos</h3>
+                    <p>La pluma que retrata nuestra identidad.</p>
+                </a>
+
+                <!-- 18. Gramática -->
+                <a href="Gramatica.html" class="tarjeta-herramienta">
+                    <h3>📘 Gramática</h3>
+                    <p>Domina las normas y estilos del idioma.</p>
+                </a>
+
+                <!-- 19. La Carta -->
+                <a href="La carta.html" class="tarjeta-herramienta">
+                    <h3>✉️ La Carta</h3>
+                    <p>Expresa sentimientos o información de forma personal.</p>
+                </a>
+
+                <!-- 20. La Comunicación -->
+                <a href="La comunicacion.html" class="tarjeta-herramienta">
+                    <h3>💬 La Comunicación</h3>
+                    <p>Proceso esencial para interactuar y comprender.</p>
+                </a>
+
+                <!-- 21. La Producción Escrita -->
+                <a href="Produccion escrita.html" class="tarjeta-herramienta">
+                    <h3>✍️ La Producción Escrita</h3>
+                    <p>Crea textos coherentes y bien estructurados.</p>
+                </a>
+
             </div>
         </main>
-
     </div>
 
     <!-- pie de pagina -->
     <footer>
         <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
     </footer>
-
 </body>
 </html>

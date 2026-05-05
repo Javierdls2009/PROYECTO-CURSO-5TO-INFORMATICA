@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Química | AcademiaCCED</title>
+
+    <style>
+      /* Colores y Variables */
+      :root {
+        --color-principal: #e5322e;
+        --color-fondo: #f3f6ff;
+        --color-oscuro: #1a1a2e;
+        --blanco: #ffffff;
+      }
+
+      /* Estilos Generales */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: var(--color-fondo);
+        overflow-x: hidden;
+      }
+
+      /* Barra de Navegación */
+      .barra-superior {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background: var(--blanco);
+        border-bottom: 2px solid #ddd;
+        height: 70px;
+        box-sizing: border-box;
+      }
+
+      .boton-volver a {
+        text-decoration: none;
+        color: var(--color-principal);
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .titulo-materia {
+        font-weight: 800;
+        color: var(--color-principal);
+        font-size: 1.5rem;
+      }
+
+      /* Contenedor Principal con Flexbox */
+      .contenedor {
+        display: flex;
+        min-height: calc(100vh - 70px);
+      }
+
+      /* Barra Lateral */
+      .barra-lateral {
+        width: 300px;
+        background-color: var(--blanco);
+        border-right: 1px solid #ddd;
+        padding: 20px;
+        box-sizing: border-box;
+        flex-shrink: 0; /* Evita que la barra se encoja */
+      }
+
+      .barra-lateral h3 {
+        margin: 10px 0;
+        color: var(--color-oscuro);
+        text-align: center;
+      }
+
+      .barra-lateral hr {
+        opacity: 0.2;
+        margin: 20px 0;
+      }
+
+      /* Listado de Temas */
+      .info-materia {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .tema {
+        padding: 12px;
+        background: #f0f0f0;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        font-size: 0.9rem;
+        color: #555;
+        text-align: center;
+        border: 1px solid transparent;
+      }
+
+      .tema:hover {
+        background: var(--color-principal);
+        color: white;
+        transform: translateX(5px);
+      }
+
+      /* Zona de Contenido Principal */
+      .zona-herramientas {
+        flex: 1; /* Ocupa el resto del ancho disponible */
+        padding: 50px;
+        background-color: #f9f9fb;
+        box-sizing: border-box;
+      }
+
+      .zona-herramientas h2 {
+        font-size: 2.5rem;
+        color: var(--color-oscuro);
+        margin-top: 0;
+      }
+
+      .zona-herramientas p {
+        color: #4a5568;
+        line-height: 1.6;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-top: 1px solid #ddd;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barra Superior -->
+    <nav class="barra-superior">
+      <div class="boton-volver">
+        <a href="/PageALL/MateriasCCED/Ciencias Naturales/PanelGeneral.html">← VOLVER ATRAS</a
+        >
+      </div>
+      <div class="titulo-materia">Ciencias de la naturaleza</div>
+      <div style="color: #666; font-weight: bold">5to Informática</div>
+    </nav>
+
+    <!-- Contenedor de la Aplicación -->
+    <div class="contenedor">
+      <!-- Barra Lateral Izquierda -->
+      <aside class="barra-lateral">
+        <h3>Química</h3>
+        <hr />
+        <div class="info-materia">
+          <div class="tema" onclick="mostrar('Tema1')">Química General</div>
+          <div class="tema" onclick="mostrar('Tema2')">Tabla Periódica</div>
+          <div class="tema" onclick="mostrar('Tema3')">Química Orgánica</div>
+          <div class="tema" onclick="mostrar('Tema4')">Química Inorgánica</div>
+          <div class="tema" onclick="mostrar('Tema5')">Química Analítica</div>
+          <div class="tema" onclick="mostrar('Tema6')">Química Ambiental</div>
+          <div class="tema" onclick="mostrar('Tema7')">Bioquímica</div>
+        </div>
+      </aside>
+
+      <!-- Zona de Contenido a la Derecha -->
+      <main class="zona-herramientas">
+        <div id="contenido">
+          <h2>Introducción a Química</h2>
+          <p>
+            Bienvenido al módulo de Química. Selecciona uno de los temas del
+            menú lateral para comenzar tu aprendizaje sobre los elementos y
+            compuestos químicos .
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 AcademiaCCED - Ciencias de la Naturaleza</footer>
+
+    <script>
+      /**
+       * Función para actualizar el contenido dinámicamente
+       * @param {string} tema - Identificador del tema seleccionado
+       */
+      function mostrar(tema) {
+        const contenido = document.getElementById("contenido");
+
+        // Diccionario de temas para mantener el código limpio
+        const temasInfo = {
+          Tema1: {
+            titulo: "Química General",
+            texto: `La química es la ciencia que estudia la materia, su composición, estructura, propiedades y los cambios que puede experimentar. Se encarga de analizar de qué están hechas las cosas y cómo se transforman mediante reacciones químicas.<br></br>
+
+¿Qué estudia la Química?<br></br>
+
+
+La química estudia diferentes aspectos de la materia, entre ellos:<br></br>
+
+• La composición de la materia (de qué están hechas las sustancias).<br></br>
+
+• La estructura de los átomos y moléculas.<br></br>
+
+• Las propiedades físicas y químicas de las sustancias.<br></br>
+
+• Las reacciones químicas (cómo se transforman unas sustancias en otras).<br></br>
+
+• La energía en los cambios químicos.<br></br>
+
+• Los elementos de la tabla periódica.<br></br>
+
+También analiza procesos cotidianos como:<br></br>
+
+• La cocción de alimentos<br></br>
+
+• La respiración<br></br>
+
+• La oxidación (como cuando el hierro se oxida)<br></br>
+<br></br>
+Importancia de la Química<br></br>
+<br></br>
+La química es muy importante porque:<br></br>
+
+• Permite entender la composición de todo lo que nos rodea.<br></br>
+
+• Ayuda a desarrollar medicamentos y mejorar la salud.<br></br>
+
+• Contribuye a la industria, como la fabricación de productos (plásticos, pinturas, etc.).<br></br>
+
+• Mejora la producción de alimentos mediante fertilizantes y conservación.<br></br>
+
+• Protege el medio ambiente, estudiando la contaminación y sus soluciones.<br></br>
+
+• Es clave en la vida diaria, desde cocinar hasta limpiar.`,
+          },
+          Tema2: {
+            titulo: "Tabla Periódica",
+            texto: `La tabla periódica es una herramienta fundamental de la química que organiza todos los elementos químicos conocidos de manera ordenada, según sus propiedades y su número atómico.<br></br>
+
+La tabla está dividida en:<br></br>
+
+🔹 Filas (Períodos)<br></br>
+
+• Son las líneas horizontales.<br></br>
+
+• Indican el nivel de energía de los electrones.<br></br>
+
+• Hay 7 períodos.<br></br>
+
+🔹 Columnas (Grupos o familias)<br></br>
+
+Son las líneas verticales.<br></br>
+
+• Los elementos de un mismo grupo tienen propiedades similares.<br></br>
+
+• Hay 18 grupos.<br></br>
+
+Tipos de elementos<br></br>
+
+ Metales<br></br>
+
+• Son la mayoría de los elementos.<br></br>
+
+• Conducen electricidad y calor.<br></br>
+
+Ejemplo: hierro (Fe), aluminio (Al).<br></br>
+
+ No metales<br></br>
+
+• No conducen electricidad.<br></br>
+
+• Son más frágiles.<br></br>
+
+Ejemplo: oxígeno (O), carbono (C).<br></br>
+
+Metaloides<br></br>
+
+• Tienen propiedades intermedias.<br></br>
+
+Familias importantes<br></br>
+
+• Alcalinos (Grupo 1): Muy reactivos (ej: sodio).<br></br>
+
+• Alcalinotérreos (Grupo 2): También reactivos (ej: calcio).<br></br>
+
+• Halógenos (Grupo 17): Muy reactivos (ej: cloro).<br></br>
+
+• Gases nobles (Grupo 18): Poco reactivos (ej: helio, neón).<br></br>`,
+          },
+          Tema3: {
+            titulo: "Química Orgánica",
+            texto: `La química orgánica es la rama de la química que estudia los compuestos que contienen carbono, especialmente aquellos que forman parte de los seres vivos. Analiza la estructura, propiedades, composición y reacciones de sustancias como los hidrocarburos, proteínas, lípidos y carbohidratos. Esta rama es muy importante porque permite comprender procesos biológicos y desarrollar productos como medicamentos, plásticos, combustibles y materiales sintéticos.<br></br>
+
+Aspectos Clave de la Química Orgánica:<br></br>
+
+•	El Átomo de Carbono: Es el elemento central debido a su capacidad única de autosaturación (formar enlaces consigo mismo), creando largas cadenas y anillos complejos.<br></br>
+
+•	Elementos Comunes (CHONPS): Además de carbono e hidrógeno, los compuestos orgánicos suelen incluir oxígeno, nitrógeno, azufre, fósforo y halógenos<br></br>
+
+•	Grupos Funcionales: Son agrupaciones de átomos que determinan la reactividad y propiedades químicas de las moléculas (ej. alcoholes, cetonas, ácidos carboxílicos).<br></br>
+
+•	Isomería: Es común encontrar moléculas con la misma fórmula molecular pero diferente estructura y propiedades.<br></br>
+
+•	Origen y Síntesis: Inicialmente ligada a los seres vivos, hoy abarca la síntesis artificial en laboratorios, refutando el vitalismo. <br></br>
+
+Importancia y Aplicaciones:<br></br>
+
+La química orgánica es vital para la vida moderna y el desarrollo de nuevos materiales, incluyendo: <br></br>
+
+•	Medicina y Farmacia: Desarrollo de fármacos y compuestos biológicos.<br></br>
+
+•	Industria Petroquímica: Producción de combustibles, plásticos y polímeros.<br></br>
+
+•	Bioquímica: Comprensión de los procesos metabólicos y componentes de los seres vivos.<br></br>
+
+•	Agricultura: Creación de agroquímicos como pesticidas y fertilizantes.`,
+          },
+          Tema4: {
+            titulo: "Química Inorgánica",
+            texto: `La química inorgánica se encarga del estudio de los compuestos que no contienen carbono (o que no son orgánicos), como los minerales, metales, sales y óxidos. Analiza sus propiedades, estructuras y reacciones químicas. Esta rama es fundamental en la industria, ya que se utiliza en la fabricación de materiales como el cemento, el vidrio, los fertilizantes y muchos productos químicos de uso cotidiano.<br></br>
+
+Aspectos clave de la química inorgánica:<br></br>
+
+•	Alcance: Incluye el estudio de óxidos, sales, hidruros, ácidos y bases, así como materiales cerámicos y catalizadores.<br></br>
+
+•	Propiedades comunes: Los compuestos inorgánicos suelen tener altos puntos de fusión y reacciones rápidas.<br></br>
+
+•	Aplicaciones industriales:<br></br>
+
+ Es fundamental para la fabricación de materiales (acero, vidrios), fertilizantes, fármacos y en la minería.<br></br>
+
+•	Subcampos: Se divide en áreas como la química bioinorgánica (metales en sistemas biológicos), organometálica y la ciencia de materiales. <br></br>
+
+Clasificación básica de compuestos:<br></br>
+
+1.	Binarios: Compuestos por dos elementos, como óxidos , peróxidos e hidruros.<br></br>
+
+2.	Ternarios: Compuestos por tres elementos, como hidróxidos y sales ternarias. <br></br>
+ 
+Esta disciplina es esencial para entender el funcionamiento de catalizadores, el desarrollo de nuevos materiales y la bioquímica de metales, como el hierro en la sangre.`,
+          },
+          Tema5: {
+            titulo: "Química Analítica",
+            texto: `La química analítica es la rama que se dedica a identificar y determinar la composición de las sustancias. Utiliza diferentes métodos y técnicas para saber qué elementos o compuestos están presentes en una muestra y en qué cantidad. Es muy importante en laboratorios, medicina, control de calidad, investigación científica y análisis ambiental.<br></br>
+
+Principales Aspectos de la Química Analítica:<br></br>
+
+•	Objetivo: Desarrollar e implementar técnicas para obtener información cualitativa y cuantitativa de calidad sobre la composición de la materia.<br></br>
+
+•	Tipos de Análisis:<br></br>
+
+•	Cualitativo: Identifica los componentes presentes (qué es).<br></br>
+
+•	Cuantitativo: Determina la cantidad o concentración del analito (cuánto hay).<br></br>
+
+•	Métodos Analíticos:<br></br>
+
+•	Clásicos (Vía húmeda): Basados en reacciones químicas, como la gravimetría (medición de masa) y la volumetría (titulaciones).<br></br>
+
+•	Instrumentales: Utilizan equipos para medir propiedades físicas (espectroscopia, cromatografía, electroquímica).<br></br>
+
+•	Proceso Analítico: Involucra el muestreo, la preparación de la muestra, la medición (análisis) y la evaluación de resultados. <br></br>
+
+Aplicaciones de la Química Analítica:<br></br>
+
+•	Medicina: Análisis de sangre, colesterol y glucosa.<br></br>
+
+•	Medio Ambiente: Medición de contaminantes en agua, suelo y aire.<br></br>
+
+•	Industria: Control de calidad de productos y materias primas.<br></br>
+
+•	Ciencias Forenses: Análisis de evidencias.`,
+          },
+          Tema6: {
+            titulo: "Química Ambiental",
+            texto: `La química ambiental estudia los procesos químicos que ocurren en el medio ambiente. Analiza la contaminación del aire, agua y suelo, así como sus efectos y posibles soluciones. Esta rama es esencial para proteger los ecosistemas y la salud humana.<br></br>
+
+Componentes Clave y Áreas de Estudio<br></br>
+
+•	Química Atmosférica: Estudia las reacciones gaseosas en el aire, incluyendo la capa de ozono y el cambio climático.<br></br>
+
+•	Química Acuática: Analiza los procesos químicos en ríos, lagos y océanos, especialmente la contaminación hídrica.<br></br>
+
+•	Geoquímica: Examina las interacciones químicas en el suelo y rocas.<br></br>
+
+•	Bioquímica Ambiental: Analiza cómo los seres vivos interactúan con los contaminantes y su biodegradación.<br></br>
+
+•	Química Verde (Sostenible): Se enfoca en diseñar productos y procesos que minimicen el uso y generación de sustancias peligrosas, buscando reducir el impacto ambiental desde su origen. <br></br>
+
+Importancia y Aplicación<br></br>
+
+1.	Monitoreo y Control: Identifica fuentes de contaminación y monitorea la calidad del aire, agua y suelo.<br></br>
+
+2.	Remediación: Desarrolla técnicas de tratamiento para residuos y contaminantes, como depuración de aguas residuales.<br></br>
+
+3.	Desarrollo Sostenible: Promueve el diseño de productos y procesos industriales más limpios y seguros. `,
+          },
+          Tema7: {
+            titulo: "Bioquímica",
+            texto: `La bioquímica es la rama que estudia las sustancias y procesos químicos que ocurren en los seres vivos. Analiza moléculas como proteínas, enzimas, vitaminas y ADN, así como procesos como la respiración celular y el metabolismo. Es fundamental para la medicina, ya que ayuda a comprender enfermedades y desarrollar tratamientos.<br></br>
+
+Aspectos Fundamentales de la Bioquímica:<br></br>
+
+•	Objetivo: Analizar cómo las moléculas orgánicas (basadas en carbono, hidrógeno, oxígeno, nitrógeno, fósforo y azufre) permiten la vida, el crecimiento y la reproducción.<br></br>
+
+•	Metabolismo: Estudia las reacciones químicas para obtener energía (catabolismo) y generar componentes celulares (anabolismo)<br></br>
+
+•	Componentes Clave: Investiga el ADN, ARN, proteínas, enzimas y lípidos.<br></br>
+
+•	Aplicaciones:<br></br>
+
+•	Medicina: Diagnóstico molecular, desarrollo de fármacos, vacunas y terapias génicas.<br></br>
+
+•	Agricultura: Mejora de cultivos, producción de fertilizantes y pesticidas.<br></br>
+
+•	Industria: Uso de enzimas en procesos industriales y fermentación.<br></br>
+
+•	Historia: Iniciada formalmente en el siglo XIX (con la síntesis de la urea por Wöhler en 1828), se consolidó al integrar la biología molecular. <br></br>
+
+La bioquímica es la base de la biomedicina, permitiendo comprender enfermedades y desarrollar técnicas como la PCR.`,
+          },
+        };
+
+        const data = temasInfo[tema];
+
+        if (data) {
+          contenido.innerHTML = `
+                    <h2>${data.titulo}</h2>
+                    <p>${data.texto}</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+                    <p style="color: #888; font-size: 0.9rem;">Recurso educativo de AcademiaCCED.</p>
+                `;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué es un fonema? | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS (misma paleta que las páginas anteriores) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">¿QUÉ ES UN FONEMA?</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición de fonema</div>
+                <div class="tema" data-tema="caracteristicas">Características de los fonemas</div>
+                <div class="tema" data-tema="fonema_fono">Diferencia entre fonema y fono (alófonos)</div>
+                <div class="tema" data-tema="vocales">Fonemas vocálicos (5 vocales)</div>
+                <div class="tema" data-tema="consonantes_punto">Consonantes según punto de articulación</div>
+                <div class="tema" data-tema="consonantes_modo">Consonantes según modo de articulación</div>
+                <div class="tema" data-tema="consonantes_sonoridad">Consonantes según sonoridad</div>
+                <div class="tema" data-tema="tabla_completa">Tabla resumen de fonemas consonánticos</div>
+                <div class="tema" data-tema="representacion">Representación de fonemas (AFI)</div>
+                <div class="tema" data-tema="importancia">Importancia de los fonemas</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario fonético-fonológico</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>¿Qué es un fonema?</h2>
+                <p>Los fonemas son <strong>imágenes acústicas mentales</strong>, es decir, no son los sonidos reales y físicos, sino las unidades abstractas de un patrón de sonidos que está contemplado en una lengua cualquiera. Cada lengua tiene su propio inventario de fonemas.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo introductorio:</strong> El español tiene 5 fonemas vocálicos (/a/, /e/, /i/, /o/, /u/) y 19 fonemas consonánticos. El inglés tiene 12 vocales distintas (por eso a veces nos cuesta pronunciar palabras como "ship" vs "sheep").
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para entender a fondo qué son los fonemas, cómo se clasifican y su importancia en la lengua.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Fonemas y fonología: la unidad mínima de los sonidos del lenguaje.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición de fonema</h2>
+                <p>Un <strong>fonema</strong> es la unidad mínima de sonido que puede distinguir significados en una lengua. No es un sonido físico (como los que produce el aparato fonador), sino una <strong>representación mental abstracta</strong> que existe en la competencia lingüística de los hablantes. Por ejemplo, en español, cambiar /p/ por /b/ cambia el significado: “papa” vs “baba”.</p>
+                <p>Los fonemas son las unidades de estudio de la <strong>fonología</strong>, mientras que los sonidos reales (fonos) son estudiados por la <strong>fonética</strong>. El fonema es un concepto mental; el fono es su realización física.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Analogía:</strong> El fonema es como la receta de un plato (la idea abstracta), mientras que el fono es el plato cocinado por un chef concreto (con sus variaciones personales).
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características de los fonemas</h2>
+                <ul>
+                    <li><strong>Abstractos y mentales:</strong> Existen en la mente de los hablantes, no en el aire o las cuerdas vocales.</li>
+                    <li><strong>Finitos e invariables:</strong> Cada lengua tiene un número limitado de fonemas (el español tiene alrededor de 24). No se agregan o eliminan fácilmente.</li>
+                    <li><strong>Opuestos entre sí:</strong> Los fonemas se distinguen por rasgos (sonoridad, punto de articulación, etc.) que permiten diferenciar palabras. Ej: /p/ vs /b/ (sordo vs sonoro).</li>
+                    <li><strong>Se representan entre barras:</strong> /a/, /b/, /k/.</li>
+                    <li><strong>Pueden tener variantes (alófonos):</strong> Un mismo fonema puede pronunciarse de distintas maneras según el contexto sin cambiar el significado. Ej: la /d/ en “dedo” suena diferente al inicio y en medio.</li>
+                    <li><strong>Son la base del sistema fonológico:</strong> Sin ellos no podríamos distinguir palabras ni construir el léxico de una lengua.</li>
+                </ul>
+            `,
+            fonema_fono: `
+                <h2>Diferencia entre fonema, fono y alófono</h2>
+                <p><strong>Fonema</strong> (unidad abstracta): /d/. <br>
+                <strong>Fono</strong> (sonido real producido): [d], [ð̞] (sonidos interdentales, oclusivos, etc.). <br>
+                <strong>Alófono</strong>: Cada una de las variantes concretas de un fonema. Por ejemplo, en español, el fonema /b/ tiene alófonos [b] (al inicio de palabra) y [β̞] (entre vocales).</p>
+                <p>Esta distinción fue fundamental para la lingüística moderna, inspirada en la diferencia saussureana entre <em>lengua</em> (sistema abstracto) y <em>habla</em> (realización individual).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clásico:</strong> La palabra “dedo” se escribe fonológicamente /dedo/, pero al pronunciarla, las dos /d/ no son iguales: la primera es oclusiva [d] (pues va al inicio de sílaba) y la segunda es aproximante [ð̞] (entre vocales). Ambas son alófonos del mismo fonema /d/.
+                </div>
+            `,
+            vocales: `
+                <h2>Fonemas vocálicos del español</h2>
+                <p>En español hay <strong>5 fonemas vocálicos</strong>:</p>
+                <ul>
+                    <li><strong>/a/</strong> (vocal abierta, central)</li>
+                    <li><strong>/e/</strong> (vocal media abierta, anterior)</li>
+                    <li><strong>/i/</strong> (vocal cerrada, anterior)</li>
+                    <li><strong>/o/</strong> (vocal media abierta, posterior)</li>
+                    <li><strong>/u/</strong> (vocal cerrada, posterior)</li>
+                </ul>
+                <p><strong>Clasificación según la apertura:</strong></p>
+                <ul>
+                    <li>Abiertas: /a/, /e/, /o/</li>
+                    <li>Cerradas: /i/, /u/</li>
+                </ul>
+                <p><strong>Según la posición de la lengua:</strong></p>
+                <ul>
+                    <li>Anteriores (palatales): /e/, /i/</li>
+                    <li>Central: /a/</li>
+                    <li>Posteriores (velares): /o/, /u/</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en palabras:</strong> “Mesa” → /m/, /e/, /s/, /a/. Cambiar la vocal altera el significado: “mesa”, “misa”, “musa”, “masa”, “mesa” (no hay /o/ pero “moso”). El sistema vocálico es muy estable en español.
+                </div>
+            `,
+            consonantes_punto: `
+                <h2>Consonantes según el punto de articulación</h2>
+                <p>El punto de articulación indica dónde se produce el obstáculo al flujo del aire.</p>
+                <ul>
+                    <li><strong>Bilabiales:</strong> /p/, /b/, /m/ (se juntan los dos labios). Ej: “papa”, “boca”, “mano”.</li>
+                    <li><strong>Labiodentales:</strong> /f/ (labio inferior y dientes superiores). Ej: “foca”.</li>
+                    <li><strong>Dentales:</strong> /t/, /d/ (lengua contra dientes superiores). Ej: “taza”, “dedo”.</li>
+                    <li><strong>Interdental:</strong> /θ/ (solo en la mayoría de España, como en “zapato” o “cerca”). En América Latina este fonema no existe (se usa /s/).</li>
+                    <li><strong>Alveolares:</strong> /s/, /n/, /l/, /r/ (lengua contra los alvéolos). Ej: “sol”, “nada”, “luz”, “caro”.</li>
+                    <li><strong>Palatales:</strong> /tʃ/ (como “ch”), /ɲ/ (como “ñ”), /ʝ/ (como “y” o “ll” en la mayoría). Ej: “chico”, “niño”, “llave” (o “yate”).</li>
+                    <li><strong>Velares:</strong> /k/, /g/, /x/ (como “j” o “g” suave). Ej: “casa”, “gato”, “juego”.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    En la palabra <strong>“congelado”</strong> encontramos: /k/ (velar), /n/ (alveolar), /x/ (velar), /e/, /l/ (alveolar), /a/, /d/ (dental), /o/.
+                </div>
+            `,
+            consonantes_modo: `
+                <h2>Consonantes según el modo de articulación</h2>
+                <p>El modo indica <em>cómo</em> se produce el obstáculo al aire.</p>
+                <ul>
+                    <li><strong>Oclusivos:</strong> El aire se detiene completamente y luego se libera. /p/, /t/, /k/, /b/, /d/, /g/.</li>
+                    <li><strong>Fricativos:</strong> El aire pasa por un canal estrecho produciendo fricción. /f/, /s/, /x/, /θ/ (en España).</li>
+                    <li><strong>Africados:</strong> Comienzan como oclusivos y terminan como fricativos. /tʃ/ (como “ch”).</li>
+                    <li><strong>Nasales:</strong> El aire sale por la nariz. /m/, /n/, /ɲ/ (ñ).</li>
+                    <li><strong>Laterales:</strong> El aire sale por los lados de la lengua. /l/, /ʎ/ (en zonas que distinguen “ll” de “y”, pero en la mayoría se ha fusionado).</li>
+                    <li><strong>Vibrantes:</strong> La lengua golpea repetidamente. /r/ (simple, como en “caro”) y /r/ (múltiple, como en “carro”, representada a menudo como /rr/ o /r/ larga).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> “tren” → /t/ (oclusivo dental), /r/ (vibrante simple), /e/, /n/ (nasal alveolar).
+                </div>
+            `,
+            consonantes_sonoridad: `
+                <h2>Consonantes según la sonoridad</h2>
+                <p>La sonoridad depende de si las cuerdas vocales vibran o no durante la articulación.</p>
+                <ul>
+                    <li><strong>Sonoras (vibran):</strong> /b/, /d/, /g/, /m/, /n/, /ɲ/, /l/, /ʎ/, /r/, /rr/, /ʝ/ (y/ll).</li>
+                    <li><strong>Sordas (no vibran):</strong> /p/, /t/, /k/, /f/, /s/, /θ/, /tʃ/, /x/.</li>
+                </ul>
+                <p>Esta distinción es crucial para diferenciar palabras: “bala” vs “pala”, “dama” vs “tama”, “goma” vs “coma”.</p>
+                <div class="bloque-ejemplo">
+                    Ejercicio rápido: Pon la mano en la laringe y pronuncia "ssss" (sorda) y luego "zzzz" (sonora). La vibración es la diferencia.
+                </div>
+            `,
+            tabla_completa: `
+                <h2>Tabla resumen de fonemas consonánticos del español</h2>
+                <table border="1" cellpadding="6" style="border-collapse:collapse; width:100%; background:#fff; text-align:center;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Punto \\ Modo</th><th>Oclusivo</th><th>Fricativo</th><th>Africado</th><th>Nasal</th><th>Lateral</th><th>Vibrante</th></tr>
+                    <tr><td>Bilabial</td><td>/p/ /b/</td><td></td><td></td><td>/m/</td><td></td><td></td></tr>
+                    <tr><td>Labiodental</td><td></td><td>/f/</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>Dental</td><td>/t/ /d/</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>Interdental</td><td></td><td>/θ/ (España)</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>Alveolar</td><td></td><td>/s/</td><td></td><td>/n/</td><td>/l/</td><td>/r/, /rr/</td></tr>
+                    <tr><td>Palatal</td><td></td><td>/ʝ/ (y/ll)</td><td>/tʃ/</td><td>/ɲ/</td><td>/ʎ/ (en zonas)</td><td></td></tr>
+                    <tr><td>Velar</td><td>/k/ /g/</td><td>/x/ (j)</td><td></td><td></td><td></td><td></td></tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    Nota: En la mayoría de las variedades del español, /ʎ/ ha desaparecido y /ʝ/ abarca tanto la “y” como la “ll”. Además, /θ/ solo en el español peninsular (distinción).
+                </div>
+            `,
+            representacion: `
+                <h2>Representación de fonemas (Alfabeto Fonético Internacional)</h2>
+                <p>El <strong>Alfabeto Fonético Internacional (AFI)</strong> es un sistema de símbolos que representa cada sonido distinto de las lenguas humanas. Los fonemas se escriben entre <strong>barras oblicuas</strong> / /, mientras que los fonos (realizaciones concretas) se escriben entre <strong>corchetes</strong> [ ].</p>
+                <p>Ejemplos de transcripción fonológica (entre barras):</p>
+                <ul>
+                    <li>“casa” → /kasa/</li>
+                    <li>“perro” → /pero/ (aunque la /r/ sea múltiple)</li>
+                    <li>“zapato” (en España) → /θapato/</li>
+                </ul>
+                <p>La transcripción fonética (entre corchetes) mostraría variaciones regionales o contextuales. Por ejemplo, “dedo” → [dedo] (primera d oclusiva), pero la segunda d se vuelve aproximante [ð̞] → deð̞o.</p>
+                <div class="bloque-ejemplo">
+                    Conocer el AFI es muy útil para estudiar dialectos, aprender pronunciación de otros idiomas y para la enseñanza de la lengua.
+                </div>
+            `,
+            importancia: `
+                <h2>Importancia de los fonemas en la lengua</h2>
+                <ul>
+                    <li><strong>Permiten distinguir palabras:</strong> Sin ellos, no habría diferencias entre “casa” y “caza” (en zonas con distinción) o “pala” y “bala”.</li>
+                    <li><strong>Son la base del sistema de escritura (alfabeto):</strong> En español, cada letra tiende a representar un fonema, aunque no siempre es biunívoco (ej: “c” y “k” para /k/).</li>
+                    <li><strong>Facilitan el aprendizaje de la lengua materna:</strong> Los niños adquieren primero los fonemas de su entorno.</li>
+                    <li><strong>Ayudan en la enseñanza de segundas lenguas:</strong> Identificar qué fonemas existen en el idioma meta y cuáles no en el nativo (ej: /θ/ para americanos, /ð/ para alemanes).</li>
+                    <li><strong>Fundamento de la fonología y la lingüística moderna.</strong></li>
+                </ul>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos sobre fonemas</h2>
+                <p><strong>Ejercicio 1: Contar fonemas.</strong> ¿Cuántos fonemas tiene la palabra “transportación”?</p>
+                <div class="bloque-ejemplo">
+                    Respuesta: 13 fonemas: /t/ /r/ /a/ /n/ /s/ /p/ /o/ /r/ /t/ /a/ /θ/ (o /s/) /i/ /o/ /n/. Dependiendo del seseo, el número puede variar.
+                </div>
+                <p><strong>Ejercicio 2: Identificar pares mínimos.</strong> Dos palabras que se diferencien solo en un fonema forman un par mínimo. Encuentra el par para: /p/ – /b/.</p>
+                <div class="bloque-ejemplo">
+                    Ejemplo: “pala” – “bala”. Otros: “casa” – “caza” (en España), “pero” – “perro” (cantidad de vibración).
+                </div>
+                <p><strong>Ejercicio 3: Clasificar fonemas.</strong> Clasifica los siguientes según punto y modo: /x/, /tʃ/, /m/.</p>
+                <ul>
+                    <li>/x/ → velar, fricativo, sordo.</li>
+                    <li>/tʃ/ → palatal, africado, sordo.</li>
+                    <li>/m/ → bilabial, nasal, sonoro.</li>
+                </ul>
+                <p><strong>Ejercicio 4: Transcribe fonológicamente.</strong> Escribe la secuencia de fonemas de “excelente”.</p>
+                <div class="bloque-ejemplo">
+                    Transcripción: /e/ /k/ /s/ /e/ /l/ /e/ /n/ /t/ /e/. Observa que la “x” en “excelente” se pronuncia [ks], pero al separar en fonemas son dos /k/ /s/.
+                </div>
+                <p><strong>Ejercicio 5: Investiga los fonemas de tu dialecto.</strong> ¿En tu región se distingue /s/ y /θ/? ¿Existe el fonema /ʎ/? ¿Hay aspiración de la /s/?</p>
+            `,
+            glosario: `
+                <h2>Glosario fonético-fonológico</h2>
+                <ul>
+                    <li><strong>Fonema:</strong> Unidad abstracta mínima con valor distintivo.</li>
+                    <li><strong>Fono:</strong> Realización concreta de un fonema.</li>
+                    <li><strong>Alófono:</strong> Variante contextual de un fonema.</li>
+                    <li><strong>AFI:</strong> Alfabeto Fonético Internacional.</li>
+                    <li><strong>Punto de articulación:</strong> Lugar donde se produce el obstáculo (bilabial, dental, velar...).</li>
+                    <li><strong>Modo de articulación:</strong> Manera en que se produce el sonido (oclusivo, fricativo, nasal...).</li>
+                    <li><strong>Sonoridad:</strong> Vibración o no de las cuerdas vocales.</li>
+                    <li><strong>Par mínimo:</strong> Par de palabras que se diferencian por un solo fonema (ej: “casa” / “caza”).</li>
+                    <li><strong>Posición intervocálica:</strong> Entre dos vocales, donde ocurren muchos alófonos.</li>
+                    <li><strong>Fonología:</strong> Rama de la lingüística que estudia los fonemas.</li>
+                    <li><strong>Fonética:</strong> Rama que estudia los sonidos reales (fonos) y su producción.</li>
+                </ul>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

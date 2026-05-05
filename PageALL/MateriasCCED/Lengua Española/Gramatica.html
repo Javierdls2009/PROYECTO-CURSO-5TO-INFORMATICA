@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gramática | AcademiaCCED</title>
+    
+    <style>
+        /* colores */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        /* estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra de navegacion superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        /* boton volver */
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* titulo de la materia */
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .barra-lateral hr {
+            margin: 15px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido h3 {
+            color: var(--color-oscuro);
+            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.6;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        /* bloque para destacar ejemplos */
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .bloque-ejemplo strong {
+            color: var(--color-principal);
+        }
+
+        .tabla-tiempos {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tabla-tiempos th, .tabla-tiempos td {
+            border: 1px solid var(--gris-borde);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tabla-tiempos th {
+            background: var(--color-principal);
+            color: white;
+            font-weight: bold;
+        }
+
+        .tabla-tiempos tr:nth-child(even) {
+            background: var(--gris-claro);
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">GRAMÁTICA ESPAÑOLA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        
+        <!-- barra lateral con temas -->
+        <aside class="barra-lateral">
+            <h3>Contenidos de Gramática</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="introduccion"> Introducción a la Gramática</div>
+                <div class="tema" data-tema="indicativo"> Los tiempos del indicativo</div>
+                <div class="tema" data-tema="subjuntivo">Los tiempos del subjuntivo</div>
+                <div class="tema" data-tema="verbos"> Los verbos</div>
+                <div class="tema" data-tema="sustantivos"> Los sustantivos</div>
+                <div class="tema" data-tema="articulos"> Los artículos</div>
+                <div class="tema" data-tema="pronombres_determinantes"> Pronombres y determinantes</div>
+                <div class="tema" data-tema="adjetivos"> Los adjetivos</div>
+                <div class="tema" data-tema="adverbios"> Los adverbios</div>
+                <div class="tema" data-tema="cuantificadores"> Los cuantificadores</div>
+                <div class="tema" data-tema="preposiciones"> Las preposiciones</div>
+                <div class="tema" data-tema="oracion"> Estructura de la oración</div>
+            </div>
+        </aside>
+
+        <!-- zona de contenido dinámico -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Gramática Española</h2>
+                <p>La gramática es la infraestructura de un idioma. Para hablar y escribir correctamente un idioma es importante conocer cómo se construye esa infraestructura. Estas son las reglas gramaticales.</p>
+                <div class="bloque-ejemplo">
+                    <strong>📖 Dato importante:</strong> Las reglas gramaticales nos dicen qué diferencias hay entre cada tiempo verbal, cuándo se usa cada uno y cómo se conjugan los verbos regulares e irregulares.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para aprender sobre cada aspecto de la gramática española.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- pie de pagina -->
+    <footer>
+        <p>© 2025 AcademiaCCED · Proyecto de Gramática · Lengua Española · 5to Informática</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            introduccion: `
+                <h2>Introducción a la Gramática</h2>
+                <p>La <strong>gramática</strong> es la infraestructura de un idioma. Para hablar y escribir correctamente un idioma es importante conocer cómo se construye esa infraestructura. Estas son las reglas gramaticales.</p>
+                <p>Las reglas gramaticales nos dicen qué diferencias hay entre cada tiempo verbal, cuándo se usa cada uno y cómo se conjugan los verbos regulares e irregulares. También define la estructura de las oraciones según del tipo que sean y qué posición ocupan cada uno de sus elementos, como los artículos, sustantivos, adjetivos, preposiciones, etc.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "Yo como manzanas" - El verbo "como" concuerda con el sujeto "yo" en persona y número.
+                </div>
+            `,
+            indicativo: `
+                <h2>Los tiempos del indicativo en español</h2>
+                <h3>¿Qué es el indicativo?</h3>
+                <p>El <strong>indicativo</strong> es un modo verbal en el que se expresa algo como <strong>real</strong>. Otros modos verbales son el subjuntivo y el imperativo.</p>
+                <p>El indicativo comprende <strong>10 tiempos verbales</strong>: cinco simples y cinco compuestos:</p>
+                
+                <h3>Tiempos simples:</h3>
+                <ul>
+                    <li>Presente (ej: como, hablo, vivo)</li>
+                    <li>Pretérito imperfecto (ej: comía, hablaba, vivía)</li>
+                    <li>Pretérito indefinido (ej: comí, hablé, viví)</li>
+                    <li>Futuro simple (ej: comeré, hablaré, viviré)</li>
+                    <li>Condicional simple (ej: comería, hablaría, viviría)</li>
+                </ul>
+                
+                <h3>Tiempos compuestos:</h3>
+                <ul>
+                    <li>Pretérito perfecto (ej: he comido, he hablado)</li>
+                    <li>Pretérito pluscuamperfecto (ej: había comido)</li>
+                    <li>Pretérito anterior (ej: hube comido)</li>
+                    <li>Futuro compuesto (ej: habré comido)</li>
+                    <li>Condicional compuesto (ej: habría comido)</li>
+                </ul>
+                
+                <h3>Perífrasis verbales:</h3>
+                <ul>
+                    <li><strong>estar + gerundio</strong> → momento del habla (ej: estoy comiendo)</li>
+                    <li><strong>ir a + infinitivo</strong> → futuro inmediato (ej: voy a comer)</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en contexto:</strong> "Ayer <strong>comí</strong> pizza" (pretérito indefinido) vs "Siempre <strong>como</strong> pizza los viernes" (presente).
+                </div>
+            `,
+            subjuntivo: `
+                <h2>Los tiempos del subjuntivo en español</h2>
+                <h3>¿Qué es el subjuntivo?</h3>
+                <p>El <strong>subjuntivo</strong> es el modo verbal, como el indicativo o el imperativo. Se usa para expresar algo <strong>irreal</strong> o una <strong>conjetura</strong> en oraciones subordinadas después de determinados verbos o en expresiones.</p>
+                <p>La palabra «subjuntivo» quiere decir que el sentido de los tiempos verbales de este modo depende del verbo de la oración principal.</p>
+                
+                <h3>Tiempos del subjuntivo:</h3>
+                <ul>
+                    <li><strong>Presente:</strong> que yo coma, que tú comas</li>
+                    <li><strong>Pretérito imperfecto:</strong> que yo comiera o comiese</li>
+                    <li><strong>Futuro simple:</strong> que yo comiere (poco usado)</li>
+                    <li><strong>Pretérito perfecto:</strong> que yo haya comido</li>
+                    <li><strong>Pretérito pluscuamperfecto:</strong> que yo hubiera o hubiese comido</li>
+                    <li><strong>Futuro compuesto:</strong> que yo hubiere comido</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "Espero que <strong>vengas</strong> a la fiesta" (subjuntivo presente - expresa deseo, no un hecho real).
+                </div>
+            `,
+            verbos: `
+                <h2>Los verbos en español</h2>
+                <h3>¿Qué es un verbo?</h3>
+                <p>Los <strong>verbos</strong> son palabras que expresan la acción que ejecuta el sujeto, o el estado o proceso en el que se encuentra. Por ello, siempre concuerdan con el sujeto en <strong>persona y número</strong>. Los verbos son el <strong>núcleo del predicado</strong>.</p>
+                <p>Además, pueden ir acompañados de complementos que añaden información sobre cómo ocurre la acción.</p>
+                
+                <h3>Conjugaciones verbales:</h3>
+                <ul>
+                    <li><strong>1ra conjugación (-ar):</strong> amar, hablar, cantar</li>
+                    <li><strong>2da conjugación (-er):</strong> comer, beber, correr</li>
+                    <li><strong>3ra conjugación (-ir):</strong> vivir, sentir, escribir</li>
+                </ul>
+                
+                <h3>Personas gramaticales:</h3>
+                <ul>
+                    <li>1ra persona: yo, nosotros/as</li>
+                    <li>2da persona: tú, vosotros/as, usted, ustedes</li>
+                    <li>3ra persona: él, ella, ellos, ellas</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "María <strong>corre</strong> todas las mañanas" - El verbo "corre" está en 3ra persona del singular.
+                </div>
+            `,
+            sustantivos: `
+                <h2>Los sustantivos en español</h2>
+                <h3>¿Qué es un sustantivo?</h3>
+                <p>Los <strong>sustantivos</strong> son palabras que designan elementos <strong>tangibles</strong> (p. ej., el libro, la mesa) o <strong>intangibles</strong> (p. ej., el tiempo, la libertad).</p>
+                <p>Los sustantivos en español tienen <strong>género</strong> (masculino o femenino) y <strong>número</strong> (singular o plural) y suelen ir acompañados de un artículo o un determinante. También pueden ser reemplazados por un pronombre.</p>
+                
+                <h3>Clasificación de sustantivos:</h3>
+                <ul>
+                    <li><strong>Comunes:</strong> nombran seres u objetos en general (mesa, perro)</li>
+                    <li><strong>Propios:</strong> nombran a un ser u objeto específico (Juan, Madrid)</li>
+                    <li><strong>Concretos:</strong> se pueden percibir con los sentidos (casa, flor)</li>
+                    <li><strong>Abstractos:</strong> nombran conceptos o ideas (amor, esperanza)</li>
+                    <li><strong>Individuales:</strong> nombran un solo ser (árbol, oveja)</li>
+                    <li><strong>Colectivos:</strong> nombran un conjunto (bosque, rebaño)</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "El <strong>perro</strong> de Juan es muy juguetón" - "perro" es sustantivo común, concreto, individual.
+                </div>
+            `,
+            articulos: `
+                <h2>Los artículos en español</h2>
+                <h3>¿Qué es un artículo?</h3>
+                <p>Los <strong>artículos</strong> acompañan siempre a un sustantivo con el que concuerda en <strong>género</strong> (masculino, femenino) y <strong>número</strong> (singular, plural).</p>
+                
+                <h3>Tipos de artículos:</h3>
+                <table class="tabla-tiempos">
+                    <thead><tr><th>Tipo</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Determinados</strong></td><td>el, los</td><td>la, las</td><td>lo</td></tr>
+                        <tr><td><strong>Indeterminados</strong></td><td>un, unos</td><td>una, unas</td><td>-</td></tr>
+                    </tbody>
+                </table>
+                
+                <h3>Ejemplos de uso:</h3>
+                <ul>
+                    <li><strong>Artículos determinados:</strong> "El libro", "La casa", "Los niños", "Las flores"</li>
+                    <li><strong>Artículos indeterminados:</strong> "Un libro", "Una casa", "Unos niños", "Unas flores"</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Diferencia:</strong> "Dame <strong>el</strong> lápiz" (uno específico) vs "Dame <strong>un</strong> lápiz" (cualquiera).
+                </div>
+            `,
+            pronombres_determinantes: `
+                <h2>Pronombres y determinantes en español</h2>
+                
+                <h3>¿Qué son los pronombres?</h3>
+                <p>Los <strong>pronombres</strong> son palabras que identifican personas, animales o cosas sin nombrarlos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "Yo soy Jaime y este es mi gato Garfield."
+                </div>
+                
+                <h3>Tipos de pronombres:</h3>
+                <ul>
+                    <li><strong>Personales:</strong> yo, tú, él, nosotros, vosotros, ellos</li>
+                    <li><strong>Reflexivos:</strong> me, te, se, nos, os</li>
+                    <li><strong>Posesivos:</strong> mío, tuyo, suyo, nuestro</li>
+                    <li><strong>Demostrativos:</strong> este, ese, aquel</li>
+                    <li><strong>Relativos:</strong> que, quien, cual, cuyo</li>
+                    <li><strong>Interrogativos y exclamativos:</strong> qué, quién, cuál, cuánto</li>
+                    <li><strong>Cuantificadores:</strong> mucho, poco, bastante</li>
+                </ul>
+                
+                <h3>¿Qué son los determinantes?</h3>
+                <p>Los <strong>determinantes</strong> determinan, es decir, delimitan el significado de sustantivos que identifican personas, animales o cosas.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "Este gato es mi mejor amigo."
+                </div>
+                
+                <h3>Tipos de determinantes:</h3>
+                <ul>
+                    <li>Posesivos (mi, tu, su)</li>
+                    <li>Demostrativos (este, ese, aquel)</li>
+                    <li>Relativos (cuyo, cuya)</li>
+                    <li>Interrogativos y exclamativos (qué, cuánto)</li>
+                    <li>Cuantificadores (muchos, pocos, varios)</li>
+                </ul>
+            `,
+            adjetivos: `
+                <h2>Los adjetivos en español</h2>
+                <h3>¿Qué es un adjetivo?</h3>
+                <p>Los <strong>adjetivos</strong> son palabras que denotan los atributos o cualidades de un sustantivo.</p>
+                <p>El contenido que aporta un adjetivo sobre un sustantivo es muy variado: puede ser una <strong>cualidad</strong> (playa <strong>grande</strong>, <strong>rocosa</strong>, <strong>privada</strong>), o una <strong>relación</strong> (política <strong>marítima</strong>), una <strong>cantidad</strong> (<strong>numerosas</strong> playas), o una referencia a un momento del tiempo (marea <strong>matinal</strong>) o a un lugar (playa <strong>mediterránea</strong>).</p>
+                <p>En español los adjetivos se sitúan por norma general <strong>a continuación del sustantivo</strong> al que acompañan y solo en casos muy especiales lo preceden.</p>
+                <p>Los adjetivos siempre concuerdan en <strong>género y número</strong> con el sustantivo al que acompañan.</p>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplos:</strong><br>
+                    "casa <strong>grande</strong>" (femenino + singular)<br>
+                    "perro <strong>negro</strong>" (masculino + singular)<br>
+                    "flores <strong>hermosas</strong>" (femenino + plural)
+                </div>
+            `,
+            adverbios: `
+                <h2>Los adverbios en español</h2>
+                <h3>¿Qué es un adverbio?</h3>
+                <p>Los <strong>adverbios</strong> son palabras invariables que complementan el significado de un verbo, un adjetivo, otro adverbio o una oración completa.</p>
+                
+                <h3>Ejemplos:</h3>
+                <ul>
+                    <li>El gato duerme <strong>plácidamente</strong> en el sillón. (verbo + adverbio)</li>
+                    <li>El gato está <strong>muy</strong> tranquilo. (adverbio + adjetivo)</li>
+                    <li>El gato ronronea <strong>bastante</strong> fuerte. (adverbio + adverbio)</li>
+                    <li><strong>Efectivamente</strong>, el gato se pasa el día durmiendo. (adverbio + oración)</li>
+                </ul>
+                
+                <h3>Tipos de adverbios:</h3>
+                <ul>
+                    <li><strong>Lugar:</strong> aquí, allí, cerca, lejos, dentro, fuera</li>
+                    <li><strong>Tiempo:</strong> hoy, ayer, mañana, siempre, nunca</li>
+                    <li><strong>Modo:</strong> bien, mal, rápido, despacio, felizmente</li>
+                    <li><strong>Cantidad:</strong> mucho, poco, bastante, demasiado</li>
+                    <li><strong>Afirmación:</strong> sí, cierto, realmente</li>
+                    <li><strong>Negación:</strong> no, nunca, jamás</li>
+                    <li><strong>Duda:</strong> quizás, probablemente</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "<strong>Siempre</strong> llego <strong>temprano</strong> a clase" - adverbios de tiempo.
+                </div>
+            `,
+            cuantificadores: `
+                <h2>Los cuantificadores en español</h2>
+                <h3>¿Qué son los cuantificadores?</h3>
+                <p>Los <strong>cuantificadores</strong> son palabras que expresan <strong>cantidad</strong>. Pueden hacerlo de manera <strong>absoluta</strong> (ambos, todos, siete) o <strong>indeterminada</strong> (algunos, pocos, varios). Estos últimos reciben el nombre también de <strong>indefinidos</strong>.</p>
+                
+                <h3>Ejemplos de cuantificadores:</h3>
+                <ul>
+                    <li><strong>Absolutos:</strong> uno, dos, tres (números), todos, ambas, cada</li>
+                    <li><strong>Indeterminados:</strong> algunos, varios, muchos, pocos, bastante(s), demasiado(s)</li>
+                    <li><strong>Distributivos:</strong> sendos, cada</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> "<strong>Muchos</strong> estudiantes aprobaron el examen" vs "<strong>Pocos</strong> estudiantes vinieron a clase".
+                </div>
+            `,
+            preposiciones: `
+                <h2>Las preposiciones en español</h2>
+                <h3>¿Qué es una preposición?</h3>
+                <p>Las <strong>preposiciones</strong> en español son palabras invariables que sirven de <strong>nexo</strong> entre las diferentes partes de una oración e introducen complementos.</p>
+                
+                <h3>Lista de preposiciones:</h3>
+                <p><strong>a, ante, bajo, cabe, con, contra, de, desde, durante, en, entre, hacia, hasta, mediante, para, por, según, sin, so, sobre, tras, versus y vía.</strong></p>
+                
+                <h3>Locuciones preposicionales:</h3>
+                <p>Son agrupaciones de palabras que juntas funcionan gramaticalmente como una preposición.</p>
+                <ul>
+                    <li>después de</li>
+                    <li>cerca de</li>
+                    <li>encima de</li>
+                    <li>debajo de</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplos:</strong><br>
+                    "Pedro ha ido <strong>a</strong> la panadería."<br>
+                    "Lucía vive <strong>cerca de</strong> Málaga."
+                </div>
+            `,
+            oracion: `
+                <h2>La estructura de la oración en español</h2>
+                <h3>¿Qué es una oración?</h3>
+                <p>Una <strong>oración</strong> es una estructura gramatical formada por la unión de un <strong>sujeto</strong> y un <strong>predicado</strong>.</p>
+                <ul>
+                    <li><strong>Sujeto:</strong> es quien realiza la acción del verbo.</li>
+                    <li><strong>Predicado:</strong> es lo que se dice del sujeto y tiene como núcleo un verbo, que puede llevar complementos que aportan información adicional.</li>
+                </ul>
+                
+                <h3>Características:</h3>
+                <ul>
+                    <li>En español, las oraciones comienzan siempre con <strong>mayúscula inicial</strong> y se cierran con un <strong>punto</strong>.</li>
+                    <li>Cuando la oración es una <strong>pregunta</strong>, comienzan y acaban con signos de interrogación (¿ ?).</li>
+                    <li>Cuando es una <strong>exclamación</strong>, con signos de exclamación (¡ !).</li>
+                </ul>
+                
+                <h3>Tipos de oraciones:</h3>
+                <ul>
+                    <li><strong>Enunciativas:</strong> afirman o niegan un hecho (Ej: "Hoy es lunes")</li>
+                    <li><strong>Interrogativas:</strong> preguntan algo (Ej: "¿Qué hora es?")</li>
+                    <li><strong>Exclamativas:</strong> expresan emoción (Ej: "¡Qué bonito!")</li>
+                    <li><strong>Imperativas:</strong> dan una orden (Ej: "Cierra la puerta")</li>
+                    <li><strong>Desiderativas:</strong> expresan un deseo (Ej: "Ojalá venga")</li>
+                    <li><strong>Dubitativas:</strong> expresan duda (Ej: "Quizás vaya")</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Estructura básica:</strong><br>
+                    "El niño (sujeto) juega en el parque (predicado)."
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+                contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+        }
+
+        // Asignar evento click a cada tema
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        // Cargar tema por defecto
+        mostrarTema('introduccion');
+    </script>
+</body>
+</html>

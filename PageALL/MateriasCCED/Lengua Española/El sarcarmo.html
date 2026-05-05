@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarcasmo | AcademiaCCED</title>
+    
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">SARCASMO</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición profunda de sarcasmo</div>
+                <div class="tema" data-tema="caracteristicas">Características del sarcasmo</div>
+                <div class="tema" data-tema="tipos">Tipos de sarcasmo (con ejemplos)</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre ironía y sarcasmo</div>
+                <div class="tema" data-tema="literatura_cine">Sarcasmo en literatura y cine</div>
+                <div class="tema" data-tema="redes_politica">Sarcasmo en redes sociales y política</div>
+                <div class="tema" data-tema="uso_riesgos">Cómo usar el sarcasmo sin ofender (y sus riesgos)</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario de términos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Sarcasmo: definición, tipos y ejemplos</h2>
+                <p>El sarcasmo es una forma de expresión que utiliza la ironía con una intención más fuerte, generalmente para burlarse, criticar o ridiculizar a alguien. Es más directo y menos sutil que la ironía.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Alguien rompe un vaso y le dicen: “Eres todo un experto en destreza manual”. Claramente no es un elogio.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar el sarcasmo en profundidad.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · El sarcasmo: entre la burla inteligente y el riesgo de herir.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición profunda del sarcasmo</h2>
+                <p>El <strong>sarcasmo</strong> (del griego <em>sarkasmós</em>, 'desgarrar la carne') es una figura retórica y una forma de ironía <strong>agresiva o mordaz</strong> cuyo objetivo principal es herir, ridiculizar o criticar a alguien de manera explícita, aunque no directa. A diferencia de la ironía neutra o juguetona, el sarcasmo tiene una <strong>intención punzante</strong> y casi siempre busca hacer sentir al otro su error o torpeza.</p>
+                <p>El sarcasmo se basa en decir lo contrario de lo que se piensa, pero añadiendo un <strong>tono exagerado, cortante o despectivo</strong>. Quien lo usa generalmente espera que el receptor se dé cuenta inmediatamente de la burla. Por eso, en la comunicación oral, el tono de voz (falsamente elogioso, cansado o con una sonrisa fingida) es fundamental.</p>
+                <p><strong>Origen psicológico:</strong> El sarcasmo suele aparecer en personas que desean ejercer poder verbal, defender su ego o mostrar superioridad frente a un error ajeno. También puede ser un mecanismo de defensa contra la propia frustración.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo histórico:</strong> Cuando un político promete algo imposible, un opositor comenta: “Claro, y los cerdos vuelan”. Es sarcasmo porque ridiculiza la promesa.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Características del sarcasmo</h2>
+                <ul>
+                    <li><strong>Intención de burla o crítica explícita:</strong> No es ambigua; se busca ridiculizar o señalar un error.</li>
+                    <li><strong>Más directo que la ironía común:</strong> A menudo se entiende en menos de un segundo.</li>
+                    <li><strong>Fácil de identificar (en contexto adecuado):</strong> El tono exagerado lo delata.</li>
+                    <li><strong>Puede ser ofensivo:</strong> Si el receptor no lo espera o la confianza es poca, puede herir.</li>
+                    <li><strong>Depende fuertemente del tono de voz y lenguaje corporal:</strong> Ojos en blanco, sonrisa falsa, entonación ascendente.</li>
+                    <li><strong>Usado en confianza o discusiones acaloradas:</strong> Pocos usan sarcasmo con desconocidos a menos que quieran provocar.</li>
+                    <li><strong>Frecuente en la comedia y el humor negro:</strong> Muchos chistes stand-up se basan en sarcasmo.</li>
+                </ul>
+            `,
+            tipos: `
+                <h2>Tipos de sarcasmo (con ejemplos claros)</h2>
+                <p><strong>Sarcasmo burlesco:</strong> Busca ridiculizar a alguien mediante una exageración cómica. No necesariamente es cruel si hay confianza.</p>
+                <ul>
+                    <li>Alguien canta muy mal: “Deberías grabar un álbum, serías millonario”.</li>
+                    <li>Un amigo se equivoca al sumar 2+2 y dice 5: “Eres todo un matemático”.</li>
+                </ul>
+                <p><strong>Sarcasmo crítico:</strong> Se usa para señalar errores o defectos con dureza. Es el más común en discusiones.</p>
+                <ul>
+                    <li>Un trabajo lleno de faltas de ortografía: “Impecable manejo del idioma”.</li>
+                    <li>Alguien llega tarde todos los días: “Qué puntualidad más envidiable”.</li>
+                </ul>
+                <p><strong>Sarcasmo humorístico (o amistoso):</strong> Busca hacer reír sin intención de herir. Muy común entre amigos cercanos.</p>
+                <ul>
+                    <li>Un amigo despeinado: “Ese peinado está de moda en Marte, ¿no?”.</li>
+                    <li>Alguien come tres platos de comida: “Claro, tú casi no comes, solo picaste un poco”.</li>
+                </ul>
+                <p><strong>Sarcasmo pasivo-agresivo:</strong> Expresa molestia o enfado de forma indirecta pero con un tono evidente. Muy usado en relaciones laborales o de pareja cuando no se quiere discutir abiertamente.</p>
+                <ul>
+                    <li>Esperando a alguien que se retrasa una hora: “No te preocupes, me encanta esperar. Es mi hobby favorito”.</li>
+                    <li>Alguien no ayuda en una tarea grupal: “Gracias por toda tu ayuda, eres un pilar del equipo”.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo extremo (sarcasmo hiriente):</strong> Un deportista falla un gol cantado y su entrenador le dice: “Sigue así, vas a ganar el Nobel de la puntería”. El sarcasmo aquí es humillante.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias clave entre ironía y sarcasmo</h2>
+                <p>Aunque el sarcasmo es un subtipo de ironía, existen diferencias fundamentales en intención, tono y efecto.</p>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Aspecto</th><th>Ironía</th><th>Sarcasmo</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Intención</strong></td><td>Puede ser humor, reflexión, crítica suave, juego de palabras. No siempre es negativa.</td><td>Crítica, burla, ridiculización. Casi siempre es negativo o punzante.</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Tono</strong></td><td>Sutil, neutro o tranquilamente contradictorio.</td><td>Cortante, exagerado, a menudo con un deje de desprecio o sarcasmo en la voz.</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Claridad</strong></td><td>Puede pasar desapercibida si no se conoce el contexto.</td><td>Por lo general se identifica al instante (excepto para personas con dificultades sociales).</td></tr>
+                    <tr><td><strong>Ejemplo paralelo</strong></td><td>“Qué fresquito está hoy” (cuando hace mucho calor). Reflexión suave.</td><td>“Qué fresquito está hoy, casi me congelo” (con tono exagerado, burlándose del calor).</td></tr>
+                </table>
+                <p><strong>Otro ejemplo comparativo:</strong></p>
+                <ul>
+                    <li>Ironía: “Qué bien te quedó ese corte de pelo” (si es un poco raro, pero se dice con cariño).</li>
+                    <li>Sarcasmo: “Qué bien te quedó ese corte de pelo, parece que te atacó una podadora” (burlándose abiertamente).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    El sarcasmo es una ironía con “dientes”. Mientras la ironía puede ser una caricia juguetona, el sarcasmo es un arañazo.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Sarcasmo en la literatura, el cine y la televisión</h2>
+                <p>El sarcasmo es un recurso estilístico muy usado por personajes cínicos, villanos o antihéroes. Aparece en obras de todas las épocas.</p>
+                <p><strong>Literatura:</strong></p>
+                <ul>
+                    <li><strong>Quevedo:</strong> Sus sátiras están llenas de sarcasmo contra los poderosos y los necios. Ejemplo: “Pues amarga la verdad, quiero echarla de la boca”.</li>
+                    <li><strong>Oscar Wilde:</strong> <em>El retrato de Dorian Gray</em> y sus obras de teatro (ej: “Soy tan inteligente que a veces no entiendo una palabra de lo que digo”).</li>
+                    <li><strong>Mark Twain:</strong> “Nunca dejes que la escuela interfiera en tu educación” (sarcasmo sobre el sistema educativo).</li>
+                </ul>
+                <p><strong>Cine y series:</strong></p>
+                <ul>
+                    <li><strong>Dr. House:</strong> Su diálogo es prácticamente un manual de sarcasmo médico. “¿Enfermo? Qué sorpresa, justo lo que necesito para arruinar mi fin de semana”.</li>
+                    <li><strong>Los Simpson:</strong> Homero: “¡Cómo no! Todo me sale mal, hasta cuando me sale bien, sale mal”.</li>
+                    <li><strong>Deadpool:</strong> El personaje vive del sarcasmo y la autocrítica.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo cinematográfico clásico:</strong> En <em>El club de la lucha</em>, el narrador dice: “Trabajo en una oficina, soy esclavo de mi trabajo, pero tengo muebles de IKEA. Mi vida es perfecta”. Sarcasmo brutal sobre la sociedad de consumo.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Sarcasmo en redes sociales y en política</h2>
+                <p>En plataformas digitales, el sarcasmo es moneda corriente, pero su falta de tono de voz puede generar malentendidos masivos. Por eso se usan <strong>indicadores</strong> como mayúsculas intercaladas, comillas o el “/s” al final.</p>
+                <p><strong>Ejemplos en redes:</strong></p>
+                <ul>
+                    <li>Alguien publica una foto haciendo ejercicio: “Claro que sí, el deporte es lo tuyo… después de comer pizza”.</li>
+                    <li>Comentario en un grupo de trabajo: “Qué eficientes somos, tres semanas para responder un correo”.</li>
+                    <li>En Twitter: “Espero con ansias la próxima vez que el gobierno nos sorprenda con un aumento de impuestos. /s”.</li>
+                </ul>
+                <p><strong>Sarcasmo político:</strong> Los líderes y opositores lo usan para desacreditar al adversario sin caer en la falta de respeto directa (aunque a veces sí). Ejemplo histórico: Churchill respondió a una crítica con: “Señora, usted es fea, y mañana yo estaré sobrio, pero usted seguirá siendo fea”.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Precaución:</strong> En política, el sarcasmo puede generar polarización y ataques virales. A menudo es una estrategia de propaganda negativa encubierta.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Cómo usar el sarcasmo sin ofender (y sus riesgos)</h2>
+                <p>El sarcasmo es una herramienta verbal poderosa, pero peligrosa si se usa sin cuidado. Estas pautas pueden ayudar a usarlo de forma constructiva:</p>
+                <ul>
+                    <li><strong>Conoce a tu interlocutor:</strong> El sarcasmo solo funciona (sin dañar) cuando hay confianza y conocimiento mutuo. No uses sarcasmo con desconocidos o en situaciones formales.</li>
+                    <li><strong>Diferencia ámbitos:</strong> Entre amigos íntimos, el sarcasmo humorístico une; en el trabajo, puede verse como falta de profesionalismo.</li>
+                    <li><strong>No ataques aspectos vulnerables:</strong> Evita sarcasmo sobre peso, enfermedades, familia o problemas personales.</li>
+                    <li><strong>Señala acciones, no personas:</strong> “Qué forma de manejar (la acción)” es mejor que “Eres un conductor horrible”.</li>
+                    <li><strong>Combínalo con una sonrisa o un código de confianza:</strong> Una carcajada o un guiño suavizan la intención.</li>
+                </ul>
+                <p><strong>Riesgos del sarcasmo:</strong></p>
+                <ul>
+                    <li>Puede herir sensibilidades y terminar una amistad o relación laboral.</li>
+                    <li>En internet, al no verse el tono, se malinterpreta como agresión real.</li>
+                    <li>Si se usa en exceso, la persona puede ser vista como amargada o cínica.</li>
+                    <li>En educación, el sarcasmo del profesor humilla al alumno y daña su autoestima.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Regla de oro:</strong> Antes de lanzar un sarcasmo, pregúntate: “¿Esto ayudará a la conversación o solo me servirá para desahogar mi frustración?”.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos para reconocer y crear sarcasmo</h2>
+                <p><strong>Ejercicio 1: Identificar sarcasmo en frases.</strong> Marca S (sarcasmo) o I (ironía no sarcástica):</p>
+                <ol>
+                    <li>“Menos mal que te acordaste de traer el paraguas; ya ves que no llueve nada” (está diluviando). → S</li>
+                    <li>“El examen estuvo entretenido, la verdad.” (era fácil y el alumno lo aprobó bien). → I (no burla)</li>
+                    <li>“Eres el empleado del mes, claro, porque el mes tiene 30 días y te ausentaste 29.” → S</li>
+                    <li>“Qué bonita la flor que pintaste” (dicho a un niño pequeño, con cariño). → I (no sarcasmo)</li>
+                </ol>
+                <p><strong>Ejercicio 2: Transformar una crítica directa en sarcasmo.</strong></p>
+                <ul>
+                    <li>Crítica directa: “Llegaste muy tarde”. → Sarcasmo: “Llegaste justo a tiempo para despedir a los demás”.</li>
+                    <li>Crítica directa: “Tu presentación fue muy aburrida”. → “Qué presentación tan emocionante, me mantenía despierto a la fuerza”.</li>
+                </ul>
+                <p><strong>Ejercicio 3: Escribe una situación sarcástica entre dos amigos.</strong> (Ejemplo: uno dice que es excelente cocinero y quema la comida; el otro responde con sarcasmo).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Posible respuesta:</strong><br>
+                    Amigo A: “Soy un chef profesional, mira este pastel”. (El pastel está quemado).<br>
+                    Amigo B: “Uf, sí, se nota. Tiene ese toque crujiente que piden en los restaurantes de alta cocina”.
+                </div>
+                <p><strong>Ejercicio 4: Analiza el siguiente chiste sarcástico:</strong> “¿Por qué los políticos no usan paracaídas? Porque nunca abren nada”. Explica qué tipo de sarcasmo es y por qué funciona.</p>
+            `,
+            glosario: `
+                <h2>Glosario de términos relacionados con el sarcasmo</h2>
+                <ul>
+                    <li><strong>Antifrasis:</strong> Figura que consiste en decir lo contrario de lo que se piensa. Base de la ironía y el sarcasmo.</li>
+                    <li><strong>Cinismo:</strong> Actitud que niega o se burla de las normas sociales con descaro. El sarcasmo es una herramienta del cínico.</li>
+                    <li><strong>Sátira:</strong> Género literario que usa sarcasmo, ironía y exageración para criticar vicios sociales o individuales.</li>
+                    <li><strong>Humor negro:</strong> Tipo de humor sarcástico que aborda temas tabú (muerte, enfermedad, tragedia) con aparente frivolidad.</li>
+                    <li><strong>Pasivo-agresivo:</strong> Comportamiento que expresa hostilidad de forma indirecta; el sarcasmo pasivo-agresivo es un ejemplo clásico.</li>
+                    <li><strong>Causticidad:</strong> Cualidad de lo que corroe o quema. Se aplica a un sarcasmo especialmente hiriente.</li>
+                    <li><strong>Burla:</strong> Acción de ridiculizar. El sarcasmo es una forma verbal de burla.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Conocer el sarcasmo no solo mejora la comprensión lectora y auditiva, sino que también ayuda a comunicarse con mayor eficacia y evitar malentendidos.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

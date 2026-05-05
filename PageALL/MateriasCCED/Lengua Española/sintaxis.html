@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Sintaxis | AcademiaCCED</title>
     
-    <!-- estilos propios de esta sola pagina -->
     <style>
         /* colores */
         :root {
@@ -53,50 +52,50 @@
             min-height: 100vh;
         }
 
-        /*barra lateral con foto del profesor */
+        /* barra lateral */
         .barra-lateral {
-            width: 300px;
+            width: 320px;
             background-color: var(--blanco);
             border-right: 1px solid #ddd;
             padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.4rem;
             text-align: center;
         }
 
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
-        .barra-lateral h3 {
-            margin: 10px 0;
-            color: var(--color-oscuro);
-        }
-
-        /* linea separadora */
         .barra-lateral hr {
             opacity: 0.2;
             margin: 20px 0;
         }
 
-        /* informacion del profesor */
-        .info-profesor {
+        .info-materia {
             text-align: left;
             font-size: 0.9rem;
             color: #555;
+            margin: 10px 10px;
+            padding: 10px;
         }
 
-        .info-profesor p {
-            margin: 10px 0;
+        .tema {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
         /* zona principal */
@@ -104,70 +103,51 @@
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        /* encabezado en la zona */
         .zona-herramientas h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
         .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #4a5568;
+            font-size: 1rem;
         }
 
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.5;
         }
 
-        /* cada tarjeta */
-        .tarjeta-herramienta {
-            background: var(--blanco);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        .zona-herramientas li {
+            margin: 8px 0;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
         }
 
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* pie de pagina */
         footer {
             text-align: center;
             padding: 20px;
@@ -176,136 +156,363 @@
             color: #666;
             font-size: 0.9rem;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
 
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
+        }
     </style>
-  
-
-
 </head>
 <body>
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
-        <div class="titulo-materia">LENGUA ESPAÑOLA</div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">SINTAXIS</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
     <!-- contenido principal -->
     <div class="contenedor">
-        
         <!-- barra lateral -->
         <aside class="barra-lateral">
-            <h3>Sintaxis</h3>
+            <h3>Temas de Sintaxis</h3>
             <hr>
- <div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Sintaxis</div>
-<br>
-<div class="tema" onclick="mostrar('Tema2')">Oración</div>
-<br>
-<div class="tema" onclick="mostrar('Tema3')">Sujeto y predicado</div>
-<br>
-<div class="tema" onclick="mostrar('Tema4')">Tipos de oraciones</div>
-<br>
-<div class="tema" onclick="mostrar('Tema5')">Complementos</div>
-<br>
-<div class="tema" onclick="mostrar('Tema6')">Orden de la oración</div>
-</div>
-</aside>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('definicion')">1. Definición de Sintaxis</div>
+                <div class="tema" onclick="mostrar('oracion')">2. La Oración</div>
+                <div class="tema" onclick="mostrar('sujeto_predicado')">3. Sujeto y Predicado</div>
+                <div class="tema" onclick="mostrar('tipos_sujeto')">4. Tipos de Sujeto</div>
+                <div class="tema" onclick="mostrar('tipos_oraciones')">5. Tipos de Oraciones</div>
+                <div class="tema" onclick="mostrar('complementos')">6. Complementos del Verbo</div>
+                <div class="tema" onclick="mostrar('cd_ci')">7. Complemento Directo e Indirecto</div>
+                <div class="tema" onclick="mostrar('circunstancial')">8. Complementos Circunstanciales</div>
+                <div class="tema" onclick="mostrar('atributo')">9. Atributo y Predicativo</div>
+                <div class="tema" onclick="mostrar('agente')">10. Complemento Agente</div>
+                <div class="tema" onclick="mostrar('orden')">11. Orden de la Oración</div>
+                <div class="tema" onclick="mostrar('oraciones_compuestas')">12. Oraciones Compuestas</div>
+                <div class="tema" onclick="mostrar('coordinacion')">13. Coordinación y Subordinación</div>
+                <div class="tema" onclick="mostrar('perifrasis')">14. Perífrasis Verbales</div>
+                <div class="tema" onclick="mostrar('analisis')">15. Análisis Sintáctico Paso a Paso</div>
+                <div class="tema" onclick="mostrar('ejercicios')">16. Ejercicios Prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')">17. Glosario Sintáctico</div>
+            </div>
+        </aside>
 
-<!-- zona de texto en la derecha -->
-<main class="zona-herramientas">
-    <div id="contenido">
-        <h2>Introducción a Sintaxis</h2> 
-        <p>Selecciona un tema del menú lateral para aprender cómo se estructuran las oraciones.</p>
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Sintaxis del español</h2>
+                <p>La sintaxis es la parte de la gramática que estudia cómo se combinan las palabras para formar oraciones con sentido. A continuación, selecciona un tema del menú lateral para aprender en profundidad.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Dato clave:</strong> Una oración correcta necesita una estructura lógica: sujeto + predicado, pero el español permite muchos órdenes diferentes.
+                </div>
+                <hr>
+                <p>Explora cada tema: desde la definición básica hasta el análisis sintáctico completo.</p>
+            </div>
+        </main>
     </div>
-</main>
 
-</div>
+    <footer>
+        <p>© 2025 AcademiaCCED · Sintaxis: la estructura de las oraciones.</p>
+    </footer>
 
-<!-- pie de pagina -->
-<footer>
-    <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-</footer>
+    <script>
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
 
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
+            if (tema === "definicion") {
+                html = `
+                    <h2>Definición de Sintaxis</h2>
+                    <p>La <strong>sintaxis</strong> (del griego <em>syntaxis</em>, 'ordenar juntos') es la rama de la gramática que estudia las reglas y principios que gobiernan la combinación de palabras para formar oraciones y enunciados con sentido correcto.</p>
+                    <p>Analiza la función de cada palabra dentro de la oración (sujeto, predicado, complementos) y las relaciones sintácticas entre ellas.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo:</strong> "El perro ladra fuerte." → la sintaxis nos dice que "el perro" es el sujeto, "ladra" es el núcleo verbal y "fuerte" es un complemento circunstancial de modo.
+                    </div>
+                `;
+            } 
+            else if (tema === "oracion") {
+                html = `
+                    <h2>La Oración</h2>
+                    <p>Una <strong>oración</strong> es un conjunto de palabras con <strong>sentido completo</strong> y que expresa una idea. Se caracteriza por tener un verbo conjugado y una entonación propia.</p>
+                    <p><strong>Características:</strong></p>
+                    <ul>
+                        <li>Autonomía semántica (tiene significado por sí misma).</li>
+                        <li>Estructura de sujeto + predicado (aunque el sujeto puede estar omitido).</li>
+                        <li>Comienza con mayúscula y termina con un punto o signo de exclamación/interrogación.</li>
+                    </ul>
+                    <p><strong>Ejemplos:</strong> "Juan estudia." / "¿Cómo estás?" / "¡Qué bonito día!"</p>
+                    <div class="bloque-ejemplo">
+                        Diferencia entre frase y oración: "Fuego" (frase sin verbo) vs "Hay fuego" (oración con verbo).
+                    </div>
+                `;
+            } 
+            else if (tema === "sujeto_predicado") {
+                html = `
+                    <h2>Sujeto y Predicado</h2>
+                    <p><strong>Sujeto:</strong> indica quién o qué realiza la acción o de quién se dice algo. Puede ser una persona, animal o cosa. <strong>Ejemplo:</strong> "El niño" en "El niño corre".</p>
+                    <p><strong>Predicado:</strong> es lo que se dice del sujeto. Siempre contiene el verbo principal. <strong>Ejemplo:</strong> "corre rápido" en "El niño corre rápido".</p>
+                    <p><strong>Para identificar el sujeto:</strong> pregunta "¿quién?" + verbo. Ej: "¿Quién corre?" → "El niño".</p>
+                    <div class="bloque-ejemplo">
+                        Oración: "Mis amigos compraron regalos."<br>
+                        Sujeto: "Mis amigos" (núcleo: "amigos")<br>
+                        Predicado: "compraron regalos" (núcleo: "compraron")
+                    </div>
+                `;
+            }
+            else if (tema === "tipos_sujeto") {
+                html = `
+                    <h2>Tipos de Sujeto</h2>
+                    <ul>
+                        <li><strong>Sujeto expreso (o explícito):</strong> aparece en la oración. Ej: "Carlos baila tango."</li>
+                        <li><strong>Sujeto tácito (u omitido):</strong> no aparece escrito pero se deduce por la conjugación del verbo. Ej: "(Nosotros) Comemos pizza." → el "nosotros" está implícito.</li>
+                        <li><strong>Sujeto simple:</strong> tiene un solo núcleo. Ej: "La casa es grande." (núcleo: "casa")</li>
+                        <li><strong>Sujeto compuesto:</strong> tiene dos o más núcleos. Ej: "María y José estudian." (núcleos: "María", "José")</li>
+                        <li><strong>Sujeto agente:</strong> realiza la acción. Ej: "El perro persigue al gato."</li>
+                        <li><strong>Sujeto paciente:</strong> recibe la acción (en oraciones pasivas). Ej: "El libro fue leído por Ana." → "El libro" es sujeto paciente.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        Identifica el tipo: "(Tú) Estudias mucho" → sujeto tácito y simple.
+                    </div>
+                `;
+            }
+            else if (tema === "tipos_oraciones") {
+                html = `
+                    <h2>Tipos de Oraciones</h2>
+                    <p><strong>Según la actitud del hablante:</strong></p>
+                    <ul>
+                        <li><strong>Enunciativas (o declarativas):</strong> informan un hecho (afirmativas o negativas). Ej: "Hoy es martes." / "No llueve."</li>
+                        <li><strong>Interrogativas:</strong> preguntan algo. Ej: "¿Dónde vives?"</li>
+                        <li><strong>Exclamativas:</strong> expresan emoción. Ej: "¡Qué sorpresa!"</li>
+                        <li><strong>Imperativas (o exhortativas):</strong> expresan mandato o ruego. Ej: "Ven aquí."</li>
+                        <li><strong>Dubitativas:</strong> expresan duda. Ej: "Quizás venga."</li>
+                        <li><strong>Desiderativas (u optativas):</strong> expresan deseo. Ej: "Ojalá apruebe."</li>
+                    </ul>
+                    <p><strong>Según su estructura:</strong></p>
+                    <ul>
+                        <li><strong>Simples:</strong> un solo verbo conjugado. Ej: "Ella canta."</li>
+                        <li><strong>Compuestas:</strong> dos o más verbos conjugados. Ej: "Quiero que vengas."</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "complementos") {
+                html = `
+                    <h2>Complementos del Verbo</h2>
+                    <p>Los complementos son palabras o grupos de palabras que acompañan al verbo para completar su significado.</p>
+                    <ul>
+                        <li><strong>Complemento Directo (CD):</strong> recibe directamente la acción. Ej: "Leo <strong>un libro</strong>."</li>
+                        <li><strong>Complemento Indirecto (CI):</strong> indica el destinatario o beneficiario. Ej: "Di <strong>a Juan</strong> el regalo."</li>
+                        <li><strong>Complemento Circunstancial (CC):</strong> expresa circunstancias (tiempo, modo, lugar, etc.). Ej: "Llegó <strong>ayer</strong>."</li>
+                        <li><strong>Atributo (Attr):</strong> solo con verbos copulativos (ser, estar, parecer). Ej: "Ella es <strong>médica</strong>."</li>
+                        <li><strong>Complemento Predicativo:</strong> modifica al sujeto o al CD y al verbo a la vez. Ej: "Los niños comen <strong>tranquilos</strong>."</li>
+                        <li><strong>Complemento Agente:</strong> aparece en oraciones pasivas. Ej: "La carta fue escrita <strong>por Ana</strong>."</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "cd_ci") {
+                html = `
+                    <h2>Complemento Directo e Indirecto</h2>
+                    <p><strong>Complemento Directo (CD):</strong></p>
+                    <ul>
+                        <li>Recibe directamente la acción del verbo.</li>
+                        <li>Pregunta: "¿qué?" + verbo. Ej: "Compro <strong>pan</strong>" → ¿Qué compro? → pan.</li>
+                        <li>Se puede sustituir por "lo, la, los, las". Ej: "Veo a María" → "La veo."</li>
+                        <li>Cuando se refiere a una persona suele llevar la preposición "a" (aunque sigue siendo CD). Ej: "Veo <strong>a Juan</strong>."</li>
+                    </ul>
+                    <p><strong>Complemento Indirecto (CI):</strong></p>
+                    <ul>
+                        <li>Indica a quién o para quién va dirigida la acción.</li>
+                        <li>Pregunta: "¿a quién?" o "¿para quién?" + verbo. Ej: "Doy flores <strong>a mi madre</strong>" → ¿A quién doy flores? → a mi madre.</li>
+                        <li>Se sustituye por "le, les". Ej: "Le doy flores."</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        "Carlos regaló <strong>un libro (CD)</strong> <strong>a su hermana (CI)</strong>."
+                    </div>
+                `;
+            }
+            else if (tema === "circunstancial") {
+                html = `
+                    <h2>Complementos Circunstanciales (CC)</h2>
+                    <p>Expresan las circunstancias en que se realiza la acción. Pueden ser:</p>
+                    <ul>
+                        <li><strong>CC de tiempo:</strong> "Vendré <strong>mañana</strong>".</li>
+                        <li><strong>CC de lugar:</strong> "Vivo <strong>en Madrid</strong>".</li>
+                        <li><strong>CC de modo:</strong> "Canta <strong>alegremente</strong>".</li>
+                        <li><strong>CC de causa:</strong> "Llegó tarde <strong>por el tráfico</strong>".</li>
+                        <li><strong>CC de finalidad:</strong> "Estudia <strong>para aprobar</strong>".</li>
+                        <li><strong>CC de compañía:</strong> "Salió <strong>con sus amigos</strong>".</li>
+                        <li><strong>CC de instrumento:</strong> "Cortó <strong>con tijeras</strong>".</li>
+                        <li><strong>CC de cantidad:</strong> "Estudia <strong>mucho</strong>".</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        En la oración "Ayer (tiempo) caminamos lentamente (modo) por el parque (lugar)", los tres complementos son circunstanciales.
+                    </div>
+                `;
+            }
+            else if (tema === "atributo") {
+                html = `
+                    <h2>Atributo y Complemento Predicativo</h2>
+                    <p><strong>Atributo:</strong> aparece solo con verbos copulativos (ser, estar, parecer). Concuerda con el sujeto en género y número. Ej: "La casa es <strong>grande</strong>." → "grande" es atributo. Se puede sustituir por "lo".</p>
+                    <p><strong>Complemento Predicativo:</strong> modifica al mismo tiempo al verbo y al sujeto (o al CD). No es exclusivo de verbos copulativos. Ej: "Los niños llegaron <strong>cansados</strong>." → "cansados" es predicativo del sujeto. Otro: "Pintó la pared <strong>blanca</strong>." → predicativo del CD (pared).</p>
+                    <div class="bloque-ejemplo">
+                        Diferencia: "Ella es <strong>profesora</strong>" (atributo) vs "Ella trabaja <strong>profesora</strong>" (predicativo).
+                    </div>
+                `;
+            }
+            else if (tema === "agente") {
+                html = `
+                    <h2>Complemento Agente</h2>
+                    <p>Aparece en <strong>oraciones pasivas</strong> (cuando el sujeto recibe la acción). Indica quién realiza la acción. Siempre va introducido por la preposición "por" (a veces "de").</p>
+                    <p><strong>Ejemplo activa:</strong> "La policía detuvo al ladrón." → Sujeto agente: "La policía".</p>
+                    <p><strong>Ejemplo pasiva:</strong> "El ladrón fue detenido <strong>por la policía</strong>." → "por la policía" es complemento agente.</p>
+                    <div class="bloque-ejemplo">
+                        Para transformar una activa a pasiva, el CD se convierte en sujeto paciente y el sujeto activo en complemento agente.
+                    </div>
+                `;
+            }
+            else if (tema === "orden") {
+                html = `
+                    <h2>Orden de la Oración en español</h2>
+                    <p>El orden "neutro" o más común en español es: <strong>Sujeto + Verbo + Complementos</strong>.</p>
+                    <p>Ejemplo: "María compró un libro ayer."</p>
+                    <p>Sin embargo, el español permite varios órdenes debido a su flexibilidad:</p>
+                    <ul>
+                        <li>Verbo + Sujeto: "Llegaron los invitados."</li>
+                        <li>Sujeto + Complementos + Verbo: "Juan ayer cenó pizza."</li>
+                        <li>Complementos + Verbo + Sujeto: "Ayer cenó pizza Juan."</li>
+                    </ul>
+                    <p>El cambio de orden puede dar énfasis (por ejemplo, poner el complemento de tiempo al principio para destacarlo).</p>
+                    <div class="bloque-ejemplo">
+                        En preguntas, el orden es a menudo Verbo + Sujeto: "¿Estudias tú? / ¿Tú estudias?" (ambas correctas).
+                    </div>
+                `;
+            }
+            else if (tema === "oraciones_compuestas") {
+                html = `
+                    <h2>Oraciones Compuestas</h2>
+                    <p>Son aquellas que tienen <strong>dos o más verbos conjugados</strong> y, por lo tanto, dos o más proposiciones. Se unen mediante nexos.</p>
+                    <p><strong>Tipos según la relación entre proposiciones:</strong></p>
+                    <ul>
+                        <li><strong>Coordinadas:</strong> las proposiciones tienen la misma jerarquía (se unen con y, o, pero). Ej: "Estudio <strong>y</strong> trabajo."</li>
+                        <li><strong>Subordinadas:</strong> una proposición depende de la otra. Ej: "Quiero <strong>que vengas</strong>". (la segunda depende del verbo "quiero")</li>
+                        <li><strong>Yuxtapuestas:</strong> se unen sin nexo, solo con signos de puntuación. Ej: "Llegué, vi, vencí."</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "coordinacion") {
+                html = `
+                    <h2>Coordinación y Subordinación</h2>
+                    <p><strong>Proposiciones coordinadas:</strong> se unen mediante conjunciones y mantienen independencia. Tipos:</p>
+                    <ul>
+                        <li>Copulativas (y, e, ni): "Canta <strong>y</strong> baila."</li>
+                        <li>Disyuntivas (o, u): "¿Vienes <strong>o</strong> te quedas?"</li>
+                        <li>Adversativas (pero, sino, aunque): "Es pequeño <strong>pero</strong> fuerte."</li>
+                    </ul>
+                    <p><strong>Proposiciones subordinadas:</strong> dependen de una principal. Pueden ser:</p>
+                    <ul>
+                        <li><strong>Sustantivas:</strong> funcionan como sujeto, CD, etc. Ej: "Me alegra <strong>que estudies</strong>".</li>
+                        <li><strong>Adjetivas (de relativo):</strong> complementan a un nombre. Ej: "El libro <strong>que compré</strong> es caro."</li>
+                        <li><strong>Adverbiales:</strong> expresan circunstancias (tiempo, lugar, modo, causa, etc.). Ej: "Salí <strong>cuando sonó el timbre</strong>".</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "perifrasis") {
+                html = `
+                    <h2>Perífrasis Verbales</h2>
+                    <p>Son estructuras de dos o más verbos que funcionan como un solo núcleo del predicado. El primer verbo (auxiliar) aparece conjugado y el segundo (principal) en forma no personal (infinitivo, gerundio o participio).</p>
+                    <p><strong>Tipos comunes:</strong></p>
+                    <ul>
+                        <li><strong>De obligación:</strong> haber de + inf, tener que + inf. Ej: "Tengo que estudiar."</li>
+                        <li><strong>De posibilidad:</strong> poder + inf. Ej: "Puedo llegar tarde."</li>
+                        <li><strong>De duración:</strong> estar + gerundio. Ej: "Está lloviendo."</li>
+                        <li><strong>De resultado:</strong> dejar + participio, tener + participio. Ej: "Dejó dicho el mensaje."</li>
+                        <li><strong>De comienzo:</strong> empezar a + inf, ponerse a + inf. Ej: "Empezó a nevar."</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "analisis") {
+                html = `
+                    <h2>Análisis Sintáctico Paso a Paso</h2>
+                    <p>Para analizar una oración sigue estos pasos:</p>
+                    <ol>
+                        <li>Identifica el verbo conjugado.</li>
+                        <li>Pregunta "¿quién?" + verbo para encontrar el sujeto (si está expreso).</li>
+                        <li>Separa sujeto y predicado.</li>
+                        <li>Dentro del predicado, localiza el núcleo verbal.</li>
+                        <li>Identifica los complementos del verbo (CD, CI, CC, etc.).</li>
+                        <li>Si hay más de un verbo, determina si es oración compuesta y qué tipo de relación hay.</li>
+                    </ol>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo resuelto:</strong><br>
+                        Oración: "Mis hermanos me regalaron un libro muy interesante la semana pasada."<br>
+                        - Verbo: regalaron (pretérito).<br>
+                        - ¿Quiénes regalaron? → Mis hermanos (sujeto: "Mis hermanos").<br>
+                        - Predicado: "me regalaron un libro muy interesante la semana pasada".<br>
+                        - Núcleo verbal: "regalaron".<br>
+                        - CD: "un libro muy interesante" (¿qué regalaron?).<br>
+                        - CI: "me" (¿a quién regalaron?).<br>
+                        - CC de tiempo: "la semana pasada".
+                    </div>
+                `;
+            }
+            else if (tema === "ejercicios") {
+                html = `
+                    <h2>Ejercicios Prácticos de Sintaxis</h2>
+                    <p><strong>1. Identifica el sujeto y predicado:</strong> "Los niños juegan en el parque."</p>
+                    <div class="bloque-ejemplo">
+                        Sujeto: "Los niños". Predicado: "juegan en el parque".
+                    </div>
+                    <p><strong>2. Señala el CD y CI:</strong> "El profesor explicó la lección a los alumnos."</p>
+                    <div class="bloque-ejemplo">
+                        CD: "la lección" (¿qué explicó?). CI: "a los alumnos" (¿a quién?).
+                    </div>
+                    <p><strong>3. Clasifica la oración según la actitud del hablante:</strong> "Ojalá que llueva mañana."</p>
+                    <div class="bloque-ejemplo">
+                        Es desiderativa (expresa deseo).
+                    </div>
+                    <p><strong>4. Indica qué tipo de complemento es "cansados" en:</strong> "Los trabajadores llegaron cansados."</p>
+                    <div class="bloque-ejemplo">
+                        Complemento predicativo del sujeto (modifica a "trabajadores" y al verbo "llegaron").
+                    </div>
+                    <p><strong>5. Transforma la siguiente oración activa en pasiva:</strong> "El chef preparó la cena."</p>
+                    <div class="bloque-ejemplo">
+                        Pasiva: "La cena fue preparada por el chef." (CC Agente: "por el chef").
+                    </div>
+                `;
+            }
+            else if (tema === "glosario") {
+                html = `
+                    <h2>Glosario de Términos Sintácticos</h2>
+                    <ul>
+                        <li><strong>Sintaxis:</strong> Parte de la gramática que estudia la combinación de palabras en oraciones.</li>
+                        <li><strong>Oración:</strong> Unidad con sentido completo, verbo conjugado y autonomía.</li>
+                        <li><strong>Sujeto:</strong> Parte de la oración que indica quién realiza la acción.</li>
+                        <li><strong>Predicado:</strong> Parte que expresa lo que hace o dice del sujeto.</li>
+                        <li><strong>Núcleo del sujeto:</strong> Sustantivo o pronombre principal.</li>
+                        <li><strong>Núcleo del predicado:</strong> Verbo conjugado.</li>
+                        <li><strong>Complemento Directo (CD):</strong> Recibe la acción directamente.</li>
+                        <li><strong>Complemento Indirecto (CI):</strong> Destinatario de la acción.</li>
+                        <li><strong>Complemento Circunstancial (CC):</strong> Expresa tiempo, lugar, modo, etc.</li>
+                        <li><strong>Atributo:</strong> Complemento de verbos copulativos (ser, estar, parecer).</li>
+                        <li><strong>Complemento Predicativo:</strong> Modifica al sujeto o al CD y al verbo.</li>
+                        <li><strong>Oración pasiva:</strong> El sujeto recibe la acción (ser + participio).</li>
+                        <li><strong>Complemento Agente:</strong> Indica quién realiza la acción en oraciones pasivas.</li>
+                        <li><strong>Perífrasis verbal:</strong> Estructura de dos verbos con un solo significado.</li>
+                    </ul>
+                `;
+            }
+            else {
+                html = `<h2>Bienvenido al estudio de la Sintaxis</h2><p>Selecciona un tema del menú lateral para comenzar.</p>`;
+            }
+            contenido.innerHTML = html;
+        }
 
-  if (tema === "Tema1") {
-    contenido.innerHTML = `
-      <h2>Sintaxis</h2>
-      <p><strong>Definición:</strong> Es la rama que estudia cómo se organizan las palabras en una oración.</p>
-      <p>Permite construir frases con sentido correcto.</p>
-    `;
-  }
-
-  if (tema === "Tema2") {
-    contenido.innerHTML = `
-      <h2>Oración</h2>
-      <p><strong>Definición:</strong> Conjunto de palabras con sentido completo.</p>
-      <p><strong>Ejemplo:</strong> "El niño come arroz."</p>
-    `;
-  }
-
-  if (tema === "Tema3") {
-    contenido.innerHTML = `
-      <h2>Sujeto y predicado</h2>
-      <p><strong>Sujeto:</strong> quien realiza la acción.</p>
-      <p><strong>Predicado:</strong> lo que se dice del sujeto.</p>
-      <p><strong>Ejemplo:</strong> "Juan (sujeto) estudia (predicado)."</p>
-    `;
-  }
-
-  if (tema === "Tema4") {
-    contenido.innerHTML = `
-      <h2>Tipos de oraciones</h2>
-      <ul>
-        <li>Enunciativas</li>
-        <li>Interrogativas</li>
-        <li>Exclamativas</li>
-        <li>Imperativas</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema5") {
-    contenido.innerHTML = `
-      <h2>Complementos</h2>
-      <p>Son palabras que añaden información al verbo.</p>
-      <ul>
-        <li>Directo</li>
-        <li>Indirecto</li>
-        <li>Circunstancial</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema6") {
-    contenido.innerHTML = `
-      <h2>Orden de la oración</h2>
-      <p>En español generalmente es:</p>
-      <p><strong>Sujeto + Verbo + Complemento</strong></p>
-      <p><strong>Ejemplo:</strong> "María come manzana."</p>
-    `;
-  }
-}
-</script>
+        // Tema por defecto al cargar la página
+        window.onload = function() {
+            mostrar('definicion');
+        };
+    </script>
 </body>
 </html>

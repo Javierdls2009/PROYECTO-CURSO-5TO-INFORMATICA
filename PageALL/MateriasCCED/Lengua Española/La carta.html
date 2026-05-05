@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Carta | AcademiaCCED</title>
+    
+    <style>
+        /* colores */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        /* estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        /* barra de navegacion superior */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        /* boton volver */
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* titulo de la materia */
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        /* contenedor principal */
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* barra lateral */
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .barra-lateral hr {
+            margin: 15px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* zona principal */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido h3 {
+            color: var(--color-oscuro);
+            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        #contenido h4 {
+            color: var(--color-principal);
+            margin: 15px 0 8px 0;
+            font-size: 1.1rem;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.6;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        /* bloque para destacar ejemplos */
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .bloque-ejemplo strong {
+            color: var(--color-principal);
+        }
+
+        .tabla-partes {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tabla-partes th, .tabla-partes td {
+            border: 1px solid var(--gris-borde);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tabla-partes th {
+            background: var(--color-principal);
+            color: white;
+            font-weight: bold;
+        }
+
+        .tabla-partes tr:nth-child(even) {
+            background: var(--gris-claro);
+        }
+
+        .carta-ejemplo {
+            background: white;
+            border: 2px solid var(--color-principal);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            font-family: 'Times New Roman', serif;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .carta-ejemplo h4 {
+            color: var(--color-principal);
+            margin-bottom: 15px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="titulo-materia">LA CARTA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <!-- contenido principal -->
+    <div class="contenedor">
+        
+        <!-- barra lateral con temas -->
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">✉️ ¿Qué es una carta?</div>
+                <div class="tema" data-tema="partes">📋 Partes de la carta</div>
+                <div class="tema" data-tema="tipos">📚 Tipos de carta</div>
+                <div class="tema" data-tema="carta_formal">👔 Carta formal</div>
+                <div class="tema" data-tema="carta_informal">💬 Carta informal</div>
+                <div class="tema" data-tema="carta_personal">💌 Carta personal</div>
+                <div class="tema" data-tema="carta_comercial">🏢 Carta comercial o administrativa</div>
+                <div class="tema" data-tema="carta_argumentativa">🎯 Carta argumentativa</div>
+                <div class="tema" data-tema="estructura">🏗️ Estructura básica</div>
+                <div class="tema" data-tema="ejemplo_formal">📝 Ejemplo de carta formal</div>
+                <div class="tema" data-tema="ejemplo_informal">💌 Ejemplo de carta informal</div>
+            </div>
+        </aside>
+
+        <!-- zona de contenido dinámico -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>La Carta</h2>
+                <p>Una carta es un escrito por el que una persona se comunica con otra. El motivo de la comunicación es diverso y variado (citación, notificación, información, etc.), así como el tono utilizado: formal o informal. Una carta también puede estar remitida por una institución u organismo.</p>
+                <div class="bloque-ejemplo">
+                    <strong>📖 Dato importante:</strong> La carta puede ser física o digital. La carta física se escribe en papel y se envía al destinatario en un sobre cerrado. La carta digital es propia de las nuevas tecnologías de la comunicación (correo electrónico, PDF, Word, etc.).
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú lateral para aprender sobre cada aspecto de la carta.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- pie de pagina -->
+    <footer>
+        <p>© 2025 AcademiaCCED · Proyecto de La Carta · Lengua Española · 5to Informática</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>¿Qué es una carta?</h2>
+                <p>Una <strong>carta</strong> es un escrito por el que una persona se comunica con otra. El motivo de la comunicación es diverso y variado (citación, notificación, información, etc.), así como el tono utilizado: <strong>formal o informal</strong>. Una carta también puede estar remitida por una institución u organismo.</p>
+                
+                <h3>📬 Tipos de carta según el soporte:</h3>
+                <ul>
+                    <li><strong>Carta física:</strong> Se escribe en papel y se envía al destinatario en un sobre cerrado. En el sobre aparece el nombre del destinatario y en la parte posterior del remitente (quien la envía).</li>
+                    <li><strong>Carta digital:</strong> Es propia de las nuevas tecnologías de la comunicación. Puede ser el cuerpo de un correo electrónico o un anexo en diferentes formatos, como PDF, Word, etc.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Una carta de presentación para un trabajo (formal) o una carta a un amigo contando tus vacaciones (informal).
+                </div>
+            `,
+            partes: `
+                <h2>Partes de la carta</h2>
+                <p>Las cartas contienen una serie de elementos relevantes tanto para el emisor como para el receptor. En su estructura encontramos las siguientes:</p>
+                
+                <table class="tabla-partes">
+                    <thead>
+                        <tr><th>Parte</th><th>Descripción</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>📅 Fecha y lugar</strong></td>
+                        <td>Indican cuándo y dónde fue escrita la carta. Es importante para plazos y referencias.</td>
+                        <td>Santo Domingo, 15 de abril de 2025</td>
+                        </tr>
+                        <tr><td><strong>👋 Saludo</strong></td>
+                        <td>Se dirige al destinatario de manera cordial.</td>
+                        <td>Estimado Sr. Pérez: / Querida amiga:</td>
+                        </tr>
+                        <tr><td><strong>📄 Cuerpo</strong></td>
+                        <td>Parte más larga. Contiene introducción y exposición del asunto.</td>
+                        <td>Me dirijo a usted para solicitar...</td>
+                        </tr>
+                        <tr><td><strong>👋 Despedida</strong></td>
+                        <td>Frase de cierre antes de la firma.</td>
+                        <td>Atentamente, / Un abrazo, / Cordialmente,</td>
+                        </tr>
+                        <tr><td><strong>✍️ Firma</strong></td>
+                        <td>Nombre de la persona que escribe la carta.</td>
+                        <td>María Rodríguez</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Importante:</strong> En el caso de las notificaciones, la fecha es un elemento clave, ya que sirve de referencia para diferentes plazos, como reclamaciones.
+                </div>
+            `,
+            tipos: `
+                <h2>Tipos de carta</h2>
+                <p>Según cómo estén redactadas, hay dos grandes tipos de cartas: <strong>formal e informal</strong>.</p>
+                
+                <table class="tabla-partes">
+                    <thead>
+                        <tr><th>Tipo</th><th>Características</th><th>Ejemplos</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>📌 Carta formal</strong></td>
+                        <td>Tono serio y solemne. Se emplea en comunicaciones profesionales o institucionales. Lenguaje respetuoso y claro.</td>
+                        <td>Solicitud de empleo, renuncia, reclamación</td>
+                        </tr>
+                        <tr><td><strong>💬 Carta informal</strong></td>
+                        <td>Tono cercano y familiar. Se usa entre personas de confianza. Lenguaje sencillo y coloquial.</td>
+                        <td>Cartas a amigos o familiares</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Otros tipos específicos:</h3>
+                <ul>
+                    <li><strong>Carta personal:</strong> Tipo de carta informal centrada en experiencias o sentimientos.</li>
+                    <li><strong>Carta comercial o administrativa:</strong> Se usa en empresas o instituciones con objetivo específico.</li>
+                    <li><strong>Carta argumentativa:</strong> Su objetivo es convencer o persuadir al destinatario.</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Diferencia clave:</strong> La carta formal usa "Estimado Sr." mientras que la informal usa "Querido amigo".
+                </div>
+            `,
+            carta_formal: `
+                <h2>Carta formal</h2>
+                <p>La <strong>carta formal</strong> tiene un tono serio y solemne. Generalmente, es la que se emplea en comunicaciones profesionales o institucionales que requieren un cuidado de la forma. Suelen ser temas importantes, serios o incluso graves.</p>
+                
+                <h3>📌 Características:</h3>
+                <ul>
+                    <li>Lenguaje <strong>respetuoso y claro</strong></li>
+                    <li>Estructura <strong>fija</strong> (fecha, saludo, cuerpo, despedida, firma)</li>
+                    <li>No usa expresiones <strong>coloquiales</strong> (ni "oye", "hola", "qué onda")</li>
+                    <li>Vocabulario <strong>preciso y formal</strong></li>
+                    <li>Se evitan abreviaturas informales</li>
+                </ul>
+                
+                <h3>📝 Ejemplos de carta formal:</h3>
+                <ul>
+                    <li>Carta de <strong>solicitud</strong> (empleo, beca, información)</li>
+                    <li>Carta de <strong>renuncia</strong> (a un puesto de trabajo)</li>
+                    <li>Carta de <strong>presentación</strong> (para postular a un trabajo)</li>
+                    <li>Carta de <strong>reclamación</strong> (queja formal)</li>
+                    <li>Carta de <strong>agradecimiento</strong> institucional</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Saludos formales comunes:</strong> "Estimado Sr. García:", "Muy señor mío:", "A quien corresponda:"
+                </div>
+            `,
+            carta_informal: `
+                <h2>Carta informal</h2>
+                <p>La <strong>carta informal</strong> se utiliza entre personas de confianza (amigos, familiares, conocidos). El tono es más relajado y cercano.</p>
+                
+                <h3>💬 Características:</h3>
+                <ul>
+                    <li>Lenguaje <strong>sencillo y cercano</strong></li>
+                    <li>Puede <strong>omitir partes formales</strong> (como fecha o lugar)</li>
+                    <li>Expresa <strong>emociones y opiniones</strong> libremente</li>
+                    <li>Se permite el uso de <strong>coloquialismos</strong> ("genial", "chévere", "estupendo")</li>
+                    <li>Se pueden usar <strong>abreviaturas</strong> y signos de expresión</li>
+                </ul>
+                
+                <h3>📝 Temas comunes en cartas informales:</h3>
+                <ul>
+                    <li>Contar experiencias o vacaciones</li>
+                    <li>Felicitar cumpleaños o fechas especiales</li>
+                    <li>Dar noticias personales</li>
+                    <li>Expresar sentimientos (amor, amistad, nostalgia)</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Saludos informales comunes:</strong> "Querido amigo:", "Hola María:", "¿Qué tal todo?", "Mi querida hermana:"
+                </div>
+            `,
+            carta_personal: `
+                <h2>Carta personal</h2>
+                <p>La <strong>carta personal</strong> es un tipo de carta informal centrada en experiencias o sentimientos personales. Se escribe entre personas que tienen un vínculo afectivo (familiares, amigos, pareja).</p>
+                
+                <h3>💌 Características:</h3>
+                <ul>
+                    <li>Lenguaje <strong>emocional y subjetivo</strong></li>
+                    <li>Se comparten <strong>vivencias personales</strong></li>
+                    <li>Puede incluir <strong>recuerdos, planes o confidencias</strong></li>
+                    <li>El tono es <strong>cálido y cercano</strong></li>
+                    <li>No sigue una estructura rígida</li>
+                </ul>
+                
+                <h3>📝 Ejemplos de carta personal:</h3>
+                <ul>
+                    <li>Contarle a un amigo cómo te ha ido en el viaje</li>
+                    <li>Escribir a un familiar que vive lejos</li>
+                    <li>Una carta de amor</li>
+                    <li>Una carta de agradecimiento personal</li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de inicio:</strong> "Querida mamá: Hace tiempo que no escribo y quería contarte cómo me ha ido en la escuela..."
+                </div>
+            `,
+            carta_comercial: `
+                <h2>Carta comercial o administrativa</h2>
+                <p>La <strong>carta comercial o administrativa</strong> se usa en empresas, instituciones u organismos oficiales. Es un tipo de carta formal con un objetivo específico relacionado con el ámbito laboral o institucional.</p>
+                
+                <h3>🏢 Características:</h3>
+                <ul>
+                    <li>Lenguaje <strong>formal y profesional</strong></li>
+                    <li>Objetivo <strong>específico</strong>: informar, solicitar, reclamar, confirmar, etc.</li>
+                    <li>Estructura <strong>muy organizada</strong></li>
+                    <li>Incluye <strong>datos del remitente y destinatario</strong></li>
+                    <li>Se usa <strong>papel membretado</strong> en versiones físicas</li>
+                </ul>
+                
+                <h3>📝 Tipos de cartas comerciales:</h3>
+                <ul>
+                    <li>Carta de <strong>solicitud de cotización</strong></li>
+                    <li>Carta de <strong>pedido</strong></li>
+                    <li>Carta de <strong>reclamación</strong> a un proveedor</li>
+                    <li>Carta de <strong>confirmación de servicios</strong></li>
+                    <li>Carta de <strong>presentación de empresa</strong></li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de uso:</strong> "Por medio de la presente, solicitamos una cotización de los siguientes productos..."
+                </div>
+            `,
+            carta_argumentativa: `
+                <h2>Carta argumentativa</h2>
+                <p>La <strong>carta argumentativa</strong> tiene como objetivo principal <strong>convencer o persuadir</strong> al destinatario sobre un punto de vista, petición o idea. Puede ser formal o informal, según el contexto.</p>
+                
+                <h3>🎯 Características:</h3>
+                <ul>
+                    <li>Presenta una <strong>tesis u opinión clara</strong></li>
+                    <li>Incluye <strong>argumentos y razones</strong> que apoyan la postura</li>
+                    <li>Puede incluir <strong>ejemplos o evidencias</strong></li>
+                    <li>Busca <strong>convencer o motivar una acción</strong> en el receptor</li>
+                </ul>
+                
+                <h3>📝 Ejemplos de carta argumentativa:</h3>
+                <ul>
+                    <li>Defender una <strong>opinión</strong> ante una autoridad</li>
+                    <li>Solicitar un <strong>cambio en una norma</strong> o política</li>
+                    <li>Hacer una <strong>petición formal</strong> con fundamentos</li>
+                    <li>Respaldar una <strong>causa o proyecto</strong></li>
+                </ul>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de argumentación:</strong> "Considero que deberíamos ampliar el horario de la biblioteca porque muchos estudiantes estudian después de clases..."
+                </div>
+            `,
+            estructura: `
+                <h2>Estructura básica de una carta</h2>
+                <p>Toda carta bien redactada sigue una estructura ordenada que facilita la comprensión del mensaje.</p>
+                
+                <div class="carta-ejemplo">
+                    <h4>📋 Estructura completa:</h4>
+                    <ol style="margin-left: 20px;">
+                        <li><strong>Lugar y fecha</strong> (esquina superior derecha)</li>
+                        <li><strong>Destinatario</strong> (opcional, en cartas formales)</li>
+                        <li><strong>Saludo</strong> (seguido de dos puntos)</li>
+                        <li><strong>Cuerpo del mensaje</strong>
+                            <ul>
+                                <li>Párrafo 1: Introducción o motivo</li>
+                                <li>Párrafo 2: Desarrollo o explicación</li>
+                                <li>Párrafo 3: Cierre o llamado a la acción</li>
+                            </ul>
+                        </li>
+                        <li><strong>Despedida</strong> (frase de cierre)</li>
+                        <li><strong>Firma</strong> (nombre y, en formales, sello o cargo)</li>
+                    </ol>
+                </div>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Consejo:</strong> En cartas formales, después de la despedida se suele dejar espacio para la firma manuscrita y luego escribir el nombre completo.
+                </div>
+            `,
+            ejemplo_formal: `
+                <h2>📝 Ejemplo de carta formal</h2>
+                
+                <div class="carta-ejemplo">
+                    <p style="text-align: right;"><strong>Santo Domingo, 28 de abril de 2025</strong></p>
+                    <p><strong>Señor:</strong><br>
+                    Carlos Méndez<br>
+                    Gerente de Recursos Humanos<br>
+                    Empresa Tecnológica S.A.<br>
+                    Presente.</p>
+                    
+                    <p><strong>Asunto:</strong> Solicitud de empleo</p>
+                    
+                    <p>Por medio de la presente, me dirijo a usted para expresar mi interés en formar parte de su distinguida empresa. He conocido la vacante para el puesto de <strong>Desarrollador Web</strong> publicada en el periódico Hoy y me siento capacitado para desempeñar dichas funciones.</p>
+                    
+                    <p>Soy técnico en Informática egresado del Instituto Tecnológico de las Américas (ITLA) y cuento con experiencia en desarrollo de páginas web, manejo de HTML, CSS, JavaScript y bases de datos. Me caracterizo por ser una persona responsable, puntual y con capacidad para trabajar en equipo.</p>
+                    
+                    <p>Adjunto a esta carta mi currículum vitae con todos mis datos y referencias. Quedo a la espera de su respuesta para poder ampliar cualquier información que considere necesaria.</p>
+                    
+                    <p>Sin otro particular, le saludo atentamente,</p>
+                    
+                    <p style="margin-top: 30px;">
+                    <strong>_________________</strong><br>
+                    <strong>Juan Pérez Rodríguez</strong><br>
+                    Teléfono: 809-555-1234<br>
+                    Correo: juan.perez@email.com
+                    </p>
+                </div>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Elementos clave:</strong> Fecha, destinatario, asunto, lenguaje formal, despedida "atentamente", firma y datos de contacto.
+                </div>
+            `,
+            ejemplo_informal: `
+                <h2>💌 Ejemplo de carta informal</h2>
+                
+                <div class="carta-ejemplo">
+                    <p style="text-align: right;"><strong>Santo Domingo, 28 de abril de 2025</strong></p>
+                    
+                    <p><strong>Querida Ana:</strong></p>
+                    
+                    <p>¡Hola! ¿Cómo estás? Hace mucho que no sé de ti y quería escribirte para contarte cómo me ha ido en estos meses.</p>
+                    
+                    <p>Ya terminé mis clases de 5to de Informática y estoy muy feliz porque aprendí muchas cosas nuevas. Ahora estoy practicando cómo hacer páginas web completas. También empecé a leer un libro que me recomendaron, se llama "El Alquimista" y me está gustando mucho.</p>
+                    
+                    <p>¿Y tú qué me cuentas? ¿Cómo te fue en la universidad? Espero que estés bien y que pronto podamos vernos para tomar un café y ponernos al día.</p>
+                    
+                    <p>Cuando tengas un tiempo, escríbeme y cuéntame tus novedades. Te mando un fuerte abrazo.</p>
+                    
+                    <p style="margin-top: 30px;">
+                    Con cariño,<br>
+                    <strong>Tu amiga,<br>
+                    María</strong>
+                    </p>
+                </div>
+                
+                <div class="bloque-ejemplo">
+                    <strong>Elementos clave:</strong> Saludo cercano ("Querida"), lenguaje coloquial ("¡Hola!", "chévere"), expresión de emociones, despedida afectuosa ("Con cariño").
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+                contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+        }
+
+        // Asignar evento click a cada tema
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        // Cargar tema por defecto
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

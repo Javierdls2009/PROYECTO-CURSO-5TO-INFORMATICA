@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Física | AcademiaCCED</title>
+
+    <style>
+      /* Colores y Variables */
+      :root {
+        --color-principal: #e5322e;
+        --color-fondo: #f3f6ff;
+        --color-oscuro: #1a1a2e;
+        --blanco: #ffffff;
+      }
+
+      /* Estilos Generales */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: var(--color-fondo);
+        overflow-x: hidden;
+      }
+
+      /* Barra de Navegación */
+      .barra-superior {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background: var(--blanco);
+        border-bottom: 2px solid #ddd;
+        height: 70px;
+        box-sizing: border-box;
+      }
+
+      .boton-volver a {
+        text-decoration: none;
+        color: var(--color-principal);
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .titulo-materia {
+        font-weight: 800;
+        color: var(--color-principal);
+        font-size: 1.5rem;
+      }
+
+      /* Contenedor Principal con Flexbox */
+      .contenedor {
+        display: flex;
+        min-height: calc(100vh - 70px);
+      }
+
+      /* Barra Lateral */
+      .barra-lateral {
+        width: 300px;
+        background-color: var(--blanco);
+        border-right: 1px solid #ddd;
+        padding: 20px;
+        box-sizing: border-box;
+        flex-shrink: 0; /* Evita que la barra se encoja */
+      }
+
+      .barra-lateral h3 {
+        margin: 10px 0;
+        color: var(--color-oscuro);
+        text-align: center;
+      }
+
+      .barra-lateral hr {
+        opacity: 0.2;
+        margin: 20px 0;
+      }
+
+      /* Listado de Temas */
+      .info-materia {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .tema {
+        padding: 12px;
+        background: #f0f0f0;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        font-size: 0.9rem;
+        color: #555;
+        text-align: center;
+        border: 1px solid transparent;
+      }
+
+      .tema:hover {
+        background: var(--color-principal);
+        color: white;
+        transform: translateX(5px);
+      }
+
+      /* Zona de Contenido Principal */
+      .zona-herramientas {
+        flex: 1; /* Ocupa el resto del ancho disponible */
+        padding: 50px;
+        background-color: #f9f9fb;
+        box-sizing: border-box;
+      }
+
+      .zona-herramientas h2 {
+        font-size: 2.5rem;
+        color: var(--color-oscuro);
+        margin-top: 0;
+      }
+
+      .zona-herramientas p {
+        color: #4a5568;
+        line-height: 1.6;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-top: 1px solid #ddd;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barra Superior -->
+    <nav class="barra-superior">
+      <div class="boton-volver">
+        <a href="/PageALL/MateriasCCED/Ciencias Naturales/PanelGeneral.html">← VOLVER ATRAS</a
+        >
+      </div>
+      <div class="titulo-materia">Física</div>
+      <div style="color: #666; font-weight: bold">5to Informática</div>
+    </nav>
+
+    <!-- Contenedor de la Aplicación -->
+    <div class="contenedor">
+      <!-- Barra Lateral Izquierda -->
+      <aside class="barra-lateral">
+        <h3>Física</h3>
+        <hr />
+        <div class="info-materia">
+          <div class="tema" onclick="mostrar('Tema1')">Física General</div>
+          <div class="tema" onclick="mostrar('Tema2')">Mecánica</div>
+          <div class="tema" onclick="mostrar('Tema3')">Termodinámica</div>
+          <div class="tema" onclick="mostrar('Tema4')">Electromagnetismo</div>
+          <div class="tema" onclick="mostrar('Tema5')">Acústica</div>
+          <div class="tema" onclick="mostrar('Tema6')">Física nuclear</div>
+        </div>
+      </aside>
+
+      <!-- Zona de Contenido a la Derecha -->
+      <main class="zona-herramientas">
+        <div id="contenido">
+          <h2>Introducción a Física</h2>
+          <p>
+            Bienvenido al módulo de Física. Selecciona uno de los temas del menú
+            lateral para comenzar tu aprendizaje sobre los principios y leyes
+            que rigen el comportamiento del universo.
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 AcademiaCCED - Ciencias de la Naturaleza</footer>
+
+    <script>
+      /**
+       * Función para actualizar el contenido dinámicamente
+       * @param {string} tema - Identificador del tema seleccionado
+       */
+      function mostrar(tema) {
+        const contenido = document.getElementById("contenido");
+
+        // Diccionario de temas para mantener el código limpio
+        const temasInfo = {
+          Tema1: {
+            titulo: "Física General",
+            texto: `La física es la ciencia que estudia la materia, la energía y las leyes que rigen el universo. Se encarga de analizar cómo funcionan los fenómenos naturales, como el movimiento de los objetos, la luz, el sonido, el calor, la electricidad y la gravedad.<br></br>
+
+
+Qué estudia la Física?<br></br>
+
+La física estudia muchos aspectos importantes, entre ellos:<br></br>
+
+• El movimiento de los cuerpos (velocidad, aceleración, fuerza).<br></br>
+
+• La energía (cómo se transforma y se conserva).<br></br>
+
+• La materia (sus propiedades y comportamiento).<br></br>
+
+• La electricidad y el magnetismo.<br></br>
+
+• La luz y el sonido.<br></br>
+
+• El calor y la temperatura.<br></br>
+
+• El universo y los cuerpos celestes.<br></br>
+
+Importancia de la Física<br></br>
+
+La física es muy importante porque:<br></br>
+
+• Explica los fenómenos naturales que ocurren a nuestro alrededor.<br></br>
+
+• Permite el desarrollo de la tecnología, como celulares, computadoras y electricidad.<br></br>
+
+• Ayuda en la medicina, con equipos como rayos X y resonancias.<br></br>
+
+• Contribuye al transporte, como autos, aviones y cohetes.<br></br>
+
+• Permite comprender el universo, desde la Tierra hasta las galaxias.`,
+          },
+          Tema2: {
+            titulo: "Mecánica",
+            texto: `La mecánica es la rama de la física que estudia el movimiento de los cuerpos y las fuerzas que actúan sobre ellos. Analiza conceptos como velocidad, aceleración, masa y fuerza. Esta rama explica cómo se mueven los objetos, desde un carro en la calle hasta los planetas en el espacio. Se divide en cinemática (estudio del movimiento) y dinámica (estudio de las fuerzas que lo producen).<br></br>
+
+Principales Ramas y Usos de la Mecánica:<br></br>
+
+•	Mecánica Clásica/Newtoniana: Analiza objetos cotidianos (automóviles, estructuras).<br></br>
+
+•	Mecánica de Fluidos: Estudia líquidos y gases.<br></br>
+
+•	Mecánica Cuántica<br></br>
+
+ Describe el comportamiento de átomos.<br></br>
+
+•	Mecánica Automotriz: Se enfoca en el mantenimiento y funcionamiento de vehículos.<br></br>
+
+•	Energía Mecánica: Combinación de energía cinética y potencial (ej. una pelota rodando cuesta abajo). <br></br>
+
+Sinónimos y Términos Relacionados:<br></br>
+
+•	Estudio de fuerzas.<br></br>
+
+•	Dinámica (movimiento y fuerzas).<br></br>
+
+•	Cinemática (descripción del movimiento).<br></br>
+
+•	Estática (equilibrio de fuerzas).<br></br>
+
+•	Arte de construir máquinas. `,
+          },
+          Tema3: {
+            titulo: "Termodinámica",
+            texto: `La termodinámica estudia el calor, la temperatura y la energía. Analiza cómo se transfiere el calor entre los cuerpos y cómo la energía se transforma de una forma a otra. Es fundamental para entender procesos como el funcionamiento de motores, refrigeradores y sistemas de calefacción.<br></br>
+
+Conceptos Clave y Leyes<br></br>
+
+•	Sistema Termodinámico: Es la parte del universo objeto de estudio, clasificado en abierto (intercambia materia/energía), cerrado (solo energía) o aislado (nada).<br></br>
+
+•	Variables: Incluyen propiedades intensivas (temperatura, presión, no dependen de la masa) y extensivas (volumen, energía interna, masa).<br></br>
+
+•	Ley Cero (Equilibrio): Si dos sistemas están en equilibrio con un tercero, están en equilibrio entre sí.<br></br>
+
+•	Primera Ley (Conservación): La energía no se crea ni destruye, solo se transforma.<br></br>
+
+•	Segunda Ley (Entropía): Establece la dirección de los procesos, indicando que la entropía del universo aumenta y la energía tiende a disiparse.<br></br>
+
+•	Tercera Ley (Cero Absoluto): La entropía de un sistema al llegar al cero absoluto es una constante definida. <br></br>
+
+Aplicaciones Principales<br></br>
+
+•	Motores y Generación: Motores de combustión, turbinas y centrales eléctricas.<br></br>
+
+•	Refrigeración: Sistemas de aire acondicionado y refrigeradores.<br></br>
+
+•	Procesos Industriales: Producción de materiales y reacciones químicas.<br></br>
+
+•	Biología: Transferencia de energía en células y organismos.`,
+          },
+          Tema4: {
+            titulo: "Electromagnetismo",
+            texto: `El electromagnetismo es la rama que estudia los fenómenos relacionados con la electricidad y el magnetismo. Analiza cómo se generan y se comportan las cargas eléctricas y los campos magnéticos. Esta rama es clave en el funcionamiento de aparatos eléctricos como televisores, celulares y computadoras.<br></br>
+
+Conceptos Clave<br></br>
+•	Cargas en Movimiento: Una corriente eléctrica produce un campo magnético a su alrededor, principio básico de los electroimanes.<br></br>
+
+•	Inducción Electromagnética: El movimiento de un imán puede generar corriente eléctrica, base de los generadores eléctricos.<br></br>
+
+•	Ondas Electromagnéticas: Son ondas producidas por la oscilación de campos eléctricos y magnéticos, que viajan a la velocidad de la luz (ej. radio, luz visible, rayos X).<br></br>
+
+•	Ecuaciones de Maxwell: Conjunto de cuatro ecuaciones que describen por completo los fenómenos electromagnéticos. <br></br>
+
+    Aplicaciones del Electromagnetismo<br></br>
+
+•	Dispositivos eléctricos: Motores, timbres, parlantes, discos rígidos.<br></br>
+
+•	Medicina: Resonancia magnética nuclear para obtener imágenes del cuerpo.<br></br>
+
+•	Telecomunicaciones: Telefonía móvil, wifi, Bluetooth, radio.<br></br>
+
+•	Energía: Generadores en centrales eléctricas y transporte mediante trenes de levitación magnética<br></br>
+`,
+          },
+          Tema5: {
+            titulo: "Acústica",
+            texto: `La acústica es la rama que estudia el sonido, su producción, propagación y percepción. Analiza cómo las ondas sonoras viajan a través del aire y otros medios. Es importante en áreas como la música, la ingeniería de sonido y la comunicación.<br></br>
+
+    Conceptos Clave de Acústica:<br></br>
+
+•	Acústica Arquitectónica: Se ocupa del comportamiento del sonido dentro de los espacios, buscando una audición nítida y controlando la reverberación y el eco en auditorios, aulas y estudios.<br></br>
+
+•	Aislamiento Acústico (Insonorización): Técnicas y materiales para impedir que el sonido externo ingrese o que el interno salga de una sala, protegiendo del ruido.<br></br>
+
+•	Acústica Musical: Estudia la física de los instrumentos musicales y la voz humana.<br></br>
+
+•	Fenómenos Acústicos: Incluyen la reflexión (eco, reverberación), refracción, difracción, interferencia y absorción, que ocurren cuando la onda sonora interactúa con obstáculos.<br></br>
+
+•	Contaminación Acústica: Estudio de los sonidos indeseados o ruidos que afectan la salud física y psicológica.<br></br>
+`,
+          },
+          Tema6: {
+            titulo: "Física Nuclear",
+            texto: `La física nuclear se enfoca en el estudio del núcleo de los átomos, sus componentes y las reacciones que ocurren en él. Es importante para la generación de energía nuclear y para aplicaciones médicas como tratamientos contra el cáncer.<br></br>
+    Conceptos Clave<br></br>
+
+•	Núcleo Atómico: Centro del átomo con casi toda su masa. Formado por nucleones (protones y neutrones).<br></br>
+
+•	Fuerza Nuclear Fuerte: Interacción de corto alcance que mantiene unidos a los nucleones, superando la repulsión electrostática entre protones.<br></br>
+
+•	Energía de Enlace: Energía que mantiene unido el núcleo; la diferencia de masa entre componentes separados y unidos se convierte en energía <br></br>
+ 
+ 
+Radiactividad: Emisión de energía (partículas alfa, beta o gamma) por núcleos inestables.<br></br>
+
+•	Isótopos: Átomos con el mismo número de protones pero distinto número de neutrones.
+    Procesos Principales <br></br>
+
+•	Fisión Nuclear: División de un núcleo pesado en otros más ligeros, liberando gran cantidad de energía (usada en centrales nucleares).<br></br>
+
+•	Fusión Nuclear: Unión de núcleos ligeros para formar uno más pesado, liberando energía (motor de las estrellas). <br></br>
+`,
+          },
+        };
+
+        const data = temasInfo[tema];
+
+        if (data) {
+          contenido.innerHTML = `
+                    <h2>${data.titulo}</h2>
+                    <p>${data.texto}</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+                    <p style="color: #888; font-size: 0.9rem;">Recurso educativo de AcademiaCCED.</p>
+                `;
+        }
+      }
+    </script>
+  </body>
+</html>
