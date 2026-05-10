@@ -1,0 +1,15 @@
+/* PALETA: NAVY MIRAGE */
+:root {
+    --color-primario: #35577D;    /* Azul Denim */
+    --color-fondo: #E2E8F0;       /* Gris Suave */
+    --color-card: #FFFFFF;        /* Limpio */
+    --color-texto: #141E30;       /* Navy Profundo */
+    --header-bg: #141E30;         /* Elegante */
+    --color-btn: #35577D;
+}
+body.dark {
+    --color-fondo: #0A0F18;
+    --color-card: #141E30;
+    --color-texto: #E2E8F0;
+    --header-bg: #05080D;
+}

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astronomía | BibliotecaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+      /* Colores y Variables */
+      :root {
+        --color-principal: #e5322e;
+        --color-fondo: #f3f6ff;
+        --color-oscuro: #1a1a2e;
+        --blanco: #ffffff;
+      }
+
+      /* Estilos Generales */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: var(--color-fondo);
+        overflow-x: hidden;
+      }
+
+      /* Barra de Navegación */
+      .barra-superior {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background: var(--blanco);
+        border-bottom: 2px solid #ddd;
+        height: 70px;
+        box-sizing: border-box;
+      }
+
+      .boton-volver a {
+        text-decoration: none;
+        color: var(--color-principal);
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .titulo-materia {
+        font-weight: 800;
+        color: var(--color-principal);
+        font-size: 1.5rem;
+      }
+
+      /* Contenedor Principal con Flexbox */
+      .contenedor {
+        display: flex;
+        min-height: calc(100vh - 70px);
+      }
+
+      /* Barra Lateral */
+      .barra-lateral {
+        width: 300px;
+        background-color: var(--blanco);
+        border-right: 1px solid #ddd;
+        padding: 20px;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        /* Evita que la barra se encoja */
+      }
+
+      .barra-lateral h3 {
+        margin: 10px 0;
+        color: var(--color-oscuro);
+        text-align: center;
+      }
+
+      .barra-lateral hr {
+        opacity: 0.2;
+        margin: 20px 0;
+      }
+
+      /* Listado de Temas */
+      .info-materia {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .tema {
+        padding: 12px;
+        background: #f0f0f0;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        font-size: 0.9rem;
+        color: #555;
+        text-align: center;
+        border: 1px solid transparent;
+      }
+
+      .tema:hover {
+        background: #ffe8e7;
+        transform: translateX(5px);
+        border-left-color: var(--color-principal);
+      }
+
+      /* Zona de Contenido Principal */
+      .zona-herramientas {
+        flex: 1;
+        /* Ocupa el resto del ancho disponible */
+        padding: 50px;
+        background-color: #f9f9fb;
+        box-sizing: border-box;
+      }
+
+      .zona-herramientas h2 {
+        font-size: 2.5rem;
+        color: var(--color-oscuro);
+        margin-top: 0;
+      }
+
+      .zona-herramientas p {
+        color: #4a5568;
+        line-height: 1.6;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-top: 1px solid #ddd;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Barra Superior -->
+    <nav class="barra-superior">
+      <div class="boton-volver">
+        <a href="/PageALL/MateriasCCED/Ciencias Naturales/PanelGeneral.html"
+          >← VOLVER ATRAS</a
+        >
+      </div>
+      <div class="titulo-materia">Física</div>
+      <div style="color: #666; font-weight: bold">5to Informática</div>
+    </nav>
+
+    <!-- Contenedor de la Aplicación -->
+    <div class="contenedor">
+      <!-- Barra Lateral Izquierda -->
+      <aside class="barra-lateral">
+        <h3>Astronomía</h3>
+        <hr />
+        <div class="info-materia">
+          <div class="tema" onclick="mostrar('Tema1')">Astronomía General</div>
+          <div class="tema" onclick="mostrar('Tema2')">Astrofísica</div>
+          <div class="tema" onclick="mostrar('Tema3')">Cosmología</div>
+          <div class="tema" onclick="mostrar('Tema4')">
+            Astronomía Planetaria
+          </div>
+          <div class="tema" onclick="mostrar('Tema5')">
+            Astronomía Galáctica
+          </div>
+          <div class="tema" onclick="mostrar('Tema6')">Astronomía Estelar</div>
+        </div>
+      </aside>
+
+      <!-- Zona de Contenido a la Derecha -->
+      <main class="zona-herramientas">
+        <div id="contenido">
+          <h2>Introducción a Astronomía</h2>
+          <p>
+            Bienvenido al módulo de Astronomía. Aquí comenzarás tu aprendizaje
+            sobre el universo, los cuerpos celestes y los fenómenos que ocurren
+            más allá de nuestro planeta.
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 BibliotecaCCED - Ciencias de la Naturaleza</footer>
+
+    <script>
+      /**
+       * Función para actualizar el contenido dinámicamente
+       * @param {string} tema - Identificador del tema seleccionado
+       */
+      function mostrar(tema) {
+        const contenido = document.getElementById("contenido");
+
+        // Diccionario de temas para mantener el código limpio
+        const temasInfo = {
+          Tema1: {
+            titulo: "Astronomía General",
+            texto: `La astronomía es la ciencia que estudia los cuerpos celestes y el universo en general. Se encarga de analizar todo lo que existe fuera de la Tierra, como las estrellas, los planetas, la Luna, los cometas, las galaxias y otros fenómenos del espacio.<br></br>
+
+Qué estudia la Astronomía?<br></br>
+
+La astronomía estudia diversos aspectos del universo, entre ellos:<br></br>
+
+• Los planetas y sus movimientos.<br></br>
+
+• Las estrellas (su formación, vida y muerte).<br></br>
+
+• Las galaxias y su estructura.<br></br>
+
+• El Sol y el sistema solar.<br></br>
+
+• Los cometas, asteroides y meteoritos.<br></br>
+
+• Los agujeros negros y otros fenómenos espaciales.<br></br>
+
+• El origen y la evolución del universo.<br></br>
+
+También analiza fenómenos como:<br></br>
+
+• Eclipses<br></br>
+
+• Expansión del universo<br></br>
+
+• Radiación espacial<br></br>
+
+• Importancia de la Astronomía<br></br>
+
+ La astronomía es muy importante porque:<br></br>
+
+• Permite comprender el universo y nuestro lugar en él.<br></br>
+
+• Ayuda al desarrollo científico y tecnológico.<br></br>
+
+• Contribuye a la navegación y medición del tiempo (calendarios).<br></br>
+
+• Impulsa avances en la física y otras ciencias.<br></br>
+
+• Despierta la curiosidad y el interés por la ciencia.<br></br>
+
+`,
+          },
+          Tema2: {
+            titulo: "Astrofísica",
+            texto: `La astrofísica es una de las ramas más importantes de la astronomía, ya que aplica las leyes de la física para estudiar el universo. Analiza las propiedades de los cuerpos celestes, como su temperatura, composición, movimiento y energía. También estudia fenómenos como la formación de estrellas, los agujeros negros y la expansión del universo, buscando explicar cómo funciona todo a nivel físico.<br></br>
+
+Conceptos Clave de la Astrofísica<br></br>
+
+•	Física Aplicada: Utiliza mecánica, electromagnetismo, física cuántica y relatividad para entender el espacio.<br></br>
+
+•	Estudio del Universo: Se centra en la formación, evolución y propiedades físicas (densidad, temperatura, composición) de los objetos celestes.<br></br>
+
+•	Diferencia con la Astronomía: Mientras la astronomía se dedica a mapear y localizar astros, la astrofísica explica el porqué y el cómo funcionan.<br></br>
+
+•	Ramas Principales:<br></br>
+
+•	Física Solar: Estudio del sol.<br></br>
+
+•	Física Estelar: Evolución y muerte de estrellas.<br></br>
+
+o	Estructura Galáctica: Estudio de las galaxias.<br></br>
+
+•		Cosmología: Estudio del universo en su conjunto. <br></br>
+
+Áreas de Investigación<br></br>
+
+•	Agujeros Negros y Energía Oscura: Fenómenos de alta energía.<br></br>
+
+•	Composición Química: Análisis de la materia a través de la luz.<br></br>
+
+•	Evolución Estelar: Nacimiento y muerte de estrellas. <br></br>
+
+La astrofísica es, esencialmente, la física aplicada al estudio de los astros, siendo fundamental para comprender el funcionamiento del universo observable
+`,
+          },
+          Tema3: {
+            titulo: "Cosmología",
+            texto: `La cosmología es la rama que se encarga de estudiar el origen, la evolución y la estructura del universo en su conjunto. Analiza teorías sobre cómo se formó el universo, como el Big Bang, y cómo ha cambiado a lo largo del tiempo. También investiga su posible futuro. Es una de las áreas más complejas y profundas de la astronomía.<br></br>
+
+
+Conceptos Clave de la Cosmología<br></br>
+
+•	Origen y Evolución: Investiga cómo el universo evolucionó desde un estado primitivo denso y caliente (Big Bang) hasta su estado actual.<br></br>
+
+•	Estructura a Gran Escala: Examina la formación de galaxias, cúmulos galácticos y la distribución de la materia en el cosmos<br></br>
+
+•	Componentes del Universo: Estudia la composición del cosmos, incluyendo la materia bariónica (ordinaria), materia oscura y la energía oscura.<br></br>
+
+•	Expansión Acelerada: La cosmología moderna indica que la expansión del universo se está acelerando, impulsada por la energía oscura.<br></br>
+
+•	Relatividad General: El marco teórico fundamental que describe la gravedad a escalas cosmológicas, introducido por Albert Einstein.<br></br>
+`,
+          },
+          Tema4: {
+            titulo: "Astronomía Planetaria",
+            texto: `Esta rama estudia los planetas, satélites naturales (como la Luna), asteroides y cometas. Analiza su composición, estructura, movimientos y características. También investiga la formación de los sistemas planetarios y las condiciones que podrían permitir la existencia de vida en otros planetas.<br></br>
+
+•	Alcance de Estudio: Comprende planetas telúricos (rocosos) y gigantes gaseosos, examinando sus atmósferas, superficies, interiores y magnetosferas.<br></br>
+
+•	Formación y Evolución: Investiga los procesos de formación planetaria, incluyendo la teoría del sistema solar (momento angular, distribución de masa) y la formación de satélites.<br></br>
+
+•	Sistema Solar y Más Allá: Aunque se enfoca en el sistema solar (Sol, 8 planetas, lunas y asteroides), incluye el estudio de sistemas planetarios extrasolares.<br></br>
+
+•	Historia y Desarrollo: Abarca desde la astronomía antigua y la búsqueda de calendarios, pasando por el geocentrismo, hasta la revolución de Copérnico, Kepler, Galileo y Newton.<br></br>
+
+•	Investigación Actual: Se centra en la cinemática, dinámica estelar, astrometría y fotometría de alta precisión para entender la diversidad de sistemas. <br></br>
+`,
+          },
+          Tema5: {
+            titulo: "Astronomía Galáctica",
+            texto: `La astronomía galáctica estudia las galaxias, que son grandes conjuntos de estrellas, polvo y gas. Analiza su estructura, formación y evolución. También estudia nuestra galaxia, la Vía Láctea, y cómo se organiza dentro del universo.<br></br>
+            
+Aspectos clave de la Astronomía Galáctica:<br></br>
+
+•	Contenido de la Vía Láctea: Investigación de estrellas, nubes interestelares, cúmulos y el agujero negro supermasivo en el centro galáctico.<br></br>
+
+•	Evolución Galáctica: Análisis de la formación y transformación de galaxias, incluyendo cúmulos, grupos y filamentos.<br></br>
+
+•	Centro de Interpretación (Galáctica): Ubicado en Arcos de las Salinas (Teruel), ofrece observación con telescopios profesionales y un museo interactivo sobre astronomía y astrofísica.<br></br>
+
+•	Investigación Moderna: Estudio de la materia oscura, dinámica estelar y uso de simulaciones numéricas.<br></br>
+
+•	Diferencia Fundamental: La astronomía galáctica estudia nuestra galaxia, mientras que la astronomía extragaláctica se enfoca en el resto del universo, distinción consolidada por los estudios de Edwin Hubble.
+`,
+          },
+          Tema6: {
+            titulo: "Astronomía Estelar",
+            texto: `La astronomía estelar se enfoca en el estudio de las estrellas. Analiza su nacimiento, evolución y muerte, así como sus características físicas como tamaño, temperatura y brillo. Esta rama permite comprender el ciclo de vida de las estrellas y su importancia en el universo.<br></br>
+
+Aspectos Clave de la Astronomía Estelar:<br></br>
+
+•	Formación y Nacimiento: Las estrellas nacen dentro de nubes de gas y polvo (nebulosas) que se contraen por la fuerza de la gravedad, aumentando su temperatura hasta iniciar la fusión nuclear.<br></br>
+
+•	Estructura y Composición: Son esferas de gas, principalmente hidrógeno y helio, con un núcleo denso y caliente que genera energía, rodeado por capas exteriores.<br></br>
+
+•	Ciclo de Vida: Su evolución depende de su masa. Estrellas masivas viven pocos millones de años y terminan en supernovas, mientras que estrellas más pequeñas, como el Sol, tienen vidas mucho más largas antes de convertirse en gigantes rojas y enanas blancas.<br></br>
+
+•	Clasificación Espectral: Las estrellas se clasifican por temperatura y espectro en los tipos O, B, A, F, G, K y M, siendo las azules las más calientes y las rojas las más frías.<br></br>
+
+•	Diagrama Hertzsprung-Russell: Una herramienta fundamental que representa la relación entre la luminosidad y la temperatura superficial de las estrellas, esencial para entender su evolución.<br></br>
+
+•	Sistemas Estelares: La mayoría de las estrellas no están solas, sino en parejas o sistemas múltiples, formados a partir de la misma nube molecular.
+`,
+          },
+        };
+
+        const data = temasInfo[tema];
+
+        if (data) {
+          contenido.innerHTML = `
+                    <h2>${data.titulo}</h2>
+                    <p>${data.texto}</p>
+                `;
+        }
+      }
+    </script>
+  </body>
+</html>

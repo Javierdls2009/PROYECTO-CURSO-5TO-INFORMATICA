@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Física | AcademiaCCED</title>
-
+    <title>Física | BibliotecaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
       /* Colores y Variables */
       :root {
@@ -94,9 +94,9 @@
       }
 
       .tema:hover {
-        background: var(--color-principal);
-        color: white;
+        background: #ffe8e7;
         transform: translateX(5px);
+        border-left-color: var(--color-principal);
       }
 
       /* Zona de Contenido Principal */
@@ -134,7 +134,8 @@
     <!-- Barra Superior -->
     <nav class="barra-superior">
       <div class="boton-volver">
-        <a href="/PageALL/MateriasCCED/Ciencias Naturales/PanelGeneral.html">← VOLVER ATRAS</a
+        <a href="/PageALL/MateriasCCED/Ciencias Naturales/PanelGeneral.html"
+          >← VOLVER ATRAS</a
         >
       </div>
       <div class="titulo-materia">Física</div>
@@ -170,7 +171,7 @@
       </main>
     </div>
 
-    <footer>&copy; 2026 AcademiaCCED - Ciencias de la Naturaleza</footer>
+    <footer>&copy; 2026 BibliotecaCCED - Ciencias de la Naturaleza</footer>
 
     <script>
       /**
@@ -348,8 +349,6 @@ Radiactividad: Emisión de energía (partículas alfa, beta o gamma) por núcleo
           contenido.innerHTML = `
                     <h2>${data.titulo}</h2>
                     <p>${data.texto}</p>
-                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
-                    <p style="color: #888; font-size: 0.9rem;">Recurso educativo de AcademiaCCED.</p>
                 `;
         }
       }

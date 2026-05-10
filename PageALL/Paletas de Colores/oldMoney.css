@@ -1,0 +1,21 @@
+/* ========================================
+   NUEVA PALETA DE COLORES (ESTILO OLD MONEY)
+   ======================================== */
+:root {
+    --color-primario: #B59E7D;    /* Tobacco: Para acentos y hover  */
+    --color-fondo: #F1EADA;       /* Vanilla: Fondo principal elegante  */
+    --color-card: #CEC1A8;        /* Sand: Fondo de tarjetas y contenedores  */
+    --color-texto: #584738;       /* Mahogany: Texto principal (marrón oscuro profundo)  */
+    --header-bg: #AAA396;         /* Mountain: Color del encabezado y footer  */
+    --color-btn: #584738;         /* Mahogany: Botones oscuros contrastantes  */
+    --transition: all 0.4s ease;  /*  */
+    --color-rojo: #ef4444;        /* [cite: 2] */
+}
+
+/* Modo Oscuro adaptado a la paleta */
+body.dark {
+    --color-fondo: #2A211A;       /* Mahogany muy oscuro para el fondo */
+    --color-card: #45362B;        /* Mahogany medio para las tarjetas */
+    --color-texto: #F1EADA;       /* Vanilla para el texto en modo oscuro  */
+    --header-bg: #1F1813;         /* Un tono casi negro madera para el header */
+}

@@ -1,0 +1,15 @@
+/* PALETA: NOCHE DE OXFORD */
+:root {
+    --color-primario: #212842;    /* Midnight Indigo */
+    --color-fondo: #F0E7D5;       /* Vanilla Cream */
+    --color-card: #FFFFFF;        /* Blanco Puro */
+    --color-texto: #212842;       /* Midnight Indigo */
+    --header-bg: #212842;         /* Contraste Fuerte */
+    --color-btn: #212842;
+}
+body.dark {
+    --color-fondo: #0F121D;
+    --color-card: #1B2135;
+    --color-texto: #F0E7D5;
+    --header-bg: #0A0D15;
+}

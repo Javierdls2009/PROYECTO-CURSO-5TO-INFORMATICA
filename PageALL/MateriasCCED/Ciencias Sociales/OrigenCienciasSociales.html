@@ -3,241 +3,572 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origen de las Ciencias Sociales | AcademiaCCED</title>
-    
+    <title>Origen de las Ciencias Sociales | BibliotecaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
+        /* colores */
         :root {
-            --color-materia: #e5322e; 
+            --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
         }
 
+        /* estilos generales */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-color: var(--color-fondo);
-            color: #333;
         }
 
-        .nav-superior {
+        /* barra de navegacion superior */
+        .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
+            padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
-            height: 70px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-wrap: wrap;
         }
 
-        .volver a {
+        /* boton volver */
+        .boton-volver a {
             text-decoration: none;
-            color: var(--color-materia);
+            color: var(--color-principal);
             font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .boton-volver a:hover {
+            text-decoration: underline;
         }
 
-        .titulo-app {
+        /* titulo de la materia */
+        .titulo-materia {
             font-weight: 800;
-            color: var(--color-materia);
-            font-size: 1.4rem;
-            text-transform: uppercase;
+            color: var(--color-principal);
+            font-size: 1.5rem;
         }
 
-        .contenedor-principal {
+        /* contenedor principal */
+        .contenedor {
             display: flex;
-            min-height: calc(100vh - 70px);
+            min-height: 100vh;
         }
 
-        .sidebar {
-            width: 280px;
-            background: var(--blanco);
+        /*barra lateral */
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
             border-right: 1px solid #ddd;
-            padding: 25px;
-            box-sizing: border-box;
-            flex-shrink: 0;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
         }
 
-        .sidebar h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
-            border-left: 4px solid var(--color-materia);
-            padding-left: 10px;
+            font-size: 1.4rem;
         }
 
-        .btn-tema {
-            width: 100%;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            cursor: pointer;
+        .barra-lateral hr {
+            opacity: 0.2;
+            margin: 20px 0;
+        }
+
+        .info-materia {
             text-align: left;
-            transition: 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: #555;
+            margin: 10px 10px;
+            padding: 10px;
+        }
+
+        .tema {
+            padding: 12px 15px;
             margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
         }
 
-        .btn-tema:hover {
-            background: var(--color-materia);
-            color: white;
+        .tema:hover {
+            background: #ffe8e7;
             transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
-        .visor-contenido {
+        /* zona principal */
+        .zona-herramientas {
             flex: 1;
-            padding: 60px;
-            background: #fafbfc;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        #pizarra {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeIn 0.5s ease;
+        .zona-herramientas h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .zona-herramientas h3 {
+            color: var(--color-principal);
+            margin-top: 20px;
         }
 
-        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
-        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+        .zona-herramientas p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .zona-herramientas li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .definicion-destacada {
+            background-color: #e9f0f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid #cbd5e0;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
 
         footer {
             text-align: center;
             padding: 20px;
-            font-size: 0.8rem;
-            color: #888;
-            background: var(--blanco);
-            border-top: 1px solid #eee;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav-superior">
-        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
-        <div class="titulo-app">Academia CCED</div>
-        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">ORIGEN DE LAS CS. SOCIALES</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <div class="contenedor-principal">
-        
-        <aside class="sidebar">
-            <h3>TEMARIO</h3>
-            <div class="lista-temas">
-                <button class="btn-tema" onclick="cargar('origen_ciencias_sociales')">Origen de las Cs. Sociales</button>
-                <button class="btn-tema" onclick="cargar('historia')">Historia</button>
-                <button class="btn-tema" onclick="cargar('prehistoria')">Prehistoria</button>
-                <button class="btn-tema" onclick="cargar('geografia')">Geografía</button>
-                <button class="btn-tema" onclick="cargar('sociedad')">Sociedad</button>
-                <button class="btn-tema" onclick="cargar('economia')">Economía</button>
-                <button class="btn-tema" onclick="cargar('cultura')">Cultura</button>
-                <button class="btn-tema" onclick="cargar('paleolitico')">Paleolítico</button>
-                <button class="btn-tema" onclick="cargar('mesolitico')">Mesolítico</button>
-                <button class="btn-tema" onclick="cargar('neolitico')">Neolítico</button>
-                <button class="btn-tema" onclick="cargar('edad_metales')">Edad de los Metales</button>
-                <button class="btn-tema" onclick="cargar('demografia')">Demografía</button>
-                <button class="btn-tema" onclick="cargar('cartografia')">Cartografía</button>
-                <button class="btn-tema" onclick="cargar('relieve')">Relieve</button>
-                <button class="btn-tema" onclick="cargar('antropologia')">Antropología</button>
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <!-- barra lateral -->
+        <aside class="barra-lateral">
+            <h3>Temario</h3>
+            <hr>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('origen_ciencias_sociales')">Origen de las Cs. Sociales</div>
+                <div class="tema" onclick="mostrar('historia')">Historia</div>
+                <div class="tema" onclick="mostrar('prehistoria')">Prehistoria</div>
+                <div class="tema" onclick="mostrar('geografia')">Geografía</div>
+                <div class="tema" onclick="mostrar('sociedad')">Sociedad</div>
+                <div class="tema" onclick="mostrar('economia')">Economía</div>
+                <div class="tema" onclick="mostrar('cultura')">Cultura</div>
+                <div class="tema" onclick="mostrar('paleolitico')">Paleolítico</div>
+                <div class="tema" onclick="mostrar('mesolitico')">Mesolítico</div>
+                <div class="tema" onclick="mostrar('neolitico')">Neolítico</div>
+                <div class="tema" onclick="mostrar('edad_metales')">Edad de los Metales</div>
+                <div class="tema" onclick="mostrar('demografia')">Demografía</div>
+                <div class="tema" onclick="mostrar('cartografia')">Cartografía</div>
+                <div class="tema" onclick="mostrar('relieve')">Relieve</div>
+                <div class="tema" onclick="mostrar('antropologia')">Antropología</div>
             </div>
         </aside>
 
-        <main class="visor-contenido">
-            <div id="pizarra">
-                <h2>Bienvenido</h2>
-                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Origen de las Ciencias Sociales</h2>
+                <p>Selecciona un tema del menú lateral para adentrarte en el estudio de las ciencias sociales.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Bienvenido:</strong> Descubre cómo surge el estudio de la sociedad humana.
+                </div>
             </div>
         </main>
-
     </div>
 
     <footer>
-        &copy; 2026 AcademiaCCED. Todos los derechos reservados.
+        <p>© 2026 BibliotecaCCED. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        function cargar(id) {
-            const pizarra = document.getElementById("pizarra");
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
 
-            const baseDeDatos = {
-                'origen_ciencias_sociales': {
-                    titulo: "Origen de las Ciencias Sociales",
-                    texto: "Las Ciencias Sociales surgieron del interés por comprender la vida en sociedad. Sus raíces se encuentran en la Antigua Grecia con pensadores como Sócrates, Platón y Aristóteles. Durante la Ilustración, adquirieron un enfoque científico. En el siglo XIX se consolidaron disciplinas como la sociología, la economía y la ciencia política. Su desarrollo respondió a los cambios provocados por la Revolución Industrial y las revoluciones políticas. Actualmente, son esenciales para analizar los problemas sociales contemporáneos. Permiten entender el comportamiento humano y las instituciones."
-                },
-                'historia': {
-                    titulo: "Historia",
-                    texto: "La historia es la ciencia social que estudia los acontecimientos del pasado humano. Su objetivo es comprender cómo evolucionaron las sociedades a lo largo del tiempo. Analiza causas, consecuencias y procesos históricos. No se limita a memorizar fechas, sino que interpreta cambios políticos, económicos, sociales y culturales. Permite entender el presente a partir de las experiencias del pasado. También fortalece la identidad de los pueblos y fomenta el pensamiento crítico. La historia nos enseña lecciones valiosas para construir un mejor futuro."
-                },
-                'prehistoria': {
-                    titulo: "Prehistoria",
-                    texto: "La prehistoria es el período más antiguo de la humanidad, comprendido desde la aparición de los primeros seres humanos hasta la invención de la escritura, alrededor del año 3500 a. C. Durante esta etapa, los seres humanos aprendieron a sobrevivir en un entorno lleno de desafíos, desarrollando herramientas de piedra, dominando el fuego y organizándose en grupos para cazar, recolectar alimentos y protegerse.<br><br>Este largo período se divide en tres etapas principales: el Paleolítico, caracterizado por el uso de herramientas de piedra tallada y la vida nómada; el Neolítico, cuando surgieron la agricultura, la ganadería y los primeros asentamientos permanentes; y la Edad de los Metales, marcada por el descubrimiento y uso del cobre, el bronce y el hierro. La prehistoria fue fundamental, ya que en ella se sentaron las bases del desarrollo humano, social y tecnológico que dieron origen a las primeras civilizaciones."
-                },
-                'geografia': {
-                    titulo: "Geografía",
-                    texto: "La geografía es la ciencia que estudia la Tierra como el espacio donde vive la humanidad. Analiza la relación entre el ser humano y su entorno natural, social y económico. Examina elementos como el clima, el relieve, los ríos, los océanos y los recursos naturales. También estudia la distribución de la población y las actividades económicas. Gracias a la geografía, comprendemos fenómenos como la urbanización, la migración y el cambio climático. Es una disciplina esencial para la planificación territorial y la conservación ambiental. Además, ayuda a entender cómo el espacio influye en la vida de las personas y en el desarrollo de las naciones."
-                },
-                'sociedad': {
-                    titulo: "Sociedad",
-                    texto: "La sociedad es el conjunto de personas que conviven y se organizan bajo normas, valores e instituciones. En ella se desarrollan relaciones familiares, económicas, políticas y culturales. La sociedad evoluciona constantemente debido a los avances tecnológicos y los cambios culturales. Es el espacio donde se forman identidades y se transmiten conocimientos. Permite la cooperación entre individuos para alcanzar objetivos comunes. Además, regula la convivencia y el orden social. Es la base de toda civilización."
-                },
-                'economia': {
-                    titulo: "Economía",
-                    texto: "La economía estudia cómo las personas, empresas y gobiernos administran recursos limitados. Analiza la producción, distribución y consumo de bienes y servicios. Explica fenómenos como la inflación, el desempleo y el crecimiento económico. También ayuda a comprender el funcionamiento de los mercados y las finanzas. Es fundamental para la toma de decisiones individuales y colectivas. La economía influye directamente en la calidad de vida de la población. Su estudio permite promover el desarrollo y la prosperidad."
-                },
-                'cultura': {
-                    titulo: "Cultura",
-                    texto: "La cultura comprende las costumbres, tradiciones, creencias, conocimientos y expresiones artísticas de un pueblo. Define la identidad colectiva de una sociedad. Se transmite de generación en generación mediante la educación y la convivencia. Incluye el idioma, la música, la gastronomía y las manifestaciones religiosas. La cultura evoluciona con el tiempo y se enriquece con el intercambio entre pueblos. Es un elemento esencial para la cohesión social. También fomenta el respeto a la diversidad."
-                },
-                'paleolitico': {
-                    titulo: "Paleolítico",
-                    texto: "Es la etapa más antigua de la humanidad. Los seres humanos eran nómadas y vivían de la caza, pesca y recolección. Fabricaban herramientas de piedra tallada. Descubrieron el fuego, lo que transformó su vida. Surgieron las primeras manifestaciones artísticas, como las pinturas rupestres. Fue una etapa de adaptación y supervivencia. Constituye la base del desarrollo humano."
-                },
-                'mesolitico': {
-                    titulo: "Mesolítico",
-                    texto: "Fue una etapa de transición entre el Paleolítico y el Neolítico. Mejoraron las herramientas de piedra. Los grupos humanos comenzaron a establecerse temporalmente. La pesca adquirió gran importancia. Se desarrollaron nuevas técnicas de caza. Fue un período de adaptación climática tras la última glaciación. Preparó el camino hacia la agricultura."
-                },
-                'neolitico': {
-                    titulo: "Neolítico",
-                    texto: "Conocido como la Revolución Neolítica. El ser humano se volvió sedentario. Surgieron la agricultura y la domesticación de animales. Se formaron las primeras aldeas permanentes. Apareció la cerámica y el tejido. La vida social se volvió más compleja. Fue un cambio decisivo en la historia humana."
-                },
-                'edad_metales': {
-                    titulo: "Edad de los Metales",
-                    texto: "En esta etapa se comenzó a trabajar el cobre, el bronce y el hierro. Las herramientas se hicieron más resistentes y eficaces. Surgieron ciudades y civilizaciones más avanzadas. El comercio se expandió considerablemente. También aparecieron nuevas formas de organización política. Fue el puente hacia la historia escrita. Marcó el inicio de las grandes civilizaciones."
-                },
-                'demografia': {
-                    titulo: "Demografía",
-                    texto: "La demografía estudia la población humana y sus características. Analiza aspectos como natalidad, mortalidad, migración y esperanza de vida. Permite conocer la estructura poblacional por edad y sexo. Es útil para planificar servicios de salud, educación y vivienda. También ayuda a prever necesidades futuras de la sociedad. Su aplicación es fundamental en las políticas públicas. La demografía es clave para el desarrollo sostenible."
-                },
-                'cartografia': {
-                    titulo: "Cartografía",
-                    texto: "La cartografía es la ciencia encargada de elaborar y estudiar mapas. Representa gráficamente la superficie terrestre y sus características. Facilita la ubicación de lugares, rutas y recursos. Es fundamental en la geografía, la navegación y la planificación urbana. La tecnología ha revolucionado esta disciplina mediante satélites y sistemas GPS. Hoy tiene aplicaciones en transporte, defensa y medio ambiente. Los mapas son herramientas indispensables en el mundo moderno."
-                },
-                'relieve': {
-                    titulo: "Relieve",
-                    texto: "El relieve está formado por las distintas formas de la superficie terrestre. Incluye montañas, llanuras, mesetas, valles y depresiones. Se origina por procesos internos como el vulcanismo y externos como la erosión. Influye en el clima, la agricultura y los asentamientos humanos. Determina la biodiversidad de cada región. También afecta las comunicaciones y actividades económicas. Es uno de los elementos más importantes del paisaje natural."
-                },
-                'antropologia': {
-                    titulo: "Antropología",
-                    texto: "La antropología estudia al ser humano desde una perspectiva integral. Analiza su origen, evolución biológica, cultura y organización social. Permite comprender las diferencias y similitudes entre las distintas sociedades. Investiga costumbres, lenguas, creencias y formas de vida. Promueve el respeto por la diversidad cultural. Es una ciencia esencial para entender la humanidad. Su aporte es invaluable en un mundo globalizado."
-                }
-            };
-
-            const info = baseDeDatos[id];
-
-            if (info) {
-                pizarra.innerHTML = `
-                    <h2>${info.titulo}</h2>
-                    <p>${info.texto}</p>
+            if (tema === "origen_ciencias_sociales") {
+                html = `
+                    <h2>Origen de las Ciencias Sociales</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> Las ciencias sociales son el conjunto de disciplinas académicas que estudian el comportamiento humano, la organización social y las relaciones culturales utilizando métodos científicos. Analizan cómo las personas interactúan, se comportan y crean estructuras, permitiendo comprender la sociedad, sus conflictos y evolucionar hacia mejores formas de convivencia.
+                    </div>
+                    
+                    <h3>Disciplinas Principales de las Ciencias Sociales</h3>
+                    <ul>
+                        <li><strong>Sociología:</strong> Estudia la sociedad, la interacción social y la estructura de los grupos.</li>
+                        <li><strong>Antropología:</strong> Analiza al ser humano de forma holística, incluyendo aspectos biológicos y culturales.</li>
+                        <li><strong>Economía:</strong> Examina la producción, distribución y consumo de bienes y servicios.</li>
+                        <li><strong>Ciencia Política:</strong> Se enfoca en las estructuras de gobierno, el poder y la política.</li>
+                        <li><strong>Historia:</strong> Investiga el pasado humano y los hechos documentados.</li>
+                        <li><strong>Geografía:</strong> Estudia el entorno físico y la relación entre el ser humano y el espacio.</li>
+                        <li><strong>Psicología:</strong> Analiza la mente y el comportamiento humano.</li>
+                        <li><strong>Lingüística:</strong> Estudia el lenguaje, su estructura y evolución.</li>
+                        <li><strong>Cartografía:</strong> Ciencia y técnica de representar la superficie terrestre mediante mapas, escalas y proyecciones.</li>
+                    </ul>
                 `;
             }
+            else if (tema === "historia") {
+                html = `
+                    <h2>Historia</h2>
+                    <p>La historia de las ciencias sociales comenzó a finales del siglo XVIII y se consolidó en el XIX, impulsada por la Ilustración y la Revolución Industrial para entender la nueva realidad social. Con raíces en la filosofía antigua (Platón, Aristóteles), se formalizaron gracias a pensadores como Comte, Marx, Montesquieu y Smith. Buscan analizar la sociedad mediante métodos científicos, diferenciándose de las naturales.</p>
+                    
+                    <h3>Orígenes e Influencias Clave</h3>
+                    <ul>
+                        <li><strong>Filosofía Griega y Medieval:</strong> Se encuentran los primeros antecedentes de la reflexión sobre el ser humano y la organización social, aunque sin el método empírico actual.</li>
+                        <li><strong>La Ilustración y Revoluciones (S. XVIII-XIX):</strong> El auge de la Revolución Industrial y la Francesa cambiaron las estructuras sociales, impulsando la necesidad de un estudio profundo de la sociedad.</li>
+                        <li><strong>Influencia Positivista:</strong> Se adoptó el modelo de las ciencias naturales para estudiar la sociedad, buscando leyes generales de funcionamiento social.</li>
+                    </ul>
+
+                    <h3>Evolución y Etapas</h3>
+                    <ul>
+                        <li><strong>Fundación (Fines S. XVIII - Principios S. XIX):</strong> Montesquieu, Adam Smith y, posteriormente, Auguste Comte, quien propuso la "física social" (sociología).</li>
+                        <li><strong>Consolidación (S. XIX-XX):</strong> Se dividieron en disciplinas específicas como economía, política, sociología y antropología. El estudio se centró en la profesionalización del saber.</li>
+                        <li><strong>Crisis y Modernidad (S. XX):</strong> Las ciencias sociales se vieron como respuesta a las crisis sociales y globales.</li>
+                    </ul>
+
+                    <h3>Principales Fundadores y Enfoques</h3>
+                    <ul>
+                        <li><strong>Auguste Comte:</strong> Pionero en proponer el estudio científico de la sociedad (positivismo).</li>
+                        <li><strong>Karl Marx:</strong> Aportó el análisis de la estructura social y económica.</li>
+                        <li><strong>Montesquieu:</strong> Analizó las formas de gobierno y el pensamiento social.</li>
+                        <li><strong>Adam Smith:</strong> Sentó bases económicas y de mercado.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "prehistoria") {
+                html = `
+                    <h2>Prehistoria</h2>
+                    <p>La prehistoria es el periodo más largo de la humanidad, que abarca desde la aparición de los primeros homínidos (hace unos 2.5 a 3 millones de años) hasta la invención de la escritura (alrededor del 3300 a. C.). Dado que no existen documentos escritos de esta época, se estudia principalmente a través de fósiles, herramientas de piedra y pinturas rupestres.</p>
+                    
+                    <h3>Etapas principales</h3>
+                    <p>La prehistoria se divide tradicionalmente en dos grandes edades basadas en los materiales usados por los humanos:</p>
+                    
+                    <h4>Edad de Piedra</h4>
+                    <p>Es la etapa más extensa y se divide en tres fases:</p>
+                    <ul>
+                        <li><strong>Paleolítico:</strong> Los humanos eran nómadas, cazadores-recolectores y dominaron el fuego.</li>
+                        <li><strong>Mesolítico:</strong> Periodo de transición con cambios climáticos que facilitaron una vida más estable.</li>
+                        <li><strong>Neolítico:</strong> Aparece la agricultura, la ganadería y los primeros asentamientos sedentarios.</li>
+                    </ul>
+
+                    <h4>Edad de los Metales</h4>
+                    <p>Se caracteriza por el uso de fundición y metalurgia para crear herramientas y armas.</p>
+                    <ul>
+                        <li><strong>Edad del Cobre:</strong> Primer metal utilizado.</li>
+                        <li><strong>Edad del Bronce:</strong> Mezcla de cobre y estaño, surgen sociedades más complejas.</li>
+                        <li><strong>Edad del Hierro:</strong> Uso de un metal más resistente, marcando el fin de la prehistoria en muchas regiones.</li>
+                    </ul>
+
+                    <h3>Hitos fundamentales</h3>
+                    <ul>
+                        <li><strong>Evolución humana:</strong> El proceso desde el Australopithecus hasta el Homo sapiens.</li>
+                        <li><strong>Arte rupestre:</strong> Pinturas en cuevas (como las de Altamira) que representaban escenas de caza y animales.</li>
+                        <li><strong>Revolución Neolítica:</strong> El paso de una economía depredadora a una productora transformó la vida humana.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "geografia") {
+                html = `
+                    <h2>Geografía</h2>
+                    <p>La geografía es la ciencia que estudia la superficie terrestre, las sociedades que la habitan y los paisajes, lugares y regiones que se forman al relacionarse entre sí. Analiza la distribución de fenómenos físicos (relieve, clima) y humanos (población, actividades económicas) para interpretar el territorio.</p>
+                    
+                    <h3>Ramas Principales</h3>
+                    <ul>
+                        <li><strong>Física:</strong> Estudia los procesos y patrones en el entorno natural, incluyendo el clima, la geomorfología, la hidrografía y los suelos.</li>
+                        <li><strong>Geografía Humana:</strong> Se centra en el estudio de las personas y sus comunidades, culturas, economía e interacciones con el medio ambiente.</li>
+                    </ul>
+
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li><strong>Espacio Geográfico:</strong> El objeto de estudio principal, concebido como el espacio socialmente construido y modificado por el ser humano.</li>
+                        <li><strong>Localización y Coordenadas:</strong> Uso de paralelos (latitud) y meridianos (longitud) para ubicar puntos exactos en la Tierra.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "sociedad") {
+                html = `
+                    <h2>Sociedad</h2>
+                    <p>La sociología es la ciencia social que estudia sistemáticamente la sociedad humana, las interacciones sociales, los grupos y las estructuras colectivas. Analiza comportamientos, normas, instituciones y fenómenos de cambio o conflicto, aplicando métodos científicos para comprender cómo los individuos influyen en la sociedad y viceversa.</p>
+                    
+                    <h3>Aspectos Clave de la Sociología:</h3>
+                    <ul>
+                        <li><strong>Objeto de estudio:</strong> Analiza la estructura, organización y funcionamiento de las sociedades, incluyendo la familia, grupos de pares, instituciones y redes sociales.</li>
+                        <li><strong>Enfoque:</strong> Utiliza métodos cualitativos y cuantitativos para investigar la acción social, las interacciones y los fenómenos de cambio y conservación.</li>
+                        <li><strong>Perspectiva crítica:</strong> Busca comprender los problemas sociales (como la desigualdad, pobreza o poder) para contribuir a una sociedad más justa.</li>
+                        <li><strong>Ramas principales:</strong> Incluye sociología urbana, rural, de la educación, política, de género, económica, entre otras.</li>
+                        <li><strong>Padres fundadores:</strong> Figuras clave incluyen a Émile Durkheim, Max Weber, Karl Marx y Auguste Comte, quienes establecieron las bases teóricas y metodológicas de la disciplina.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "economia") {
+                html = `
+                    <h2>Economía</h2>
+                    <p>La economía es la ciencia social que estudia cómo las sociedades administran recursos escasos para producir, distribuir y consumir bienes y servicios, satisfaciendo necesidades humanas ilimitadas. Analiza la toma de decisiones de individuos, empresas y gobiernos, buscando la eficiencia y el bienestar, abarcando desde el comercio local hasta el internacional.</p>
+                    
+                    <h3>Aspectos clave de la economía:</h3>
+                    <ul>
+                        <li><strong>Objeto de estudio:</strong> La organización y distribución de recursos finitos para satisfacer demandas tangibles o intangibles.</li>
+                        <li><strong>Microeconomía vs. Macroeconomía:</strong> La microeconomía analiza las decisiones individuales (personas, empresas). La macroeconomía estudia el funcionamiento global de la economía (PIB, inflación, empleo).</li>
+                    </ul>
+
+                    <h3>Tipos de Economía</h3>
+                    <ul>
+                        <li><strong>Positiva:</strong> Describe los fenómenos económicos tal como son (hechos).</li>
+                        <li><strong>Normativa:</strong> Propone cómo "deberían ser" las cosas (juicios de valor).</li>
+                        <li><strong>Ortodoxa/Heterodoxa:</strong> Diferentes corrientes de pensamiento, con la ortodoxa enfocada en la racionalidad y equilibrio.</li>
+                        <li><strong>Evolución:</strong> Desde el trueque hasta sistemas complejos actuales como el capitalismo, influenciada por la administración de recursos y el comercio.</li>
+                        <li><strong>Importancia:</strong> Ayuda a entender los mercados, diseñar políticas públicas y mejorar la calidad de vida a través de la gestión eficiente.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "cultura") {
+                html = `
+                    <h2>Cultura</h2>
+                    <p>La cultura abarca el conjunto de conocimientos, creencias, artes, leyes, morales, costumbres y cualquier otro hábito adquirido por el ser humano como miembro de la sociedad. Es el tejido social que engloba las distintas formas de expresión de una comunidad y le otorga su identidad única.</p>
+                    
+                    <h3>Aspectos clave de la cultura:</h3>
+                    <ul>
+                        <li><strong>Objeto de estudio:</strong> Las manifestaciones simbólicas y materiales de un grupo social que determinan su manera de vivir y de relacionarse.</li>
+                        <li><strong>Cultura Material e Inmaterial:</strong> La material incluye monumentos, obras de arte y herramientas. La inmaterial abarca lenguajes, tradiciones orales, rituales y celebraciones.</li>
+                    </ul>
+
+                    <h3>Tipos de Cultura</h3>
+                    <ul>
+                        <li><strong>Popular:</strong> Expresiones surgidas y consumidas por las masas y el pueblo.</li>
+                        <li><strong>Alta Cultura:</strong> Expresiones artísticas y literarias dirigidas a sectores de mayor nivel educativo o socioeconómico.</li>
+                        <li><strong>Multiculturalismo:</strong> La coexistencia de múltiples culturas dentro de un mismo espacio social o país.</li>
+                        <li><strong>Evolución:</strong> La cultura es dinámica; cambia y se adapta con el tiempo a través de la innovación, el contacto intercultural y la tecnología.</li>
+                        <li><strong>Importancia:</strong> Fomenta el sentido de pertenencia, la cohesión social y preserva la memoria histórica de las sociedades.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "paleolitico") {
+                html = `
+                    <h2>Paleolítico</h2>
+                    <p>El Paleolítico es el período más largo de la existencia humana, abarcando desde hace 2.5 millones de años hasta aproximadamente el 12,000 a. C.. Significa "piedra antigua" y se caracteriza por el uso de herramientas de piedra tallada y un estilo de vida nómada.</p>
+                    
+                    <h3>Características Principales</h3>
+                    <ul>
+                        <li><strong>Economía Depredadora:</strong> Basada en la caza, la pesca y la recolección de frutos silvestres.</li>
+                        <li><strong>Nomadismo:</strong> Los grupos humanos no vivían en un lugar fijo; se desplazaban siguiendo a las manadas de animales.</li>
+                        <li><strong>Sociedad:</strong> Se organizaban en pequeñas tribus o bandas de entre 20 y 40 personas unidas por lazos familiares.</li>
+                        <li><strong>Vivienda:</strong> Se refugiaban en cuevas naturales o construían chozas precarias con ramas y pieles.</li>
+                        <li><strong>Hito Clave:</strong> El descubrimiento y control del fuego, que permitió cocinar, calentarse y ahuyentar depredadores.</li>
+                    </ul>
+
+                    <h3>Etapas del Paleolítico</h3>
+                    <p>El período se divide en tres fases según la evolución de los homínidos y su tecnología:</p>
+                    <ul>
+                        <li><strong>Paleolítico Inferior (2.5 mill. - 250,000 años):</strong> Aparecen los primeros humanos (Homo habilis y erectus). Se fabrican las primeras herramientas de piedra simples.</li>
+                        <li><strong>Paleolítico Medio (250,000 - 30,000 a. C.):</strong> Dominado por el Hombre de Neandertal. Las herramientas se vuelven más sofisticadas y comienzan los primeros ritos funerarios.</li>
+                        <li><strong>Paleolítico Superior (30,000 - 10,000 a. C.):</strong> Aparece el Hombre de Cromañón (Homo sapiens). Surge el arte rupestre (como en Altamira) y se perfeccionan los útiles de hueso y asta.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "mesolitico") {
+                html = `
+                    <h2>Mesolítico</h2>
+                    <p>El Mesolítico es el período de transición de la Edad de Piedra que conecta el Paleolítico con el Neolítico, situándose aproximadamente entre el 10,000 a. C. y el 6,000 a. C.. Su nombre significa "piedra media" y representa la adaptación humana a un mundo que cambiaba radicalmente tras el fin de la era glacial.</p>
+                    
+                    <h3>El Gran Cambio Climático</h3>
+                    <p>Este periodo coincide con el inicio del Holoceno. El clima se volvió más cálido y húmedo, lo que provocó:</p>
+                    <ul>
+                        <li><strong>Deshielo:</strong> El nivel del mar subió e inundó zonas costeras.</li>
+                        <li><strong>Extinción de la Megafauna:</strong> Animales como el mamut desaparecieron, obligando a los humanos a cazar presas más pequeñas y rápidas como ciervos o jabalíes.</li>
+                        <li><strong>Nuevos Bosques:</strong> La expansión de la vegetación ofreció nuevos recursos vegetales y frutos silvestres.</li>
+                    </ul>
+
+                    <h3>Innovaciones Tecnológicas y Dieta</h3>
+                    <p>La escasez de grandes presas impulsó la creatividad técnica:</p>
+                    <ul>
+                        <li><strong>Microlitos:</strong> Pequeñas piedras talladas y muy afiladas que se unían a mangos de madera o hueso para crear flechas, arpones y hoces más eficientes.</li>
+                        <li><strong>Pesca y Recolección:</strong> Se inventaron anzuelos, redes y canoas, convirtiendo a los ríos y costas en fuentes principales de alimento.</li>
+                        <li><strong>Domesticación:</strong> Aparecen los primeros indicios de domesticación, siendo el perro el primer aliado del ser humano para la caza y defensa.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "neolitico") {
+                html = `
+                    <h2>Neolítico</h2>
+                    <p>El Neolítico es la etapa final de la Edad de Piedra (aprox. 6,000 a. C. - 3,000 a. C.). Se conoce como la "Revolución Neolítica" porque el ser humano dejó de ser un simple depredador para convertirse en productor de sus propios alimentos.</p>
+                    
+                    <h3>La Gran Transformación</h3>
+                    <p>El cambio más radical en la historia de la humanidad se basó en:</p>
+                    <ul>
+                        <li><strong>Agricultura:</strong> Cultivo de cereales como trigo, cebada y arroz.</li>
+                        <li><strong>Ganadería:</strong> Domesticación de cabras, ovejas, vacas y cerdos.</li>
+                        <li><strong>Sedentarismo:</strong> El hombre dejó de desplazarse y construyó aldeas permanentes cerca de ríos.</li>
+                    </ul>
+
+                    <h3>Nuevas Tecnologías</h3>
+                    <ul>
+                        <li><strong>Piedra Pulida:</strong> Herramientas más precisas y resistentes (hachas, azadas).</li>
+                        <li><strong>Cerámica:</strong> Creación de vasijas para almacenar grano y cocinar alimentos líquidos.</li>
+                        <li><strong>Tejido:</strong> Uso de lana y lino para fabricar ropa, sustituyendo las pieles de animales.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "edad_metales") {
+                html = `
+                    <h2>Edad de los Metales</h2>
+                    <p>La Edad de los Metales es el último período de la Prehistoria. Comienza aproximadamente en el 4,000 a. C. y termina con la invención de la escritura. Se define por el abandono de la piedra en favor de la metalurgia, lo que cambió para siempre la tecnología, la guerra y el comercio.</p>
+                    
+                    <h3>Las Tres Etapas</h3>
+                    <p>La evolución tecnológica se divide según el metal que se aprendió a manipular:</p>
+                    <ul>
+                        <li><strong>Edad del Cobre (Calcolítico):</strong> Fue el primer metal utilizado por ser blando y encontrarse en estado puro. Se usaba principalmente para adornos y herramientas sencillas.</li>
+                        <li><strong>Edad del Bronce:</strong> Al mezclar cobre con estaño, se logró una aleación mucho más dura. Aparecen las primeras espadas, escudos y herramientas agrícolas más potentes.</li>
+                        <li><strong>Edad del Hierro:</strong> El hierro es más abundante y resistente, pero requiere temperaturas de fundición altísimas. Su dominio dio una ventaja militar definitiva a los pueblos que lo usaban.</li>
+                    </ul>
+
+                    <h3>Grandes Inventos y Cambios</h3>
+                    <p>Esta época trajo avances que transformaron la vida cotidiana:</p>
+                    <ul>
+                        <li><strong>La Rueda:</strong> Revolucionó el transporte terrestre y el comercio.</li>
+                        <li><strong>La Vela:</strong> Permitió barcos más grandes y viajes marítimos más largos.</li>
+                        <li><strong>El Arado:</strong> Multiplicó la producción de alimentos al poder labrar más tierra.</li>
+                        <li><strong>Regadío:</strong> Se construyeron canales para llevar agua a cultivos lejanos.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "demografia") {
+                html = `
+                    <h2>Demografía</h2>
+                    <p>La demografía es la ciencia que estudia estadísticamente las poblaciones humanas, analizando su tamaño, estructura, evolución y características generales (edad, sexo, educación, etc.). Utiliza datos cuantitativos para examinar fenómenos como natalidad, mortalidad y migración, lo que permite comprender la dinámica poblacional y realizar proyecciones sociales y económicas.</p>
+                    
+                    <h3>Tipos de Demografía</h3>
+                    <ul>
+                        <li><strong>Demografía Estática:</strong> Analiza la estructura de la población (número, edad, sexo) en un momento específico.</li>
+                        <li><strong>Demografía Dinámica:</strong> Analiza la evolución de la población a lo largo del tiempo, estudiando cómo cambia debido a nacimientos, defunciones y migraciones.</li>
+                    </ul>
+
+                    <h3>Principales Variables de Estudio</h3>
+                    <ul>
+                        <li><strong>Tamaño:</strong> Número total de individuos.</li>
+                        <li><strong>Estructura:</strong> Composición por edad, género, estado civil, etc..</li>
+                        <li><strong>Distribución:</strong> Ubicación geográfica de la población.</li>
+                        <li><strong>Evolución:</strong> Variación en el tiempo (crecimiento o decrecimiento).</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "cartografia") {
+                html = `
+                    <h2>Cartografía</h2>
+                    <p>La cartografía es la ciencia, arte y técnica de elaborar, analizar y estudiar mapas, planos y representaciones gráficas de la superficie terrestre o cuerpos celestes. Utiliza datos geográficos, escalas, proyecciones y simbología para visualizar información territorial. Hoy en día, emplea tecnologías digitales y SIG (Sistemas de Información Geográfica).</p>
+                    
+                    <ul>
+                        <li><strong>Finalidad:</strong> Facilita la comprensión, exploración y análisis del espacio geográfico para la toma de decisiones, comercio y navegación.</li>
+                        <li><strong>Elementos esenciales:</strong> Escala (reducción proporcional), proyecciones (transformación de 3D a 2D), simbología (leyenda) y georreferenciación.</li>
+                        <li><strong>Tipos de mapas:</strong> Se dividen principalmente en topográficos (detalles físicos y artificiales) y temáticos (representan fenómenos específicos como clima o población).</li>
+                        <li><strong>Evolución:</strong> Ha pasado de mapas en papiro a la cartografía digital, que usa satélites, drones y software para actualizaciones en tiempo real.</li>
+                        <li><strong>Producción:</strong> Involucra la planificación, toma de fotografías aéreas o satelitales, trabajo de campo, fotogrametría y diseño final.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "relieve") {
+                html = `
+                    <h2>Relieve</h2>
+                    <p>El relieve terrestre es el conjunto de diversas formas, irregularidades y desniveles que presenta la corteza de la Tierra, tanto en los continentes como en los fondos oceánicos. Estas formas, como montañas, valles, mesetas y llanuras, son moldeadas durante millones de años por agentes internos (tectónica, volcanes) y externos (erosión, clima).</p>
+                    
+                    <h3>Formas Principales del Relieve</h3>
+                    <ul>
+                        <li><strong>Montañas:</strong> Elevaciones naturales del terreno, a menudo agrupadas en cordilleras.</li>
+                        <li><strong>Mesetas (o Altiplanos):</strong> Zonas planas o suavemente onduladas situadas a una altitud elevada.</li>
+                        <li><strong>Llanuras:</strong> Grandes extensiones de terreno plano o con ligeras ondulaciones a poca altura sobre el nivel del mar.</li>
+                        <li><strong>Valles:</strong> Depresiones bajas situadas entre montañas o alturas, a menudo formadas por ríos.</li>
+                        <li><strong>Depresiones:</strong> Áreas del terreno situadas a una altura inferior que las regiones circundantes.</li>
+                        <li><strong>Relieve Costero:</strong> Formaciones en la unión de tierra y mar, como acantilados, penínsulas y cabos.</li>
+                    </ul>
+
+                    <h3>Agentes Modeladores del Relieve</h3>
+                    <ul>
+                        <li><strong>Factores Endógenos (Internos):</strong> Movimientos tectónicos y erupciones volcánicas que crean nuevas elevaciones.</li>
+                        <li><strong>Factores Exógenos (Externos):</strong> La lluvia, el viento, los ríos y el mar erosionan y modelan el relieve existente.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "antropologia") {
+                html = `
+                    <h2>Antropología</h2>
+                    <p>La antropología es la ciencia social que estudia al ser humano de forma integral, abarcando su evolución biológica, sus formas de vida, cultura, organización social y lingüística, tanto en el pasado como en el presente. Utiliza métodos como la etnografía y el trabajo de campo para comprender la diversidad humana.</p>
+                    
+                    <h3>Principales Ramas de la Antropología:</h3>
+                    <ul>
+                        <li><strong>Antropología Social o Cultural:</strong> Analiza las normas, creencias, estructuras sociales, economía y política de los grupos humanos actuales, a menudo mediante etnografía.</li>
+                        <li><strong>Antropología Biológica o Física:</strong> Estudia la evolución humana, la variabilidad genética, la adaptación biológica y la primatología.</li>
+                        <li><strong>Arqueología:</strong> Investiga los modos de vida del pasado a través del análisis de restos materiales (objetos, herramientas, monumentos).</li>
+                        <li><strong>Antropología Lingüística:</strong> Examina el papel del lenguaje en la vida social, cultural y cómo este influye en la visión del mundo.</li>
+                    </ul>
+                `;
+            }
+            else {
+                html = `
+                    <h2>Origen de las Ciencias Sociales</h2>
+                    <p>Selecciona un tema del menú lateral para adentrarte en el estudio de las ciencias sociales.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Bienvenido:</strong> Descubre cómo surge el estudio de la sociedad humana.
+                    </div>
+                `;
+            }
+
+            contenido.innerHTML = html;
         }
+
+        // Mostrar tema por defecto
+        window.onload = function() {
+            mostrar('origen_ciencias_sociales');
+        };
     </script>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formación Humana | AcademiaCCED</title>
-    
+
     <!-- estilos propios de esta sola pagina -->
     <style>
         /* colores */
@@ -118,10 +119,10 @@
             margin: 0 0 40px 0;
         }
 
-        /* grid de herramientas */
+        /* grid de herramientas - MODIFICADO: 3 columnas fijas */
         .grid-herramientas {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
@@ -136,35 +137,32 @@
             transition: 0.3s;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
         }
 
         /* efecto pasar el mouse */
         .tarjeta-herramienta:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: var(--color-principal);
-        }
-
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
         }
 
         /* titulo de la tarjeta */
         .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
+            margin: 0 0 12px 0;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            text-align: center;
+            font-weight: 700;
         }
 
-        /* descripción de la tarjeta */
+        /* descripción de la tarjeta (frase corta) */
         .tarjeta-herramienta p {
             margin: 0;
             font-size: 0.9rem;
             color: #666;
+            text-align: center;
+            line-height: 1.3;
         }
 
         /* pie de pagina */
@@ -177,8 +175,21 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive: en pantallas pequeñas que se ponga a 2 o 1 columna */
+        @media (max-width: 900px) {
+            .grid-herramientas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-herramientas {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- barra superior -->
@@ -190,11 +201,12 @@
 
     <!-- contenido principal -->
     <div class="contenedor">
-        
+
         <!-- barra lateral -->
         <aside class="barra-lateral">
             <div class="foto-profesor">
-                <img src="/PageALL/ImgALL/Colon.jpeg" alt=" Colón" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                <img src="/PageALL/ImgALL/Colon2.jpeg" alt=" Colón"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
             </div>
             <h3>Edwin Colón Suero </h3>
             <hr>
@@ -212,29 +224,28 @@
 
             <!-- grid de herramientas -->
             <div class="grid-herramientas">
-                
-                    <!-- tarjeta 4 FORMACION HUMANA -->
+
+                <!-- tarjeta 4 FORMACION HUMANA -->
                 <a href="/PageALL/MateriasCCED/Formacion Humana/FormacionHumana.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Formación Humana</h3>
+                    <h3> Formación Humana</h3>
                     <p>Desarrollo integral, valores, ética y sociedad.</p>
                 </a>
-                    <!-- tarjeta 5 VALORES HUMANOS -->
+
+                <!-- tarjeta 5 VALORES HUMANOS -->
                 <a href="/PageALL/MateriasCCED/Formacion Humana/Valores Humanos.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Valores Humanos</h3>
+                    <h3> Valores Humanos</h3>
                     <p>Principios, virtudes y cualidades de la persona.</p>
                 </a>
-                    <!-- tarjeta 6 EDUCACIÓN AMBIENTAL -->
+
+                <!-- tarjeta 6 EDUCACIÓN AMBIENTAL -->
                 <a href="/PageALL/MateriasCCED/Formacion Humana/Educacion Ambiental.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Educación Ambiental</h3>
+                    <h3> Educación Ambiental</h3>
                     <p>Conocimiento y protección del medio ambiente.</p>
                 </a>
-                    <!-- tarjeta 7 GLOSARIO -->
+
+                <!-- tarjeta 7 GLOSARIO -->
                 <a href="/PageALL/MateriasCCED/Formacion Humana/Glosario.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Glosario</h3>
+                    <h3> Glosario</h3>
                     <p>Términos importantes de formación humana.</p>
                 </a>
             </div>
@@ -247,4 +258,5 @@
     </footer>
 
 </body>
+
 </html>

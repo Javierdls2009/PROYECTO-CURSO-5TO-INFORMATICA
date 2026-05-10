@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto de Ortografía | AcademiaCCED</title>
+    <style>
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--color-fondo);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Encabezado */
+        .encabezado {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .boton-volver {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Contenedor del Juego */
+        .contenedor-juego {
+            background: var(--blanco);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .dibujo-ahorcado {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--color-oscuro);
+        }
+
+        .palabra-oculta {
+            font-size: 2.5rem;
+            letter-spacing: 10px;
+            margin: 20px 0;
+            color: var(--color-oscuro);
+            font-weight: bold;
+        }
+
+        .pista {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Teclado */
+        .teclado {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tecla {
+            padding: 10px;
+            background: #eee;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .tecla:hover { background: #ddd; }
+        .tecla:disabled { opacity: 0.4; cursor: not-allowed; }
+        .tecla.correcta { background: #4CAF50; color: white; }
+        .tecla.incorrecta { background: var(--color-principal); color: white; }
+
+        /* Mensajes */
+        .mensaje {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .boton-reiniciar {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--color-oscuro);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="encabezado">
+        <a href="/PageALL/Juegos/PanelJuegos.html" class="boton-volver">← VOLVER ATRAS</a>
+    </div>
+
+    <div class="contenedor-juego">
+        <h2>Reto de Lengua Española</h2>
+        <p class="pista" id="pista">Pista: Cargando...</p>
+        
+        <div class="dibujo-ahorcado" id="vidas">❤️ ❤️ ❤️ ❤️ ❤️</div>
+        
+        <div class="palabra-oculta" id="palabraDisplay">_ _ _ _</div>
+
+        <div class="teclado" id="teclado"></div>
+
+        <div id="mensaje" class="mensaje"></div>
+        <button id="btn-siguiente" class="boton-reiniciar" style="display:none;" onclick="siguienteNivel()">Siguiente Nivel</button>
+        <button id="btn-reiniciar" class="boton-reiniciar" style="display:none;" onclick="reiniciarJuego()">Intentar de nuevo</button>
+    </div>
+
+    <script>
+        const bancoDePalabras = [
+            { p: 'ORTOGRAFIA', h: 'Arte de escribir correctamente.' },
+            { p: 'GRAMATICA', h: 'Reglas y principios que regulan el uso del lenguaje.' },
+            { p: 'METAFORA', h: 'Figura retórica de comparación implícita.' },
+            { p: 'SINONIMO', h: 'Palabra que tiene el mismo significado.' },
+            { p: 'ADJETIVO', h: 'Palabra que califica al sustantivo.' },
+            { p: 'DIPTONGO', h: 'Unión de dos vocales en una misma sílaba.' }
+        ];
+
+        let indiceNivel = 0;
+        let palabraSeleccionada = '';
+        let pistaActual = '';
+        let letrasAdivinadas = [];
+        let errores = 0;
+        const maxErrores = 5;
+
+        function iniciarNivel() {
+            let datos = bancoDePalabras[indiceNivel];
+            palabraSeleccionada = datos.p;
+            pistaActual = datos.h;
+            letrasAdivinadas = [];
+            errores = 0;
+
+            document.getElementById('pista').innerText = "Pista: " + pistaActual;
+            document.getElementById('mensaje').style.display = 'none';
+            document.getElementById('btn-siguiente').style.display = 'none';
+            document.getElementById('btn-reiniciar').style.display = 'none';
+            
+            actualizarVisualizacion();
+            crearTeclado();
+        }
+
+        function actualizarVisualizacion() {
+            // Mostrar palabra con guiones
+            let display = palabraSeleccionada.split('').map(letra => 
+                letrasAdivinadas.includes(letra) ? letra : "_"
+            ).join(" ");
+            document.getElementById('palabraDisplay').innerText = display;
+
+            // Actualizar Vidas
+            let vidasTxt = "";
+            for(let i=0; i < (maxErrores - errores); i++) vidasTxt += "❤️ ";
+            document.getElementById('vidas').innerText = vidasTxt || "💀";
+
+            // Verificar si ganó
+            if(!display.includes("_")) {
+                finalizarPartida(true);
+            }
+            
+            // Verificar si perdió
+            if(errores >= maxErrores) {
+                finalizarPartida(false);
+            }
+        }
+
+        function crearTeclado() {
+            const letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+            const divTeclado = document.getElementById('teclado');
+            divTeclado.innerHTML = '';
+
+            letras.split('').forEach(l => {
+                let btn = document.createElement('button');
+                btn.innerText = l;
+                btn.classList.add('tecla');
+                btn.onclick = () => procesarIntento(l, btn);
+                divTeclado.appendChild(btn);
+            });
+        }
+
+        function procesarIntento(letra, boton) {
+            boton.disabled = true;
+            if(palabraSeleccionada.includes(letra)) {
+                letrasAdivinadas.push(letra);
+                boton.classList.add('correcta');
+            } else {
+                errores++;
+                boton.classList.add('incorrecta');
+            }
+            actualizarVisualizacion();
+        }
+
+        function finalizarPartida(ganaste) {
+            const msj = document.getElementById('mensaje');
+            msj.style.display = 'block';
+            document.getElementById('teclado').innerHTML = '';
+
+            if(ganaste) {
+                msj.innerText = "¡Excelente! Nivel superado.";
+                msj.style.color = "#4CAF50";
+                if(indiceNivel < bancoDePalabras.length - 1) {
+                    document.getElementById('btn-siguiente').style.display = 'inline-block';
+                } else {
+                    msj.innerText = "¡Has completado todos los niveles de Lengua!";
+                }
+            } else {
+                msj.innerText = "Partida terminada. La palabra era: " + palabraSeleccionada;
+                msj.style.color = "var(--color-principal)";
+                document.getElementById('btn-reiniciar').style.display = 'inline-block';
+            }
+        }
+
+        function siguienteNivel() {
+            indiceNivel++;
+            iniciarNivel();
+        }
+
+        function reiniciarJuego() {
+            iniciarNivel();
+        }
+
+        iniciarNivel();
+    </script>
+</body>
+</html>

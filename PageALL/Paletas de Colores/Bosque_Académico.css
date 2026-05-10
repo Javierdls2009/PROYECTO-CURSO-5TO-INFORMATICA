@@ -1,0 +1,15 @@
+/* PALETA: BOSQUE ACADÉMICO */
+:root {
+    --color-primario: #4C583E;    /* Cypress */
+    --color-fondo: #DADED8;       /* Aloe */
+    --color-card: #959581;        /* Cedar */
+    --color-texto: #2C3424;       /* Moss */
+    --header-bg: #768064;         /* Olive */
+    --color-btn: #2C3424;
+}
+body.dark {
+    --color-fondo: #1A1F15;
+    --color-card: #2C3424;
+    --color-texto: #DADED8;
+    --header-bg: #12160E;
+}

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biologia | AcademiaCCED</title>
-
+    <title>Biologia | BibliotecaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
       /* Colores y Variables */
       :root {
@@ -93,11 +93,10 @@
         text-align: center;
         border: 1px solid transparent;
       }
-
       .tema:hover {
-        background: var(--color-principal);
-        color: white;
+        background: #ffe8e7;
         transform: translateX(5px);
+        border-left-color: var(--color-principal);
       }
 
       /* Zona de Contenido Principal */
@@ -137,7 +136,8 @@
     <!-- Barra Superior -->
     <nav class="barra-superior">
       <div class="boton-volver">
-        <a href="/PageALL/MateriasCCED/Ciencias Naturales/PanelGeneral.html">← VOLVER ATRAS</a
+        <a href="/PageALL/MateriasCCED/Ciencias Naturales/PanelGeneral.html"
+          >← VOLVER ATRAS</a
         >
       </div>
       <div class="titulo-materia">Ciencias de la naturaleza</div>
@@ -176,7 +176,7 @@
       </main>
     </div>
 
-    <footer>&copy; 2026 AcademiaCCED - Ciencias de la Naturaleza</footer>
+    <footer>&copy; 2026 BibliotecaCCED - Ciencias de la Naturaleza</footer>
 
     <script>
       /**
@@ -391,8 +391,6 @@ La paleontología es fundamental para entender el "tiempo profundo" y cómo la v
           contenido.innerHTML = `
                     <h2>${data.titulo}</h2>
                     <p>${data.texto}</p>
-                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
-                    <p style="color: #888; font-size: 0.9rem;">Recurso educativo de AcademiaCCED.</p>
                 `;
         }
       }

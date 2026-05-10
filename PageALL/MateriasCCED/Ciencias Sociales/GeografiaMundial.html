@@ -1,203 +1,433 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geografía Mundial | AcademiaCCED</title>
-    
+    <title>Geografía Mundial | BibliotecaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
+        /* colores */
         :root {
-            --color-materia: #e5322e; 
+            --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
         }
 
+        /* estilos generales */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-color: var(--color-fondo);
-            color: #333;
         }
 
-        .nav-superior {
+        /* barra de navegacion superior */
+        .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
+            padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
-            height: 70px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-wrap: wrap;
         }
 
-        .volver a {
+        /* boton volver */
+        .boton-volver a {
             text-decoration: none;
-            color: var(--color-materia);
+            color: var(--color-principal);
             font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
         }
 
-        .titulo-app {
+        .boton-volver a:hover {
+            text-decoration: underline;
+        }
+
+        /* titulo de la materia */
+        .titulo-materia {
             font-weight: 800;
-            color: var(--color-materia);
-            font-size: 1.4rem;
-            text-transform: uppercase;
+            color: var(--color-principal);
+            font-size: 1.5rem;
         }
 
-        .contenedor-principal {
+        /* contenedor principal */
+        .contenedor {
             display: flex;
-            min-height: calc(100vh - 70px);
+            min-height: 100vh;
         }
 
-        .sidebar {
-            width: 280px;
-            background: var(--blanco);
+        /*barra lateral */
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
             border-right: 1px solid #ddd;
-            padding: 25px;
-            box-sizing: border-box;
-            flex-shrink: 0;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.02);
         }
 
-        .sidebar h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
-            border-left: 4px solid var(--color-materia);
-            padding-left: 10px;
+            font-size: 1.4rem;
         }
 
-        .btn-tema {
-            width: 100%;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            cursor: pointer;
+        .barra-lateral hr {
+            opacity: 0.2;
+            margin: 20px 0;
+        }
+
+        .info-materia {
             text-align: left;
-            transition: 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: #555;
+            margin: 10px 10px;
+            padding: 10px;
+        }
+
+        .tema {
+            padding: 12px 15px;
             margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
         }
 
-        .btn-tema:hover {
-            background: var(--color-materia);
-            color: white;
+        .tema:hover {
+            background: #ffe8e7;
             transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
-        .visor-contenido {
+        /* zona principal */
+        .zona-herramientas {
             flex: 1;
-            padding: 60px;
-            background: #fafbfc;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        #pizarra {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeIn 0.5s ease;
+        .zona-herramientas h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .zona-herramientas h3 {
+            color: var(--color-principal);
+            margin-top: 20px;
         }
 
-        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
-        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+        .zona-herramientas p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .zona-herramientas ul,
+        .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .zona-herramientas li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .definicion-destacada {
+            background-color: #e9f0f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid #cbd5e0;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
 
         footer {
             text-align: center;
             padding: 20px;
-            font-size: 0.8rem;
-            color: #888;
-            background: var(--blanco);
-            border-top: 1px solid #eee;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor {
+                flex-direction: column;
+            }
+
+            .barra-lateral {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .zona-herramientas {
+                padding: 25px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <nav class="nav-superior">
-        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
-        <div class="titulo-app">Academia CCED</div>
-        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">GEOGRAFÍA MUNDIAL</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <div class="contenedor-principal">
-        
-        <aside class="sidebar">
-            <h3>TEMARIO</h3>
-            <div class="lista-temas">
-                <button class="btn-tema" onclick="cargar('continentes')">Continentes</button>
-                <button class="btn-tema" onclick="cargar('eras_geologicas')">Eras Geológicas</button>
-                <button class="btn-tema" onclick="cargar('precambrico')">Precámbrico</button>
-                <button class="btn-tema" onclick="cargar('paleozoico')">Paleozoico</button>
-                <button class="btn-tema" onclick="cargar('mesozoico')">Mesozoico</button>
-                <button class="btn-tema" onclick="cargar('cenozoico')">Cenozoico</button>
-                <button class="btn-tema" onclick="cargar('paises_banderas')">Países y sus Banderas</button>
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <!-- barra lateral -->
+        <aside class="barra-lateral">
+            <h3>Temario</h3>
+            <hr>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('continentes')">Continentes</div>
+                <div class="tema" onclick="mostrar('eras_geologicas')">Eras Geológicas</div>
+                <div class="tema" onclick="mostrar('precambrico')">Precámbrico</div>
+                <div class="tema" onclick="mostrar('paleozoico')">Paleozoico</div>
+                <div class="tema" onclick="mostrar('mesozoico')">Mesozoico</div>
+                <div class="tema" onclick="mostrar('cenozoico')">Cenozoico</div>
+                <div class="tema" onclick="mostrar('paises_banderas')">Países y sus Banderas</div>
             </div>
         </aside>
 
-        <main class="visor-contenido">
-            <div id="pizarra">
-                <h2>Bienvenido</h2>
-                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Geografía Mundial</h2>
+                <p>Selecciona un tema del menú lateral para aprender sobre los continentes, eras geológicas y
+                    características del mundo.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Bienvenido:</strong> Explora la historia y forma de nuestro planeta Tierra.
+                </div>
             </div>
         </main>
-
     </div>
 
     <footer>
-        &copy; 2026 AcademiaCCED. Todos los derechos reservados.
+        <p>© 2026 BibliotecaCCED. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        function cargar(id) {
-            const pizarra = document.getElementById("pizarra");
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
 
-            const baseDeDatos = {
-                'continentes': {
-                    titulo: "Continentes",
-                    texto: "Los continentes son grandes extensiones de tierra separadas por océanos. Son América, Europa, Asia, África, Oceanía y la Antártida. Surgieron tras la fragmentación del supercontinente Pangea hace millones de años. Este proceso ocurrió durante la era Mesozoica debido al movimiento de las placas tectónicas. Cada continente posee características geográficas, climáticas y culturales únicas. Albergan la diversidad biológica y humana del planeta. Su estudio es esencial para comprender la organización del mundo."
-                },
-                'eras_geologicas': {
-                    titulo: "Eras Geológicas",
-                    texto: "Las eras geológicas son grandes divisiones del tiempo que permiten estudiar la evolución de la Tierra desde su formación hace aproximadamente 4,600 millones de años. Cada era se caracteriza por importantes cambios en el clima, la geografía, la vida y la composición del planeta. Gracias a estas divisiones, los científicos pueden comprender cómo surgieron los continentes, evolucionaron los seres vivos y apareció la humanidad. El estudio de las eras geológicas es fundamental para la geología, la paleontología y las ciencias naturales, ya que revela la historia profunda de nuestro planeta."
-                },
-                'precambrico': {
-                    titulo: "Precámbrico",
-                    texto: "El Precámbrico es la era más antigua y extensa de la historia terrestre, abarcando cerca del 88% del tiempo geológico. Durante esta etapa se formaron la corteza terrestre, los océanos y la atmósfera primitiva. Surgieron las primeras formas de vida, como bacterias y algas microscópicas. También aparecieron los primeros organismos multicelulares. Fue una época de intensa actividad volcánica y transformación planetaria. Constituye el origen de toda la vida en la Tierra."
-                },
-                'paleozoico': {
-                    titulo: "Paleozoico",
-                    texto: "La era Paleozoica, conocida como 'vida antigua', se desarrolló hace aproximadamente 541 a 252 millones de años. En este período surgieron una gran variedad de organismos marinos. Aparecieron los primeros peces, anfibios, reptiles e insectos. Las plantas comenzaron a colonizar la tierra firme, formando enormes bosques. Al final de esta era ocurrió una de las mayores extinciones masivas de la historia. El Paleozoico marcó la expansión de la vida compleja."
-                },
-                'mesozoico': {
-                    titulo: "Mesozoico",
-                    texto: "El Mesozoico, llamado 'era de los reptiles', transcurrió entre hace 252 y 66 millones de años. Fue la época en la que dominaron los dinosaurios. Durante esta era, Pangea comenzó a fragmentarse, dando origen a los continentes actuales. También aparecieron las primeras aves, mamíferos y plantas con flores. El clima fue generalmente cálido y favorable para la vida. Finalizó con la extinción de los dinosaurios causada por el impacto de un asteroide."
-                },
-                'cenozoico': {
-                    titulo: "Cenozoico",
-                    texto: "El Cenozoico es la era actual y comenzó hace aproximadamente 66 millones de años. Se le conoce como la 'era de los mamíferos', ya que estos se diversificaron ampliamente tras la extinción de los dinosaurios. Durante esta etapa se formaron muchas cordilleras modernas, como los Andes y el Himalaya. Aparecieron los primates y, finalmente, el ser humano. El clima experimentó grandes cambios, incluyendo las glaciaciones. Es la era en la que continúa desarrollándose la vida actual."
-                },
-                'paises_banderas': {
-                    titulo: "Países, Banderas y Capitales de Latinoamérica",
-                    texto: "<ul><li>Argentina — Buenos Aires</li><li>Bolivia — Sucre / La Paz</li><li>Brasil — Brasilia</li><li>Chile — Santiago</li><li>Colombia — Bogotá</li><li>Costa Rica — San José</li><li>Cuba — La Habana</li><li>Ecuador — Quito</li><li>El Salvador — San Salvador</li><li>Guatemala — Ciudad de Guatemala</li><li>Haití — Puerto Príncipe</li><li>Honduras — Tegucigalpa</li><li>México — Ciudad de México</li><li>Nicaragua — Managua</li><li>Panamá — Ciudad de Panamá</li><li>Paraguay — Asunción</li><li>Perú — Lima</li><li>República Dominicana — Santo Domingo</li><li>Uruguay — Montevideo</li><li>Venezuela — Caracas</li></ul>"
-                }
-            };
-
-            const info = baseDeDatos[id];
-
-            if (info) {
-                pizarra.innerHTML = `
-                    <h2>${info.titulo}</h2>
-                    <p>${info.texto}</p>
+            if (tema === "continentes") {
+                html = `
+                    <h2>Continentes</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> Los continentes son grandes extensiones de tierra separadas por los océanos. Aunque existen modelos de 5 (habitados), 6 o 7 continentes, los más comunes son: África, Antártida, Asia, Europa, América (a veces dividido en del Norte y del Sur) y Oceanía. Asia es el más grande y poblado.
+                    </div>
+                    <p>Los diferentes modelos geográficos dependen de criterios culturales o educativos:</p>
+                    <ul>
+                        <li><strong>Modelo de 7 continentes:</strong> América del Norte, América del Sur, Europa, África, Asia, Australia (Oceanía) y la Antártida.</li>
+                        <li><strong>Modelo de 6 continentes:</strong> América, Europa, África, Asia, Oceanía y la Antártida.</li>
+                        <li><strong>Modelo de 5 continentes:</strong> América, Europa, África, Asia y Oceanía (generalmente usado cuando se excluye la Antártida por estar deshabitada).</li>
+                    </ul>
+                    
+                    <h3>Detalles clave de los continentes:</h3>
+                    <ul>
+                        <li><strong>Asia:</strong> El más grande y poblado.</li>
+                        <li><strong>América:</strong> Se extiende desde el Polo Norte hasta el Polo Sur, a menudo subdividido en América del Norte, Central y del Sur.</li>
+                        <li><strong>África:</strong> El tercer continente más grande.</li>
+                        <li><strong>Antártida:</strong> Situada en el Polo Sur, mayormente deshabitada.</li>
+                        <li><strong>Europa:</strong> Conocido por su historia y límites con Asia.</li>
+                        <li><strong>Oceanía:</strong> Incluye Australia y numerosas islas del Pacífico.</li>
+                    </ul>
                 `;
             }
+            else if (tema === "eras_geologicas") {
+                html = `
+                    <h2>Eras Geológicas</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> Las eras geológicas son grandes divisiones de tiempo (millones de años) que estructuran la historia de la Tierra, definidas por cambios significativos en la corteza terrestre y la evolución de la vida. Se dividen principalmente en el supereón Precámbrico (formación del planeta) y el Eón Fanerozoico, que incluye las eras Paleozoica (vida antigua), Mesozoica (reptiles) y Cenozoica (mamíferos).
+                    </div>
+                    
+                    <h3>Principales Eras Geológicas</h3>
+                    <ul>
+                        <li><strong>Precámbrico (Azoica, Arcaica, Proterozoica):</strong> Abarca desde la formación de la Tierra hace 4.600 millones de años hasta hace 542 Ma. Se caracteriza por la formación de la corteza, la atmósfera y la aparición de las primeras formas de vida simple.</li>
+                        <li><strong>Paleozoica ("Vida antigua", 542 - 251 Ma):</strong> Conocida como la era de los peces y los invertebrados, experimentó una gran explosión de vida marina y la colonización de la tierra por plantas y anfibios.</li>
+                        <li><strong>Mesozoica ("Vida media", 251 - 66 Ma):</strong> Era de los dinosaurios y reptiles, caracterizada por la fragmentación del supercontinente Pangea.</li>
+                        <li><strong>Cenozoica ("Vida reciente", 66 Ma - presente):</strong> Era de los mamíferos y la aparición del ser humano. Se caracteriza por la diversificación de los mamíferos y la configuración de los continentes actuales.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "precambrico") {
+                html = `
+                    <h2>Precámbrico</h2>
+                    <p>El Precámbrico es la etapa más antigua y larga de la historia de la Tierra. Abarca desde la formación del planeta hace unos 4,500 millones de años hasta hace unos 540 millones de años. Representa casi el 88% de todo el tiempo geológico.</p>
+                    
+                    <h3>Formación del Planeta</h3>
+                    <p>Durante este tiempo, la Tierra pasó de ser una bola de roca fundida a un planeta con corteza sólida y océanos.</p>
+                    <ul>
+                        <li><strong>Aparición del Agua:</strong> El vapor de agua se condensó para formar los primeros océanos.</li>
+                        <li><strong>Atmósfera Primitiva:</strong> No tenía oxígeno; estaba compuesta por gases como metano, amoníaco y dióxido de carbono.</li>
+                        <li><strong>Primeros Continentes:</strong> La actividad tectónica comenzó a crear las primeras masas de tierra.</li>
+                    </ul>
+
+                    <h3>Evolución de la Vida</h3>
+                    <p>La vida surgió en el agua y fue extremadamente simple durante miles de millones de años.</p>
+                    <ul>
+                        <li><strong>Origen de la Vida:</strong> Aparecen los primeros organismos unicelulares (procariotas) hace unos 3,500 millones de años.</li>
+                        <li><strong>Fotosíntesis:</strong> Las cianobacterias comenzaron a liberar oxígeno a la atmósfera, un evento clave llamado la "Gran Oxidación".</li>
+                        <li><strong>Estromatolitos:</strong> Son estructuras de piedra formadas por colonias de bacterias; son los fósiles más antiguos que conocemos.</li>
+                        <li><strong>Fauna de Ediacara:</strong> Al final del Precámbrico, aparecen los primeros organismos complejos y blandos (parecidos a medusas o gusanos).</li>
+                    </ul>
+
+                    <h3>Grandes Divisiones</h3>
+                    <p>El Precámbrico se divide en tres eones:</p>
+                    <ul>
+                        <li><strong>Hádico:</strong> La Tierra es una bola de fuego bajo constante bombardeo de meteoritos.</li>
+                        <li><strong>Arcaico:</strong> Se enfría la corteza y surgen las primeras bacterias.</li>
+                        <li><strong>Proterozoico:</strong> La atmósfera se llena de oxígeno y aparecen las células complejas (eucariotas).</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "paleozoico") {
+                html = `
+                    <h2>Paleozoico</h2>
+                    <p>El Paleozoico es la era de la "vida antigua". Duró unos 290 millones de años (desde hace 541 hasta hace 252 millones de años). Es la época en la que la vida "explotó" en los océanos y conquistó la tierra firme.</p>
+                    
+                    <h3>La Explosión de la Vida</h3>
+                    <p>Al inicio de esta era ocurrió la Explosión Cámbrica, un evento donde aparecieron casi todos los grupos de animales que conocemos hoy.</p>
+                    <ul>
+                        <li><strong>Dominio Marino:</strong> Los mares se llenaron de trilobites, moluscos y los primeros peces con mandíbulas.</li>
+                        <li><strong>Conquista Terrestre:</strong> Las plantas (musgos y helechos) salieron del agua, seguidas por insectos gigantes y los primeros anfibios.</li>
+                    </ul>
+
+                    <h3>El Carbonífero: El Mundo de los Pantanos</h3>
+                    <p>A mitad del Paleozoico, la Tierra estaba cubierta de selvas densas y húmedas.</p>
+                    <ul>
+                        <li><strong>Oxígeno Alto:</strong> Había tanto oxígeno que los insectos crecían a tamaños enormes (libélulas del tamaño de águilas).</li>
+                        <li><strong>Origen del Carbón:</strong> La materia vegetal acumulada en esta época se convirtió, millones de años después, en los depósitos de carbón que usamos hoy.</li>
+                    </ul>
+
+                    <h3>Pangea y el Final de la Era</h3>
+                    <ul>
+                        <li><strong>Pangea:</strong> Los continentes se chocaron entre sí hasta formar un único "supercontinente".</li>
+                        <li><strong>La Gran Mortandad:</strong> El Paleozoico terminó con la extinción más masiva de la historia (la extinción del Pérmico), donde desapareció el 95% de las especies marinas.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "mesozoico") {
+                html = `
+                    <h2>Mesozoico</h2>
+                    <p>El Mesozoico es la era de la "vida media", famosa mundialmente como la Era de los Dinosaurios. Duró unos 186 millones de años (desde hace 252 hasta hace 66 millones de años) y es el periodo en el que la Tierra tomó una forma más parecida a la actual.</p>
+                    
+                    <h3>Los Tres Periodos</h3>
+                    <p>El Mesozoico se divide en tres etapas muy famosas:</p>
+                    <ul>
+                        <li><strong>Triásico:</strong> Los continentes aún estaban unidos en Pangea. Aparecen los primeros dinosaurios (pequeños al principio) y los primeros mamíferos (del tamaño de ratones).</li>
+                        <li><strong>Jurásico:</strong> Pangea comienza a romperse. Es el apogeo de los grandes herbívoros como el Brachiosaurus y aparecen las primeras aves.</li>
+                        <li><strong>Cretácico:</strong> Surgen las plantas con flores. Es la época del Tyrannosaurus Rex y el Triceratops. Al final de este periodo, un meteorito impactó en el actual México (Chicxulub).</li>
+                    </ul>
+
+                    <h3>Cambios en la Tierra y el Clima</h3>
+                    <ul>
+                        <li><strong>Ruptura de Pangea:</strong> El supercontinente se fragmentó, dando origen al Océano Atlántico y separando los continentes que conocemos hoy.</li>
+                        <li><strong>Clima Cálido:</strong> No había hielo en los polos; la Tierra era como un gran invernadero global, lo que permitió que la vegetación fuera exuberante.</li>
+                        <li><strong>Vida Marina:</strong> Los mares estaban dominados por reptiles gigantes como el Mosasaurio y moluscos con concha en espiral llamados Amonites.</li>
+                    </ul>
+
+                    <h3>La Gran Extinción</h3>
+                    <p>Hace 66 millones de años, un evento catastrófico puso fin a la era:</p>
+                    <ul>
+                        <li>Un asteroide de unos 10 km de diámetro chocó contra la Tierra.</li>
+                        <li>Provocó tsunamis, incendios globales y una nube de polvo que tapó el sol por años.</li>
+                        <li><strong>Resultado:</strong> Se extinguieron los dinosaurios no aviarios y el 75% de las especies, dejando el camino libre para el dominio de los mamíferos.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "cenozoico") {
+                html = `
+                    <h2>Cenozoico</h2>
+                    <p>El Cenozoico es la era en la que vivimos actualmente. Comenzó hace 66 millones de años y se le conoce como la "Era de los Mamíferos", ya que estos animales ocuparon el lugar vacío que dejaron los dinosaurios.</p>
+                    
+                    <h3>El Dominio de los Mamíferos</h3>
+                    <p>Tras la extinción masiva, los mamíferos pasaron de ser pequeños seres nocturnos a dominar todos los ecosistemas:</p>
+                    <ul>
+                        <li><strong>Megafauna:</strong> Aparecieron animales gigantes como el mamut, el tigre dientes de sable y el perezoso gigante.</li>
+                        <li><strong>Adaptación:</strong> Algunos mamíferos regresaron al mar (ballenas y delfines) y otros conquistaron el aire (murciélagos).</li>
+                    </ul>
+
+                    <h3>Transformación del Paisaje</h3>
+                    <p>La Tierra sufrió cambios drásticos en su geografía y clima:</p>
+                    <ul>
+                        <li><strong>Grandes Cordilleras:</strong> El choque de las placas tectónicas formó el Himalaya, los Alpes y los Andes.</li>
+                        <li><strong>Las Glaciaciones:</strong> Durante el período Pleistoceno, gran parte del planeta se cubrió de hielo, obligando a las especies a migrar o adaptarse al frío extremo.</li>
+                        <li><strong>Praderas:</strong> El clima más seco permitió la expansión de los pastizales, lo que favoreció la evolución de animales herbívoros como los caballos y los ancestros del ganado.</li>
+                    </ul>
+
+                    <h3>Aparición del Ser Humano</h3>
+                    <p>El hito más reciente del Cenozoico es la evolución de los homínidos:</p>
+                    <ul>
+                        <li>Hace unos 6 millones de años aparecieron los primeros ancestros humanos en África.</li>
+                        <li>El Homo sapiens apareció apenas hace unos 300,000 años, lo cual es un parpadeo en el tiempo geológico.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "paises_banderas") {
+                html = `
+                    <h2>Países y sus Banderas</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La Vexilología es el estudio de las banderas en su más amplio sentido. Las banderas son símbolos patrios que representan la historia, cultura e identidad de los diferentes países del mundo.
+                    </div>
+                    <p>Cada país del mundo tiene una bandera con colores y símbolos que tienen un significado profundo. El estudio de la geografía mundial también incluye conocer la distribución política de las naciones, sus capitales y sus identidades visuales representadas en banderas.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Dato:</strong> Actualmente hay más de 190 países reconocidos por la Organización de las Naciones Unidas (ONU), cada uno con su propia bandera soberana e historia independiente.
+                    </div>
+                `;
+            }
+            else {
+                html = `
+                    <h2>Geografía Mundial</h2>
+                    <p>Selecciona un tema del menú lateral para aprender sobre los continentes, eras geológicas y características del mundo.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Bienvenido:</strong> Explora la historia y forma de nuestro planeta Tierra.
+                    </div>
+                `;
+            }
+
+            contenido.innerHTML = html;
         }
+
+        // Mostrar tema por defecto
+        window.onload = function () {
+            mostrar('continentes');
+        };
     </script>
 </body>
+
 </html>

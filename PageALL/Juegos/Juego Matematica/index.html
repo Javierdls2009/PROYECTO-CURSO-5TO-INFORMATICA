@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto Matemático | AcademiaCCED</title>
+    <style>
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--color-fondo);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .encabezado {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .boton-volver {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+        }
+
+        .contenedor-juego {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+        }
+
+        .puntuacion { font-size: 1.2rem; color: #666; margin-bottom: 10px; }
+        
+        .operacion {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-oscuro);
+            margin: 20px 0;
+        }
+
+        .entrada-respuesta {
+            width: 80%;
+            padding: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+            border: 3px solid #eee;
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .entrada-respuesta:focus { border-color: var(--color-principal); }
+
+        .mensaje { margin-top: 20px; font-weight: bold; min-height: 24px; }
+    </style>
+</head>
+<body>
+
+    <div class="encabezado">
+        <a href="/PageALL/Juegos/PanelJuegos.html" class="boton-volver">← VOLVER ATRAS</a>
+    </div>
+
+    <div class="contenedor-juego">
+        <h2>Cálculo Mental</h2>
+        <div class="puntuacion">Aciertos: <span id="puntos">0</span></div>
+        
+        <div class="operacion" id="visor-operacion">8 × 7</div>
+        
+        <input type="number" id="entrada-usuario" class="entrada-respuesta" placeholder="?" autofocus>
+        
+        <div id="mensaje-feedback" class="mensaje"></div>
+        
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #999;">Escribe el resultado y presiona Enter</p>
+    </div>
+
+    <script>
+        let respuestaCorrecta;
+        let puntosActuales = 0;
+
+        const visor = document.getElementById('visor-operacion');
+        const entrada = document.getElementById('entrada-usuario');
+        const feedback = document.getElementById('mensaje-feedback');
+        const contadorPuntos = document.getElementById('puntos');
+
+        function generarOperacion() {
+            // Generar dos números aleatorios según el nivel (puedes aumentar el 10 para más dificultad)
+            const num1 = Math.floor(Math.random() * 12) + 1;
+            const num2 = Math.floor(Math.random() * 12) + 1;
+            const operadores = ['+', '-', '×'];
+            const operador = operadores[Math.floor(Math.random() * operadores.length)];
+
+            let simbolo = operador;
+            if (operador === '+') {
+                respuestaCorrecta = num1 + num2;
+            } else if (operador === '-') {
+                // Evitar resultados negativos para nivel básico
+                if (num1 < num2) {
+                    return generarOperacion();
+                }
+                respuestaCorrecta = num1 - num2;
+            } else {
+                respuestaCorrecta = num1 * num2;
+                simbolo = '×';
+            }
+
+            visor.innerText = `${num1} ${simbolo} ${num2}`;
+            entrada.value = '';
+            entrada.focus();
+        }
+
+        entrada.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const valorEntrada = parseInt(entrada.value);
+
+                if (valorEntrada === respuestaCorrecta) {
+                    puntosActuales++;
+                    contadorPuntos.innerText = puntosActuales;
+                    feedback.innerText = "¡Correcto!";
+                    feedback.style.color = "#4CAF50";
+                    generarOperacion();
+                } else {
+                    feedback.innerText = "Intenta otra vez";
+                    feedback.style.color = "var(--color-principal)";
+                    entrada.value = '';
+                }
+            }
+        });
+
+        // Iniciar el primer reto
+        generarOperacion();
+    </script>
+</body>
+</html>

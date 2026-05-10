@@ -132,6 +132,29 @@ body.dark .buscador input {
     align-items: center;
     gap: 15px;
 }
+/* =====================================================
+   BOTÓN CONFIGURACIÓN
+===================================================== */
+
+.boton-configuracion {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color-texto);
+    transition: var(--transition);
+}
+
+.boton-configuracion:hover {
+    background: rgba(0,0,0,0.08);
+    transform: rotate(90deg);
+}
+body.dark .boton-configuracion:hover {
+    background: rgba(255,255,255,0.1);
+}
 
 /* Submenú de Usuario */
 .icono-acceder {

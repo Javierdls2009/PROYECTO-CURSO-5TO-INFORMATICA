@@ -4,143 +4,214 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educación Ambiental | AcademiaCCED</title>
-    
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
+        /* colores */
         :root {
-            --color-materia: #e5322e; 
+            --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
         }
 
+        /* estilos generales */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-color: var(--color-fondo);
-            color: #333;
         }
 
-        .nav-superior {
+        /* barra de navegacion superior */
+        .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
+            padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
-            height: 70px;
-            position: sticky; 
-            top: 0;
-            z-index: 1000;
+            flex-wrap: wrap;
         }
 
-        .volver a {
+        /* boton volver */
+        .boton-volver a {
             text-decoration: none;
-            color: var(--color-materia);
+            color: var(--color-principal);
             font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .boton-volver a:hover {
+            text-decoration: underline;
         }
 
-        .titulo-app {
+        /* titulo de la materia */
+        .titulo-materia {
             font-weight: 800;
-            color: var(--color-materia);
-            font-size: 1.4rem;
+            color: var(--color-principal);
+            font-size: 1.5rem;
             text-transform: uppercase;
         }
 
-        .contenedor-principal {
+        /* contenedor principal */
+        .contenedor {
             display: flex;
-            min-height: calc(100vh - 70px);
+            min-height: 100vh;
         }
 
-        .sidebar {
-            width: 280px;
-            background: var(--blanco);
+        /*barra lateral */
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
             border-right: 1px solid #ddd;
-            padding: 25px;
-            box-sizing: border-box;
-            flex-shrink: 0;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
         }
 
-        .sidebar h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
-            border-left: 4px solid var(--color-materia); 
-            padding-left: 10px;
+            font-size: 1.4rem;
         }
 
-        .btn-tema {
-            width: 100%;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            cursor: pointer;
+        .barra-lateral hr {
+            opacity: 0.2;
+            margin: 20px 0;
+        }
+
+        .info-materia {
             text-align: left;
-            transition: 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: #555;
+            margin: 10px 10px;
+            padding: 10px;
+        }
+
+        .tema {
+            padding: 12px 15px;
             margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
         }
 
-        .btn-tema:hover {
-            background: var(--color-materia);
-            color: white;
-            transform: translateX(5px); 
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
-        .visor-contenido {
+        /* zona principal */
+        .zona-herramientas {
             flex: 1;
-            padding: 60px;
-            background: #fafbfc;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        #pizarra {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeIn 0.5s ease; 
+        .zona-herramientas h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .zona-herramientas h3 {
+            color: var(--color-principal);
+            margin-top: 20px;
         }
 
-        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
-        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+        .zona-herramientas p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .zona-herramientas li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .definicion-destacada {
+            background-color: #e9f0f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid #cbd5e0;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
 
         footer {
             text-align: center;
             padding: 20px;
-            font-size: 0.8rem;
-            color: #888;
-            background: var(--blanco);
-            border-top: 1px solid #eee;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav-superior">
-        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
-        <div class="titulo-app">Biblioteca CCED</div>
-        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">EDUCACIÓN AMBIENTAL</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <div class="contenedor-principal">
+    <!-- contenido principal -->
+    <div class="contenedor">
         
-        <aside class="sidebar">
-            <h3>TEMARIO</h3>
-            <div class="lista-temas">
-                <button class="btn-tema" onclick="cargar('educacion_ambiental')">Educación Ambiental</button>
-                <button class="btn-tema" onclick="cargar('salud_integral')">Salud Integral</button>
-                <button class="btn-tema" onclick="cargar('sexualidad')">Sexualidad</button>
+        <!-- barra lateral -->
+        <aside class="barra-lateral">
+            <h3>Temario</h3>
+            <hr>
+            <div class="info-materia">
+                <div class="tema" onclick="cargar('educacion_ambiental')">Educación Ambiental</div>
+                <div class="tema" onclick="cargar('salud_integral')">Salud Integral</div>
+                <div class="tema" onclick="cargar('sexualidad')">Sexualidad</div>
             </div>
         </aside>
 
-        <main class="visor-contenido">
-            <div id="pizarra">
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
                 <h2>Bienvenido a Educación Ambiental</h2>
                 <p>Selecciona un tema de la izquierda para aprender sobre nuestro entorno y cómo podemos proteger el medio ambiente, así como sobre la salud y bienestar integral.</p>
+                <hr>
             </div>
         </main>
 
@@ -149,32 +220,109 @@
     <footer>
         &copy; 2026 AcademiaCCED. Todos los derechos reservados.
     </footer>
-
     <script>
         function cargar(id) {
-            const pizarra = document.getElementById("pizarra");
+            const contenido = document.getElementById("contenido");
 
             const baseDeDatos = {
                 'educacion_ambiental': {
                     titulo: "Educación Ambiental",
-                    texto: "La educación ambiental promueve el conocimiento y la protección del medio ambiente. Busca crear conciencia sobre la importancia de conservar los recursos naturales. Enseña prácticas responsables como el reciclaje, el ahorro de agua y la reducción de la contaminación. También fomenta el desarrollo sostenible y el respeto por la biodiversidad. Es fundamental para enfrentar problemas como el cambio climático. Cuidar el planeta es una responsabilidad compartida."
+                    texto: `
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La educación ambiental es un proceso formativo continuo que busca concienciar a las personas sobre los problemas ecológicos, fomentando valores, actitudes responsables y conocimientos para proteger el entorno.
+                    </div>
+                    <p>Su objetivo es generar un cambio de hábitos hacia la sostenibilidad, involucrando la participación ciudadana y la acción comunitaria.</p>
+
+                    <h3>Principios y enfoques fundamentales</h3>
+                    <ul>
+                        <li><strong>Integral y transversal:</strong> No se limita a materias científicas, sino que se integra en todos los niveles educativos (formal, no formal e informal) y áreas del conocimiento.</li>
+                        <li><strong>Desarrollo de conciencia:</strong> Fomenta la comprensión del medio ambiente como un sistema y el pensamiento crítico sobre el impacto de la actividad humana.</li>
+                        <li><strong>Enfoque de derechos:</strong> Promueve el derecho a vivir en un ambiente sano, digno y diverso.</li>
+                        <li><strong>Acción y solución:</strong> Orienta a la búsqueda de soluciones a problemas ambientales locales y globales.</li>
+                    </ul>
+
+                    <h3>Tipos de educación ambiental</h3>
+                    <ul>
+                        <li><strong>Formal:</strong> Integrada en el currículo escolar y universitario.</li>
+                        <li><strong>No formal:</strong> Programas y actividades organizadas fuera del sistema escolar (talleres, charlas).</li>
+                        <li><strong>Informal:</strong> Aprendizaje a través de la experiencia diaria, medios de comunicación y la comunidad.</li>
+                    </ul>
+
+                    <h3>Objetivos clave</h3>
+                    <ul>
+                        <li><strong>Conciencia:</strong> Sensibilizar sobre la importancia del cuidado ambiental.</li>
+                        <li><strong>Conocimientos:</strong> Brindar información sobre los ecosistemas y la crisis ecológica.</li>
+                        <li><strong>Actitudes:</strong> Fomentar el respeto y sentido de pertenencia con la naturaleza.</li>
+                        <li><strong>Participación:</strong> Desarrollar habilidades para tomar decisiones y actuar en la mejora del entorno.</li>
+                    </ul>
+
+                    <div class="bloque-ejemplo">
+                        <strong>Importancia:</strong> Es una herramienta esencial para combatir el cambio climático, preservar la biodiversidad y promover un modelo de desarrollo sostenible, transformando la relación sociedad-naturaleza.
+                    </div>`
                 },
                 'salud_integral': {
                     titulo: "Salud Integral",
-                    texto: "La salud integral es el estado de bienestar físico, mental, emocional y social. No se limita a la ausencia de enfermedades, sino que implica una vida equilibrada y saludable. Incluye una alimentación adecuada, ejercicio físico, descanso y estabilidad emocional. También abarca relaciones sanas y un entorno favorable. Mantener una buena salud integral mejora la calidad de vida. Es indispensable para el desarrollo personal y social."
+                    texto: `
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La salud integral es el bienestar máximo de una persona, abarcando las esferas física, mental y social, más allá de la simple ausencia de enfermedades.
+                    </div>
+                    <p>Se basa en un enfoque holístico que equilibra la nutrición, el ejercicio, la salud emocional y las relaciones sociales para mejorar la calidad de vida.</p>
+
+                    <h3>Componentes fundamentales de la salud integral</h3>
+                    <ul>
+                        <li><strong>Salud física:</strong> El correcto funcionamiento del organismo. Requiere una dieta equilibrada, ejercicio regular (150–210 min/semana) y descanso adecuado (7–10 horas).</li>
+                        <li><strong>Salud mental/emocional:</strong> Gestión de emociones y estrés. Incluye el manejo de la ansiedad, el autocuidado y, cuando sea necesario, la búsqueda de ayuda profesional.</li>
+                        <li><strong>Salud social:</strong> La interacción con el entorno. Abarca el desarrollo de relaciones saludables, el apoyo social y la capacidad de integrarse en la comunidad.</li>
+                    </ul>
+
+                    <h3>Hábitos para mejorar la salud integral</h3>
+                    <ul>
+                        <li><strong>Alimentación consciente:</strong> Comer balanceado para prevenir enfermedades crónicas.</li>
+                        <li><strong>Gestión del estrés:</strong> Practicar yoga, meditación o actividades relajantes.</li>
+                        <li><strong>Prevención:</strong> Realizarse chequeos médicos regulares para detectar problemas a tiempo.</li>
+                        <li><strong>Conexión social:</strong> Mantener relaciones interpersonales saludables para prevenir el aislamiento.</li>
+                    </ul>
+                    
+                    <div class="bloque-ejemplo">
+                        <strong>Importancia:</strong> La salud integral es esencial en todas las etapas de la vida, buscando un equilibrio duradero que impacte tanto en el individuo como en su entorno.
+                    </div>`
                 },
                 'sexualidad': {
                     titulo: "Sexualidad",
-                    texto: "La sexualidad es una dimensión natural del ser humano que involucra aspectos físicos, emocionales, afectivos y sociales. Forma parte de la identidad y del desarrollo personal. Debe vivirse con responsabilidad, respeto y conocimiento. La educación sexual contribuye a la prevención de riesgos y al fortalecimiento de relaciones saludables. También promueve la autoestima y el respeto mutuo. Comprender la sexualidad favorece el bienestar integral."
+                    texto: `
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La sexualidad es un aspecto central del ser humano presente durante toda la vida, que abarca el sexo biológico, la identidad de género, el erotismo, el placer, la intimidad y la orientación sexual.
+                    </div>
+                    <p>Se manifiesta a través de pensamientos, deseos, comportamientos y relaciones, siendo una parte integral de la salud y el bienestar.</p>
+
+                    <h3>Componentes clave de la sexualidad</h3>
+                    <ul>
+                        <li><strong>Sexo biológico:</strong> Características físicas y fisiológicas.</li>
+                        <li><strong>Identidad de género:</strong> La vivencia interna e individual del género.</li>
+                        <li><strong>Orientación sexual:</strong> Atracción emocional y física hacia otras personas (heterosexual, homosexual, bisexual, etc.).</li>
+                        <li><strong>Erotismo y placer:</strong> Respuestas subjetivas que evocan deseo y excitación.</li>
+                        <li><strong>Vínculos afectivos:</strong> Capacidad de establecer lazos emocionales con otros.</li>
+                    </ul>
+
+                    <h3>Características principales</h3>
+                    <ul>
+                        <li><strong>Dinamismo:</strong> Evoluciona a lo largo de las distintas etapas de la vida, desde la infancia hasta la vejez.</li>
+                        <li><strong>Influencia sociocultural:</strong> Está moldeada por creencias, valores, cultura y el entorno.</li>
+                        <li><strong>Integralidad:</strong> Se relaciona estrechamente con la salud física y psicológica.</li>
+                    </ul>
+                    
+                    <div class="bloque-ejemplo">
+                        <strong>Importancia:</strong> La vivencia de la sexualidad es única para cada individuo, abarcando mucho más que el acto físico, incluyendo cómo nos expresamos y relacionamos con los demás.
+                    </div>`
                 }
             };
 
             const info = baseDeDatos[id];
 
             if (info) {
-                pizarra.innerHTML = `
+                contenido.innerHTML = `
                     <h2>${info.titulo}</h2>
-                    <p>${info.texto}</p>
+                    ${info.texto}
                 `;
             }
         }

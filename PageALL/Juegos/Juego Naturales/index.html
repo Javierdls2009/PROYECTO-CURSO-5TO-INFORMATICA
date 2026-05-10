@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Ciencias Naturales | AcademiaCCED</title>
+    <style>
+        :root {
+            --color-principal: #2ecc71; 
+            --color-error: #e5322e;
+            --color-fondo: #f0f4f8;
+            --color-oscuro: #1a2a3a;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--color-fondo);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .encabezado {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+            box-sizing: border-box;
+        }
+
+        .boton-volver {
+            text-decoration: none;
+            color: var(--color-oscuro);
+            font-weight: bold;
+            border: 2px solid var(--color-principal);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .boton-volver:hover { background: var(--color-principal); color: white; }
+
+        .contenedor-juego {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .progreso { font-weight: bold; color: var(--color-principal); margin-bottom: 10px; }
+
+        .pregunta-texto {
+            font-size: 1.6rem;
+            color: var(--color-oscuro);
+            margin-bottom: 30px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        .grid-opciones {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .boton-opcion {
+            padding: 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            cursor: pointer;
+            background: white;
+            transition: 0.2s;
+        }
+
+        .boton-opcion:hover { border-color: var(--color-principal); transform: translateY(-3px); }
+
+        .correcto { background-color: #d4edda !important; border-color: #28a745 !important; }
+        .incorrecto { background-color: #f8d7da !important; border-color: #dc3545 !important; }
+
+        .pantalla-final { display: none; }
+
+        .boton-reiniciar {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: var(--color-oscuro);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="encabezado">
+        <a href="/PageALL/Juegos/PanelJuegos.html" class="boton-volver">← VOLVER ATRAS</a>
+    </div>
+
+    <div class="contenedor-juego">
+        <div id="pantalla-principal">
+            <div class="progreso" id="info-progreso">Cargando desafío...</div>
+            <div class="pregunta-texto" id="texto-pregunta">¿A qué rama pertenece este concepto?</div>
+            
+            <div class="grid-opciones">
+                <button class="boton-opcion" onclick="verificarRespuesta('Biología')">Biología</button>
+                <button class="boton-opcion" onclick="verificarRespuesta('Física')">Física</button>
+                <button class="boton-opcion" onclick="verificarRespuesta('Química')">Química</button>
+                <button class="boton-opcion" onclick="verificarRespuesta('Geología')">Geología</button>
+            </div>
+        </div>
+
+        <div id="pantalla-final" class="pantalla-final">
+            <h1 id="titulo-final">¡Ronda Terminada!</h1>
+            <p id="puntaje-final">Tu puntuación fue: 0/0</p>
+            <button class="boton-reiniciar" onclick="reiniciarJuego()">Nueva Ronda Aleatoria</button>
+        </div>
+    </div>
+
+    <script>
+        // BANCO DE DATOS EXTENDIDO
+        const bancoPreguntas = [
+            // Biología
+            { q: "La Mitocondria", a: "Biología" },
+            { q: "El Sistema Circulatorio", a: "Biología" },
+            { q: "La Selección Natural", a: "Biología" },
+            { q: "Los Cloroplastos", a: "Biología" },
+            { q: "El ADN Polimerasa", a: "Biología" },
+            { q: "La Homeostasis", a: "Biología" },
+            // Física
+            { q: "La Termodinámica", a: "Física" },
+            { q: "El Movimiento Parabólico", a: "Física" },
+            { q: "La Refracción de la Luz", a: "Física" },
+            { q: "El Efecto Doppler", a: "Física" },
+            { q: "La Resistencia Eléctrica", a: "Física" },
+            { q: "La Relatividad Especial", a: "Física" },
+            // Química
+            { q: "La Destilación", a: "Química" },
+            { q: "Los Hidrocarburos", a: "Química" },
+            { q: "La Reacción de Oxidación", a: "Química" },
+            { q: "El Número Atómico", a: "Química" },
+            { q: "Los Isótopos", a: "Química" },
+            { q: "La Estequiometría", a: "Química" },
+            // Geología
+            { q: "El Ciclo de las Rocas", a: "Geología" },
+            { q: "El Núcleo Terrestre", a: "Geología" },
+            { q: "La Erosión Eólica", a: "Geología" },
+            { q: "Las Placas Tectónicas", a: "Geología" },
+            { q: "Los Minerales silicatos", a: "Geología" },
+            { q: "La Escala de Richter", a: "Geología" }
+        ];
+
+        let preguntasRonda = [];
+        let indiceActual = 0;
+        let puntaje = 0;
+        let bloqueado = false;
+
+        function mezclarPreguntas() {
+            // Seleccionamos 10 preguntas aleatorias de nuestro gran banco de datos
+            preguntasRonda = [...bancoPreguntas]
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 10);
+        }
+
+        function mostrarPregunta() {
+            bloqueado = false;
+            const pregunta = preguntasRonda[indiceActual];
+            document.getElementById('texto-pregunta').innerText = "¿A qué rama pertenece: " + pregunta.q + "?";
+            document.getElementById('info-progreso').innerText = `Ronda: ${indiceActual + 1} de ${preguntasRonda.length}`;
+            
+            const botones = document.querySelectorAll('.boton-opcion');
+            botones.forEach(b => b.className = 'boton-opcion');
+        }
+
+        function verificarRespuesta(eleccion) {
+            if (bloqueado) return;
+            bloqueado = true;
+
+            const correcta = preguntasRonda[indiceActual].a;
+            const botones = document.querySelectorAll('.boton-opcion');
+            let botonSeleccionado;
+            
+            botones.forEach(b => {
+                if(b.innerText === eleccion) botonSeleccionado = b;
+            });
+
+            if (eleccion === correcta) {
+                botonSeleccionado.classList.add('correcto');
+                puntaje++;
+            } else {
+                botonSeleccionado.classList.add('incorrecto');
+                botones.forEach(b => {
+                    if(b.innerText === correcta) b.classList.add('correcto');
+                });
+            }
+
+            setTimeout(() => {
+                indiceActual++;
+                if (indiceActual < preguntasRonda.length) {
+                    mostrarPregunta();
+                } else {
+                    finalizarRonda();
+                }
+            }, 1000);
+        }
+
+        function finalizarRonda() {
+            document.getElementById('pantalla-principal').style.display = 'none';
+            document.getElementById('pantalla-final').style.display = 'block';
+            document.getElementById('puntaje-final').innerText = `Has acertado ${puntaje} de 10 preguntas.`;
+        }
+
+        function reiniciarJuego() {
+            indiceActual = 0;
+            puntaje = 0;
+            mezclarPreguntas(); // Volvemos a mezclar y sacar 10 nuevas
+            document.getElementById('pantalla-principal').style.display = 'block';
+            document.getElementById('pantalla-final').style.display = 'none';
+            mostrarPregunta();
+        }
+
+        // Inicio automático
+        mezclarPreguntas();
+        mostrarPregunta();
+    </script>
+</body>
+</html>

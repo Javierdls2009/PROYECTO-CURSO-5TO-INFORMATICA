@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el País | AcademiaCCED</title>
+    <style>
+        :root {
+            --color-coqueto: #ff6b6b;
+            --color-fondo: #fcefee;
+            --color-oscuro: #2d3436;
+            --blanco: #ffffff;
+            --sombra: 0 10px 25px rgba(255, 107, 107, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-fondo);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Botón Volver Estilizado */
+        .encabezado {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .boton-volver {
+            text-decoration: none;
+            color: var(--color-coqueto);
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid var(--color-coqueto);
+            border-radius: 50px;
+            transition: 0.3s;
+            background: var(--blanco);
+        }
+
+        .boton-volver:hover {
+            background: var(--color-coqueto);
+            color: white;
+        }
+
+        /* Tarjeta del Juego */
+        .contenedor-juego {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: var(--sombra);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .titulo {
+            color: var(--color-oscuro);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .bandera-img {
+            width: 100%;
+            max-width: 250px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 5px solid #f0f0f0;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Opciones Coquetas */
+        .grid-opciones {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .opcion {
+            padding: 15px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            background: white;
+            color: var(--color-oscuro);
+        }
+
+        .opcion:hover {
+            border-color: var(--color-coqueto);
+            background: #fff5f5;
+            transform: scale(1.02);
+        }
+
+        .correcta { background-color: #55efc4 !important; border-color: #00b894 !important; color: white; }
+        .incorrecta { background-color: #ff7675 !important; border-color: #d63031 !important; color: white; }
+
+        .puntuacion {
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--color-coqueto);
+        }
+
+        /* Loading */
+        #cargando { font-style: italic; color: #999; }
+    </style>
+</head>
+<body>
+
+    <div class="encabezado">
+        <a href="/PageALL/Juegos/PanelJuegos.html" class="boton-volver">← REGRESAR ATRAS</a>
+    </div>
+
+    <div class="contenedor-juego">
+        <div class="titulo">¿A qué país pertenece?</div>
+        
+        <div id="pantalla-juego">
+            <img src="" alt="Bandera" id="bandera" class="bandera-img">
+            <div id="cargando">Cargando países del mundo...</div>
+            <div class="grid-opciones" id="opciones"></div>
+            <div class="puntuacion">Aciertos: <span id="puntos">0</span></div>
+        </div>
+    </div>
+
+    <script>
+        let todosLosPaises = [];
+        let paisCorrecto;
+        let puntos = 0;
+        let bloqueado = false;
+
+        // 1. Obtener los 193+ países desde la API
+        async function obtenerPaises() {
+            try {
+                const respuesta = await fetch('https://restcountries.com/v3.1/all?fields=name,flags');
+                const datos = await respuesta.json();
+                todosLosPaises = datos;
+                document.getElementById('cargando').style.display = 'none';
+                nuevaPregunta();
+            } catch (error) {
+                document.getElementById('cargando').innerText = "Error al cargar países.";
+            }
+        }
+
+        function nuevaPregunta() {
+            bloqueado = false;
+            const divOpciones = document.getElementById('opciones');
+            divOpciones.innerHTML = '';
+
+            // Elegir 4 países al azar
+            const mezclados = [...todosLosPaises].sort(() => 0.5 - Math.random());
+            const seleccionados = mezclados.slice(0, 4);
+            
+            // El primero de los 4 será el correcto
+            paisCorrecto = seleccionados[0];
+            
+            // Actualizar imagen
+            document.getElementById('bandera').src = paisCorrecto.flags.png;
+
+            // Volver a mezclar los 4 para que la respuesta no siempre sea la primera
+            seleccionados.sort(() => 0.5 - Math.random());
+
+            seleccionados.forEach(pais => {
+                const boton = document.createElement('div');
+                boton.classList.add('opcion');
+                // Usamos el nombre común en español si está disponible, sino en inglés
+                const nombre = pais.name.common;
+                boton.innerText = nombre;
+                boton.onclick = () => verificarRespuesta(nombre, boton);
+                divOpciones.appendChild(boton);
+            });
+        }
+
+        function verificarRespuesta(nombreElegido, elemento) {
+            if (bloqueado) return;
+            bloqueado = true;
+
+            const nombreCorrecto = paisCorrecto.name.common;
+
+            if (nombreElegido === nombreCorrecto) {
+                elemento.classList.add('correcta');
+                puntos++;
+                document.getElementById('puntos').innerText = puntos;
+            } else {
+                elemento.classList.add('incorrecta');
+                // Resaltar la correcta
+                Array.from(document.getElementById('opciones').children).forEach(hijo => {
+                    if (hijo.innerText === nombreCorrecto) hijo.classList.add('correcta');
+                });
+            }
+
+            setTimeout(nuevaPregunta, 1500);
+        }
+
+        // Iniciar
+        obtenerPaises();
+    </script>
+</body>
+</html>

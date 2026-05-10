@@ -3,231 +3,564 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historia de RD | AcademiaCCED</title>
-    
+    <title>Historia de RD | BibliotecaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
+        /* colores */
         :root {
-            --color-materia: #e5322e; 
+            --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
         }
 
+        /* estilos generales */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-color: var(--color-fondo);
-            color: #333;
         }
 
-        .nav-superior {
+        /* barra de navegacion superior */
+        .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
+            padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
-            height: 70px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-wrap: wrap;
         }
 
-        .volver a {
+        /* boton volver */
+        .boton-volver a {
             text-decoration: none;
-            color: var(--color-materia);
+            color: var(--color-principal);
             font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .boton-volver a:hover {
+            text-decoration: underline;
         }
 
-        .titulo-app {
+        /* titulo de la materia */
+        .titulo-materia {
             font-weight: 800;
-            color: var(--color-materia);
-            font-size: 1.4rem;
-            text-transform: uppercase;
+            color: var(--color-principal);
+            font-size: 1.5rem;
         }
 
-        .contenedor-principal {
+        /* contenedor principal */
+        .contenedor {
             display: flex;
-            min-height: calc(100vh - 70px);
+            min-height: 100vh;
         }
 
-        .sidebar {
-            width: 280px;
-            background: var(--blanco);
+        /*barra lateral */
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
             border-right: 1px solid #ddd;
-            padding: 25px;
-            box-sizing: border-box;
-            flex-shrink: 0;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
         }
 
-        .sidebar h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
-            border-left: 4px solid var(--color-materia);
-            padding-left: 10px;
+            font-size: 1.4rem;
         }
 
-        .btn-tema {
-            width: 100%;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            cursor: pointer;
+        .barra-lateral hr {
+            opacity: 0.2;
+            margin: 20px 0;
+        }
+
+        .info-materia {
             text-align: left;
-            transition: 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: #555;
+            margin: 10px 10px;
+            padding: 10px;
+        }
+
+        .tema {
+            padding: 12px 15px;
             margin-bottom: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
         }
 
-        .btn-tema:hover {
-            background: var(--color-materia);
-            color: white;
+        .tema:hover {
+            background: #ffe8e7;
             transform: translateX(5px);
+            border-left-color: var(--color-principal);
         }
 
-        .visor-contenido {
+        /* zona principal */
+        .zona-herramientas {
             flex: 1;
-            padding: 60px;
-            background: #fafbfc;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        #pizarra {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeIn 0.5s ease;
+        .zona-herramientas h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .zona-herramientas h3 {
+            color: var(--color-principal);
+            margin-top: 20px;
         }
 
-        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
-        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+        .zona-herramientas p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .zona-herramientas ul, .zona-herramientas ol {
+            margin: 10px 0 20px 30px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .zona-herramientas li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        .definicion-destacada {
+            background-color: #e9f0f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid #cbd5e0;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
 
         footer {
             text-align: center;
             padding: 20px;
-            font-size: 0.8rem;
-            color: #888;
-            background: var(--blanco);
-            border-top: 1px solid #eee;
+            background: white;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+            .zona-herramientas { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav-superior">
-        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
-        <div class="titulo-app">Academia CCED</div>
-        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    <!-- barra superior -->
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">HISTORIA DE RD</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <div class="contenedor-principal">
-        
-        <aside class="sidebar">
-            <h3>TEMARIO</h3>
-            <div class="lista-temas">
-                <button class="btn-tema" onclick="cargar('periodo_precolombino')">Período Precolombino</button>
-                <button class="btn-tema" onclick="cargar('llegada_espanoles')">Llegada de los Españoles</button>
-                <button class="btn-tema" onclick="cargar('epoca_colonial')">Época Colonial</button>
-                <button class="btn-tema" onclick="cargar('dominacion_haitiana')">Dominación Haitiana</button>
-                <button class="btn-tema" onclick="cargar('independencia')">Independencia Nacional</button>
-                <button class="btn-tema" onclick="cargar('restauracion')">La Restauración</button>
-                <button class="btn-tema" onclick="cargar('siglo_xx')">Siglo XX y Modernización</button>
-                <button class="btn-tema" onclick="cargar('rd_actual')">RD Actual</button>
-                <button class="btn-tema" onclick="cargar('clima_rd')">Clima RD</button>
-                <button class="btn-tema" onclick="cargar('geografia_rd')">Geografía RD</button>
-                <button class="btn-tema" onclick="cargar('sistemas_montanosos')">Sistema Montañoso</button>
-                <button class="btn-tema" onclick="cargar('tainos')">Taínos</button>
-                <button class="btn-tema" onclick="cargar('cacicazgos')">Cacicazgos</button>
+    <!-- contenido principal -->
+    <div class="contenedor">
+        <!-- barra lateral -->
+        <aside class="barra-lateral">
+            <h3>Temario</h3>
+            <hr>
+            <div class="info-materia">
+                <div class="tema" onclick="mostrar('historia_rd')">Historia General</div>
+                <div class="tema" onclick="mostrar('tainos_cacicazgos')">Taínos y Cacicazgos</div>
+                <div class="tema" onclick="mostrar('llegada_espanoles')">Llegada de los Españoles</div>
+                <div class="tema" onclick="mostrar('epoca_colonial')">Época Colonial</div>
+                <div class="tema" onclick="mostrar('independencia')">Independencia Nacional</div>
+                <div class="tema" onclick="mostrar('restauracion')">La Restauración</div>
+                <div class="tema" onclick="mostrar('siglo_xx')">Siglo XX y Modernización</div>
+                <div class="tema" onclick="mostrar('rd_actual')">RD Actual</div>
+                <div class="tema" onclick="mostrar('geografia_rd')">Geografía RD</div>
+                <div class="tema" onclick="mostrar('clima_rd')">Clima RD</div>
+                <div class="tema" onclick="mostrar('sistemas_montanosos')">Sistema Montañoso</div>
             </div>
         </aside>
 
-        <main class="visor-contenido">
-            <div id="pizarra">
-                <h2>Bienvenido</h2>
-                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+        <!-- zona de texto en la derecha -->
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Historia de la República Dominicana</h2>
+                <p>Selecciona un tema del menú lateral para explorar la historia, geografía y cultura de la República Dominicana.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Bienvenido:</strong> Aquí encontrarás toda la información detallada sobre nuestra nación.
+                </div>
             </div>
         </main>
-
     </div>
 
     <footer>
-        &copy; 2026 AcademiaCCED. Todos los derechos reservados.
+        <p>© 2026 BibliotecaCCED. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        function cargar(id) {
-            const pizarra = document.getElementById("pizarra");
+        function mostrar(tema) {
+            const contenido = document.getElementById("contenido");
+            let html = "";
 
-            const baseDeDatos = {
-                'periodo_precolombino': {
-                    titulo: "Período Precolombino",
-                    texto: "Antes de la llegada de los europeos, la isla La Española estaba habitada por los taínos, pueblo indígena perteneciente a la familia arawak. Los taínos vivían organizados en cinco cacicazgos: Marién, Maguá, Maguana, Jaragua e Higüey. Cada uno era dirigido por un cacique, quien ejercía autoridad política, militar y religiosa. Su economía se basaba en la agricultura, la pesca y la caza. Cultivaban yuca, maíz, batata y otros productos. Además, poseían una rica cultura reflejada en sus costumbres, creencias religiosas, arte y organización social. Figuras como Anacaona, Caonabo y Guarionex son recordadas por su liderazgo y resistencia ante la conquista europea."
-                },
-                'llegada_espanoles': {
-                    titulo: "La Llegada de los Españoles",
-                    texto: "El 5 de diciembre de 1492, Christopher Columbus llegó a la isla durante su primer viaje al continente americano. Este acontecimiento marcó el inicio de la colonización europea en América. En 1496 se fundó la ciudad de Santo Domingo, considerada la primera ciudad europea permanente del Nuevo Mundo. Allí se establecieron las primeras instituciones coloniales, incluyendo la primera catedral, la primera universidad y el primer hospital de América. La colonización provocó profundos cambios en la vida de los taínos. Las enfermedades, los trabajos forzados y los abusos redujeron drásticamente la población indígena en pocas décadas."
-                },
-                'epoca_colonial': {
-                    titulo: "Época Colonial",
-                    texto: "Durante los siglos XVI y XVII, Santo Domingo fue un importante centro político y económico del Imperio Español. Sin embargo, con el tiempo perdió relevancia frente a otras colonias más ricas en minerales. La economía se orientó hacia la ganadería, la agricultura y el comercio. Durante este período también llegaron esclavos africanos, cuya presencia enriqueció la cultura y la composición étnica de la población. La mezcla entre taínos, africanos y españoles dio origen a la identidad cultural dominicana actual."
-                },
-                'dominacion_haitiana': {
-                    titulo: "Dominación Haitiana",
-                    texto: "En 1822, el presidente haitiano Jean-Pierre Boyer ocupó toda la isla, unificando el territorio bajo el dominio haitiano durante 22 años. Durante este período se abolió la esclavitud, pero también surgieron tensiones políticas, económicas y culturales entre dominicanos y haitianos. Estas diferencias impulsaron el deseo de independencia."
-                },
-                'independencia': {
-                    titulo: "Independencia Nacional",
-                    texto: "El 27 de febrero de 1844, gracias al liderazgo de Juan Pablo Duarte, Francisco del Rosario Sánchez y Ramón Matías Mella, se proclamó la independencia nacional en la Puerta del Conde. Este acontecimiento dio origen a la República Dominicana como nación libre, soberana e independiente. La sociedad secreta La Trinitaria jugó un papel esencial en la organización del movimiento independentista."
-                },
-                'restauracion': {
-                    titulo: "La Restauración",
-                    texto: "En 1861, el presidente Pedro Santana anexó el país nuevamente a España. Esta decisión generó un fuerte rechazo popular. La Guerra de la Restauración, liderada por patriotas como Gregorio Luperón, logró devolver la soberanía nacional en 1865, consolidando definitivamente la independencia dominicana."
-                },
-                'siglo_xx': {
-                    titulo: "Siglo XX y Modernización",
-                    texto: "El siglo XX estuvo marcado por intervenciones extranjeras, conflictos políticos y dictaduras. Destaca la ocupación militar estadounidense de 1916 a 1924. Posteriormente, la dictadura de Rafael Trujillo (1930-1961) representó uno de los períodos más autoritarios de la historia nacional. Tras su caída, el país inició un proceso de democratización, aunque enfrentó nuevos desafíos, incluyendo la Revolución de Abril de 1965 y otra intervención estadounidense."
-                },
-                'rd_actual': {
-                    titulo: "República Dominicana Actual",
-                    texto: "Hoy, la República Dominicana es una nación democrática, reconocida por su crecimiento económico, su riqueza cultural y su importancia turística en el Caribe. Su economía se sustenta principalmente en el turismo, las zonas francas, las remesas y los servicios. El país continúa fortaleciendo sus instituciones y enfrentando retos sociales y económicos propios del mundo moderno."
-                },
-                'clima_rd': {
-                    titulo: "Clima",
-                    texto: "El clima dominicano es tropical marítimo, cálido durante todo el año. Las temperaturas oscilan entre los 25 y 30 grados Celsius. Existen estaciones lluviosas y secas. La temporada ciclónica ocurre entre junio y noviembre. Las montañas influyen en las variaciones climáticas regionales. Este clima favorece la agricultura y el turismo. Es uno de los principales atractivos del país."
-                },
-                'geografia_rd': {
-                    titulo: "Geografía",
-                    texto: "La República Dominicana ocupa dos tercios de la isla La Española. Limita con Haití al oeste y está rodeada por el océano Atlántico y el mar Caribe. Posee montañas, valles, ríos, llanuras y extensas costas. Su posición estratégica la convierte en un punto clave del Caribe. Cuenta con abundantes recursos naturales y suelos fértiles. Su diversidad geográfica favorece múltiples actividades económicas. Es uno de los territorios más variados de la región."
-                },
-                'sistemas_montanosos': {
-                    titulo: "Sistemas Montañosos",
-                    texto: "La Cordillera Central es el sistema montañoso más importante del país. Allí se encuentra el Pico Duarte, la montaña más alta del Caribe. También destacan la Cordillera Septentrional y la Cordillera Oriental. Estas elevaciones influyen en el clima y la biodiversidad nacional. Son fuentes importantes de agua dulce. Además, sustentan actividades agrícolas y turísticas. Representan una parte esencial del paisaje dominicano."
-                },
-                'tainos': {
-                    titulo: "Taínos",
-                    texto: "Los taínos fueron los habitantes originarios de La Española. Su economía se basaba en la agricultura, la pesca y la caza. Cultivaban yuca, maíz, batata y otros alimentos. Vivían en aldeas organizadas y practicaban una rica vida espiritual. Desarrollaron arte, música y ceremonias religiosas. Líderes como Anacaona y Caonabo simbolizan su resistencia. Su legado permanece en la cultura dominicana."
-                },
-                'cacicazgos': {
-                    titulo: "Cacicazgos",
-                    texto: "La isla estaba dividida en cinco cacicazgos: Marién, Maguá, Maguana, Jaragua e Higüey. Cada uno era gobernado por un cacique. Esta organización facilitaba la administración política y social. Los caciques ejercían autoridad militar y religiosa. Los cacicazgos mantenían relaciones comerciales y alianzas. Eran la base del orden taíno. Representaban una estructura avanzada para su época."
-                }
-            };
-
-            const info = baseDeDatos[id];
-
-            if (info) {
-                pizarra.innerHTML = `
-                    <h2>${info.titulo}</h2>
-                    <p>${info.texto}</p>
+            if (tema === "historia_rd") {
+                html = `
+                    <h2>Historia de República Dominicana</h2>
+                    <div class="definicion-destacada">
+                        <strong>Definición:</strong> La República Dominicana es una nación caribeña situada en la isla de La Española, famosa por sus playas de arena blanca (como Punta Cana), el merengue, el béisbol y su rica historia colonial en Santo Domingo, la capital. Es el segundo país más grande del Caribe, con gran biodiversidad, altas montañas y una economía impulsada por el turismo.
+                    </div>
+                    <ul>
+                        <li><strong>Geografía:</strong> Comparte la isla con Haití al oeste. Cuenta con el Pico Duarte (punto más alto del Caribe, 3,098 m) y el Lago Enriquillo (punto más bajo, 44 m bajo el nivel del mar).</li>
+                        <li><strong>Turismo:</strong> Punta Cana, Samaná y Puerto Plata son destinos principales. Destaca Bahía de las Águilas por su belleza natural.</li>
+                        <li><strong>Capital y Ciudad Colonial:</strong> Santo Domingo fue la primera ciudad europea en América, Patrimonio de la Humanidad por la UNESCO.</li>
+                        <li><strong>Cultura:</strong> El merengue y la bachata son ritmos autóctonos, considerados Patrimonio Cultural Inmaterial de la Humanidad. El béisbol es el deporte nacional.</li>
+                        <li><strong>Gobierno:</strong> Es una democracia representativa con un gobierno presidencialista.</li>
+                        <li><strong>Independencia:</strong> Fue proclamada el 27 de febrero de 1844.</li>
+                    </ul>
                 `;
             }
+            else if (tema === "geografia_rd") {
+                html = `
+                    <h2>Geografía</h2>
+                    <p>La geografía de la República Dominicana es de las más diversas del Caribe, destacándose por tener tanto el punto más alto como el más bajo de toda la región insular. El país ocupa las dos terceras partes orientales de la Isla de Santo Domingo (o La Española).</p>
+                    
+                    <h3>Relieve y Sistemas Montañosos</h3>
+                    <p>El territorio es mayormente montañoso (un 50% está ocupado por sierras y cordilleras).</p>
+                    <ul>
+                        <li><strong>Cordillera Central:</strong> Es el "techo del Caribe". Aquí se encuentra el Pico Duarte, con 3,087 metros de altura.</li>
+                        <li><strong>Cordillera Septentrional:</strong> Corre paralela a la costa norte, separando el fértil Valle del Cibao del océano Atlántico.</li>
+                        <li><strong>Cordillera Oriental:</strong> Es la de menor altura y se ubica en el este, complementando el paisaje agrícola y turístico.</li>
+                        <li><strong>Hoya de Enriquillo:</strong> Una depresión tectónica donde se encuentra el Lago Enriquillo, situado a unos 46 metros bajo el nivel del mar.</li>
+                    </ul>
+
+                    <h3>Hidrografía</h3>
+                    <p>Los ríos nacen mayormente en la Cordillera Central y son vitales para la agricultura y la generación de energía.</p>
+                    <ul>
+                        <li><strong>Yaque del Norte:</strong> El río más largo del país, fluye hacia el noroeste y desemboca en Monte Cristi.</li>
+                        <li><strong>Yuna:</strong> El más caudaloso, recorre el fértil Valle de la Vega Real hasta la Bahía de Samaná.</li>
+                        <li><strong>Yaque del Sur:</strong> Importante para el riego en las zonas más secas del suroeste.</li>
+                        <li><strong>Ozama:</strong> Cruza la capital, Santo Domingo, y es históricamente uno de los más importantes.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "llegada_espanoles") {
+                html = `
+                    <h2>La Llegada de los Españoles</h2>
+                    <p>La llegada de los españoles a la isla (que ellos llamaron La Española) el 5 de diciembre de 1492 marcó el inicio del encuentro entre Europa y el "Nuevo Mundo". Este evento transformó radicalmente la historia, la demografía y la cultura de la actual República Dominicana.</p>
+                    
+                    <h3>El Primer Desembarco</h3>
+                    <p>Cristóbal Colón llegó a la costa norte de la isla (actual zona de Monte Cristi) tras haber pasado por las Bahamas y Cuba.</p>
+                    <ul>
+                        <li><strong>Impresión de Colón:</strong> Quedó maravillado por la belleza de las montañas y la vegetación, bautizándola como "La Española" por su parecido con los paisajes de España.</li>
+                        <li><strong>El Fuerte Navidad:</strong> El 25 de diciembre de 1492, la carabela Santa María encalló. Con sus restos, y bajo el permiso del cacique Guacanagarix, construyeron el primer asentamiento europeo en América: el Fuerte de la Navidad.</li>
+                    </ul>
+
+                    <h3>Fundación de las Primeras Ciudades</h3>
+                    <p>En el segundo viaje de Colón (1493), comenzó la verdadera colonización:</p>
+                    <ul>
+                        <li><strong>La Isabela:</strong> Fundada en el norte (Puerto Plata), fue la primera ciudad europea formal en el continente. Hoy es un parque arqueológico.</li>
+                        <li><strong>Santo Domingo:</strong> Fundada en 1496 por Bartolomé Colón (hermano de Cristóbal) en la margen oriental del río Ozama, y luego trasladada a la occidental por Nicolás de Ovando. Se convirtió en la capital de las Indias.</li>
+                    </ul>
+
+                    <h3>El Impacto en la Población Taína</h3>
+                    <p>El encuentro fue devastador para los nativos debido a tres factores principales:</p>
+                    <ul>
+                        <li><strong>Enfermedades:</strong> Virus como la viruela y el sarampión, para los cuales los taínos no tenían defensas, causaron muertes masivas.</li>
+                        <li><strong>Sistema de Encomiendas:</strong> Los indígenas eran obligados a trabajar en minas de oro y plantaciones en condiciones de semiesclavitud.</li>
+                        <li><strong>Guerra y Represión:</strong> Las rebeliones indígenas fueron sofocadas con violencia por los conquistadores.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "epoca_colonial") {
+                html = `
+                    <h2>Época Colonial</h2>
+                    <p>La época colonial en la actual República Dominicana comenzó en 1492 con la llegada de Cristóbal Colón y se extendió, en su etapa primaria española, hasta finales del siglo XVIII y principios del XIX. Santo Domingo fue la primera sede del poder europeo en el Nuevo Mundo.</p>
+                    
+                    <h3>Primicias de América</h3>
+                    <p>Al ser el primer asentamiento español estable, Santo Domingo ostenta títulos únicos:</p>
+                    <ul>
+                        <li><strong>Santo Domingo:</strong> Fundada en 1496, es la ciudad europea más antigua del continente en funcionamiento.</li>
+                        <li><strong>Primera Catedral:</strong> La Catedral Primada de América.</li>
+                        <li><strong>Primer Hospital:</strong> San Nicolás de Bari.</li>
+                        <li><strong>Primera Universidad:</strong> La Universidad Santo Tomás de Aquino (hoy UASD).</li>
+                    </ul>
+
+                    <h3>Ciclos Económicos</h3>
+                    <p>La economía colonial dominicana pasó por tres etapas marcadas:</p>
+                    <ul>
+                        <li><strong>El Oro (1492-1520):</strong> Extracción intensa en los ríos que agotó rápidamente el recurso y diezmó a la población taína.</li>
+                        <li><strong>El Azúcar (1520-1600):</strong> Introducción de la caña de azúcar y grandes ingenios. Aquí comenzó la importación masiva de esclavos africanos.</li>
+                        <li><strong>La Ganadería (1600-1800):</strong> Tras la crisis del azúcar, la isla se convirtió en una gran hato de ganado para exportar cueros a Europa.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "independencia") {
+                html = `
+                    <h2>Independencia Nacional</h2>
+                    <p>La Independencia de la República Dominicana fue el proceso histórico mediante el cual el país se separó de Haití el 27 de febrero de 1844, tras 22 años de ocupación militar.</p>
+                    
+                    <h3>La Trinitaria y los Ideólogos</h3>
+                    <p>El movimiento fue impulsado por jóvenes intelectuales que buscaban fundar una nación libre e independiente.</p>
+                    <ul>
+                        <li><strong>Juan Pablo Duarte:</strong> El ideólogo y fundador de La Trinitaria (1838), una sociedad secreta bajo el lema "Dios, Patria y Libertad".</li>
+                        <li><strong>Francisco del Rosario Sánchez:</strong> Líder del movimiento ante la ausencia de Duarte (quien estaba en el exilio) y quien izó la bandera.</li>
+                        <li><strong>Matías Ramón Mella:</strong> Famoso por disparar el trabucazo en la Puerta de la Misericordia, dando inicio a la revuelta.</li>
+                    </ul>
+
+                    <h3>La Noche del 27 de Febrero</h3>
+                    <p>La acción definitiva ocurrió en la Puerta del Conde, en la ciudad amurallada de Santo Domingo:</p>
+                    <ul>
+                        <li>Se proclamó el nacimiento de la República Dominicana.</li>
+                        <li>Se izó por primera vez la bandera tricolor, confeccionada por María Trinidad Sánchez, Concepción Bona y otras patriotas.</li>
+                        <li>Se formó la Junta Central Gubernativa para dirigir el nuevo Estado.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "restauracion") {
+                html = `
+                    <h2>La Restauración</h2>
+                    <p>La Guerra de la Restauración (1863-1865) fue la gesta heroica con la que República Dominicana recuperó su soberanía tras haber sido anexionada a España por Pedro Santana en 1861. Es considerada por muchos historiadores como la "verdadera independencia", pues fue una guerra de carácter popular y nacional.</p>
+                    
+                    <h3>El Grito de Capotillo</h3>
+                    <p>El movimiento comenzó formalmente el 16 de agosto de 1863, cuando un grupo de 14 patriotas liderados por Santiago Rodríguez izó la bandera dominicana en el cerro de Capotillo, en la frontera con Haití.</p>
+
+                    <h3>Figuras Clave</h3>
+                    <p>A diferencia de la independence de 1844, esta lucha fue liderada por militares y campesinos:</p>
+                    <ul>
+                        <li><strong>Gregorio Luperón:</strong> La figura militar más brillante, conocido como la "Primera Espada de la Restauración".</li>
+                        <li><strong>Gaspar Polanco:</strong> Estratega fundamental en el sitio de Santiago.</li>
+                        <li><strong>Pepillo Salcedo:</strong> Primer presidente del gobierno restaurador.</li>
+                        <li><strong>Benito Monción:</strong> Destacado líder guerrillero en la línea noroeste.</li>
+                    </ul>
+
+                    <h3>El Conflicto y la Estrategia</h3>
+                    <p>Fue una guerra asimétrica donde los dominicanos usaron el entorno a su favor:</p>
+                    <ul>
+                        <li><strong>Guerra de Guerrillas:</strong> Los restauradores evitaban batallas abiertas, atacando por sorpresa y retirándose al monte.</li>
+                        <li><strong>El Clima y las Enfermedades:</strong> El calor tropical y la fiebre amarilla causaron más bajas al ejército español que las balas.</li>
+                        <li><strong>Incendio de Santiago:</strong> Los dominicanos quemaron su propia ciudad para obligar a las tropas españolas a retirarse hacia Puerto Plata.</li>
+                    </ul>
+
+                    <h3>Resultados y Consecuencias</h3>
+                    <ul>
+                        <li><strong>Salida de España:</strong> En julio de 1865, las tropas españolas abandonaron la isla por orden de la Reina Isabel II.</li>
+                        <li><strong>Consolidación de la Identidad:</strong> Se reafirmó que el pueblo dominicano no aceptaría el dominio extranjero, ya fuera europeo o haitiano.</li>
+                        <li><strong>Inestabilidad Posterior:</strong> Aunque se recuperó la libertad, el país quedó devastado económicamente y entró en una etapa de caudillismo militar.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "siglo_xx") {
+                html = `
+                    <h2>Siglo XX y Modernización</h2>
+                    <p>El siglo XX en la República Dominicana fue una montaña rusa de inestabilidad, dictaduras feroces, intervenciones extranjeras y, finalmente, una transición hacia la democracia.</p>
+                    
+                    <h3>Inicios y Primera Ocupación (1900-1924)</h3>
+                    <p>El siglo comenzó con un caos político tras la muerte del dictador Ulises Heureaux (Lilís) en 1899.</p>
+                    <ul>
+                        <li><strong>Caos Caudillista:</strong> En los primeros 15 años hubo más de una docena de presidentes y constantes revoluciones internas.</li>
+                        <li><strong>Intervención de EE. UU. (1916-1924):</strong> Debido a la inestabilidad y la deuda externa, tropas estadounidenses ocuparon el país. Durante este tiempo se construyeron carreteras y se creó la Guardia Nacional, donde se formó Rafael Leónidas Trujillo.</li>
+                    </ul>
+
+                    <h3>La Era de Trujillo (1930-1961)</h3>
+                    <p>Tras el gobierno de Horacio Vásquez, Trujillo tomó el poder e instauró una de las dictaduras más largas y sangrientas de América Latina.</p>
+                    <ul>
+                        <li><strong>Control Absoluto:</strong> Trujillo dominó cada aspecto de la vida dominicana por 31 años, usando la represión y el culto a su personalidad.</li>
+                        <li><strong>Hitos Oscuros:</strong> La Matanza del Perejil (1937), donde miles de haitianos fueron asesinados, y el asesinato de las Hermanas Mirabal (1960).</li>
+                        <li><strong>Fin de la Tiranía:</strong> Trujillo fue ajusticiado el 30 de mayo de 1961, lo que abrió el camino a la democracia.</li>
+                    </ul>
+
+                    <h3>De la Revolución a los "12 Años" (1962-1978)</h3>
+                    <ul>
+                        <li><strong>Juan Bosch (1963):</strong> Primer presidente democrático tras la tiranía. Su gobierno fue derrocado por un golpe militar a los siete meses por sus ideas liberales.</li>
+                        <li><strong>Guerra de Abril (1965):</strong> Un levantamiento popular buscaba el regreso de Bosch. Esto provocó una segunda intervención de EE. UU. para evitar "otra Cuba".</li>
+                        <li><strong>Joaquín Balaguer:</strong> Ganó las elecciones de 1966 e inició sus "12 años" de gobierno (1966-1978), caracterizados por un crecimiento económico desigual y una fuerte represión política.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "clima_rd") {
+                html = `
+                    <h2>Clima</h2>
+                    <p>El clima de la República Dominicana es tropical húmedo, influenciado principalmente por los vientos alisios y su relieve montañoso. Aunque es "verano" casi todo el año, existen variaciones importantes según la zona.</p>
+                    
+                    <h3>Temperaturas</h3>
+                    <ul>
+                        <li><strong>Promedio General:</strong> Oscila entre los 25 °C y 30 °C.</li>
+                        <li><strong>Zonas Costeras:</strong> Calor constante, suavizado por la brisa marina.</li>
+                        <li><strong>Zonas de Montaña:</strong> En lugares como Constanza o Jarabacoa, las temperaturas pueden bajar a 5 °C o 0 °C durante las madrugadas de invierno (diciembre-febrero).</li>
+                    </ul>
+
+                    <h3>Temporadas de Lluvia</h3>
+                    <p>No hay un invierno de nieve, sino épocas donde llueve más:</p>
+                    <ul>
+                        <li><strong>Mayo y Junio:</strong> Suele ser la época de lluvias más intensas en casi todo el país.</li>
+                        <li><strong>Septiembre y Octubre:</strong> Segunda temporada fuerte, asociada a la actividad ciclónica.</li>
+                        <li><strong>El Norte (Puerto Plata/Samaná):</strong> Tiende a llover más entre noviembre y enero debido a los frentes fríos que bajan desde Norteamérica.</li>
+                    </ul>
+
+                    <h3>Temporada de Huracanes</h3>
+                    <p>Es un factor clave en la geografía dominicana:</p>
+                    <ul>
+                        <li><strong>Período:</strong> Del 1 de junio al 30 de noviembre.</li>
+                        <li><strong>Meses Pico:</strong> Agosto y septiembre son los meses de mayor riesgo de tormentas y huracanes.</li>
+                    </ul>
+
+                    <h3>Microclimas: Un contraste extremo</h3>
+                    <p>A pesar de ser una isla pequeña, RD tiene climas muy distintos a poca distancia:</p>
+                    <ul>
+                        <li><strong>Bosque Húmedo:</strong> En Samaná y Los Haitises (lluvias constantes y mucha vegetación).</li>
+                        <li><strong>Bosque Seco/Semidesierto:</strong> En el suroeste (Barahona, Pedernales) y el noroeste (Monte Cristi), donde el paisaje es de cactus y tierra árida.</li>
+                        <li><strong>Templado de Montaña:</strong> En la Cordillera Central, con pinos y clima fresco.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "sistemas_montanosos") {
+                html = `
+                    <h2>Sistemas Montañosos</h2>
+                    <p>Como vimos en la geografía general, el relieve dominicano es el más accidentado de las Antillas. Su sistema montañoso se organiza principalmente en tres grandes cordilleras y varias sierras menores.</p>
+                    
+                    <h3>Las Tres Cordilleras Principales</h3>
+                    <h4>1. Cordillera Central</h4>
+                    <p>Es el sistema más importante de la isla y del Caribe.</p>
+                    <ul>
+                        <li><strong>Importancia:</strong> Es el "padre de las aguas" de los ríos dominicanos (nacen el Yaque del Norte, Yaque del Sur, Yuna y Artibonito).</li>
+                        <li><strong>Puntos máximos:</strong> Alberga el Pico Duarte (3,087 m), La Pelona y La Rusilla.</li>
+                        <li><strong>Clima:</strong> Posee microclimas templados en ciudades como Constanza y Jarabacoa.</li>
+                    </ul>
+
+                    <h4>2. Cordillera Septentrional</h4>
+                    <p>Corre paralela a la costa atlántica, desde Monte Cristi hasta Samaná.</p>
+                    <ul>
+                        <li><strong>Función:</strong> Protege el Valle del Cibao de los vientos del norte.</li>
+                        <li><strong>Punto máximo:</strong> El Pico Diego de Ocampo (1,249 m) cerca de Santiago.</li>
+                        <li><strong>Dato:</strong> En sus laderas se encuentran importantes yacimientos de ámbar.</li>
+                    </ul>
+
+                    <h4>3. Cordillera Oriental (o Sierra de El Seibo)</h4>
+                    <p>Es la más pequeña y vieja geológicamente de las tres.</p>
+                    <ul>
+                        <li><strong>Características:</strong> Sus picos son redondeados y de baja altura (máximo 800 m).</li>
+                        <li><strong>Economía:</strong> Sus tierras son ideales para el cultivo de cacao, café y pasto para ganado.</li>
+                    </ul>
+
+                    <h3>Sierras Secundarias</h3>
+                    <p>Además de las cordilleras, existen sistemas independientes:</p>
+                    <ul>
+                        <li><strong>Sierra de Bahoruco:</strong> En el suroeste. Es famosa por el Larimar (piedra semipreciosa única en el mundo) y el Hoyo de Pelempito.</li>
+                        <li><strong>Sierra de Neiba:</strong> Ubicada entre la Hoya de Enriquillo y el Valle de San Juan. Es muy empinada y difícil de acceso.</li>
+                        <li><strong>Sierra de Samaná:</strong> Forma la península de Samaná, con paisajes que mezclan montaña y mar.</li>
+                    </ul>
+                `;
+            }
+            else if (tema === "tainos_cacicazgos") {
+                html = `
+                    <h2>Taínos y Cacicazgos</h2>
+                    <p>Los taínos fueron los habitantes principales de la isla a la llegada de los españoles en 1492. Eran una cultura pacífica, con una organización social avanzada y una economía basada en la agricultura y la pesca.</p>
+                    
+                    <h3>Organización Social</h3>
+                    <p>La sociedad taína estaba dividida en cuatro grupos bien definidos:</p>
+                    <ul>
+                        <li><strong>Cacique:</strong> El jefe político y militar. Su cargo era hereditario por línea materna.</li>
+                        <li><strong>Nitaínos:</strong> La clase noble y guerrera; asistían al cacique en la toma de decisiones.</li>
+                        <li><strong>Bohiques:</strong> Sacerdotes y médicos. Encargados de las ceremonias religiosas y de transmitir la historia oral.</li>
+                        <li><strong>Naborías:</strong> La clase trabajadora (agricultores y artesanos).</li>
+                    </ul>
+
+                    <h3>Los 5 Cacicazgos de la Isla</h3>
+                    <p>Para el siglo XV, la isla de Santo Domingo (Quisqueya o Haití para ellos) estaba dividida en cinco grandes territorios llamados cacicazgos:</p>
+                    <ul>
+                        <li><strong>Marién:</strong> Gobernado por Guacanagarix. Se ubicaba al noroeste (donde hoy están Monte Cristi y Puerto Plata). Fue donde encalló la Santa María.</li>
+                        <li><strong>Maguá:</strong> Gobernado por Guarionex. Ocupaba el centro y noreste (el fértil Valle del Cibao).</li>
+                        <li><strong>Maguana:</strong> Gobernado por Caonabo. Ocupaba el centro-sur. Fue uno de los cacicazgos más guerreros y poderosos.</li>
+                        <li><strong>Jaragua:</strong> Gobernado por Bohechío. Era el centro cultural de la isla, ubicado en el suroeste. Su hermana era la famosa Anacaona.</li>
+                        <li><strong>Higüey:</strong> Gobernado por Cayacoa. Abarcaba todo el extremo este de la isla.</li>
+                    </ul>
+
+                    <h3>Cultura y Vida Cotidiana</h3>
+                    <ul>
+                        <li><strong>Agricultura:</strong> Inventaron el sistema de montones para cultivar yuca, batata y maíz. Del procesamiento de la yuca obtenían el casabe, que aún hoy consumimos en RD.</li>
+                        <li><strong>Vivienda:</strong> Vivian en bohíos (circulares) y el cacique en el caney (rectangular).</li>
+                        <li><strong>Religión:</strong> Eran politeístas. Adoraban a los cemíes (ídolos de piedra o madera) que representaban dioses como Yocahú (dios del cielo y las cosechas).</li>
+                        <li><strong>Diversión:</strong> El Batey era la plaza central donde celebraban el juego de pelota y los Areítos, que eran bailes y cantos para recordar su historia.</li>
+                    </ul>
+
+                    <h3>La Resistencia: Enriquillo</h3>
+                    <p>Tras la llegada de los colonizadores, muchos taínos se rebelaron. El líder más destacado fue Enriquillo, quien se alzó en la Sierra de Bahoruco y mantuvo una guerrilla de 14 años contra los españoles, logrando el primer tratado de paz entre europeos e indígenas en América.</p>
+                `;
+            }
+            else if (tema === "rd_actual") {
+                html = `
+                    <h2>República Dominicana Actual</h2>
+                    <p>En la actualidad (2025-2026), la República Dominicana se consolida como una de las economías más dinámicas y estables de América Latina, aunque enfrenta retos estructurales importantes en materia fiscal, social y migratoria.</p>
+                    
+                    <h3>Panorama Político</h3>
+                    <ul>
+                        <li><strong>Gobierno Actual:</strong> El país es liderado por el presidente Luis Abinader (del Partido Revolucionario Moderno, PRM), quien cumple su segundo mandato consecutivo (2024-2028) tras ser reelecto con un 57% de los votos.</li>
+                        <li><strong>Enfoque:</strong> Su gestión se ha centrado en el fortalecimiento institucional, la transparencia y la atracción de inversión extranjera.</li>
+                        <li><strong>Retos:</strong> La administración enfrenta presión para implementar reformas profundas, como la reforma fiscal, la modificación del código laboral y la mejora del sistema de seguridad social.</li>
+                    </ul>
+
+                    <h3>Economía y Crecimiento</h3>
+                    <ul>
+                        <li><strong>Liderazgo Regional:</strong> RD mantiene el crecimiento económico más rápido del hemisferio en las últimas décadas. En 2024 creció un 5.0% y se proyecta un crecimiento de entre 4% y 5% para 2026.</li>
+                        <li><strong>Motores Económicos:</strong> El turismo (con cifras récord de visitantes), las zonas francas, la construcción y la minería de oro siguen siendo los pilares.</li>
+                        <li><strong>Inversión:</strong> En 2025 se alcanzaron niveles históricos de Inversión Extranjera Directa (IED), superando los US$4,800 millones.</li>
+                    </ul>
+
+                    <h3>Desafíos Actuales</h3>
+                    <ul>
+                        <li><strong>Cuestión Migratoria:</strong> La crisis en Haití ha incrementado la presión migratoria, lo que ha llevado al gobierno a intensificar las deportaciones y la construcción de una valla fronteriza, generando debates sobre derechos humanos y soberanía.</li>
+                        <li><strong>Costo de Vida:</strong> A pesar del crecimiento macroeconómico, la población percibe un alto costo en la canasta básica y persisten brechas de desigualdad.</li>
+                        <li><strong>Sostenibilidad Fiscal:</strong> Existe preocupación por el aumento de la deuda pública y la necesidad de aumentar la presión tributaria, que es una de las más bajas de la región.</li>
+                    </ul>
+                `;
+            }
+            else {
+                html = `
+                    <h2>Historia de la República Dominicana</h2>
+                    <p>Selecciona un tema del menú lateral para explorar la historia, geografía y cultura de la República Dominicana.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Bienvenido:</strong> Aquí encontrarás toda la información detallada sobre nuestra nación.
+                    </div>
+                `;
+            }
+
+            contenido.innerHTML = html;
         }
+
+        // Mostrar tema por defecto
+        window.onload = function() {
+            mostrar('historia_rd');
+        };
     </script>
 </body>
 </html>

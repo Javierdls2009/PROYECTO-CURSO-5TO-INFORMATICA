@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Inglés</title>
+    <style>
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+        }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: var(--color-fondo); 
+            margin: 0;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+        }
+
+        /* Botón Volver */
+        .controles-encabezado {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .boton-volver {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .boton-volver:hover { opacity: 0.7; }
+
+        h2 { color: var(--color-oscuro); margin-top: 0; }
+
+        /* Contenedor del Juego */
+        .tablero-juego {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            gap: 12px;
+            margin: 20px auto;
+        }
+
+        .carta {
+            width: 100px;
+            height: 100px;
+            background: var(--color-principal);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 12px;
+            text-align: center;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .carta.volteada { 
+            background: white; 
+            color: var(--color-oscuro); 
+            border: 3px solid var(--color-principal);
+        }
+
+        .carta.emparejada { 
+            background: #4CAF50; 
+            border: 3px solid #4CAF50;
+            visibility: hidden; 
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        /* Mensaje de Victoria */
+        #mensaje-victoria {
+            display: none;
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .boton-siguiente {
+            background: var(--color-principal);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controles-encabezado">
+        <a href="/PageALL/Juegos/PanelJuegos.html" class="boton-volver">← VOLVER ATRAS</a>
+    </div>
+
+    <h2>English Vocabulary Match</h2>
+    <p id="indicador-nivel">Nivel: 1 (Fácil)</p>
+
+    <div class="tablero-juego" id="tablero"></div>
+
+    <div id="mensaje-victoria">
+        <h1 style="color: #4CAF50;">¡Excelente!</h1>
+        <p>Has emparejado todas las palabras correctamente.</p>
+        <button class="boton-siguiente" onclick="siguienteNivel()">Jugar Siguiente Nivel</button>
+    </div>
+
+    <script>
+        const todasLasPalabras = [
+            // Nivel 1
+            { ingles: 'Apple', espanol: 'Manzana' },
+            { ingles: 'Teacher', espanol: 'Profesor' },
+            { ingles: 'School', espanol: 'Escuela' },
+            { ingles: 'Book', espanol: 'Libro' },
+            // Nivel 2
+            { ingles: 'Keyboard', espanol: 'Teclado' },
+            { ingles: 'Database', espanol: 'Base de Datos' },
+            { ingles: 'Software', espanol: 'Programas' },
+            { ingles: 'Network', espanol: 'Red' },
+            // Nivel 3
+            { ingles: 'Success', espanol: 'Éxito' },
+            { ingles: 'Science', espanol: 'Ciencia' },
+            { ingles: 'Health', espanol: 'Salud' },
+            { ingles: 'Goal', espanol: 'Meta' }
+        ];
+
+        let nivelActual = 1;
+        let cartasVolteadas = [];
+        let contadorEmparejadas = 0;
+        let palabrasActivas = [];
+
+        function iniciarJuego() {
+            const contenedorTablero = document.getElementById('tablero');
+            const msjVictoria = document.getElementById('mensaje-victoria');
+            
+            contenedorTablero.innerHTML = '';
+            contenedorTablero.style.display = 'grid';
+            msjVictoria.style.display = 'none';
+            cartasVolteadas = [];
+            contadorEmparejadas = 0;
+
+            // Cantidad de pares según el nivel
+            let cantidadPares = nivelActual === 1 ? 4 : (nivelActual === 2 ? 8 : 12);
+            palabrasActivas = todasLasPalabras.slice(0, cantidadPares);
+            
+            document.getElementById('indicador-nivel').innerText = `Nivel: ${nivelActual} (${cantidadPares} pares)`;
+
+            // Ajuste de columnas
+            if (cantidadPares > 4) contenedorTablero.style.gridTemplateColumns = "repeat(4, 100px)";
+            if (cantidadPares > 8) contenedorTablero.style.gridTemplateColumns = "repeat(6, 100px)";
+
+            let valoresCartas = [];
+            palabrasActivas.forEach(par => {
+                valoresCartas.push({ valor: par.ingles, id: par.ingles });
+                valoresCartas.push({ valor: par.espanol, id: par.ingles });
+            });
+
+            // Mezclar cartas
+            valoresCartas.sort(() => Math.random() - 0.5);
+
+            valoresCartas.forEach((item, indice) => {
+                const carta = document.createElement('div');
+                carta.classList.add('carta');
+                carta.dataset.id = item.id;
+                carta.dataset.indice = indice;
+                carta.innerHTML = "?";
+                carta.addEventListener('click', () => voltearCarta(carta, valoresCartas));
+                contenedorTablero.appendChild(carta);
+            });
+        }
+
+        function voltearCarta(carta, valoresCartas) {
+            if (cartasVolteadas.length < 2 && !carta.classList.contains('volteada')) {
+                carta.classList.add('volteada');
+                carta.innerHTML = valoresCartas[carta.dataset.indice].valor;
+                cartasVolteadas.push(carta);
+
+                if (cartasVolteadas.length === 2) {
+                    verificarEmparejamiento();
+                }
+            }
+        }
+
+        function verificarEmparejamiento() {
+            const [carta1, carta2] = cartasVolteadas;
+            if (carta1.dataset.id === carta2.dataset.id) {
+                setTimeout(() => {
+                    carta1.classList.add('emparejada');
+                    carta2.classList.add('emparejada');
+                    cartasVolteadas = [];
+                    contadorEmparejadas++;
+                    if (contadorEmparejadas === palabrasActivas.length) mostrarVictoria();
+                }, 600);
+            } else {
+                setTimeout(() => {
+                    carta1.classList.remove('volteada');
+                    carta2.classList.remove('volteada');
+                    carta1.innerHTML = "?";
+                    carta2.innerHTML = "?";
+                    cartasVolteadas = [];
+                }, 1000);
+            }
+        }
+
+        function mostrarVictoria() {
+            document.getElementById('tablero').style.display = 'none';
+            document.getElementById('mensaje-victoria').style.display = 'block';
+        }
+
+        function siguienteNivel() {
+            if (nivelActual < 3) {
+                nivelActual++;
+            } else {
+                nivelActual = 1; // Reinicia al nivel 1 si termina el 3
+            }
+            iniciarJuego();
+        }
+
+        // Ejecutar al cargar
+        iniciarJuego();
+    </script>
+</body>
+</html>

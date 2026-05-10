@@ -1,0 +1,15 @@
+/* PALETA: TECH MINIMALIST */
+:root {
+    --color-primario: #4A5C6A;    /* Azul Grisáceo */
+    --color-fondo: #CCD0CF;       /* Gris Hielo */
+    --color-card: #9BA8AB;        /* Gris Acero */
+    --color-texto: #06141B;       /* Casi Negro */
+    --header-bg: #253745;         /* Azul Petróleo */
+    --color-btn: #06141B;
+}
+body.dark {
+    --color-fondo: #06141B;
+    --color-card: #11212D;
+    --color-texto: #CCD0CF;
+    --header-bg: #030A0D;
+}
