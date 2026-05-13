@@ -232,7 +232,12 @@ body.dark .submenu li a:hover {
 /* ========================================
    SECCIÓN TÍTULO
    ======================================== */
-.titulo {
+
+#inicio {
+    background: var(--header-bg);
+}
+
+   .titulo {
     text-align: center;
     padding: 30px 20px 20px;
 }
@@ -252,6 +257,8 @@ body.dark .submenu li a:hover {
     font-size: 1.2rem;
     opacity: 0.8;
 }
+
+
 
 /* ========================================
    CONTENEDOR DE TARJETAS (GRID)
