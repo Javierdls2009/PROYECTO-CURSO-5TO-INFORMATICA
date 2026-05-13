@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Inglés Británico vs Americano | AcademiaCCED</title>
+    <style>
+        /* ========== ESTILOS (misma paleta que las páginas anteriores) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        /* Estilo para los títulos de categoría (rojo) */
+        .cat-rojo {
+            color: var(--color-principal);
+            font-weight: bold;
+        }
+
+        /* El resto del texto dentro de los párrafos mantiene el color negro/gris */
+        #contenido p, #contenido li, #contenido .bloque-ejemplo {
+            color: var(--texto-gris);
+        }
+
+        /* Aseguramos que los <b> normales (sin clase) no sean rojos */
+        #contenido b:not(.cat-rojo) {
+            color: inherit;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="barra-superior">
+    <div class="boton-volver">
+        <a href="PanelGeneral.html">← REGRESAR</a>
+    </div>
+    <div class="titulo-materia">
+        🇬🇧🇺🇸 Inglés | Academia CCED
+    </div>
+    <div style="width: 80px;"></div>
+</div>
+
+<div class="contenedor">
+    <aside class="barra-lateral">
+        <h3>📚 TEMARIO</h3>
+        <div class="lista-temas">
+            <div class="tema" data-tema="tema1">🔍 1. Sus diferencias</div>
+            <div class="tema" data-tema="tema2">🗣️ 2. Pronunciación</div>
+            <div class="tema" data-tema="tema3">✍️ 3. Ortografía</div>
+            <div class="tema" data-tema="tema4">📖 4. Vocabulario extendido</div>
+            <div class="tema" data-tema="tema5">🧠 5. Gramática y Uses</div>
+            <div class="tema" data-tema="tema6">📅 6. Historia y Origen</div>
+            <div class="tema" data-tema="tema7">💼 7. Inglés Formal e Informal</div>
+            <div class="tema" data-tema="tema8">🎬 8. Cultura y Medios</div>
+            <div class="tema" data-tema="tema9">🔢 9. Números y Medidas</div>
+            <div class="tema" data-tema="tema10">💬 10. Expresiones y Frases Hechas</div>
+        </div>
+    </aside>
+
+    <main class="zona-herramientas">
+        <div id="contenido">
+            <h2>Bienvenido</h2>
+            <p>Selecciona un tema de la izquierda para visualizar el material de estudio sobre las diferencias entre inglés británico y americano.</p>
+        </div>
+    </main>
+</div>
+
+<footer>
+    &copy; 2026 AcademiaCCED - Desarrollado por Javier de los Santos
+</footer>
+
+<script>
+    // Datos de cada tema (AHORA TODOS LOS TÍTULOS DE SECCIÓN tienen clase "cat-rojo")
+    const baseDeDatos = {
+        'tema1': {
+            titulo: "Sus diferencias",
+            texto: `
+                Por ahora nos vamos a centrar en las diferencias entre inglés británico y americano. Lo primero que debemos tener en cuenta es que dentro del inglés británico y del inglés americano, también vamos a encontrar un montón de variaciones: no habla igual una persona de Londres que de Glasgow, ni un texano como un neoyorquino.
+                <br><br><b class="cat-rojo">¿Dónde se habla cada uno?</b>
+                <br>El inglés británico se habla principalmente en Reino Unido y es el que suele enseñarse a los alumnos europeos. El inglés americano se habla en Estados Unidos, incluyendo regiones como Puerto Rico, y es el que suele enseñarse en el resto del continente americano.
+                <br><br><b class="cat-rojo">¿Cuál es más "correcto"?</b>
+                <br>Ninguno es más correcto que el otro. Ambos son variantes legítimas y completas del inglés. Lo importante es ser consistente: si escribes un texto académico en BrE, mantén ese estándar en todo el documento. Mezclar ambas variantes sin intención puede parecer descuidado en contextos formales.
+                <br><br><b class="cat-rojo">¿Cuál debería aprender?</b>
+                <br>Depende de tu objetivo. Si planeas vivir, estudiar o trabajar en el Reino Unido, Australia o Europa, el BrE es más útil. Si tu meta es EE.UU., Canadá o América Latina, el AmE es la mejor opción. Para consumo de medios globales (Netflix, YouTube, música), entender ambos es una gran ventaja.
+                <br><br><b class="cat-rojo">Datos curiosos:</b>
+                <br>• El inglés es el idioma oficial (o cooficial) de más de 60 países.<br>
+                • Hay aproximadamente 400 millones de hablantes nativos y más de 1.500 millones de hablantes en total.<br>
+                • El inglés americano es la variante más escuchada en el mundo gracias a Hollywood e internet.
+            `
+        },
+        'tema2': {
+            titulo: "Sus pronunciaciones",
+            texto: `<b class="cat-rojo">La pronunciación</b> es uno de los aspectos más notorios entre ambas variantes.<br><br>
+                <b class="cat-rojo">Acento rótico vs. no rótico:</b><br>
+                En BrE, predomina el acento no rótico: la "r" al final de sílaba o antes de consonante no se pronuncia. Por ejemplo, "car" suena /ka:/ y "butter" suena /ˈbʌtə/. En AmE, la "r" siempre se pronuncia: "car" /kɑr/, "butter" /ˈbʌtər/.<br><br>
+                <b class="cat-rojo">La "t" intervocálica:</b><br>
+                Los americanos convierten la "t" entre vocales en un sonido similar a una "d" suave (fenómeno llamado <i>flapping</i>). Así, "better", "water" y "butter" suenan como /ˈbɛdər/, /ˈwɑdər/, /ˈbʌdər/. En BrE, la "t" se pronuncia claramente.<br><br>
+                <b class="cat-rojo">Vocales:</b><br>
+                • La vocal en "bath", "dance", "can't": BrE usa /ɑː/ (larga y abierta), AmE usa /æ/ (más corta y frontal).<br>
+                • La vocal en "lot", "hot", "stop": BrE /ɒ/ (redondeada), AmE /ɑ/ (sin redondear).<br><br>
+                <b class="cat-rojo">Diptongos:</b><br>
+                • "no" / "go": BrE /nəʊ/, AmE /noʊ/ (más abierto).<br>
+                • "price": BrE /prʌɪs/, AmE /praɪs/.<br><br>
+                <b class="cat-rojo">Acento en palabras específicas:</b><br>
+                Algunas palabras se acentúan en sílabas distintas:<br>
+                • "garage": BrE /ˈɡærɑːʒ/, AmE /ɡəˈrɑːʒ/<br>
+                • "advertisement": BrE /ədˈvɜːtɪsmənt/, AmE /ˈædvərˌtaɪzmənt/<br>
+                • "laboratory": BrE /ləˈbɒrətri/, AmE /ˈlæbrəˌtɔːri/<br><br>
+                <b class="cat-rojo">La "h" aspirada:</b><br>
+                En algunas variedades del BrE (cockney, por ejemplo), la "h" inicial se omite: "house" → "ouse". Esto no ocurre en el AmE estándar.`
+        },
+        'tema3': {
+            titulo: "Ortografía",
+            texto: `La ortografía diverge principalmente por la influencia de <b>Noah Webster</b>, quien en 1828 publicó el primer diccionario americano con el objetivo de simplificar y diferenciar el inglés americano del británico.<br><br>
+                <b class="cat-rojo">Principales diferencias:</b><br><br>
+                <b class="cat-rojo">-our vs. -or:</b><br>
+                BrE: colour, honour, favour, neighbour<br>
+                AmE: color, honor, favor, neighbor<br><br>
+                <b class="cat-rojo">-re vs. -er:</b><br>
+                BrE: centre, theatre, metre, fibre<br>
+                AmE: center, theater, meter, fiber<br><br>
+                <b class="cat-rojo">-ise vs. -ize / -yse vs. -yze:</b><br>
+                BrE: realise, organise, analyse, paralyse<br>
+                AmE: realize, organize, analyze, paralyze<br>
+                (Nota: el BrE también acepta -ize en muchos casos, pero -ise es más común)<br><br>
+                <b class="cat-rojo">-ll vs. -l:</b><br>
+                BrE dobla la "l" antes de sufijos: travelled, cancelled, fulfil<br>
+                AmE no la dobla: traveled, canceled, fulfill<br><br>
+                <b class="cat-rojo">Palabras completamente distintas:</b><br>
+                BrE: cheque / AmE: check<br>
+                BrE: tyre / AmE: tire<br>
+                BrE: grey / AmE: gray<br>
+                BrE: mould / AmE: mold<br>
+                BrE: plough / AmE: plow<br>
+                BrE: programme / AmE: program<br><br>
+                <b class="cat-rojo">Fechas:</b><br>
+                BrE: día/mes/año → 31/12/2026 = 31 de diciembre<br>
+                AmE: mes/día/año → 12/31/2026 = 31 de diciembre<br>
+                ⚠️ Esto puede causar confusión real: 04/05/2026 en BrE es el 4 de mayo, pero en AmE es el 5 de abril.`
+        },
+        'tema4': {
+            titulo: "Vocabulario extendido",
+            texto: `El vocabulario es quizás la diferencia más visible en el día a día. Aquí un repaso por categorías:<br><br>
+                <b class="cat-rojo">🚗 Transporte:</b><br>
+                BrE: lorry / AmE: truck (camión)<br>
+                BrE: boot / AmE: trunk (maletero del coche)<br>
+                BrE: bonnet / AmE: hood (capó)<br>
+                BrE: motorway / AmE: highway/freeway (autopista)<br>
+                BrE: petrol / AmE: gas/gasoline (gasolina)<br>
+                BrE: car park / AmE: parking lot (estacionamiento)<br><br>
+                <b class="cat-rojo">🏠 Hogar:</b><br>
+                BrE: flat / AmE: apartment (apartamento)<br>
+                BrE: wardrobe / AmE: closet (armario)<br>
+                BrE: tap / AmE: faucet (grifo)<br>
+                BrE: rubbish / AmE: garbage/trash (basura)<br>
+                BrE: bin / AmE: trash can (cubo de basura)<br>
+                BrE: lift / AmE: elevator (ascensor)<br>
+                BrE: ground floor / AmE: first floor (planta baja)<br><br>
+                <b class="cat-rojo">🍔 Comida:</b><br>
+                BrE: courgette / AmE: zucchini (calabacín)<br>
+                BrE: aubergine / AmE: eggplant (berenjena)<br>
+                BrE: biscuit / AmE: cookie (galleta dulce)<br>
+                BrE: chips / AmE: fries (papas fritas)<br>
+                BrE: crisps / AmE: chips (papas fritas de bolsa)<br>
+                BrE: sweets / AmE: candy (dulces/caramelos)<br>
+                BrE: jam / AmE: jelly (mermelada)<br><br>
+                <b class="cat-rojo">👕 Ropa:</b><br>
+                BrE: trainers / AmE: sneakers (zapatillas deportivas)<br>
+                BrE: jumper / AmE: sweater (suéter)<br>
+                BrE: mac/mackintosh / AmE: raincoat (impermeable)<br>
+                BrE: waistcoat / AmE: vest (chaleco)<br>
+                BrE: trousers / AmE: pants (pantalones)<br>
+                BrE: pants/knickers / AmE: underwear (ropa interior)<br><br>
+                <b class="cat-rojo">🏫 Educación y trabajo:</b><br>
+                BrE: university / AmE: college (universidad)<br>
+                BrE: headmaster / AmE: principal (director de escuela)<br>
+                BrE: CV (Curriculum Vitae) / AmE: résumé (hoja de vida)<br>
+                BrE: holiday / AmE: vacation (vacaciones)<br>`
+        },
+        'tema5': {
+            titulo: "Gramática y Uses",
+            texto: `Las diferencias gramaticales son más sutiles que las de vocabulario, pero igual de importantes.<br><br>
+                <b class="cat-rojo">Presente perfecto vs. Pasado simple:</b><br>
+                BrE prefiere el presente perfecto para acciones recientes:<br>
+                → "I've just eaten." / "Have you seen my keys?"<br>
+                AmE acepta el pasado simple en los mismos contextos:<br>
+                → "I just ate." / "Did you see my keys?"<br><br>
+                <b class="cat-rojo">Verbos modales:</b><br>
+                • "Shall": BrE lo usa para propuestas y futuro en primera persona. AmE casi no lo usa, prefiere "will" o "should".<br>
+                • "Should": BrE "Shall I open the window?" / AmE "Should I open the window?"<br>
+                • "Need": BrE "Need I say more?" / AmE "Do I need to say more?"<br><br>
+                <b class="cat-rojo">Have got vs. Have:</b><br>
+                BrE: "I've got a car." / "Have you got the time?"<br>
+                AmE: "I have a car." / "Do you have the time?"<br>
+                AmE usa "gotten" como participio de "get" (BrE no): "He has gotten better." (AmE) vs. "He has got better." (BrE)<br><br>
+                <b class="cat-rojo">Preposiciones:</b><br>
+                BrE: "at the weekend" / AmE: "on the weekend"<br>
+                BrE: "in hospital" (sin artículo) / AmE: "in the hospital"<br>
+                BrE: "Monday to Friday" / AmE: "Monday through Friday"<br>
+                BrE: "different from/to" / AmE: "different from/than"<br><br>
+                <b class="cat-rojo">Concordancia con nombres colectivos:</b><br>
+                BrE trata equipos y organizaciones como plural:<br>
+                → "The team are playing well." / "The government have decided..."<br>
+                AmE los trata como singular:<br>
+                → "The team is playing well." / "The government has decided..."<br><br>
+                <b class="cat-rojo">Preguntas tag (question tags):</b><br>
+                BrE: "It's cold, isn't it?" / "You've met her, haven't you?"<br>
+                AmE tiende a usar "right?" para todo: "It's cold, right?"<br><br>
+                <b class="cat-rojo">Uso de "while" vs. "whilst":</b><br>
+                BrE usa "whilst" y "amongst" como variantes formales.<br>
+                AmE casi nunca usa estas formas; prefiere "while" y "among".`
+        },
+        'tema6': {
+            titulo: "Historia y Origen",
+            texto: `El inglés que hoy conocemos tiene raíces en el <b>anglosajón</b>, traído a Britania por tribus germánicas (anglos, sajones y jutos) en el siglo V d.C., tras la retirada de las tropas romanas.<br><br>
+                <b class="cat-rojo">Las grandes influencias del BrE:</b><br>
+                • <b>Nórdico antiguo:</b> Los vikingos (siglos VIII-XI) dejaron palabras como <i>sky, egg, knife, window, they, them</i>.<br>
+                • <b>Francés normando:</b> Tras la conquista de 1066, la nobleza hablaba francés. Esto dio al inglés palabras como <i>government, justice, beef, pork, cuisine, noble</i>.<br>
+                • <b>Latín y griego:</b> A través de la iglesia y la ciencia: <i>education, university, medicine, philosophy</i>.<br><br>
+                <b class="cat-rojo">El nacimiento del inglés americano:</b><br>
+                Los primeros colonos llegaron a América en el siglo XVII hablando el inglés de esa época. Curiosamente, el AmE conservó algunas formas antiguas que el BrE luego abandonó:<br>
+                • "Fall" (otoño) era común en el inglés del siglo XVII; el BrE adoptó "autumn" del francés, pero América mantuvo "fall".<br>
+                • "Gotten" como participio de "get" también era habitual en el inglés antiguo; el BrE lo abandonó, el AmE lo conservó.<br><br>
+                <b class="cat-rojo">Nuevas influencias en el AmE:</b><br>
+                • <b>Lenguas indígenas:</b> <i>canoe, chocolate, tomato, potato, hurricane, moose, skunk</i><br>
+                • <b>Español:</b> <i>canyon, ranch, mosquito, rodeo, patio, avocado, lasso</i><br>
+                • <b>Neerlandés:</b> <i>cookie, boss, yankee, coleslaw, stoop</i><br>
+                • <b>Francés cajún:</b> <i>bayou, praline, jambalaya</i><br>
+                • <b>Alemán:</b> <i>kindergarten, hamburger, pretzel, deli</i><br><br>
+                <b class="cat-rojo">La estandarización:</b><br>
+                En 1755, Samuel Johnson publicó el primer gran diccionario del inglés en Reino Unido. En 1828, Noah Webster hizo lo propio en EE.UU., intencionalmente simplificando la ortografía para crear una identidad lingüística propia e independiente de Inglaterra.`
+        },
+        'tema7': {
+            titulo: "Inglés Formal e Informal",
+            texto: `Las diferencias de registro también varían notablemente entre ambas variantes.<br><br>
+                <b class="cat-rojo">Saludos:</b><br>
+                BrE formal: "How do you do?" (respuesta esperada: también "How do you do?")<br>
+                BrE informal: "Alright?", "You alright?", "Hiya!"<br>
+                AmE formal: "Nice to meet you", "Pleased to meet you"<br>
+                AmE informal: "Hey!", "What's up?", "How's it going?"<br><br>
+                <b class="cat-rojo">Despedidas:</b><br>
+                BrE: "Cheers!", "Cheerio!", "Ta-ta", "See you later"<br>
+                AmE: "Later!", "Take care!", "Have a good one!", "Catch you later"<br><br>
+                <b class="cat-rojo">"Cheers" en BrE:</b><br>
+                Esta palabra merece mención especial. En BrE puede significar:<br>
+                ✔ Gracias ("Cheers, mate")<br>
+                ✔ Brindis ("Cheers!")<br>
+                ✔ Adiós ("Cheers, see you tomorrow")<br>
+                En AmE solo significa brindis.<br><br>
+                <b class="cat-rojo">Expresar acuerdo:</b><br>
+                BrE: "Quite.", "Rather.", "Spot on.", "Indeed.", "Brilliant!"<br>
+                AmE: "Totally.", "For sure.", "Absolutely.", "You bet!", "Sounds good!"<br><br>
+                <b class="cat-rojo">Pedir algo cortésmente:</b><br>
+                BrE tiende a ser más indirecto:<br>
+                → "I don't suppose you could help me, could you?"<br>
+                → "Would you mind terribly if I...?"<br>
+                AmE es más directo aunque sigue siendo educado:<br>
+                → "Can I get your help with this?"<br>
+                → "Could you help me out?"<br><br>
+                <b class="cat-rojo">El uso de "please" y "sorry":</b><br>
+                Los británicos usan "sorry" con mucha más frecuencia, incluso cuando no han cometido ningún error (para llamar la atención, expresar que no entendieron, o como muletilla de cortesía). Los americanos tienden a usar "excuse me" en esos casos.`
+        },
+        'tema8': {
+            titulo: "Cultura y Medios",
+            texto: `Los medios de comunicación han tenido un papel clave en la expansión y percepción de ambas variantes.<br><br>
+                <b class="cat-rojo">🎬 Cine y televisión:</b><br>
+                Hollywood ha globalizado el inglés americano durante más de un siglo. Series como <i>Friends</i>, <i>Breaking Bad</i>, <i>Game of Thrones</i> (producción americana) o <i>Grey's Anatomy</i> han popularizado el AmE en todo el mundo.<br>
+                El BrE se difunde con producciones como <i>Downton Abbey</i>, <i>Peaky Blinders</i>, <i>The Crown</i>, <i>Sherlock</i> y <i>Doctor Who</i>. El BrE tiene un halo de elegancia y sofisticación en la cultura popular global.<br><br>
+                <b class="cat-rojo">🎵 Música:</b><br>
+                El rock, el pop, el hip-hop y el country americanos dominan las listas globales. Sin embargo, artistas como The Beatles, Adele, Ed Sheeran, Amy Winehouse o Coldplay han llevado el acento británico a millones de oyentes. Curiosamente, muchos cantantes británicos adoptan un acento americano al cantar.<br><br>
+                <b class="cat-rojo">💻 Internet y redes sociales:</b><br>
+                El AmE domina internet debido a la influencia de Silicon Valley. Plataformas como Google, Twitter, Instagram y TikTok surgieron en EE.UU. Esto ha normalizado expresiones americanas a nivel global: <i>trending, hashtag, selfie, to unfollow, to scroll</i>.<br><br>
+                <b class="cat-rojo">📰 Medios escritos:</b><br>
+                Publicaciones como <i>The Guardian</i>, <i>The Economist</i> o <i>The Times</i> usan BrE y son referentes mundiales de escritura en inglés formal. <i>The New York Times</i> o <i>The Washington Post</i> establecen el estándar del AmE periodístico.<br><br>
+                <b class="cat-rojo">🎓 Educación internacional:</b><br>
+                • BrE es el estándar en Europa, Asia del Sur, África y Medio Oriente.<br>
+                • AmE predomina en América Latina, Corea del Sur, Japón y partes de China.<br>
+                • Los exámenes internacionales como IELTS usan BrE; el TOEFL usa AmE.`
+        },
+        'tema9': {
+            titulo: "Números y Medidas",
+            texto: `Una diferencia práctica muy importante entre BrE y AmE son los sistemas de medición y cómo se expresan los números en la vida cotidiana.<br><br>
+                <b class="cat-rojo">📏 Sistema de medidas:</b><br>
+                El Reino Unido adoptó oficialmente el sistema métrico en los años 70, aunque conserva medidas imperiales en la vida diaria:<br>
+                • Velocidad y distancias: millas (mph)<br>
+                • Cerveza y leche: pintas<br>
+                • Peso personal: piedras y libras (stones & pounds)<br><br>
+                EE.UU. es uno de los tres únicos países del mundo (junto a Liberia y Myanmar) que no usa el sistema métrico oficialmente:<br>
+                • Distancia: pulgadas, pies, yardas, millas<br>
+                • Peso: onzas, libras<br>
+                • Volumen: onzas líquidas, tazas, pintas, galones<br><br>
+                <b class="cat-rojo">🌡️ Temperatura:</b><br>
+                BrE: Celsius → "It's 25 degrees today." (calor agradable)<br>
+                AmE: Fahrenheit → "It's 77 degrees today." (mismo valor)<br>
+                Fórmula: °F = (°C × 9/5) + 32<br><br>
+                <b class="cat-rojo">🔢 Números grandes:</b><br>
+                Hoy ambas variantes usan la misma escala:<br>
+                • Million = 1.000.000 (un millón)<br>
+                • Billion = 1.000.000.000 (mil millones)<br>
+                • Trillion = 1.000.000.000.000 (un billón)<br>
+                ⚠️ Históricamente el BrE usaba "billion" para referirse a 10¹², pero adoptó la escala americana en el siglo XX.<br><br>
+                <b class="cat-rojo">📅 Formato de fechas:</b><br>
+                BrE: día/mes/año → 04/07/2026 = 4 de julio<br>
+                AmE: mes/día/año → 07/04/2026 = 4 de julio<br>
+                ⚠️ Fechas como 01/06/2026 se prestan a confusión: ¿1 de junio o 6 de enero?<br><br>
+                <b class="cat-rojo">🕐 Formato de hora:</b><br>
+                BrE: más común el formato de 12h con am/pm, pero también se usa el de 24h en contextos formales y transporte.<br>
+                AmE: casi exclusivamente 12h con am/pm en el habla cotidiana.`
+        },
+        'tema10': {
+            titulo: "Expresiones y Frases Hechas",
+            texto: `Cada variante tiene sus propias expresiones idiomáticas que pueden causar confusión o hasta situaciones cómicas entre hablantes de ambos lados.<br><br>
+                <b class="cat-rojo">🇬🇧 Expresiones típicas del BrE:</b><br>
+                • "Bob's your uncle" → ¡Y listo! / ¡Así de fácil! (sin equivalente directo en AmE)<br>
+                • "It's gone pear-shaped" → Todo salió mal<br>
+                • "Not my cup of tea" → No es lo mío<br>
+                • "Bite the bullet" → Aguantar el dolor / Tomar una decisión difícil<br>
+                • "It's a doddle" → Es pan comido<br>
+                • "Spending a penny" → Ir al baño (eufemismo)<br>
+                • "Chuffed to bits" → Muy contento/orgulloso<br>
+                • "Blimey!" → ¡Dios mío! / ¡Vaya!<br><br>
+                <b class="cat-rojo">🇺🇸 Expresiones típicas del AmE:</b><br>
+                • "Hit the sack" → Irse a dormir<br>
+                • "Piece of cake" → Pan comido / Muy fácil<br>
+                • "Break a leg" → ¡Mucha suerte! (especialmente en teatro)<br>
+                • "Ballpark figure" → Cifra aproximada<br>
+                • "Cost an arm and a leg" → Costar un ojo de la cara<br>
+                • "On the fence" → Indeciso / Sin tomar partido<br>
+                • "Bite off more than you can chew" → Abarcar más de lo que puedes<br>
+                • "The whole nine yards" → Todo, absolutamente todo<br><br>
+                <b class="cat-rojo">⚠️ Palabras que significan cosas distintas:</b><br>
+                • "Pants": BrE = ropa interior / AmE = pantalones<br>
+                • "Rubber": BrE = goma de borrar / AmE = condón (¡cuidado!)<br>
+                • "Fanny": BrE = genitales femeninos (vulgar) / AmE = trasero (informal)<br>
+                • "Bum": BrE = trasero o persona sin hogar / AmE = trasero<br>
+                • "Quite": BrE = más o menos ("It's quite good" = es bastante bueno, pero no increíble) / AmE = totalmente ("It's quite good" = es muy bueno)`
+        }
+    };
+
+    // Función para cargar contenido al hacer clic en un tema
+    function cargarTema(id) {
+        const contenidoDiv = document.getElementById('contenido');
+        const info = baseDeDatos[id];
+        if (info) {
+            contenidoDiv.innerHTML = `
+                <h2>${info.titulo}</h2>
+                <p>${info.texto}</p>
+            `;
+        }
+    }
+
+    // Asignar evento click a cada elemento con clase "tema"
+    document.querySelectorAll('.tema').forEach(el => {
+        el.addEventListener('click', () => {
+            const temaId = el.getAttribute('data-tema');
+            if (temaId) cargarTema(temaId);
+        });
+    });
+</script>
+</body>
+</html>
