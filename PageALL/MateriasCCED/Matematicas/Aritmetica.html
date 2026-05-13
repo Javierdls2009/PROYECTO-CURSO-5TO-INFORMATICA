@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aritmética | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">ARITMÉTICA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos de la aritmética</div>
+                <div class="tema" data-tema="caracteristicas">Propiedades de las operaciones básicas</div>
+                <div class="tema" data-tema="tipos">Tipos de números en aritmética</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre suma/resta y multiplicación/división</div>
+                <div class="tema" data-tema="literatura_cine">Aritmética en la vida cotidiana y ciencias</div>
+                <div class="tema" data-tema="redes_politica">Aritmética en tecnología y computación</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes y consejos para operar correctamente</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos de aritmética</div>
+                <div class="tema" data-tema="glosario">Glosario de términos aritméticos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Aritmética: definición, operaciones y aplicaciones</h2>
+                <p>La aritmética es la rama más antigua y fundamental de las matemáticas. Se dedica al estudio de los números y las operaciones elementales que se pueden realizar con ellos: suma, resta, multiplicación y división. Es la base de todas las demás áreas matemáticas.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Si tienes 3 manzanas y recibes 2 más, la aritmética te permite saber que ahora tienes 5 (3 + 2 = 5), una operación cotidiana que usamos sin pensar.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar el mundo de la aritmética en profundidad.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Aritmética: el lenguaje de los números que ordena nuestro mundo.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos de la aritmética</h2>
+                <p>La <strong>aritmética</strong> (del griego <em>arithmos</em>, 'número') es la rama de las matemáticas que se ocupa del estudio de los números y las operaciones básicas entre ellos: suma, resta, multiplicación y división. También estudia las propiedades de estas operaciones y cómo se aplican a distintos conjuntos numéricos (naturales, enteros, racionales, etc.).</p>
+                <p>Desde los primeros sistemas de conteo en la antigüedad (como los huesos de Ishango o las tablillas babilónicas), la aritmética ha sido esencial para el comercio, la astronomía, la construcción y la ciencia. Hoy sigue siendo la base de todo pensamiento cuantitativo.</p>
+                <p><strong>Importancia fundamental:</strong> Sin aritmética no existirían las finanzas, la ingeniería, la programación de computadoras ni siquiera las mediciones cotidianas como el tiempo o la temperatura. Es el pilar sobre el que se construyen el álgebra, la geometría y el cálculo.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo histórico:</strong> Los egipcios usaban la aritmética para calcular áreas de terrenos después de las inundaciones del Nilo. Sabían que multiplicar base por altura daba el área de un rectángulo, mucho antes de que se escribiera el álgebra.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Propiedades de las operaciones básicas</h2>
+                <p>Las cuatro operaciones aritméticas fundamentales cumplen propiedades que facilitan los cálculos y son la base del razonamiento matemático.</p>
+                <ul>
+                    <li><strong>Propiedad conmutativa:</strong> El orden de los sumandos no altera la suma (a + b = b + a). También aplica en multiplicación (a × b = b × a). No aplica en resta ni división.</li>
+                    <li><strong>Propiedad asociativa:</strong> Al sumar (o multiplicar) tres o más números, podemos agruparlos de cualquier manera sin cambiar el resultado: (a + b) + c = a + (b + c).</li>
+                    <li><strong>Propiedad distributiva:</strong> La multiplicación se distribuye sobre la suma: a × (b + c) = a × b + a × c. Es la clave para el álgebra.</li>
+                    <li><strong>Elemento neutro:</strong> En la suma, el 0 no altera el número (a + 0 = a). En la multiplicación, el 1 es el neutro (a × 1 = a).</li>
+                    <li><strong>Elemento inverso:</strong> Para cada número a existe un -a tal que a + (-a) = 0. Para la multiplicación (excepto 0), existe 1/a tal que a × (1/a) = 1.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de distributiva:</strong> 7 × (10 + 3) = 7×10 + 7×3 = 70 + 21 = 91. Mucho más rápido que hacer 7 × 13 directamente.
+                </div>
+            `,
+            tipos: `
+                <h2>Tipos de números en aritmética</h2>
+                <p>La aritmética trabaja con distintos conjuntos numéricos, cada uno con características y usos específicos.</p>
+                <ul>
+                    <li><strong>Números Naturales (N):</strong> Los que usamos para contar: 1, 2, 3, 4, ... (algunos incluyen el 0). Son infinitos y cerrados bajo suma y multiplicación.</li>
+                    <li><strong>Números Enteros (Z):</strong> Incluyen naturales, sus negativos y el cero: ..., -3, -2, -1, 0, 1, 2, 3, ... Permiten restar cualquier par de números.</li>
+                    <li><strong>Números Racionales (Q):</strong> Los que se expresan como fracción de dos enteros (a/b, con b ≠ 0). Incluyen decimales exactos y periódicos.</li>
+                    <li><strong>Números Primos:</strong> Naturales mayores que 1 que solo son divisibles entre 1 y sí mismos (2, 3, 5, 7, 11, ...). Son los átomos de la multiplicación.</li>
+                    <li><strong>Números Compuestos:</strong> Los naturales que pueden expresarse como producto de dos números menores (4, 6, 8, 9, 10...).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de números racionales:</strong> 0.75 = 3/4, 0.333... = 1/3. Toda fracción es un número racional, y cualquier decimal periódico también lo es.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias clave entre suma/resta y multiplicación/división</h2>
+                <p>Aunque todas son operaciones básicas, existen diferencias fundamentales en su comportamiento y aplicación.</p>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Aspecto</th><th>Suma / Resta</th><th>Multiplicación / División</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Efecto sobre la magnitud</strong> None<td>La suma aumenta (si el sumando es positivo), la resta disminuye. None<td>La multiplicación puede aumentar o disminuir según el factor (si es >1 aumenta, entre 0 y 1 disminuye). La división hace lo opuesto. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Orden de las operaciones</strong> None<td>Igual prioridad, se resuelven de izquierda a derecha (junto con multiplicación/división, según PEMDAS). None<td>Prioridad igual entre sí, y mayor prioridad que suma/resta (se resuelven antes). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Conmutatividad</strong> None<td>La suma es conmutativa; la resta NO lo es (a - b ≠ b - a). None<td>La multiplicación es conmutativa; la división NO lo es (a ÷ b ≠ b ÷ a). None</tr>
+                    <tr><td><strong>Elemento neutro</strong> None<td>El 0 para la suma (a+0=a). El 0 NO es neutro en resta. None<td>El 1 para multiplicación (a×1=a). El 1 no es neutro en división. None</tr>
+                </table>
+                <p><strong>Otro ejemplo comparativo:</strong></p>
+                <ul>
+                    <li>Suma: 5 + 3 = 8. Resta: 5 - 3 = 2 (no es lo mismo que 3 - 5 = -2).</li>
+                    <li>Multiplicación: 4 × 2 = 8. División: 4 ÷ 2 = 2 (mientras que 2 ÷ 4 = 0.5).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La multiplicación es una suma abreviada (3 × 4 = 4+4+4), pero tiene propiedades únicas como la distributiva que la hacen mucho más poderosa.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Aritmética en la vida cotidiana y en las ciencias</h2>
+                <p>Lejos de ser un tema abstracto, la aritmética nos acompaña en cada decisión y medición diaria. También es la herramienta básica de todas las disciplinas científicas.</p>
+                <p><strong>En la vida cotidiana:</strong></p>
+                <ul>
+                    <li><strong>Finanzas personales:</strong> Calcular presupuestos, porcentajes de descuento, intereses de préstamos o ahorros.</li>
+                    <li><strong>Cocina:</strong> Ajustar proporciones de ingredientes (si una receta es para 4 y queremos para 6, multiplicamos cada cantidad por 1.5).</li>
+                    <li><strong>Transporte:</strong> Calcular distancias, tiempos de viaje (velocidad = distancia/tiempo).</li>
+                    <li><strong>Construcción y bricolaje:</strong> Medir áreas para pintura, cortar materiales en fracciones.</li>
+                </ul>
+                <p><strong>En ciencias e ingeniería:</strong></p>
+                <ul>
+                    <li><strong>Física:</strong> Todas las leyes (como F = m × a) son relaciones aritméticas entre magnitudes.</li>
+                    <li><strong>Química:</strong> Estequiometría (proporciones de reactivos) usa reglas de tres y fracciones.</li>
+                    <li><strong>Biología:</strong> Cálculo de poblaciones, tasas de crecimiento, dosis de medicamentos.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo cotidiano:</strong> Un teléfono con 15% de descuento cuesta $250. ¿Cuál era su precio original? Resolvemos: $250 ÷ 0.85 = $294.12. Aritmética pura.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Aritmética en tecnología y computación</h2>
+                <p>En el corazón de todo dispositivo digital funciona la aritmética binaria. Los ordenadores realizan millones de operaciones por segundo usando solo unos y ceros.</p>
+                <p><strong>Ejemplos en sistemas digitales:</strong></p>
+                <ul>
+                    <li><strong>Sistema binario:</strong> Los números se representan con solo dos dígitos (0 y 1). Así, el 5 en decimal es 101₂ (1×4 + 0×2 + 1×1).</li>
+                    <li><strong>Operaciones lógicas (AND, OR, NOT):</strong> Son operaciones aritméticas en el álgebra de Boole, base de los circuitos.</li>
+                    <li><strong>Suma binaria:</strong> 1+1 = 10₂ (acarreo). Es la operación que ejecuta la Unidad Aritmético Lógica (ALU) del procesador.</li>
+                    <li><strong>Redundancia en RAID, códigos de detección de errores:</strong> Usan aritmética modular para proteger datos.</li>
+                </ul>
+                <p><strong>En programación:</strong> Los lenguajes manejan distintos tipos de datos numéricos (enteros, flotantes) y operadores aritméticos (+, -, *, /, %). La precisión y el desbordamiento son problemas clásicos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Precaución en computación:</strong> 0.1 + 0.2 no siempre da exactamente 0.3 en punto flotante debido a la representación binaria. ¡La aritmética tiene matices incluso para los ordenadores!
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes y consejos para operar correctamente</h2>
+                <p>La aritmética parece sencilla, pero ciertos errores se repiten una y otra vez. Conocerlos ayuda a evitarlos.</p>
+                <ul>
+                    <li><strong>Confundir la jerarquía de operaciones:</strong> 2 + 3 × 4 = 14 (no 20). La multiplicación tiene prioridad sobre la suma.</li>
+                    <li><strong>Olvidar el orden al combinar divisiones y multiplicaciones:</strong> 12 ÷ 3 × 2 = 8 (no 2). Se resuelve de izquierda a derecha.</li>
+                    <li><strong>Mal manejo de signos negativos:</strong> -5 - 3 = -8 (no -2). La resta de un positivo equivale a sumar el negativo.</li>
+                    <li><strong>Pensar que división es conmutativa:</strong> a ÷ b ≠ b ÷ a (excepto casos triviales).</li>
+                    <li><strong>Redondeo incorrecto:</strong> 2.345 redondeado a dos decimales es 2.35 (no 2.34).</li>
+                </ul>
+                <p><strong>Consejos para operar correctamente:</strong></p>
+                <ul>
+                    <li>Escribe explícitamente los paréntesis en operaciones combinadas.</li>
+                    <li>Comprueba el resultado con una operación inversa (ej. si dividiste, multiplica para verificar).</li>
+                    <li>Estima el resultado antes de calcular (si es 23×48, aproximadamente 20×50=1000, así sabes que 1104 es razonable).</li>
+                    <li>Practica cálculo mental a diario para ganar agilidad.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Regla mnemotécnica para jerarquía:</strong> <strong>P</strong>aréntesis, <strong>E</strong>xponentes, <strong>M</strong>ultiplicación y <strong>D</strong>ivisión (de izquierda a derecha), <strong>A</strong>dición y <strong>S</strong>ustracción (izq. a der.). Acrónimo: PEMDAS.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de aritmética</h2>
+                <p><strong>Ejercicio 1: Jerarquía de operaciones.</strong> Calcula paso a paso:</p>
+                <ol>
+                    <li>8 + 16 ÷ 4 × 2 - 3 = ?  (Solución: 8 + 4 × 2 - 3 = 8 + 8 - 3 = 13)</li>
+                    <li>(10 - 4) × (3 + 2) ÷ 5 = ? (Solución: 6 × 5 ÷ 5 = 30 ÷ 5 = 6)</li>
+                </ol>
+                <p><strong>Ejercicio 2: Propiedades distributiva y asociativa.</strong> Resuelve de dos maneras: 7 × (15 + 8).</p>
+                <ul>
+                    <li>Directo: 7 × 23 = 161.</li>
+                    <li>Distributiva: 7×15 + 7×8 = 105 + 56 = 161.</li>
+                </ul>
+                <p><strong>Ejercicio 3: Problema de porcentajes.</strong> Un ordenador cuesta $850. Aplican un 12% de descuento, luego un 8% de impuesto sobre el precio con descuento. ¿Precio final?</p>
+                <div class="bloque-ejemplo">
+                    <strong>Solución:</strong><br>
+                    Descuento: 850 × 0.12 = 102 → precio parcial = 748.<br>
+                    Impuesto: 748 × 0.08 = 59.84 → precio final = 748 + 59.84 = $807.84.
+                </div>
+                <p><strong>Ejercicio 4: Números primos.</strong> Descompón en factores primos: 84, 150, 196.</p>
+                <p><strong>Ejercicio 5: Operaciones con fracciones.</strong> Calcula: (3/4 + 2/3) ÷ (1/2 - 1/5).</p>
+                <p><strong>Respuesta del 5:</strong> Primer paréntesis: 9/12 + 8/12 = 17/12. Segundo: 5/10 - 2/10 = 3/10. División: (17/12) ÷ (3/10) = (17/12)×(10/3) = 170/36 = 85/18 ≈ 4.722.</p>
+            `,
+            glosario: `
+                <h2>Glosario de términos aritméticos</h2>
+                <ul>
+                    <li><strong>Sumando:</strong> Cada uno de los números que se suman. El resultado es la suma o total.</li>
+                    <li><strong>Minuendo y sustraendo:</strong> En una resta, el minuendo es el número al que se resta; el sustraendo es el que se resta. Resultado = diferencia.</li>
+                    <li><strong>Factor:</strong> Cada número que se multiplica. El resultado es el producto.</li>
+                    <li><strong>Dividendo, divisor, cociente y resto:</strong> En una división, el dividendo se divide entre el divisor; el resultado es el cociente, y si la división no es exacta, sobra un resto.</li>
+                    <li><strong>Múltiplo:</strong> Número que resulta de multiplicar otro por un entero. Ej: 12 es múltiplo de 3 (3×4).</li>
+                    <li><strong>Divisor:</strong> Número que divide exactamente a otro. Ej: 4 es divisor de 20 porque 20÷4=5 exacto.</li>
+                    <li><strong>Máximo Común Divisor (MCD):</strong> El mayor número que divide exactamente a dos o más números.</li>
+                    <li><strong>Mínimo Común Múltiplo (MCM):</strong> El menor número positivo que es múltiplo común de dos o más números.</li>
+                    <li><strong>Fracción:</strong> Expresión de una cantidad dividida entre otra, con numerador (arriba) y denominador (abajo).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Conocer la aritmética es como tener una navaja suiza mental: resuelves desde la cuenta del supermercado hasta problemas complejos de ciencia y tecnología.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

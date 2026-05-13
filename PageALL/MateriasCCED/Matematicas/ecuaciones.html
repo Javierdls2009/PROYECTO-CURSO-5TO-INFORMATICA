@@ -3,36 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Ecuaciones | AcademiaCCED</title>
     <link rel="stylesheet" href="/PageALL/style_materias.css">
-    <!-- estilos propios de esta sola pagina -->
     <style>
-        /* colores */
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
         :root {
             --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
         }
 
-        /* estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
             background-color: var(--color-fondo);
         }
 
-        /* barra de navegacion superior */
         .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
-            border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
         }
 
-        /* boton volver */
         .boton-volver a {
             text-decoration: none;
             color: var(--color-principal);
@@ -40,324 +45,333 @@
             font-size: 1rem;
         }
 
-        /* titulo de la materia */
         .titulo-materia {
             font-weight: 800;
             color: var(--color-principal);
             font-size: 1.5rem;
         }
 
-        /* contenedor principal */
         .contenedor {
             display: flex;
             min-height: 100vh;
         }
 
-        /*barra lateral con foto del profesor */
         .barra-lateral {
-            width: 300px;
+            width: 320px;
             background-color: var(--blanco);
-            border-right: 1px solid #ddd;
+            border-right: 1px solid var(--gris-borde);
             padding: 40px 20px;
-            text-align: center;
         }
 
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
         .barra-lateral h3 {
-            margin: 10px 0;
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
         }
 
-        /* linea separadora */
-        .barra-lateral hr {
-            opacity: 0.2;
-            margin: 20px 0;
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* informacion del profesor */
-        .info-profesor {
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
         }
 
-        .info-profesor p {
-            margin: 10px 0;
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
         }
 
-        /* zona principal */
         .zona-herramientas {
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        /* encabezado en la zona */
-        .zona-herramientas h2 {
+        #contenido h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
         }
 
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
         }
 
-        /* cada tarjeta */
-        .tarjeta-herramienta {
-            background: var(--blanco);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        #contenido li {
+            margin: 8px 0;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
         }
 
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* pie de pagina */
         footer {
             text-align: center;
             padding: 20px;
             background: white;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid var(--gris-borde);
             color: #666;
             font-size: 0.9rem;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
 
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
     </style>
-  
-
-
 </head>
 <body>
 
-    <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Matematicas/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
         <div class="titulo-materia">ECUACIONES</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <!-- contenido principal -->
     <div class="contenedor">
-        
-        <!-- barra lateral -->
         <aside class="barra-lateral">
-            <h3>Ecuaciones</h3>
-            <hr>
-            <div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Ecuaciones Lineales</div>
-<br>
-  <div class="tema" onclick="mostrar('Tema2')">Ecuaciones cuadráticas</div>
-  <br>
-  <div class="tema" onclick="mostrar('Tema3')">Ecuaciones polinómicas</div>
-  <br>
-  <div class="tema" onclick="mostrar('Tema4')">Ecuaciones racionales</div>
-  <br>
-  <div class="tema" onclick="mostrar('Tema5')">Ecuaciones radicales</div>
-  <br>
-  <div class="tema" onclick="mostrar('Tema6')">Ecuaciones exponenciales y logarítmicas</div>
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y partes de una ecuación</div>
+                <div class="tema" data-tema="caracteristicas">Propiedades de las igualdades</div>
+                <div class="tema" data-tema="tipos">Tipos de ecuaciones (lineales, cuadráticas, etc.)</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre ecuación, identidad y función</div>
+                <div class="tema" data-tema="literatura_cine">Ecuaciones en la ciencia y la tecnología</div>
+                <div class="tema" data-tema="redes_politica">Ecuaciones en programación y videojuegos</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes al resolver ecuaciones</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos con ecuaciones</div>
+                <div class="tema" data-tema="glosario">Glosario de términos</div>
             </div>
         </aside>
 
-        <!-- zona de texto en la derecha -->
         <main class="zona-herramientas">
-                <div id="contenido">
-                    <h2>Introducción a Ecuaciones</h2> 
-                <p>Selecciona un tema del menú lateral para aprender más sobre ecuaciones.</p>
+            <div id="contenido">
+                <h2>Ecuaciones: definición, tipos y métodos de resolución</h2>
+                <p>Una <strong>ecuación</strong> es una igualdad matemática entre dos expresiones que contiene una o más incógnitas. Resolver una ecuación significa encontrar el valor o valores de las incógnitas que hacen verdadera la igualdad.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> En la ecuación 2x + 3 = 7, la incógnita es x. Al sustituir x = 2, se cumple: 2·2 + 3 = 7. Por tanto, x = 2 es la solución.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar el mundo de las ecuaciones en profundidad.</p>
             </div>
         </main>
-
     </div>
 
-    <!-- pie de pagina -->
     <footer>
-        <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
+        <p>© 2025 AcademiaCCED · Ecuaciones: el arte de encontrar el valor oculto que equilibra la balanza.</p>
     </footer>
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
 
-  if (tema === "Tema1") {
-    contenido.innerHTML = `<h2>1. Ecuaciones lineales</h2>
-<p><strong>Definición:</strong> Ecuaciones de primer grado (la variable tiene exponente 1).</p>
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y partes de una ecuación</h2>
+                <p>Una <strong>ecuación</strong> es una proposición matemática en la que dos expresiones (miembros) se igualan mediante el símbolo "=". Contiene uno o más valores desconocidos llamados <strong>incógnitas</strong> (generalmente representados por letras). Resolver una ecuación es hallar el conjunto de valores de las incógnitas que satisfacen la igualdad.</p>
+                <p><strong>Partes de una ecuación:</strong></p>
+                <ul>
+                    <li><strong>Miembros:</strong> Cada una de las expresiones a izquierda y derecha del signo "=". Primer miembro (izquierdo), segundo miembro (derecho).</li>
+                    <li><strong>Términos:</strong> Cada sumando de cada miembro. Pueden ser numéricos (constantes) o algebraicos (con incógnitas).</li>
+                    <li><strong>Incógnitas:</strong> Variables cuyo valor se busca (x, y, z, etc.).</li>
+                    <li><strong>Grado:</strong> El mayor exponente de la incógnita. Por ejemplo, x² es grado 2.</li>
+                    <li><strong>Solución o raíz:</strong> El valor que verifica la ecuación.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo analizado:</strong> En 3x - 5 = 2x + 7:<br>
+                    - Primer miembro: 3x - 5<br>
+                    - Segundo miembro: 2x + 7<br>
+                    - Incógnita: x<br>
+                    - Grado: 1 (lineal)<br>
+                    - Solución: x = 12.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Propiedades de las igualdades (operaciones permitidas)</h2>
+                <p>Para resolver ecuaciones, podemos aplicar operaciones que mantienen la igualdad. Estas son las <strong>propiedades de la igualdad</strong>:</p>
+                <ul>
+                    <li><strong>Propiedad reflexiva:</strong> a = a. Toda expresión es igual a sí misma.</li>
+                    <li><strong>Propiedad simétrica:</strong> Si a = b, entonces b = a.</li>
+                    <li><strong>Propiedad transitiva:</strong> Si a = b y b = c, entonces a = c.</li>
+                    <li><strong>Propiedad uniforme (suma/resta):</strong> Si a = b, entonces a ± c = b ± c. Podemos sumar o restar la misma cantidad a ambos lados.</li>
+                    <li><strong>Propiedad uniforme (multiplicación/división):</strong> Si a = b, entonces a·c = b·c (si c ≠ 0). También a/c = b/c (c ≠ 0).</li>
+                    <li><strong>Regla del factor común y cancelación:</strong> Si a·c = b·c y c ≠ 0, entonces a = b.</li>
+                </ul>
+                <p>Gracias a estas propiedades, podemos <strong>trasponer términos</strong>: mover un término de un miembro al otro cambiando su signo (suma/resta) o pasarlo multiplicando/dividiendo según corresponda.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de transposición:</strong> 3x + 8 = 20 → 3x = 20 - 8 → 3x = 12 → x = 12/3 → x = 4.
+                </div>
+            `,
+            tipos: `
+                <h2>Tipos de ecuaciones según su estructura y grado</h2>
+                <p>Existen muchas clasificaciones de ecuaciones. Las más comunes son:</p>
+                <ul>
+                    <li><strong>Ecuaciones lineales (primer grado):</strong> La incógnita tiene exponente 1. Forma general: ax + b = 0, con a ≠ 0. Ej: 2x - 5 = 3.</li>
+                    <li><strong>Ecuaciones cuadráticas (segundo grado):</strong> Ax² + Bx + C = 0, con A ≠ 0. Se resuelven por factorización, completando cuadrados o fórmula general: x = [-B ± √(B² - 4AC)]/(2A).</li>
+                    <li><strong>Ecuaciones cúbicas y de grado superior:</strong> Grado 3 o más. Pueden resolverse por métodos específicos (Ruffini, etc.).</li>
+                    <li><strong>Ecuaciones racionales:</strong> Contienen fracciones polinómicas (ej: (x+1)/(x-2) = 3).</li>
+                    <li><strong>Ecuaciones radicales (irracionales):</strong> La incógnita aparece dentro de una raíz (ej: √(x+5) = x - 1).</li>
+                    <li><strong>Ecuaciones exponenciales y logarítmicas:</strong> La incógnita está en el exponente o dentro de un logaritmo (ej: 2^x = 8).</li>
+                    <li><strong>Sistemas de ecuaciones:</strong> Conjunto de dos o más ecuaciones con varias incógnitas. Se resuelven por sustitución, igualación, reducción o métodos matriciales.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de ecuación cuadrática:</strong> x² - 5x + 6 = 0 → (x-2)(x-3)=0 → soluciones x=2, x=3.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias clave entre ecuación, identidad y función</h2>
+                <p>A menudo se confunden estos conceptos. Aquí aclaramos sus diferencias.</p>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Concepto</th><th>Ecuación</th><th>Identidad</th><th>Función</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Definición</td><td>Igualdad condicional, solo se cumple para algunos valores de las variables.</td><td>Igualdad que se cumple para todos los valores permitidos de las variables.</td><td>Relación que asigna a cada elemento de un conjunto (dominio) un único elemento de otro (codominio). Su expresión suele ser y = f(x).</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Ejemplo</td><td>2x + 3 = 7 (solo x=2 la satisface).</td><td>(x+1)² = x² + 2x + 1 (verdad para todo x real).</td><td>f(x) = 2x + 3 (define una regla, no es una igualdad que resolver).</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Interpretación</td><td>Busca valores específicos (soluciones).</td><td>Es una verdad universal dentro del sistema algebraico.</td><td>Describe una correspondencia, generalmente se escribe como y = expresión.</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td>Símbolo</td><td>= (con condición implícita).</td><td>≡ (a veces) o simplemente = indicando la validez general.</td><td>f(x) o notación de flecha.</td></tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo para distinguir:</strong> "x² = 4" es una ecuación (soluciones x=2, x=-2). "x² - 4 = (x-2)(x+2)" es una identidad (siempre cierta). "f(x)=x²" es una función que asigna a cada x su cuadrado.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Ecuaciones en la ciencia y la tecnología</h2>
+                <p>Las ecuaciones son el lenguaje con el que la ciencia describe las leyes de la naturaleza. Sin ecuaciones, no habría física, química ni ingeniería moderna.</p>
+                <p><strong>Física:</strong></p>
+                <ul>
+                    <li>Segunda ley de Newton: F = m·a (ecuación vectorial).</li>
+                    <li>Gravitación universal: F = G·M·m / r².</li>
+                    <li>Relatividad de Einstein: E = m·c².</li>
+                    <li>Ecuaciones de Maxwell del electromagnetismo (sistema de ecuaciones diferenciales).</li>
+                </ul>
+                <p><strong>Química:</strong> Las ecuaciones químicas balanceadas (ej: 2H₂ + O₂ → 2H₂O) son un tipo de ecuación estequiométrica que conserva átomos.</p>
+                <p><strong>Economía:</strong> La ecuación de intercambio cuantitativo: M·V = P·T (dinero por velocidad = precios por transacciones).</p>
+                <p><strong>Ingeniería:</strong> La ecuación de continuidad en fluidos: A₁·v₁ = A₂·v₂. La ley de Ohm: V = I·R.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo histórico:</strong> La ecuación de Schrödiger (iℏ ∂Ψ/∂t = ĤΨ) es fundamental en mecánica cuántica. Resolverla permite conocer el comportamiento de partículas subatómicas.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Ecuaciones en programación y videojuegos</h2>
+                <p>En el mundo digital, las ecuaciones aparecen constantemente, aunque a menudo estén ocultas tras algoritmos.</p>
+                <p><strong>Programación:</strong> Resolver ecuaciones es común en simulaciones, optimización y gráficos. En Python, por ejemplo, se usan librerías como SymPy (simbólico) o NumPy (numérico).</p>
+                <p><strong>Videojuegos:</strong> La física de un juego se basa en sistemas de ecuaciones. Por ejemplo, el movimiento de un personaje bajo gravedad: y = y₀ + v₀·t - (1/2)·g·t². Las colisiones requieren resolver ecuaciones de intersección entre rayos y polígonos.</p>
+                <p><strong>Inteligencia artificial:</strong> Los modelos de regresión (lineal, polinómica) se basan en ecuaciones lineales: Y = β₀ + β₁X₁ + ... + βₙXₙ. Las redes neuronales utilizan ecuaciones de activación (como sigmoide).</p>
+                <p><strong>Criptografía:</strong> El algoritmo RSA utiliza ecuaciones modulares. La seguridad de las curvas elípticas se basa en la dificultad de resolver ecuaciones discretas.</p>
+                <div class="bloque-ejemplo">
+                    <strong>En motores gráficos (Unity, Unreal):</strong> Para que un misil impacte un objetivo en movimiento, se resuelve la ecuación de intersección entre la trayectoria del misil y la del blanco. Es un sistema de ecuaciones de segundo grado.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes al resolver ecuaciones y cómo evitarlos</h2>
+                <ul>
+                    <li><strong>Distribuir incorrectamente un signo negativo:</strong> Al restar un paréntesis: 5 - (x - 3) = 5 - x + 3 (no 5 - x - 3).</li>
+                    <li><strong>Olvidar que dividir entre cero no está permitido:</strong> Al multiplicar o dividir por una expresión que contiene la incógnita, puede perderse la restricción (ej: si multiplicamos por (x-2), luego hay que excluir x=2).</li>
+                    <li><strong>Elevar al cuadrado ambos lados sin considerar soluciones extrañas:</strong> En ecuaciones radicales, al elevar al cuadrado se introducen soluciones que no verifican la original. Siempre comprobar.</li>
+                    <li><strong>Confundir la fórmula general de cuadráticas:</strong> x = [-b ± √(b² - 4ac)]/(2a). No olvidar el denominador y el signo ±.</li>
+                    <li><strong>Cambiar de signo incorrectamente al transponer:</strong> Si 4x - 3 = 2x + 7 → 4x - 2x = 7 + 3 (bien). Error común: 4x - 2x = 7 - 3 (mal).</li>
+                </ul>
+                <p><strong>Consejos para resolver correctamente:</strong></p>
+                <ul>
+                    <li>Simplifica cada miembro por separado antes de transponer.</li>
+                    <li>Comprueba siempre la solución en la ecuación original.</li>
+                    <li>Escribe todas las operaciones paso a paso.</li>
+                    <li>En ecuaciones con fracciones, multiplica por el mínimo común múltiplo para eliminarlas.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Regla de oro:</strong> "Lo que hagas a un lado de la igualdad, hazlo al otro". Mantén la igualdad balanceada como una balanza.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos con ecuaciones</h2>
+                <p><strong>Ejercicio 1: Ecuación lineal.</strong> Resuelve 5(x - 2) = 3x + 4.</p>
+                <ul><li>Solución: 5x - 10 = 3x + 4 → 5x - 3x = 4 + 10 → 2x = 14 → x = 7.</li></ul>
+                <p><strong>Ejercicio 2: Ecuación con fracciones.</strong> (x+1)/3 + (x-2)/2 = 1.</p>
+                <ul><li>Solución: Multiplicar por 6: 2(x+1) + 3(x-2) = 6 → 2x+2+3x-6=6 → 5x-4=6 → 5x=10 → x=2.</li></ul>
+                <p><strong>Ejercicio 3: Ecuación cuadrática.</strong> x² - 8x + 15 = 0.</p>
+                <ul><li>Solución: Factorizando (x-3)(x-5)=0 → x=3, x=5.</li></ul>
+                <p><strong>Ejercicio 4: Ecuación radical.</strong> √(3x+1) - 2 = 0.</p>
+                <ul><li>Solución: √(3x+1) = 2 → elevando al cuadrado: 3x+1=4 → 3x=3 → x=1. Comprobación: √(4)-2=2-2=0, correcto.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5: Problema de aplicación.</strong> La suma de un número y su doble es 45. Halla el número.<br>
+                    <strong>Solución:</strong> Sea x el número. Ecuación: x + 2x = 45 → 3x = 45 → x = 15.
+                </div>
+                <p><strong>Ejercicio 6 (sistema de ecuaciones):</strong> Resuelve: 2x + y = 8, x - y = 1.</p>
+                <ul><li>Solución: Sumando: 3x = 9 → x=3. Luego y = 8 - 2·3 = 2. Solución: x=3, y=2.</li></ul>
+            `,
+            glosario: `
+                <h2>Glosario de términos sobre ecuaciones</h2>
+                <ul>
+                    <li><strong>Incógnita:</strong> Variable desconocida que se busca (x, y, z, etc.).</li>
+                    <li><strong>Solución o raíz:</strong> Valor que al sustituir la incógnita convierte la ecuación en una igualdad verdadera.</li>
+                    <li><strong>Conjunto solución:</strong> Todos los valores que satisfacen la ecuación.</li>
+                    <li><strong>Ecuación compatible determinada:</strong> Tiene un número finito de soluciones.</li>
+                    <li><strong>Ecuación compatible indeterminada:</strong> Tiene infinitas soluciones (ejemplo: 0·x = 0).</li>
+                    <li><strong>Ecuación incompatible (sin solución):</strong> No existe valor que la cumpla (ejemplo: x = x + 1).</li>
+                    <li><strong>Ecuación equivalente:</strong> Aquella que tiene el mismo conjunto solución que otra.</li>
+                    <li><strong>Discriminante (Δ):</strong> En una ecuación cuadrática Ax²+Bx+C=0, Δ = B² - 4AC. Indica el número de soluciones reales: Δ>0 (dos), Δ=0 (una doble), Δ<0 (dos complejas).</li>
+                    <li><strong>Método de sustitución:</strong> Técnica para resolver sistemas despejando una variable y reemplazando en otra ecuación.</li>
+                    <li><strong>Método de reducción (eliminación):</strong> Sumar o restar ecuaciones para eliminar una variable.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Saber resolver ecuaciones es una habilidad transversal que se aplica desde la física hasta la economía y la programación. ¡Practicar es la clave del dominio!
+                </div>
+            `
+        };
 
-<p><strong>Forma:</strong> <code>ax + b = 0</code></p>
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
 
-<p><strong>Ejemplo:</strong> <code>2x + 4 = 0</code></p>
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
 
-<p><strong>Solución:</strong></p>
-<p><code>x = -2</code></p>
-
-<p><strong>Características:</strong></p>
-<ul>
-<li>Gráfica es una línea recta</li>
-<li>Tiene una sola solución</li>
-</ul>
-</div>
-
-    `;
-  }
-
-  if (tema === "Tema2") {
-    contenido.innerHTML = `
-    <h2>2. Ecuaciones cuadráticas</h2>
-<p><strong>Definición:</strong> Ecuaciones de segundo grado.</p>
-
-<p><strong>Forma:</strong> <code>ax² + bx + c = 0</code></p>
-
-<p><strong>Fórmula general:</strong></p>
-<p><code>x = (-b ± √(b² - 4ac)) / (2a)</code></p>
-
-<p><strong>Ejemplo:</strong> <code>x² - 5x + 6 = 0</code></p>
-
-<p><strong>Soluciones:</strong></p>
-<p><code>x = 2, x = 3</code></p>
-</div>
-
-    `;
-  }
-
-  if (tema === "Tema3") {
-    contenido.innerHTML = `
-  <h2>3. Ecuaciones polinómicas</h2>
-<p><strong>Definición:</strong> Ecuaciones con potencias mayores (grado mayor a 2).</p>
-
-<p><strong>Ejemplo:</strong> <code>x³ - 2x² + x - 1 = 0</code></p>
-
-<p><strong>Características:</strong></p>
-<ul>
-<li>Pueden tener varias soluciones</li>
-<li>Se resuelven por factorización o métodos numéricos</li>
-</ul>
-</div>
-    `;
-  }
-
-  if (tema === "Tema4") {
-    contenido.innerHTML = `
-     <h2>4. Ecuaciones racionales</h2>
-<p><strong>Definición:</strong> Contienen fracciones algebraicas.</p>
-
-<p><strong>Ejemplo:</strong> <code>(x + 1) / (x - 2) = 3</code></p>
-
-<p><strong>Importante:</strong></p>
-<ul>
-<li>No se puede dividir entre 0</li>
-<li>Se eliminan denominadores multiplicando</li>
-</ul>
-</div>
-    `;
-  }
-
-  if (tema === "Tema5") {
-    contenido.innerHTML = `
-    <h2>5. Ecuaciones radicales</h2>
-   <p><strong>Definición:</strong> Contienen raíces (√).</p>
-
-<p><strong>Ejemplo:</strong> <code>√(x + 4) = 3</code></p>
-
-<p><strong>Solución:</strong></p>
-<p><code>x = 5</code></p>
-
-<p><strong>Método:</strong></p>
-<ul>
-<li>Elevar al cuadrado ambos lados</li>
-<li>Resolver ecuación resultante</li>
-</ul>
-</div>
-    `;
-  }
-
-  if (tema === "Tema6") {
-    contenido.innerHTML = `
-   <h2>6. Ecuaciones exponenciales y logarítmicas</h2>
-
-<p><strong>Exponenciales:</strong></p>
-<p><code>2^x = 8</code> → <code>x = 3</code></p>
-
-<p><strong>Logarítmicas:</strong></p>
-<p><code>log(x) = 2</code> → <code>x = 100</code></p>
-
-<p><strong>Propiedades importantes:</strong></p>
-<ul>
-<li><code>a^m · a^n = a^(m+n)</code></li>
-<li><code>log(ab) = log(a) + log(b)</code></li>
-</ul>
-</div>
-    `;
-  }
-
-}
-</script>
+        mostrarTema('definicion');
+    </script>
 </body>
 </html>

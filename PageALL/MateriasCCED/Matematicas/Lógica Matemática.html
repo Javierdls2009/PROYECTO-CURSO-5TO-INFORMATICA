@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lógica Matemática | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">LÓGICA MATEMÁTICA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos de la lógica matemática</div>
+                <div class="tema" data-tema="caracteristicas">Proposiciones y conectores lógicos</div>
+                <div class="tema" data-tema="tipos">Tipos de lógica: proposicional y de predicados</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre lógica proposicional y de primer orden</div>
+                <div class="tema" data-tema="literatura_cine">Tablas de verdad y tautologías</div>
+                <div class="tema" data-tema="redes_politica">Lógica en circuitos digitales y programación</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes y falacias</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos de lógica</div>
+                <div class="tema" data-tema="glosario">Glosario de términos lógicos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Lógica Matemática: el arte de razonar con precisión</h2>
+                <p>La <strong>lógica matemática</strong> es la disciplina que estudia los métodos y principios del razonamiento válido mediante un lenguaje formal. Es la base de las matemáticas, la computación y la inteligencia artificial, proporcionando las reglas para distinguir argumentos correctos de incorrectos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Si es verdad que "todos los humanos son mortales" y "Sócrates es humano", entonces lógicamente se deduce que "Sócrates es mortal". La lógica formaliza este tipo de inferencias.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar los fundamentos de la lógica matemática.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Lógica matemática: el lenguaje de la verdad y la demostración.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos de la lógica matemática</h2>
+                <p>La <strong>lógica matemática</strong> (o lógica simbólica) se originó con Aristóteles, pero su desarrollo moderno comenzó en el siglo XIX con Boole, Frege, Russell y Gödel. Su objetivo es representar el razonamiento mediante un lenguaje formal (símbolos) y reglas precisas de inferencia, eliminando la ambigüedad del lenguaje natural.</p>
+                <p><strong>Conceptos fundamentales:</strong></p>
+                <ul>
+                    <li><strong>Proposición:</strong> Enunciado que puede ser verdadero o falso, pero no ambas cosas a la vez. Ej: "2 + 2 = 4" (verdadero), "París es la capital de Italia" (falso).</li>
+                    <li><strong>Valor de verdad:</strong> Verdad (V, 1) o Falsedad (F, 0).</li>
+                    <li><strong>Conectores lógicos:</strong> Operadores que combinan proposiciones (negación, conjunción, disyunción, implicación, equivalencia).</li>
+                    <li><strong>Fórmula bien formada (fbf):</strong> Expresión construida según reglas sintácticas de la lógica.</li>
+                    <li><strong>Inferencia:</strong> Proceso de derivar una nueva proposición (conclusión) a partir de otras (premisas).</li>
+                    <li><strong>Argumento válido:</strong> Si las premisas son verdaderas, la conclusión necesariamente también lo es.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de proposición:</strong> "Está lloviendo". No necesita ser verdad ahora, solo debe tener la capacidad de serlo o no. "¿Qué hora es?" no es proposición (no es declarativa).
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Proposiciones y conectores lógicos básicos</h2>
+                <ul>
+                    <li><strong>Negación (¬, ~):</strong> Invierte el valor de verdad. ¬p es verdadero si p es falso, y falso si p es verdadero.</li>
+                    <li><strong>Conjunción (∧, &):</strong> p ∧ q es verdadero solo si ambas son verdaderas ("y").</li>
+                    <li><strong>Disyunción inclusiva (∨):</strong> p ∨ q es verdadero si al menos una es verdadera ("o").</li>
+                    <li><strong>Disyunción exclusiva (⊕, XOR):</strong> p ⊕ q es verdadero si exactamente una es verdadera (una y solo una).</li>
+                    <li><strong>Implicación (→):</strong> p → q ("si p entonces q"). Solo es falsa cuando p es verdadera y q es falsa. El antecedente falso hace verdadera toda implicación.</li>
+                    <li><strong>Bicondicional (↔, ≡):</strong> p ↔ q es verdadero si ambas tienen el mismo valor de verdad ("si y solo si").</li>
+                </ul>
+                <p><strong>Prioridad de operadores (de mayor a menor):</strong> ¬, ∧, ∨, →, ↔. Se usan paréntesis para cambiar el orden.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> La expresión "Si llueve entonces me mojo, y no me mojo" se formaliza como (p → q) ∧ ¬q, donde p="llueve", q="me mojo".
+                </div>
+            `,
+            tipos: `
+                <h2>Tipos de lógica: proposicional y de predicados</h2>
+                <p><strong>Lógica proposicional (o de enunciados):</strong> Trabaja con proposiciones atómicas (p, q, r) sin analizar su estructura interna. Se enfoca en cómo los conectores determinan el valor de verdad de proposiciones compuestas. Es la base de los circuitos lógicos.</p>
+                <p><strong>Lógica de predicados (o de primer orden):</strong> Extiende la lógica proposicional permitiendo cuantificar sobre individuos. Introduce:</p>
+                <ul>
+                    <li><strong>Constantes:</strong> Símbolos que representan objetos específicos (ej: a = "Sócrates").</li>
+                    <li><strong>Variables:</strong> x, y, z que representan objetos genéricos.</li>
+                    <li><strong>Predicados:</strong> Propiedades (unarios: Hombre(x)) o relaciones (binarios: Mayor(x,y)).</li>
+                    <li><strong>Cuantificadores:</strong> Universal (∀x) "para todo x" y existencial (∃x) "existe al menos un x".</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de lógica de predicados:</strong> "Todos los hombres son mortales" se escribe ∀x (Hombre(x) → Mortal(x)). "Algún número es primo" se escribe ∃x (Primo(x)).
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias entre lógica proposicional y lógica de primer orden</h2>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Aspecto</th><th>Lógica proposicional</th><th>Lógica de primer orden</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Unidades básicas</strong> None<td>Proposiciones atómicas (p, q, r). None<td>Términos (constantes, variables) y predicados. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Capacidad expresiva</strong> None{longdiv}Limitada: no puede expresar cuantificadores ni relaciones internas. None<td>Más potente: puede hablar de todos o algunos elementos de un dominio. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Ejemplo de enunciado</strong> None<td>p → q (si llueve entonces me mojo). None<td>∀x (Perro(x) → TieneCola(x)). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Decidibilidad</strong> None<td>Decidible: existe algoritmo para saber si una fórmula es tautología. None<td>Semi-decidible: no hay algoritmo general para todas las fórmulas. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Uso en computación</strong> None<td>Circuitos digitales, álgebra booleana. None<td>Bases de datos deductivas, inteligencia artificial, Prolog. None</tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo comparativo:</strong> "Todos los estudiantes son inteligentes" no puede expresarse en lógica proposicional (no hay cuantificadores). En cambio, ∀x (Estudiante(x) → Inteligente(x)) es correcto.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Tablas de verdad y tautologías</h2>
+                <p>Una <strong>tabla de verdad</strong> enumera todas las combinaciones posibles de valores de verdad de las proposiciones atómicas y muestra el resultado de una fórmula para cada combinación.</p>
+                <p><strong>Tautología:</strong> Fórmula que es verdadera para todas las interpretaciones (columna final todo V). Ej: p ∨ ¬p (principio del tercero excluido).</p>
+                <p><strong>Contradicción:</strong> Siempre falsa. Ej: p ∧ ¬p.</p>
+                <p><strong>Contingencia:</strong> A veces verdadera, a veces falsa.</p>
+                <p><strong>Equivalencia lógica:</strong> Dos fórmulas son equivalentes si tienen la misma tabla de verdad (mismos valores para todas las combinaciones). Leyes importantes:</p>
+                <ul>
+                    <li>Doble negación: ¬¬p ≡ p</li>
+                    <li>Leyes de De Morgan: ¬(p ∧ q) ≡ ¬p ∨ ¬q; ¬(p ∨ q) ≡ ¬p ∧ ¬q</li>
+                    <li>Conmutatividad: p ∧ q ≡ q ∧ p; p ∨ q ≡ q ∨ p</li>
+                    <li>Distributividad: p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r); p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)</li>
+                    <li>Implicación: p → q ≡ ¬p ∨ q</li>
+                    <li>Contrarrecíproco: p → q ≡ ¬q → ¬p</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Tabla de verdad de p → q:</strong><br>
+                    p V V F F<br>
+                    q V F V F<br>
+                    p→q V F V V<br>
+                    Se observa que solo es falsa cuando p es V y q es F.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Lógica en circuitos digitales y programación</h2>
+                <p>La lógica booleana es el fundamento de los circuitos electrónicos digitales. Cada operación lógica se implementa con puertas lógicas (AND, OR, NOT, NAND, NOR, XOR). Los procesadores ejecutan instrucciones combinando millones de estas puertas.</p>
+                <p><strong>En programación:</strong> Las expresiones condicionales (if, while) utilizan conectores lógicos. Ejemplo en Python: if (edad >= 18 and tiene_licencia): print("Puede conducir").</p>
+                <p><strong>Bases de datos relacionales:</strong> Las consultas SQL usan operadores lógicos (AND, OR, NOT) en la cláusula WHERE.</p>
+                <p><strong>Inteligencia artificial:</strong> La lógica de primer orden es la base de los sistemas expertos y de lenguajes como Prolog. El razonamiento automático (teoremas, planes) se fundamenta en lógica. Los sistemas de inferencia lógica son esenciales en demostradores de teoremas (Coq, Isabelle).</p>
+                <p><strong>Verificación de hardware y software:</strong> Se utilizan técnicas formales (model checking, SAT solvers) para comprobar que los diseños cumplen especificaciones lógicas, evitando errores.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en un programa:</strong> Para controlar el acceso a un área restringida: (tarjeta_válida AND huella_correcta) OR (código_secreto AND supervisor_aprueba). Esta expresión lógica se implementa directamente en el software o en un circuito.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes y falacias lógicas</h2>
+                <ul>
+                    <li><strong>Confundir implicación con equivalencia:</strong> p → q no es lo mismo que q → p. Ejemplo: "Si llueve, el suelo se moja" no implica "Si el suelo se moja, entonces llueve" (pudo haber sido una manguera).</li>
+                    <li><strong>Negación incorrecta de un condicional:</strong> ¬(p → q) ≡ p ∧ ¬q, NO es ¬p → ¬q ni p → ¬q.</li>
+                    <li><strong>Falacia de afirmación del consecuente:</strong> Si p→q y q es verdadero, NO se puede concluir p. (Ej: "Si es un perro, tiene pelo. Tiene pelo, luego es un perro" – falso, puede ser un gato).</li>
+                    <li><strong>Falacia de negación del antecedente:</strong> Si p→q y ¬p, no se puede concluir ¬q. (Ej: "Si es perro, ladra. No es perro, luego no ladra" – falso, puede ladrar otro animal).</li>
+                    <li><strong>Confundir la disyunción inclusiva con exclusiva:</strong> En lenguaje natural "o" a veces es exclusivo, pero en lógica estándar ∨ es inclusivo. Para exclusivo se usa ⊕.</li>
+                    <li><strong>Olvidar las prioridades de operadores:</strong> Escribir p ∧ q ∨ r sin paréntesis es ambiguo; se asume (p ∧ q) ∨ r según prioridad, pero mejor usar paréntesis.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de falacia:</strong> "Si estudias, aprobarás. No estudiaste. Por tanto, no aprobarás." Es la negación del antecedente, inválida. Pudiste haber aprobado por otros motivos (por ejemplo, ya sabías la materia).
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de lógica matemática</h2>
+                <p><strong>Ejercicio 1: Tabla de verdad.</strong> Construye la tabla de verdad para (p ∧ q) → (p ∨ q). ¿Es tautología, contingencia o contradicción?</p>
+                <ul><li>Solución: Siempre verdadera (tautología). Para todas las combinaciones, el condicional es V (nunca se da antecedente V con consecuente F).</li></ul>
+                <p><strong>Ejercicio 2: Simplificación lógica.</strong> Simplifica ¬(p ∨ q) usando leyes de De Morgan.</p>
+                <ul><li>Solución: ¬(p ∨ q) ≡ ¬p ∧ ¬q.</li></ul>
+                <p><strong>Ejercicio 3: Equivalencias.</strong> Demuestra que p → q es equivalente a ¬p ∨ q.</p>
+                <ul><li>Solución: Comparando tablas de verdad, ambas tienen los mismos valores.</li></ul>
+                <p><strong>Ejercicio 4: Formalización.</strong> Escribe en lógica de predicados: "Todos los números pares son divisibles por 2".</p>
+                <ul><li>Solución: ∀x (Par(x) → Divisible(x,2)).</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5 (argumento válido):</strong> Determina si el siguiente argumento es válido: Premisa1: p → q; Premisa2: ¬q; Conclusión: ¬p.<br>
+                    <strong>Solución:</strong> Es válido. Corresponde al modus tollens. Si p→q es verdadero y q es falso, entonces p debe ser falso, luego ¬p es verdadero.
+                </div>
+                <p><strong>Ejercicio 6 (circuito lógico):</strong> Dibuja la puerta lógica equivalente a la expresión (A ∧ B) ∨ (A ∧ ¬B). Simplifícala.</p>
+                <ul><li>Solución: (A ∧ B) ∨ (A ∧ ¬B) ≡ A ∧ (B ∨ ¬B) ≡ A ∧ V ≡ A. Es equivalente a la variable A sola.</li></ul>
+            `,
+            glosario: `
+                <h2>Glosario de términos de lógica matemática</h2>
+                <ul>
+                    <li><strong>Proposición:</strong> Enunciado declarativo con valor de verdad.</li>
+                    <li><strong>Conector lógico:</strong> Operador que combina proposiciones (¬, ∧, ∨, →, ↔).</li>
+                    <li><strong>Tabla de verdad:</strong> Tabla que muestra el valor de verdad de una fórmula para todas las combinaciones de sus variables.</li>
+                    <li><strong>Tautología:</strong> Fórmula siempre verdadera.</li>
+                    <li><strong>Contradicción:</strong> Fórmula siempre falsa.</li>
+                    <li><strong>Contingencia:</strong> Fórmula que no es ni tautología ni contradicción.</li>
+                    <li><strong>Equivalencia lógica (≡):</strong> Dos fórmulas tienen la misma tabla de verdad.</li>
+                    <li><strong>Implicación (→):</strong> Condicional "si...entonces".</li>
+                    <li><strong>Bicondicional (↔):</strong> "Si y solo si".</li>
+                    <li><strong>Cuantificador universal (∀):</strong> "Para todo".</li>
+                    <li><strong>Cuantificador existencial (∃):</strong> "Existe al menos uno".</li>
+                    <li><strong>Predicado:</strong> Función proposicional que depende de variables.</li>
+                    <li><strong>Argumento:</strong> Conjunto de premisas y una conclusión.</li>
+                    <li><strong>Validez:</strong> Propiedad de un argumento donde la verdad de las premisas garantiza la verdad de la conclusión.</li>
+                    <li><strong>Falacia:</strong> Error de razonamiento que parece válido pero no lo es.</li>
+                    <li><strong>Lógica booleana:</strong> Álgebra de variables binarias (0 y 1) con operaciones AND, OR, NOT.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La lógica matemática no solo es fundamental para las matemáticas y la computación, sino que también entrena el pensamiento crítico y la claridad argumentativa en cualquier disciplina.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

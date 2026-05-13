@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probabilidad | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">PROBABILIDAD</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos</div>
+                <div class="tema" data-tema="caracteristicas">Conceptos básicos: espacio muestral, eventos</div>
+                <div class="tema" data-tema="tipos">Tipos de probabilidad: clásica, frecuencial, subjetiva</div>
+                <div class="tema" data-tema="diferencia_ironia">Reglas de probabilidad (suma, producto, complemento)</div>
+                <div class="tema" data-tema="literatura_cine">Probabilidad condicional e independencia</div>
+                <div class="tema" data-tema="redes_politica">Distribuciones de probabilidad (binomial, normal)</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes y paradojas</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario de términos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Probabilidad: midiendo la incertidumbre</h2>
+                <p>La <strong>probabilidad</strong> es la rama de las matemáticas que cuantifica la incertidumbre. Asigna un número entre 0 y 1 a la posibilidad de que ocurra un evento, donde 0 significa imposible y 1 certeza. Es fundamental en estadística, ciencia de datos, juegos, finanzas y muchos campos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Al lanzar un dado justo, la probabilidad de obtener un 3 es 1/6 ≈ 0.1667. La probabilidad de obtener un número par es 3/6 = 0.5. Así medimos la incertidumbre.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar la teoría de la probabilidad.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Probabilidad: el arte de predecir lo aleatorio con precisión matemática.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos de la probabilidad</h2>
+                <p>La teoría de la probabilidad se originó en el siglo XVII con los matemáticos Pascal y Fermat al analizar juegos de azar. Hoy es una herramienta esencial para modelar fenómenos aleatorios en física, biología, economía e inteligencia artificial.</p>
+                <p><strong>Definición axiomática (Kolmogorov):</strong></p>
+                <ul>
+                    <li>Axioma 1: La probabilidad de cualquier evento A es un número real no negativo: P(A) ≥ 0.</li>
+                    <li>Axioma 2: La probabilidad del espacio muestral (todos los resultados posibles) es 1: P(Ω) = 1.</li>
+                    <li>Axioma 3: Para eventos mutuamente excluyentes (disjuntos), la probabilidad de la unión es la suma de las probabilidades: P(A∪B) = P(A) + P(B).</li>
+                </ul>
+                <p><strong>Interpretaciones:</strong> Frecuentista (frecuencia relativa a largo plazo), clásica (resultados igualmente probables), subjetiva (grado de creencia).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo axiomático:</strong> Lanzar una moneda: Ω = {cara, sello}. P(cara)=0.5, P(sello)=0.5, P(Ω)=1, P(∅)=0.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Conceptos básicos: espacio muestral, eventos</h2>
+                <ul>
+                    <li><strong>Experimento aleatorio:</strong> Proceso que produce resultados inciertos (lanzar un dado, extraer una carta).</li>
+                    <li><strong>Espacio muestral (Ω):</strong> Conjunto de todos los resultados posibles. Ej: dado → {1,2,3,4,5,6}.</li>
+                    <li><strong>Evento (o suceso):</strong> Subconjunto del espacio muestral. Ej: obtener número par → {2,4,6}.</li>
+                    <li><strong>Evento elemental:</strong> Resultado individual (ej: {3}).</li>
+                    <li><strong>Evento seguro:</strong> Ω (probabilidad 1).</li>
+                    <li><strong>Evento imposible:</strong> ∅ (probabilidad 0).</li>
+                    <li><strong>Eventos mutuamente excluyentes:</strong> No pueden ocurrir simultáneamente (A∩B = ∅).</li>
+                    <li><strong>Eventos complementarios:</strong> A y A^c, donde A^c es "no A". P(A^c) = 1 - P(A).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Experimento: lanzar dos monedas. Ω = {CC, CS, SC, SS}. Evento A = "al menos una cara" = {CC, CS, SC}. Probabilidad = 3/4.
+                </div>
+            `,
+            tipos: `
+                <h2>Tipos de probabilidad: clásica, frecuencial y subjetiva</h2>
+                <p><strong>Probabilidad clásica (Laplace):</strong> Para espacios muestrales finitos con resultados equiprobables: P(A) = número de casos favorables / número de casos totales. Ej: un dado justo, P(par) = 3/6 = 0.5.</p>
+                <p><strong>Probabilidad frecuencial:</strong> Basada en la frecuencia relativa observada tras muchos experimentos: P(A) ≈ frecuencia relativa (n_A / N). Ej: si en 1000 lanzamientos de una moneda salen 510 caras, P(cara) ≈ 0.51. Para muestras grandes se estabiliza (ley de los grandes números).</p>
+                <p><strong>Probabilidad subjetiva:</strong> Grado de creencia personal, usada en inteligencia artificial (teoría de Bayes subjetiva), finanzas, etc. Ej: "tengo un 70% de probabilidad de que llueva mañana".</p>
+                <div class="bloque-ejemplo">
+                    <strong>Comparación:</strong> Con un dado cargado, la probabilidad clásica no aplica; se estima por frecuencia: lanzar 600 veces, si el 6 sale 200 veces, P(6)≈200/600=0.333.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Reglas de probabilidad: suma, producto y complemento</h2>
+                <p><strong>Regla del complemento:</strong> P(A^c) = 1 - P(A).</p>
+                <p><strong>Regla de la suma (para eventos no necesariamente excluyentes):</strong> P(A ∪ B) = P(A) + P(B) - P(A ∩ B). Si son mutuamente excluyentes, P(A∩B)=0.</p>
+                <p><strong>Regla del producto (probabilidad conjunta):</strong> Para eventos independientes: P(A ∩ B) = P(A)·P(B). Para eventos dependientes: P(A ∩ B) = P(A)·P(B|A).</p>
+                <p><strong>Leyes de De Morgan probabilísticas:</strong> P((A∪B)^c) = P(A^c ∩ B^c); P((A∩B)^c) = P(A^c ∪ B^c).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Se extrae una carta de una baraja española (40 cartas). A="oro", B="figura". P(A)=10/40=0.25, P(B)=12/40=0.3, P(A∩B)=3/40=0.075 (oros que son figura: 3). Entonces P(A∪B)=0.25+0.3-0.075=0.475.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Probabilidad condicional e independencia</h2>
+                <p>La <strong>probabilidad condicional</strong> P(A|B) es la probabilidad de que ocurra A dado que B ha ocurrido: P(A|B) = P(A ∩ B) / P(B), con P(B)>0.</p>
+                <p><strong>Eventos independientes:</strong> A y B son independientes si P(A|B) = P(A) (o equivalentemente P(A∩B)=P(A)P(B)). La independencia es clave en muestreo con reemplazo y en modelos probabilísticos.</p>
+                <p><strong>Teorema de Bayes:</strong> Permite actualizar probabilidades a partir de información nueva: P(A|B) = P(B|A)·P(A) / P(B). Es fundamental en machine learning (clasificadores bayesianos, diagnóstico médico, filtros de spam).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> En una urna con 3 bolas rojas y 2 azules, se extraen dos sin reemplazo. Probabilidad de que la segunda sea roja dado que la primera fue roja: quedan 2 rojas y 2 azules → P=2/4=0.5. Además P(primera roja ∩ segunda roja)= (3/5)*(2/4)=0.3.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Distribuciones de probabilidad: binomial y normal</h2>
+                <p>Una <strong>variable aleatoria (v.a.)</strong> asigna un número a cada resultado de un experimento. Puede ser discreta (valores contables) o continua.</p>
+                <p><strong>Distribución binomial:</strong> Modela número de éxitos en n ensayos independientes con probabilidad p de éxito. Función de probabilidad: P(X=k) = C(n,k) p^k (1-p)^{n-k}. Ej: probabilidad de obtener 3 caras en 5 lanzamientos de moneda.</p>
+                <p><strong>Distribución normal (Gauss):</strong> La más importante para variables continuas. Tiene forma de campana, con media μ y desviación típica σ. Propiedades: ~68% de los datos en μ±σ, 95% en μ±2σ, 99.7% en μ±3σ (regla empírica). Se usa en control de calidad, pruebas estandarizadas, errores de medición.</p>
+                <p><strong>Teorema del límite central:</strong> La suma (o media) de muchas variables independientes tiende a una distribución normal, sea cual sea la distribución original. Explica por qué la normal aparece tan frecuentemente.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo binomial:</strong> Se lanza un dado 10 veces. Probabilidad de obtener exactamente dos 5: n=10, k=2, p=1/6. P = C(10,2)·(1/6)^2·(5/6)^8 ≈ 45 × 0.0278 × 0.2326 ≈ 0.291.
+                </div>
+            `,
+            uso_risgos: `
+                <h2>Errores comunes y paradojas de la probabilidad</h2>
+                <ul>
+                    <li><strong>Falacia del jugador:</strong> Creer que después de una racha de resultados (ej: varias caras seguidas en moneda) el resultado opuesto es más probable. La moneda no tiene memoria, la probabilidad sigue siendo 0.5.</li>
+                    <li><strong>Confundir probabilidad condicional con inversa:</strong> P(A|B) ≠ P(B|A). Ejemplo: "si una persona tiene fiebre, es probable que tenga gripe" no es lo mismo que "si tiene gripe, es probable que tenga fiebre".</li>
+                    <li><strong>Falsa interpretación de intervalos de confianza:</strong> Un intervalo de confianza del 95% no significa que la probabilidad de que el parámetro esté dentro sea 95% (es un concepto frecuencial).</li>
+                    <li><strong>Paradoja del cumpleaños:</strong> En un grupo de 23 personas, la probabilidad de que al menos dos cumplan años el mismo día es superior al 50%. Es contraintuitiva porque pensamos en coincidencias individuales en lugar de pares.</li>
+                    <li><strong>Paradoja de Monty Hall:</strong> En un concurso, elegir una puerta, luego el presentador abre una sin premio y ofrece cambiar. La probabilidad de ganar si cambias es 2/3, no 1/2.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de falacia del jugador:</strong> Después de 5 caras seguidas, la probabilidad de otra cara sigue siendo 0.5. Pero la probabilidad de 6 caras seguidas es baja (1/64), pero condicionada a que ya hay 5, la sexta es 1/2.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de probabilidad</h2>
+                <p><strong>Ejercicio 1 (probabilidad clásica):</strong> Se lanza un dado justo. ¿Probabilidad de obtener un número mayor que 4?</p>
+                <ul><li>Solución: Mayor que 4 = {5,6} → 2/6 = 1/3 ≈ 0.3333.</li></ul>
+                <p><strong>Ejercicio 2 (regla de la suma):</strong> Se extrae una carta de una baraja inglesa (52 cartas). ¿Probabilidad de que sea corazón o figura (J,Q,K)?</p>
+                <ul><li>P(corazón)=13/52=0.25; P(figura)=12/52≈0.2308; P(corazón∩figura)=3/52≈0.0577; P(unión)=0.25+0.2308-0.0577=0.4231 ≈ 22/52? (22/52=0.4231).</li></ul>
+                <p><strong>Ejercicio 3 (probabilidad condicional):</strong> En una clase, 40% son mujeres, 60% hombres. El 20% de mujeres y 10% de hombres usan gafas. Se elige una persona al azar. ¿Probabilidad de que sea mujer dado que usa gafas?</p>
+                <ul><li>P(mujer∩gafas)=0.4×0.2=0.08; P(gafas)=0.4×0.2+0.6×0.1=0.08+0.06=0.14; P(mujer|gafas)=0.08/0.14≈0.5714.</li></ul>
+                <p><strong>Ejercicio 4 (binomial):</strong> Un examen tipo test tiene 10 preguntas, cada una con 4 opciones (una correcta). Si se responde al azar, ¿probabilidad de acertar exactamente 3?</p>
+                <ul><li>n=10, p=0.25, k=3. P=C(10,3)(0.25)^3(0.75)^7 = 120 × 0.015625 × 0.1335 ≈ 0.2503.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5 (paradoja del cumpleaños):</strong> Calcula la probabilidad de que en un grupo de 5 personas, al menos dos compartan cumpleaños (ignorando 29 febrero).<br>
+                    Solución: P(ninguna coincidencia) = (365/365)×(364/365)×(363/365)×(362/365)×(361/365) ≈ 0.9729. Por tanto, P(≥1 coincidencia) ≈ 0.0271 (~2.7%).
+                </div>
+            `,
+            glosario: `
+                <h2>Glosario de términos probabilísticos</h2>
+                <ul>
+                    <li><strong>Experimento aleatorio:</strong> Proceso cuyo resultado no puede predecirse con certeza.</li>
+                    <li><strong>Espacio muestral (Ω):</strong> Conjunto de todos los resultados posibles.</li>
+                    <li><strong>Evento (suceso):</strong> Subconjunto del espacio muestral.</li>
+                    <li><strong>Probabilidad (P):</strong> Medida que asigna un número entre 0 y 1 a cada evento.</li>
+                    <li><strong>Eventos mutuamente excluyentes:</strong> No pueden ocurrir juntos (intersección vacía).</li>
+                    <li><strong>Eventos independientes:</strong> La ocurrencia de uno no afecta la probabilidad del otro.</li>
+                    <li><strong>Probabilidad condicional P(A|B):</strong> Probabilidad de A dado que B ocurrió.</li>
+                    <li><strong>Teorema de Bayes:</strong> Fórmula para invertir probabilidades condicionales.</li>
+                    <li><strong>Variable aleatoria:</strong> Función que asigna números a resultados.</li>
+                    <li><strong>Distribución binomial:</strong> Número de éxitos en n ensayos Bernoulli.</li>
+                    <li><strong>Distribución normal:</strong> Distribución continua en forma de campana.</li>
+                    <li><strong>Esperanza (media):</strong> Promedio ponderado de valores de una variable aleatoria.</li>
+                    <li><strong>Varianza y desviación estándar:</strong> Medidas de dispersión.</li>
+                    <li><strong>Ley de los grandes números:</strong> La frecuencia relativa converge a la probabilidad.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La probabilidad no solo nos ayuda a entender juegos de azar, sino que es la base del razonamiento estadístico, el aprendizaje automático y la toma de decisiones en condiciones de incertidumbre.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

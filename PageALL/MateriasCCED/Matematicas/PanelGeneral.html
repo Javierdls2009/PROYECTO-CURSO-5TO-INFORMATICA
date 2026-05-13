@@ -29,10 +29,6 @@
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
-            /* Se mantiene arriba mientras bajas */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         /* boton volver */
@@ -53,28 +49,19 @@
         /* contenedor principal */
         .contenedor {
             display: flex;
-            align-items: flex-start; /* Permite que la barra lateral flote */
             min-height: 100vh;
         }
 
         /* barra lateral con foto del profesor */
-     .barra-lateral {
-         width: 300px;
-        background-color: var(--blanco);
-        border-right: 1px solid #ddd;
-        padding: 40px 20px;
-        text-align: center;
- 
-    /* ESTO ES LO QUE DEBE QUEDAR ASÍ */
-        position: sticky;
-        top: 74px; /* Se queda pegado justo debajo de la barra superior */
-        height: calc(100vh - 74px); /* Ocupa el resto de la pantalla visible */
-        overflow-y: auto; /* Permite scroll interno si la info del profe crece */
-        box-sizing: border-box;
-        flex-shrink: 0; /* Evita que el panel se encoja si el grid derecho es muy grande */
-}
+        .barra-lateral {
+            width: 300px;
+            background-color: var(--blanco);
+            border-right: 1px solid #ddd;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-        /* foto profesor */
+        /* foto profesor (placeholder) */
         .foto-profesor {
             width: 110px;
             height: 110px;
@@ -85,15 +72,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            font-size: 3rem;
+            color: #aaa;
         }
 
-        .foto-profesor img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-     
         /* nombre profesor */
         .barra-lateral h3 {
             margin: 10px 0;
@@ -136,10 +118,10 @@
             margin: 0 0 40px 0;
         }
 
-        /* grid de herramientas */
+        /* grid de herramientas - 3 columnas fijas */
         .grid-herramientas {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
@@ -164,18 +146,13 @@
             border-color: var(--color-principal);
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
-        }
-
         /* titulo de la tarjeta */
         .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
+            margin: 0 0 12px 0;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            text-align: center;
+            font-weight: 700;
         }
 
         /* descripción de la tarjeta */
@@ -183,6 +160,8 @@
             margin: 0;
             font-size: 0.9rem;
             color: #666;
+            text-align: center;
+            line-height: 1.3;
         }
 
         /* pie de pagina */
@@ -193,8 +172,19 @@
             border-top: 1px solid #ddd;
             color: #666;
             font-size: 0.9rem;
-            position: relative;
-            z-index: 1001; /* Para que quede encima de la barra lateral al llegar al final */
+        }
+
+        /* Responsive: en pantallas pequeñas 2 o 1 columna */
+        @media (max-width: 900px) {
+            .grid-herramientas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-herramientas {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -202,73 +192,109 @@
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/index.html">← VOLVER AL INICIO</a></div>
-        <div class="titulo-materia">MATEMÁTICAS</div>
+        <div class="boton-volver"><a href="#">← VOLVER AL INICIO</a></div>
+        <div class="titulo-materia">Matemáticas</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
     <!-- contenido principal -->
     <div class="contenedor">
         
-       <!-- barra lateral fija -->
-       <aside class="barra-lateral">
-            <div class="foto-profesor">
-                <img src="/PageALL/ImgALL/Ariel.jpeg" alt="Profesor Ariel">
+        <!-- barra lateral del profesor (placeholders genéricos) -->
+        <aside class="barra-lateral">
+             <div class="foto-profesor">
+                <img src="/PageALL/ImgALL/Ariel.jpeg" alt="Profesora Surelis" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
             </div>
-            <h3>Ariel Paniagua</h3>
+            <h3>Ariel O. Paniagua</h3>
             <hr>
             <div class="info-profesor">
-                <p><b>Especialidad:</b> Área de Matemáticas</p>
+                <p><b>Especialidad:</b> Matemáticas</p>
                 <p><b>Horario:</b> Lunes a Viernes</p>
-                <p><b>Aula:</b> Número de aula</p>
+                <p><b>Aula:</b> 4to Contabilidad</p>
             </div>
         </aside>
-        <!-- zona de herramientas (esta es la que se desliza) -->
+
+        <!-- zona de herramientas -->
         <main class="zona-herramientas">
-            <h2>Herramientas Educativas</h2>
-            <p>Selecciona una herramienta para comenzar.</p>
+            <h2 style="text-align: center;">Ramas de la Matemática</h2>
+            <p style="text-align: center;">Selecciona un tema para explorar sus conceptos y aplicaciones.</p>
 
+            <!-- grid de herramientas con los 11 temas solicitados -->
             <div class="grid-herramientas">
-                
-                <a href="ecuaciones.html" class="tarjeta-herramienta">
-                    <div class="icono">∑</div>
-                    <h3>Ecuaciones</h3>
-                    <p>Resolución de incógnitas paso a paso.</p>
-                </a>
 
-                <a href="trigonometria.html" class="tarjeta-herramienta">
-                    <div class="icono">⊿</div>
-                    <h3>Trigonometría</h3>
-                    <p>Funciones y teoremas de triángulos.</p>
-                </a>
-
-                <a href="geometria.html" class="tarjeta-herramienta">
-                    <div class="icono">⬠</div>
-                    <h3>Geometría</h3>
-                    <p>Cálculo de áreas y volúmenes.</p>
-                </a>
-
+                <!-- 1. Álgebra -->
                 <a href="algebra.html" class="tarjeta-herramienta">
-                    <div class="icono">%</div>
-                    <h3>Algebra</h3>
-                    <p>Comprender y analizar relaciones y estructuras numéricas.</p>
+                    <h3>Álgebra</h3>
+                    <p>Ecuaciones, polinomios y estructuras abstractas.</p>
                 </a>
 
-                <a href="PaneldeJuegos.html" class="tarjeta-herramienta">
-                    <div class="icono">🎮</div>
-                    <h3>Juego Matematico</h3>
-                    <p>Actividades lúdicas para reforzar conceptos matemáticos.</p>
+                <!-- 2. Aritmética -->
+                <a href="Aritmetica.html" class="tarjeta-herramienta">
+                    <h3>Aritmética</h3>
+                    <p>Números, operaciones básicas y sus propiedades.</p>
                 </a>
-                
-                <!-- Relleno para probar el scroll -->
-                <div style="height: 400px;"></div>
+
+                <!-- 3. Cálculo -->
+                <a href="Calculo.html" class="tarjeta-herramienta">
+                    <h3>Cálculo</h3>
+                    <p>Límites, derivadas, integrales y movimiento continuo.</p>
+                </a>
+
+                <!-- 4. Conjuntos -->
+                <a href="Conjuntos.html" class="tarjeta-herramienta">
+                    <h3>Conjuntos</h3>
+                    <p>Agrupaciones, pertenencia y operaciones entre colecciones.</p>
+                </a>
+
+                <!-- 5. Ecuaciones -->
+                <a href="ecuaciones.html" class="tarjeta-herramienta">
+                    <h3>Ecuaciones</h3>
+                    <p>Igualdades condicionales y métodos de resolución.</p>
+                </a>
+
+                <!-- 6. Estadística -->
+                <a href="Estadística.html" class="tarjeta-herramienta">
+                    <h3>Estadística</h3>
+                    <p>Recolección, análisis e interpretación de datos.</p>
+                </a>
+
+                <!-- 7. Geometría -->
+                <a href="geometria.html" class="tarjeta-herramienta">
+                    <h3>Geometría</h3>
+                    <p>Formas, medidas y relaciones en el plano y el espacio.</p>
+                </a>
+
+                <!-- 8. Lógica Matemática -->
+                <a href="Lógica Matemática.html" class="tarjeta-herramienta">
+                    <h3>Lógica Matemática</h3>
+                    <p>Razonamiento formal, proposiciones y demostraciones.</p>
+                </a>
+
+                <!-- 9. Matemática Financiera -->
+                <a href="Matemática Financiera.html" class="tarjeta-herramienta">
+                    <h3>Matemática Financiera</h3>
+                    <p>Interés, anualidades y valor del dinero en el tiempo.</p>
+                </a>
+
+                <!-- 10. Probabilidad -->
+                <a href="Probabilidad.html" class="tarjeta-herramienta">
+                    <h3>Probabilidad</h3>
+                    <p>Medición de la incertidumbre y fenómenos aleatorios.</p>
+                </a>
+
+                <!-- 11. Trigonometría -->
+                <a href="trigonometria.html" class="tarjeta-herramienta">
+                    <h3>Trigonometría</h3>
+                    <p>Relaciones angulares y funciones seno, coseno, tangente.</p>
+                </a>
+
             </div>
         </main>
     </div>
 
+    <!-- pie de pagina -->
     <footer>
-        <p>© 2026 AcademiaCCED. Todos los derechos reservados.</p>
+        <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
     </footer>
-
 </body>
 </html>

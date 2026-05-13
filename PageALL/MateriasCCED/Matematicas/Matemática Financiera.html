@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática Financiera | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">MATEMÁTICA FINANCIERA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos</div>
+                <div class="tema" data-tema="caracteristicas">Interés simple: fórmulas y ejemplos</div>
+                <div class="tema" data-tema="tipos">Interés compuesto: capitalización</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre interés simple y compuesto</div>
+                <div class="tema" data-tema="literatura_cine">Anualidades y amortización de préstamos</div>
+                <div class="tema" data-tema="redes_politica">Valor presente y valor futuro</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes en cálculos financieros</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos</div>
+                <div class="tema" data-tema="glosario">Glosario financiero</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Matemática Financiera: el valor del dinero en el tiempo</h2>
+                <p>La <strong>matemática financiera</strong> es la rama de las matemáticas aplicadas que estudia el comportamiento del dinero a lo largo del tiempo, considerando conceptos como interés, capital, tasas, anualidades y amortizaciones. Es fundamental para la toma de decisiones en inversiones, préstamos, ahorros y valoración de proyectos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Si inviertes $1000 al 5% anual durante un año, tu dinero crece a $1050. Si dejas esa ganancia reinvertida, al año siguiente ganarás interés sobre $1050. La matemática financiera cuantifica esta evolución.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar los conceptos esenciales de las finanzas matemáticas.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Matemática Financiera: decisiones inteligentes con base cuantitativa.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos de la matemática financiera</h2>
+                <p>La matemática financiera (o ingeniería económica) se ocupa del análisis del valor del dinero en el tiempo. Su principio fundamental es que un peso hoy vale más que un peso mañana, porque el dinero puede invertirse y generar intereses. Por eso, las cantidades monetarias solo pueden compararse si están referidas al mismo momento.</p>
+                <p><strong>Conceptos básicos:</strong></p>
+                <ul>
+                    <li><strong>Capital (C o P):</strong> Cantidad inicial de dinero involucrada en una operación financiera.</li>
+                    <li><strong>Interés (I):</strong> Renta pagada por el uso del dinero ajeno o ganancia obtenida al invertir.</li>
+                    <li><strong>Tasa de interés (i):</strong> Porcentaje que se aplica al capital para calcular el interés en un período. Se expresa como decimal (0.05 = 5%).</li>
+                    <li><strong>Tiempo (n):</strong> Duración de la operación, generalmente en años, meses o días.</li>
+                    <li><strong>Monto (M o F):</strong> Capital más intereses acumulados al final del período.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Si depositas $10,000 en un banco al 6% anual durante 3 años, el interés generado dependerá de si es simple o compuesto. Con interés simple: I = 10000×0.06×3 = 1800; monto = 11800.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Interés simple: fórmulas y aplicaciones</h2>
+                <p>El <strong>interés simple</strong> se calcula únicamente sobre el capital inicial, sin reinvertir los intereses ganados. Es común en operaciones a corto plazo (menos de un año) y préstamos simples.</p>
+                <p><strong>Fórmula fundamental:</strong> I = C · i · n , donde n está en las mismas unidades que la tasa (si i es anual, n en años).</p>
+                <p><strong>Monto a interés simple:</strong> M = C + I = C(1 + i·n).</p>
+                <p><strong>Variantes:</strong> Tasa nominal, tiempo en días, uso de año comercial (360 días) o año calendario (365 días). El interés exacto (365/365) y el interés ordinario (360/360) son las convenciones más usuales.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> ¿Qué interés produce un capital de $8000 al 4% anual durante 9 meses? i=0.04, n=9/12=0.75 años → I = 8000×0.04×0.75 = $240. El monto es $8240.
+                </div>
+                <p>Fórmulas derivadas para despejar capital, tasa o tiempo: C = I/(i·n) ; i = I/(C·n) ; n = I/(C·i).</p>
+                <div class="bloque-ejemplo">
+                    Si pagaste $150 de interés por un préstamo de $5000 a 6 meses, la tasa anual es: i = 150/(5000×0.5) = 150/2500 = 0.06 = 6% anual.
+                </div>
+            `,
+            tipos: `
+                <h2>Interés compuesto: capitalización y crecimiento exponencial</h2>
+                <p>En el <strong>interés compuesto</strong>, los intereses se reinvierten periódicamente, generando nuevos intereses en períodos siguientes. Por eso crece más rápido que el interés simple (curva exponencial).</p>
+                <p><strong>Fórmula del monto compuesto:</strong> M = C (1 + i)^n , donde i es la tasa por período de capitalización y n el número de períodos.</p>
+                <p><strong>Períodos de capitalización:</strong> Pueden ser anual, semestral, trimestral, mensual, diario, etc. La tasa nominal anual se divide entre la frecuencia de capitalización. Por ejemplo, tasa nominal 12% capitalizable mensualmente → i = 0.12/12 = 0.01 mensual; n = años × 12.</p>
+                <p><strong>Tasa efectiva anual (TEA):</strong> Es la tasa que realmente crece el capital en un año considerando la capitalización. Se calcula: TEA = (1 + i_periódica)^{m} - 1, donde m es número de capitalizaciones por año.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Inviertes $1000 al 8% anual compuesto trimestralmente durante 3 años. i_trim = 0.08/4 = 0.02; n = 3×4 = 12 trimestres. M = 1000 (1.02)^12 ≈ 1000 × 1.26824 = $1268.24. El interés compuesto generó $268.24, mientras que el simple hubiera dado $240.
+                </div>
+                <p><strong>Valor actual a interés compuesto:</strong> C = M / (1+i)^n, útil para descontar flujos futuros.</p>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias clave entre interés simple y compuesto</h2>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Aspecto</th><th>Interés simple</th><th>Interés compuesto</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Cálculo del interés</strong> None<td>Solo sobre capital inicial. None<td>Sobre capital más intereses acumulados. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Crecimiento del monto</strong> None<td>Lineal. None<td>Exponencial. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Fórmula monto</strong> None<td>M = C(1 + i·n) None<td>M = C(1 + i)^n None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Periodicidad</strong> None<td>Generalmente operaciones a corto plazo (menos de un año). None<td>Plazos más largos (inversiones, hipotecas). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Rentabilidad (misma tasa y plazo)</strong> None<td>Menor ganancia. None<td>Mayor ganancia a partir del segundo período. None</tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo comparativo:</strong> C=$1000, i=10% anual, n=5 años.<br>
+                    Interés simple: M=1000(1+0.1×5)=1500; interés total =500.<br>
+                    Interés compuesto: M=1000(1.1)^5≈1610.51; interés total ≈610.51. La diferencia se amplía con más años.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Anualidades y amortización de préstamos</h2>
+                <p>Una <strong>anualidad</strong> es una serie de pagos iguales realizados a intervalos regulares. Se clasifican en:</p>
+                <ul>
+                    <li><strong>Anualidad ordinaria (vencida):</strong> los pagos se hacen al final de cada período.</li>
+                    <li><strong>Anualidad anticipada:</strong> los pagos se hacen al inicio de cada período.</li>
+                    <li><strong>Anualidad perpetua:</strong> serie infinita de pagos (fondo perpetuo).</li>
+                </ul>
+                <p><strong>Fórmula del valor futuro de una anualidad vencida:</strong> VF = R · [ (1+i)^n - 1 ] / i , donde R es el pago periódico.</p>
+                <p><strong>Fórmula del valor presente de una anualidad vencida:</strong> VP = R · [ 1 - (1+i)^{-n} ] / i .</p>
+                <p><strong>Amortización de préstamos (sistema francés):</strong> Se calcula la cuota constante (R) que incluye interés y devolución de capital. R = P · [ i(1+i)^n ] / [ (1+i)^n - 1 ]. Al inicio del préstamo, la mayor parte de la cuota es interés; al final, es capital.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Préstamo de $10,000 al 12% anual (i=0.01 mensual) a 12 meses. Cuota mensual (sistema francés) ≈ 888.49. Elabora una tabla de amortización: intereses decrecientes, amortización creciente, saldo hasta cero.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Valor presente y valor futuro: herramientas de evaluación de proyectos</h2>
+                <p>El <strong>valor presente (VP)</strong> o valor actual descuenta flujos futuros para expresarlos en términos de hoy, usando una tasa de descuento (costo de oportunidad). El <strong>valor futuro (VF)</strong> capitaliza cantidades presentes hacia adelante.</p>
+                <p><strong>VPN (Valor Presente Neto):</strong> Suma de los valores presentes de todos los flujos de efectivo de una inversión (ingresos menos egresos). Si VPN > 0, el proyecto es rentable. Si VPN = 0, es indiferente. Si VPN < 0, se rechaza.</p>
+                <p><strong>TIR (Tasa Interna de Retorno):</strong> Tasa de descuento que hace el VPN igual a cero. Es la rentabilidad efectiva del proyecto. Se compara con la tasa de oportunidad.</p>
+                <p><strong>Principio de equivalencia financiera:</strong> Dos capitales son equivalentes si, al trasladarlos a una fecha común mediante la tasa acordada, tienen el mismo valor. Este principio permite comparar ofertas de crédito o inversión.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de VPN:</strong> Una inversión inicial de $5000 genera flujos de $2000, $2500 y $3000 al final de los próximos 3 años. Tasa de descuento 10%. VP flujos = 2000/1.1 + 2500/1.1² + 3000/1.1³ ≈ 1818.18 + 2066.12 + 2253.94 = 6138.24. VPN = 6138.24 - 5000 = 1138.24 > 0, rentable.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes en cálculos financieros</h2>
+                <ul>
+                    <li><strong>Confundir tasa nominal con efectiva:</strong> Una tasa del 12% capitalizable mensualmente NO es una tasa efectiva del 12% anual; la efectiva es (1+0.01)^12 -1 ≈ 12.68%.</li>
+                    <li><strong>Utilizar mal el período de tiempo:</strong> si la tasa es anual y el tiempo está en meses, dividir meses entre 12. Nunca mezclar unidades.</li>
+                    <li><strong>Olvidar que la fórmula de anualidades asume pagos al final del período:</strong> para pagos anticipados se debe multiplicar por (1+i) el resultado de anualidad vencida.</li>
+                    <li><strong>No capitalizar correctamente en interés compuesto:</strong> usar (1+i·n) en lugar de (1+i)^n es un error fatal.</li>
+                    <li><strong>Despreciar la inflación:</strong> los valores nominales deben convertirse a reales para comparar poder adquisitivo.</li>
+                    <li><strong>No considerar la frecuencia de capitalización al calcular la tasa equivalente:</strong> dos tasas nominales iguales con diferente capitalización no son equivalentes.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Regla de oro:</strong> Siempre homologar la tasa de interés y el período de tiempo. Si la tasa es mensual, el tiempo en meses; si es anual, el tiempo en años. Para interés compuesto, la tasa debe ser la del período de capitalización.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de matemática financiera</h2>
+                <p><strong>Ejercicio 1 (interés simple):</strong> ¿Cuánto interés genera un capital de $2500 al 5% anual durante 8 meses?</p>
+                <ul><li>Solución: n = 8/12 = 2/3 ≈ 0.6667 años; I = 2500 × 0.05 × 0.6667 = $83.33.</li></ul>
+                <p><strong>Ejercicio 2 (interés compuesto):</strong> Depositas $6000 al 7% anual compuesto semestralmente durante 4 años. Calcula el monto.</p>
+                <ul><li>i_sem = 0.07/2 = 0.035; n = 4×2 = 8 semestres; M = 6000 (1.035)^8 ≈ 6000 × 1.3168 = $7900.80.</li></ul>
+                <p><strong>Ejercicio 3 (valor presente):</strong> ¿Cuánto debes invertir hoy al 9% anual compuesto trimestralmente para tener $15000 dentro de 5 años?</p>
+                <ul><li>i_trim = 0.09/4 = 0.0225; n = 5×4 = 20; C = 15000 / (1.0225)^20 ≈ 15000 / 1.5605 ≈ $9610.50.</li></ul>
+                <p><strong>Ejercicio 4 (anualidad):</strong> Una persona quiere ahorrar $500 cada mes durante 3 años en una cuenta que paga 6% anual compuesto mensual. ¿Cuánto tendrá al final?</p>
+                <ul><li>i_mensual = 0.06/12 = 0.005; n = 36; VF = 500 × [ (1.005^36 - 1) / 0.005 ] ≈ 500 × 39.336 = $19,668.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5 (amortización de préstamo):</strong> Préstamo $20,000 al 12% anual capitalizable mensual a pagar en 24 cuotas fijas. Calcular la cuota mensual.<br>
+                    i_mensual = 0.01; VP = 20000; n=24. R = 20000 × [0.01(1.01)^24] / [(1.01)^24 - 1] = 20000 × (0.01×1.2697) / (0.2697) ≈ 20000 × 0.012697/0.2697 ≈ 20000 × 0.04709 ≈ $941.80.
+                </div>
+            `,
+            glosario: `
+                <h2>Glosario de términos financieros</h2>
+                <ul>
+                    <li><strong>Capital (C):</strong> Monto inicial de una operación.</li>
+                    <li><strong>Interés (I):</strong> Ganancia o costo del dinero.</li>
+                    <li><strong>Tasa de interés (i):</strong> Porcentaje aplicado al capital.</li>
+                    <li><strong>Tasa nominal (J):</strong> Tasa anual que no refleja capitalización.</li>
+                    <li><strong>Tasa efectiva (TEA, TEM):</strong> Tasa que realmente se aplica considerando capitalización.</li>
+                    <li><strong>Capitalización:</strong> Proceso de reinversión de intereses.</li>
+                    <li><strong>Descuento:</strong> Operación inversa a la capitalización, obtener valor presente.</li>
+                    <li><strong>Anualidad:</strong> Serie de pagos iguales periódicos.</li>
+                    <li><strong>Amortización:</strong> Extinción gradual de una deuda mediante pagos.</li>
+                    <li><strong>Sistema francés:</strong> Cuotas constantes (interés + amortización).</li>
+                    <li><strong>Valor Presente Neto (VPN):</strong> Diferencia entre ingresos y egresos actualizados.</li>
+                    <li><strong>Tasa Interna de Retorno (TIR):</strong> Tasa que hace VPN=0.</li>
+                    <li><strong>Inflación:</strong> Pérdida de poder adquisitivo del dinero.</li>
+                    <li><strong>Flujo de caja:</strong> Movimientos de ingresos y egresos.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La matemática financiera es una herramienta indispensable para cualquier persona o empresa que quiera gestionar sus recursos, evaluar inversiones o comprender el costo real del crédito.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

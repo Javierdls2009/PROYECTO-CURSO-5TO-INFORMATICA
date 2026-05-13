@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadística | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">ESTADÍSTICA</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos de la estadística</div>
+                <div class="tema" data-tema="caracteristicas">Medidas de tendencia central</div>
+                <div class="tema" data-tema="tipos">Estadística descriptiva e inferencial</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre media, mediana y moda</div>
+                <div class="tema" data-tema="literatura_cine">Estadística en ciencias, deportes y economía</div>
+                <div class="tema" data-tema="redes_politica">Estadística en big data e inteligencia artificial</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes y malinterpretaciones estadísticas</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos de estadística</div>
+                <div class="tema" data-tema="glosario">Glosario de términos estadísticos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Estadística: datos, análisis y decisiones informadas</h2>
+                <p>La <strong>estadística</strong> es la ciencia que se ocupa de la recolección, organización, análisis, interpretación y presentación de datos. Permite extraer conclusiones y tomar decisiones en presencia de incertidumbre, siendo fundamental en ciencia, negocios, medicina, tecnología y ciencias sociales.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Antes de lanzar un nuevo producto, una empresa encuesta a 1000 personas sobre su preferencia. La estadística permite estimar, con cierto margen de error, la aceptación en toda la población.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar el mundo de la estadística en profundidad.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Estadística: el arte de dar sentido a los datos en un mundo incierto.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos de la estadística</h2>
+                <p>La <strong>estadística</strong> tiene sus orígenes en la recopilación de datos sobre estados (de ahí su nombre) para fines fiscales y militares. En el siglo XVII, se desarrollaron las primeras teorías de probabilidad (Pascal, Fermat). En los siglos XIX y XX, figuras como Galton, Pearson, Fisher y Bayes sentaron las bases de la estadística moderna.</p>
+                <p><strong>Conceptos fundamentales:</strong></p>
+                <ul>
+                    <li><strong>Población:</strong> Conjunto completo de individuos u objetos de interés (ej: todos los votantes de un país).</li>
+                    <li><strong>Muestra:</strong> Subconjunto representativo de la población que se estudia (ej: 2000 votantes seleccionados al azar).</li>
+                    <li><strong>Variable:</strong> Característica que puede tomar diferentes valores (edad, ingresos, opinión). Pueden ser cuantitativas (numéricas) o cualitativas (categorías).</li>
+                    <li><strong>Dato:</strong> Valor específico de una variable para un individuo.</li>
+                    <li><strong>Parámetro:</strong> Medida numérica que describe una característica de la población (ej: media poblacional μ).</li>
+                    <li><strong>Estadístico:</strong> Medida calculada a partir de una muestra (ej: media muestral x̄).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Si queremos conocer la altura promedio de los estudiantes de una universidad (población), medimos una muestra aleatoria de 200 estudiantes y calculamos la media muestral. La estadística inferencial nos permite estimar la media poblacional con un margen de error.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Medidas de tendencia central y dispersión</h2>
+                <p>Las <strong>medidas de tendencia central</strong> resumen un conjunto de datos en un valor representativo.</p>
+                <ul>
+                    <li><strong>Media aritmética (promedio):</strong> Suma de todos los valores dividida por el número total. Es sensible a valores extremos.</li>
+                    <li><strong>Mediana:</strong> Valor central cuando los datos se ordenan. No es afectada por extremos (robusta).</li>
+                    <li><strong>Moda:</strong> Valor que más se repite. Puede haber varias modas (multimodal).</li>
+                </ul>
+                <p>Las <strong>medidas de dispersión</strong> indican cuán esparcidos están los datos.</p>
+                <ul>
+                    <li><strong>Rango:</strong> Diferencia entre el valor máximo y mínimo.</li>
+                    <li><strong>Varianza (σ²):</strong> Promedio de los cuadrados de las desviaciones respecto a la media.</li>
+                    <li><strong>Desviación estándar (σ):</strong> Raíz cuadrada de la varianza. Mide la dispersión media en las mismas unidades que los datos.</li>
+                    <li><strong>Coeficiente de variación (CV):</strong> σ/μ (útil para comparar dispersión entre conjuntos con diferentes unidades).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Notas de dos exámenes: Examen A: 70, 75, 80, 85, 90 (media=80, σ≈7.9). Examen B: 40, 60, 80, 100, 120 (también media=80, pero σ≈29.7). La desviación estándar muestra que B es mucho más disperso.
+                </div>
+            `,
+            tipos: `
+                <h2>Estadística descriptiva e inferencial</h2>
+                <p>La estadística se divide en dos grandes ramas:</p>
+                <ul>
+                    <li><strong>Estadística descriptiva:</strong> Se dedica a la recogida, organización, resumen y presentación de datos. Utiliza tablas de frecuencias, gráficos (barras, histogramas, diagramas de caja, diagramas de dispersión), y medidas de tendencia central y dispersión. No pretende generalizar más allá de los datos observados.</li>
+                    <li><strong>Estadística inferencial:</strong> Utiliza los datos de una muestra para hacer estimaciones, predicciones o decisiones sobre la población completa. Incluye:
+                        <ul>
+                            <li><strong>Estimación puntual y por intervalos de confianza:</strong> Por ejemplo, "la media poblacional está entre 48 y 52 con un 95% de confianza".</li>
+                            <li><strong>Pruebas de hipótesis:</strong> Decide si una afirmación sobre la población es plausible (ej: si un nuevo medicamento es efectivo).</li>
+                            <li><strong>Regresión y correlación:</strong> Modela relaciones entre variables.</li>
+                            <li><strong>Muestreo y diseño experimental.</strong></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de inferencia:</strong> Un fabricante afirma que sus bombillas duran 1000 horas. Se prueba una muestra de 50 bombillas (duración media 980 h, σ=40 h). Con una prueba de hipótesis se calcula la probabilidad de obtener esa media si la verdadera fuera 1000. Si es muy baja (p<0.05), se rechaza la afirmación.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias entre media, mediana y moda</h2>
+                <p>Estas tres medidas resumen datos, pero se comportan de manera diferente según la distribución.</p>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Medida</th><th>Definición</th><th>Ventajas</th><th>Desventajas</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Media</strong> None<td>Suma/n None<td>Usa todos los datos, útil para distribuciones simétricas. None<td>Muy sensible a valores atípicos (outliers). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Mediana</strong> None<td>Valor central ordenado. None<td>Robusta a outliers, apropiada para distribuciones asimétricas (ingresos, precios de vivienda). None<td>No usa toda la información, menos eficiente que la media si la distribución es normal. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Moda</strong> None<td>Valor de mayor frecuencia. None<td>Útil para datos categóricos (color favorito, marca más vendida). Puede haber varias. None<td>No es única, a veces no representa bien la tendencia central. None</tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de asimetría:</strong> Salarios en una empresa: 10 empleados ganan 2000€, el director gana 20000€. La media es (10×2000+20000)/11 ≈ 3636€, que no refleja el suelto típico. La mediana es 2000€, mucho más representativa.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Estadística en ciencias, deportes y economía</h2>
+                <p>La estadística es la columna vertebral del método científico y de la toma de decisiones basada en datos.</p>
+                <p><strong>Ciencias de la salud:</strong> Ensayos clínicos aleatorizados para probar medicamentos. La estadística determina si un tratamiento es mejor que placebo (p-valor, intervalos de confianza). Epidemiología: tasas de incidencia, correlaciones entre factores de riesgo y enfermedades.</p>
+                <p><strong>Deportes (sabermetría):</strong> Equipos de béisbol, baloncesto y fútbol usan estadísticas avanzadas (OPS en béisbol, PER en baloncesto, xG en fútbol) para evaluar jugadores y estrategias. El libro "Moneyball" popularizó el enfoque estadístico.</p>
+                <p><strong>Economía y finanzas:</strong> Indicadores macroeconómicos (PIB, inflación, desempleo) son estadísticas. En finanzas, el análisis de series temporales y el modelo de valor en riesgo (VaR) usan distribuciones de probabilidad. Los bancos centrales utilizan encuestas de confianza y modelos econométricos para tomar decisiones.</p>
+                <p><strong>Control de calidad:</strong> En fábricas, se toman muestras periódicas para verificar que los productos cumplen especificaciones (gráficos de control, Six Sigma).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en medicina:</strong> Un estudio sobre un nuevo fármaco incluye 500 pacientes con hipertensión. Se calcula la reducción media de presión arterial y su intervalo de confianza del 95%. Si el intervalo no incluye el cero, se concluye que el fármaco es efectivo.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Estadística en big data e inteligencia artificial</h2>
+                <p>El auge del big data y el machine learning ha convertido a la estadística en una herramienta esencial en la industria tecnológica.</p>
+                <p><strong>Big Data:</strong> Volúmenes masivos de datos (terabytes o petabytes) que requieren técnicas escalables. La estadística permite resumir, muestrear y detectar patrones en estos datos. Herramientas como Hadoop, Spark y SQL se complementan con métodos estadísticos.</p>
+                <p><strong>Machine Learning (aprendizaje automático):</strong> La mayoría de algoritmos tienen fundamento estadístico:
+                    <ul>
+                        <li><strong>Regresión lineal/logística:</strong> Modelos estadísticos para predicción.</li>
+                        <li><strong>Naive Bayes:</strong> Clasificador basado en el teorema de Bayes.</li>
+                        <li><strong>Árboles de decisión y bosques aleatorios:</strong> Utilizan medidas estadísticas (ganancia de información, Gini).</li>
+                        <li><strong>Clustering (k-means):</strong> Basado en distancias y varianzas.</li>
+                        <li><strong>Validación cruzada:</strong> Técnica estadística para evaluar modelos.</li>
+                    </ul>
+                </p>
+                <p><strong>Pruebas A/B (testeo de hipótesis):</strong> En empresas como Google, Amazon o Netflix, se realizan experimentos controlados para decidir cambios de diseño, algoritmos o contenido. Se comparan dos versiones (A vs B) y se usa inferencia estadística para determinar si la diferencia es significativa.</p>
+                <p><strong>Visualización de datos:</strong> Herramientas como Tableau, Power BI y librerías de Python (matplotlib, seaborn) permiten explorar datos estadísticamente.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en redes sociales:</strong> Facebook prueba dos versiones de un botón (color azul vs verde) en un pequeño porcentaje de usuarios. Mide la tasa de clics y, si la diferencia es estadísticamente significativa (p < 0.05), despliega la versión ganadora a todos.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes y malinterpretaciones estadísticas</h2>
+                <ul>
+                    <li><strong>Confundir correlación con causalidad:</strong> Que dos variables estén correlacionadas no implica que una cause la otra. Ejemplo: el consumo de helado y los ahogamientos aumentan en verano, pero la causa es el calor, no el helado.</li>
+                    <li><strong>Sesgo de supervivencia:</strong> Analizar solo los datos de quienes "sobreviven" o tienen éxito, ignorando los fracasos. Ejemplo: estudiar aviones que vuelven con daños en alas y reforzar las zonas dañadas, cuando los que no volvieron recibieron daños en el motor.</li>
+                    <li><strong>Muestras no representativas:</strong> Encuestas voluntarias en internet o llamadas telefónicas (sesgo de autoselección). Las muestras deben ser aleatorias para inferir a la población.</li>
+                    <li><strong>Malinterpretar el p-valor:</strong> Un p-valor < 0.05 no significa que la hipótesis nula sea falsa con probabilidad 95%; significa que, si la nula fuera cierta, la probabilidad de observar datos tan extremos es menor del 5%.</li>
+                    <li><strong>Falacia del jugador:</strong> Creer que después de una racha de resultados, el próximo tiene más probabilidad de ser el opuesto (en eventos independientes, la probabilidad no se acumula).</li>
+                    <li><strong>Usar la media cuando la mediana es más apropiada:</strong> En distribuciones asimétricas (salarios, precios de casas), la media puede ser engañosa.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de correlación espuria:</strong> La tasa de natalidad en un país está correlacionada con el número de cigüeñas (porque ambas aumentan con la ruralidad). Nadie cree que las cigüeñas traigan bebés, pero ilustra el peligro de inferir causalidad.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de estadística</h2>
+                <p><strong>Ejercicio 1: Medidas de tendencia central.</strong> Dados los siguientes números: 12, 15, 15, 18, 20, 22, 25. Calcula media, mediana y moda.</p>
+                <ul><li>Solución: Media = (12+15+15+18+20+22+25)/7 = 127/7 ≈ 18.14; Mediana = valor central (4º) = 18; Moda = 15 (aparece dos veces).</li></ul>
+                <p><strong>Ejercicio 2: Desviación estándar.</strong> Con los datos del ejercicio 1, calcula la desviación estándar muestral.</p>
+                <ul><li>Solución: Varianza = Σ(xi - x̄)²/(n-1) = ( (12-18.14)² + ... + (25-18.14)² )/6 = (37.7+9.9+9.9+0.02+3.46+14.9+47.1)/6 = 123/6 ≈ 20.5 → s ≈ 4.53.</li></ul>
+                <p><strong>Ejercicio 3: Intervalo de confianza.</strong> Una muestra de 100 estudiantes tiene una media de 75 puntos en un examen con desviación estándar poblacional conocida σ=10. Halla el intervalo de confianza del 95% para la media poblacional (z=1.96).</p>
+                <ul><li>Solución: IC = x̄ ± z·σ/√n = 75 ± 1.96·10/10 = 75 ± 1.96 → [73.04, 76.96].</li></ul>
+                <p><strong>Ejercicio 4: Probabilidad básica.</strong> Se lanza un dado justo de 6 caras. ¿Cuál es la probabilidad de obtener un número par o mayor que 4?</p>
+                <ul><li>Espacio: {1,2,3,4,5,6}. Pares: {2,4,6}. Mayor que 4: {5,6}. Unión: {2,4,5,6} → 4/6 = 2/3 ≈ 0.6667.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5 (taller práctico):</strong> Se registraron las edades de 15 personas: 22, 25, 30, 30, 32, 35, 35, 35, 38, 40, 42, 45, 50, 55, 60. Construye un diagrama de caja (boxplot) con los cuartiles.<br>
+                    <strong>Solución:</strong> Ordenados. Q1 = posición (15+1)/4 = 4ª posición → 30? (en concreto el cuartil 1 es el valor en la posición 4 (30)). Mediana (Q2) = posición 8 → 35. Q3 = posición 12 → 45. Mínimo=22, máximo=60. Diagrama: caja desde 30 a 45 con mediana 35, bigotes hasta 22 y 60.
+                </div>
+            `,
+            glosario: `
+                <h2>Glosario de términos estadísticos</h2>
+                <ul>
+                    <li><strong>Población:</strong> Conjunto total de individuos en estudio.</li>
+                    <li><strong>Muestra:</strong> Subconjunto representativo de la población.</li>
+                    <li><strong>Muestreo aleatorio:</strong> Método donde cada elemento tiene igual probabilidad de ser elegido.</li>
+                    <li><strong>Variable cuantitativa:</strong> Numérica (discreta o continua).</li>
+                    <li><strong>Variable cualitativa (categórica):</strong> No numérica (nominal u ordinal).</li>
+                    <li><strong>Media (μ, x̄):</strong> Promedio aritmético.</li>
+                    <li><strong>Mediana:</strong> Valor central.</li>
+                    <li><strong>Moda:</strong> Valor más frecuente.</li>
+                    <li><strong>Varianza (σ², s²):</strong> Medida de dispersión al cuadrado.</li>
+                    <li><strong>Desviación estándar (σ, s):</strong> Raíz cuadrada de la varianza.</li>
+                    <li><strong>Percentil, cuartil:</strong> Valores que dividen los datos en 100 o 4 partes iguales.</li>
+                    <li><strong>Distribución normal:</strong> Distribución simétrica en forma de campana (Gauss).</li>
+                    <li><strong>Teorema del límite central:</strong> La media de muchas muestras tiende a una distribución normal, sea cual sea la distribución original.</li>
+                    <li><strong>Intervalo de confianza:</strong> Rango de valores que contiene el parámetro poblacional con cierta confianza (ej: 95%).</li>
+                    <li><strong>Valor p (p-valor):</strong> Probabilidad de obtener resultados al menos tan extremos como los observados, si la hipótesis nula es cierta.</li>
+                    <li><strong>Coeficiente de correlación (r):</strong> Mide la fuerza y dirección de la relación lineal entre dos variables. Va de -1 a 1.</li>
+                    <li><strong>Regresión lineal:</strong> Modelo que ajusta una recta a datos (y = a + bx).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La estadística no es solo números: es una forma de pensar críticamente sobre datos, identificar sesgos y tomar decisiones informadas en un mundo lleno de incertidumbre. Dominarla es clave para cualquier profesional del siglo XXI.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

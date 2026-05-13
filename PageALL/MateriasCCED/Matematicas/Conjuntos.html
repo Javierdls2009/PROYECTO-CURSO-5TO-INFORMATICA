@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjuntos | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">CONJUNTOS</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y nociones básicas de conjuntos</div>
+                <div class="tema" data-tema="caracteristicas">Formas de expresar un conjunto</div>
+                <div class="tema" data-tema="tipos">Tipos de conjuntos (finitos, infinitos, vacío, unitario, etc.)</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre conjunto, multiconjunto y lista</div>
+                <div class="tema" data-tema="literatura_cine">Operaciones con conjuntos (unión, intersección, diferencia, complemento)</div>
+                <div class="tema" data-tema="redes_politica">Diagramas de Venn y aplicaciones en lógica</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes al trabajar con conjuntos</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos con conjuntos</div>
+                <div class="tema" data-tema="glosario">Glosario de términos de teoría de conjuntos</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Teoría de conjuntos: la base de las matemáticas modernas</h2>
+                <p>Un <strong>conjunto</strong> es una colección bien definida de objetos, llamados elementos, que comparten una propiedad común. La teoría de conjuntos, desarrollada por Georg Cantor a finales del siglo XIX, es el fundamento sobre el que se construyen casi todas las ramas de las matemáticas.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> El conjunto de los números pares positivos menores que 10: {2, 4, 6, 8}. O el conjunto de vocales: {a, e, i, o, u}. Los elementos son únicos y no importa el orden.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar la teoría de conjuntos en profundidad.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Conjuntos: el lenguaje matemático de la pertenencia y la agrupación.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y nociones básicas de conjuntos</h2>
+                <p>Un <strong>conjunto</strong> es una agrupación de objetos (elementos) que comparten una característica común. Los elementos pueden ser números, letras, personas, o incluso otros conjuntos. La clave es que la pertenencia de un elemento al conjunto debe estar <strong>unívocamente determinada</strong>: para cualquier objeto, se debe poder decidir si pertenece o no al conjunto.</p>
+                <p><strong>Notación estándar:</strong> Los conjuntos se suelen denotar con letras mayúsculas (A, B, C) y sus elementos se escriben entre llaves, separados por comas. Ejemplo: A = {1, 2, 3, 4}. Para indicar que un elemento pertenece a un conjunto se usa el símbolo ∈ (pertenece). Si no pertenece, se usa ∉.</p>
+                <p><strong>Conjunto universal (referencial):</strong> Es el conjunto que contiene todos los elementos bajo consideración en un contexto determinado, normalmente se denota U.</p>
+                <p><strong>Conjunto vacío (∅ o {}):</strong> No contiene elementos. Es único.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Sea A = {x | x es un número natural entre 5 y 10}. Esto se lee "el conjunto de las x tales que x es un número natural entre 5 y 10". Su expresión por extensión es A = {6, 7, 8, 9} (si consideramos naturales desde 1). 6 ∈ A, 5 ∉ A.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Formas de expresar un conjunto</h2>
+                <p>Existen dos formas principales de definir un conjunto:</p>
+                <ul>
+                    <li><strong>Por extensión (o enumeración):</strong> Se listan explícitamente todos sus elementos entre llaves. Ejemplo: B = {rojo, verde, azul}. Es útil para conjuntos pequeños o finitos.</li>
+                    <li><strong>Por comprensión (o descripción):</strong> Se define mediante una propiedad que caracteriza a sus elementos, usando la notación {x | P(x)}. Ejemplo: C = {x ∈ ℕ | x es par} (el conjunto de los números naturales pares).</li>
+                </ul>
+                <p><strong>Conjuntos numéricos comunes (notación estándar):</strong></p>
+                <ul>
+                    <li>ℕ = {1, 2, 3, ...} (naturales) o a veces {0,1,2,...}.</li>
+                    <li>ℤ = {..., -2, -1, 0, 1, 2, ...} (enteros).</li>
+                    <li>ℚ = {p/q | p,q ∈ ℤ, q ≠ 0} (racionales).</li>
+                    <li>ℝ = números reales (recta real).</li>
+                    <li>ℂ = números complejos.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de notación por comprensión:</strong> {x | x es un país de América del Sur}. Por extensión sería {Argentina, Bolivia, Brasil, Chile, Colombia, Ecuador, Guyana, Paraguay, Perú, Surinam, Uruguay, Venezuela}.
+                </div>
+            `,
+            tipos: `
+                <h2>Tipos de conjuntos</h2>
+                <ul>
+                    <li><strong>Conjunto finito:</strong> Tiene un número limitado de elementos. Ejemplo: {1,2,3}.</li>
+                    <li><strong>Conjunto infinito:</strong> Tiene infinitos elementos. Ejemplo: ℕ, ℤ, ℝ.</li>
+                    <li><strong>Conjunto vacío:</strong> No tiene elementos. Se denota ∅ o {}. Es finito.</li>
+                    <li><strong>Conjunto unitario:</strong> Tiene exactamente un elemento. Ejemplo: {5}.</li>
+                    <li><strong>Conjunto universo (U):</strong> Conjunto de referencia que contiene a todos los conjuntos de interés.</li>
+                    <li><strong>Conjuntos disjuntos:</strong> Dos conjuntos que no tienen elementos en común (intersección vacía).</li>
+                    <li><strong>Subconjunto (⊆):</strong> A es subconjunto de B si todo elemento de A también está en B. A ⊆ B. Si además A ≠ B, se dice subconjunto propio (⊂).</li>
+                    <li><strong>Conjunto potencia (P(A)):</strong> Es el conjunto de todos los subconjuntos de A. Si |A| = n, entonces |P(A)| = 2ⁿ.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de conjunto potencia:</strong> Para A = {a, b}, P(A) = {∅, {a}, {b}, {a,b}}. Tiene 2² = 4 elementos.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias entre conjunto, multiconjunto y lista</h2>
+                <p>En matemáticas y computación, es importante distinguir estos conceptos.</p>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Estructura</th><th>Conjunto</th><th>Multiconjunto (bolsa)</th><th>Lista (secuencia)</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Elementos repetidos</strong> None<td>No se permiten. Cada elemento es único. None<td>Sí se permiten repeticiones. None<td>Sí se permiten repeticiones. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Orden</strong> None<td>No importa; {1,2} = {2,1}. None<td>Normalmente no se considera orden. None<td>El orden es fundamental; [1,2] ≠ [2,1]. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Ejemplo</strong> None<td>{a, b, c}  (a, b, c distintos). None<td>[a, b, a] (dos a's). None<td>[a, b, c] y [c, b, a] son diferentes. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Uso típico</strong> None<td>Matemáticas, teoría de bases de datos (tablas relacionales sin duplicados). None<td>Conteo de frecuencias, histogramas. None<td>Secuencias, arrays, colas, pilas. None</tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo comparativo:</strong> En un conjunto de notas aprobadas {7, 8, 9} no importa el orden ni repeticiones. En un multiconjunto, si dos alumnos sacaron 7, podría ser {7,7,8,9}. En una lista de calificaciones en orden de lista, [7,9,8] es diferente de [9,7,8].
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Operaciones con conjuntos (unión, intersección, diferencia, complemento)</h2>
+                <p>Las operaciones básicas permiten combinar conjuntos para formar otros nuevos.</p>
+                <ul>
+                    <li><strong>Unión (A ∪ B):</strong> Conjunto de elementos que pertenecen a A, a B o a ambos. A ∪ B = {x | x ∈ A o x ∈ B}.</li>
+                    <li><strong>Intersección (A ∩ B):</strong> Elementos que pertenecen tanto a A como a B. A ∩ B = {x | x ∈ A y x ∈ B}.</li>
+                    <li><strong>Diferencia (A \ B o A - B):</strong> Elementos de A que no están en B. A - B = {x | x ∈ A y x ∉ B}.</li>
+                    <li><strong>Complemento (A<sup>c</sup> o A'):</strong> Elementos del universo que no pertenecen a A. A<sup>c</sup> = U - A.</li>
+                    <li><strong>Diferencia simétrica (A ∆ B):</strong> Elementos que están en A o en B, pero no en ambos. A ∆ B = (A - B) ∪ (B - A).</li>
+                </ul>
+                <p><strong>Leyes importantes:</strong> Leyes de De Morgan: (A ∪ B)<sup>c</sup> = A<sup>c</sup> ∩ B<sup>c</sup> y (A ∩ B)<sup>c</sup> = A<sup>c</sup> ∪ B<sup>c</sup>.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo numérico:</strong> Sean A = {1,2,3,4}, B = {3,4,5,6}. Unión = {1,2,3,4,5,6}, intersección = {3,4}, diferencia A-B = {1,2}, B-A = {5,6}.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Diagramas de Venn y aplicaciones en lógica y bases de datos</h2>
+                <p>Los diagramas de Venn son representaciones gráficas de conjuntos mediante círculos u otras figuras dentro de un rectángulo (universo). Son muy útiles para visualizar relaciones y operaciones.</p>
+                <p><strong>Lógica proposicional:</strong> Los conjuntos pueden modelar proposiciones. El universo es el conjunto de todas las situaciones posibles; cada proposición se corresponde con el conjunto de situaciones en que es verdadera. La unión corresponde a OR lógico (∨), la intersección a AND (∧), el complemento a NOT (¬). Así, las leyes de De Morgan en conjuntos equivalen a las leyes lógicas.</p>
+                <p><strong>Bases de datos relacionales:</strong> El álgebra relacional (fundamento de SQL) se basa en operaciones de conjuntos: UNION, INTERSECT, EXCEPT (diferencia), además del producto cartesiano y selección. Las tablas son conjuntos de tuplas (filas).</p>
+                <p><strong>Probabilidad:</strong> Los eventos son conjuntos de resultados posibles. La probabilidad de la unión, intersección y complemento se calcula con reglas de conjuntos.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en SQL:</strong> SELECT nombre FROM empleados UNION SELECT nombre FROM clientes; devuelve los nombres que aparecen en al menos una de las dos tablas (sin duplicados). INTERSECT devuelve los que están en ambas.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes al trabajar con conjuntos</h2>
+                <ul>
+                    <li><strong>Confundir ∈ con ⊆:</strong> ∈ se usa entre elemento y conjunto; ⊆ entre conjuntos. Ejemplo: 2 ∈ {1,2,3} es correcto; 2 ⊆ {1,2,3} es incorrecto. {2} ⊆ {1,2,3} es correcto.</li>
+                    <li><strong>Olvidar que el orden no importa:</strong> {a,b} = {b,a}. En ejercicios de igualdad de conjuntos, no se debe considerar orden.</li>
+                    <li><strong>No considerar el conjunto vacío como subconjunto de cualquier conjunto:</strong> ∅ ⊆ A siempre, para cualquier A.</li>
+                    <li><strong>Creer que {∅} es igual a ∅:</strong> El primero es un conjunto que contiene al vacío (tiene un elemento). El segundo no tiene elementos.</li>
+                    <li><strong>Error al calcular cardinalidad de conjuntos con unión:</strong> |A ∪ B| = |A| + |B| - |A ∩ B|. Es común olvidar restar la intersección para no contar dos veces.</li>
+                    <li><strong>Interpretar mal la diferencia simétrica:</strong> A ∆ B no es (A∪B) - (A∩B), que es equivalente, pero algunos confunden con la unión exclusiva.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de cardinalidad:</strong> Si |A|=10, |B|=7, |A∩B|=3, entonces |A∪B| = 10+7-3 = 14 (no 17). El error sería sumar sin restar la intersección.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos con conjuntos</h2>
+                <p><strong>Ejercicio 1: Expresión por extensión.</strong> Escribe por extensión el conjunto A = {x ∈ ℤ | -3 < x ≤ 2}.</p>
+                <ul><li>Solución: A = {-2, -1, 0, 1, 2}.</li></ul>
+                <p><strong>Ejercicio 2: Unión e intersección.</strong> Dados A = {1,3,5,7,9}, B = {2,3,5,7,11}, halla A ∪ B, A ∩ B y A - B.</p>
+                <ul><li>Solución: A∪B = {1,2,3,5,7,9,11}; A∩B = {3,5,7}; A-B = {1,9}.</li></ul>
+                <p><strong>Ejercicio 3: Complemento.</strong> Si U = {1,2,3,4,5,6,7,8,9,10} y C = {2,4,6,8,10}, halla C<sup>c</sup>.</p>
+                <ul><li>Solución: C<sup>c</sup> = {1,3,5,7,9}.</li></ul>
+                <p><strong>Ejercicio 4: Diferencia simétrica.</strong> Con A = {a,b,c,d}, B = {c,d,e,f}, calcula A ∆ B.</p>
+                <ul><li>Solución: (A-B) = {a,b}, (B-A) = {e,f} → A ∆ B = {a,b,e,f}.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5 (problema de cardinalidad):</strong> En una encuesta a 100 personas, 60 ven fútbol, 50 ven baloncesto, y 20 ven ambos. ¿Cuántos ven al menos uno de los dos? ¿Cuántos no ven ninguno?<br>
+                    <strong>Solución:</strong> |F ∪ B| = 60+50-20 = 90 ven al menos uno. Los que no ven ninguno = 100-90 = 10.
+                </div>
+                <p><strong>Ejercicio 6 (conjunto potencia):</strong> Escribe el conjunto potencia de D = {x, y}. ¿Cuántos subconjuntos tiene?</p>
+                <ul><li>Solución: P(D) = {∅, {x}, {y}, {x,y}}. Tiene 2² = 4 subconjuntos.</li></ul>
+            `,
+            glosario: `
+                <h2>Glosario de términos de teoría de conjuntos</h2>
+                <ul>
+                    <li><strong>Conjunto:</strong> Colección bien definida de objetos (elementos).</li>
+                    <li><strong>Elemento (o miembro):</strong> Objeto que pertenece a un conjunto.</li>
+                    <li><strong>Pertenencia (∈):</strong> Relación entre un elemento y un conjunto.</li>
+                    <li><strong>Subconjunto (⊆):</strong> Relación entre conjuntos cuando todos los elementos del primero están en el segundo.</li>
+                    <li><strong>Conjunto vacío (∅):</strong> Conjunto sin elementos.</li>
+                    <li><strong>Conjunto universal (U):</strong> Conjunto de referencia que contiene todos los elementos de interés.</li>
+                    <li><strong>Unión (∪):</strong> Operación que combina elementos de dos conjuntos.</li>
+                    <li><strong>Intersección (∩):</strong> Operación que toma elementos comunes.</li>
+                    <li><strong>Diferencia (-):</strong> Elementos de un conjunto que no están en otro.</li>
+                    <li><strong>Complemento (A<sup>c</sup>):</strong> Elementos del universo que no están en A.</li>
+                    <li><strong>Diferencia simétrica (∆):</strong> Elementos que están en uno u otro conjunto, pero no en ambos.</li>
+                    <li><strong>Producto cartesiano (A × B):</strong> Conjunto de todos los pares ordenados (a,b) con a∈A, b∈B.</li>
+                    <li><strong>Cardinalidad (|A|):</strong> Número de elementos de un conjunto finito.</li>
+                    <li><strong>Conjunto potencia (P(A)):</strong> Conjunto de todos los subconjuntos de A.</li>
+                    <li><strong>Diagrama de Venn:</strong> Representación gráfica de conjuntos mediante regiones.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La teoría de conjuntos es el lenguaje común de todas las matemáticas. Desde los números hasta la topología, entender conjuntos es fundamental para cualquier estudiante de ciencias exactas e informática.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>

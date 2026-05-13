@@ -3,36 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Trigonometría | AcademiaCCED</title>
     <link rel="stylesheet" href="/PageALL/style_materias.css">
-    <!-- estilos propios de esta sola pagina -->
     <style>
-        /* colores */
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
         :root {
             --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
         }
 
-        /* estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
             background-color: var(--color-fondo);
         }
 
-        /* barra de navegacion superior */
         .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
-            border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
         }
 
-        /* boton volver */
         .boton-volver a {
             text-decoration: none;
             color: var(--color-principal);
@@ -40,285 +45,329 @@
             font-size: 1rem;
         }
 
-        /* titulo de la materia */
         .titulo-materia {
             font-weight: 800;
             color: var(--color-principal);
             font-size: 1.5rem;
         }
 
-        /* contenedor principal */
         .contenedor {
             display: flex;
             min-height: 100vh;
         }
 
-        /*barra lateral con foto del profesor */
         .barra-lateral {
-            width: 300px;
+            width: 320px;
             background-color: var(--blanco);
-            border-right: 1px solid #ddd;
+            border-right: 1px solid var(--gris-borde);
             padding: 40px 20px;
-            text-align: center;
         }
 
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
         .barra-lateral h3 {
-            margin: 10px 0;
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
         }
 
-        /* linea separadora */
-        .barra-lateral hr {
-            opacity: 0.2;
-            margin: 20px 0;
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* informacion del profesor */
-        .info-profesor {
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
         }
 
-        .info-profesor p {
-            margin: 10px 0;
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
         }
 
-        /* zona principal */
         .zona-herramientas {
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        /* encabezado en la zona */
-        .zona-herramientas h2 {
+        #contenido h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
         }
 
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
         }
 
-        /* cada tarjeta */
-        .tarjeta-herramienta {
-            background: var(--blanco);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        #contenido li {
+            margin: 8px 0;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
         }
 
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* pie de pagina */
         footer {
             text-align: center;
             padding: 20px;
             background: white;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid var(--gris-borde);
             color: #666;
             font-size: 0.9rem;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
 
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
     </style>
-  
-
-
 </head>
 <body>
 
-    <!-- barra superior -->
     <nav class="barra-superior">
-            <div class="boton-volver"><a href="/PageALL/MateriasCCED/Matematicas/PanelGeneral.html">← VOLVER ATRAS</a></div>
-        <div class="titulo-materia">Materia</div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">TRIGONOMETRÍA</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <!-- contenido principal -->
     <div class="contenedor">
-        
-        <!-- barra lateral -->
         <aside class="barra-lateral">
-            <h3>Trigonometría</h3>
-            <hr>
-          <div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Razones trigonométricas</div>
-<br>
-<div class="tema" onclick="mostrar('Tema2')">Seno, coseno y tangente</div>
-<br>
-<div class="tema" onclick="mostrar('Tema3')">Identidades trigonométricas</div>
-<br>
-<div class="tema" onclick="mostrar('Tema4')">Teorema del seno</div>
-<br>
-<div class="tema" onclick="mostrar('Tema5')">Teorema del coseno</div>
-<br>
-<div class="tema" onclick="mostrar('Tema6')">Ángulos y radianes</div>
-</div>
-</aside>
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos de la trigonometría</div>
+                <div class="tema" data-tema="caracteristicas">Razones trigonométricas básicas</div>
+                <div class="tema" data-tema="tipos">Razones inversas y sus propiedades</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre seno, coseno y tangente</div>
+                <div class="tema" data-tema="literatura_cine">Trigonometría en navegación, astronomía y acústica</div>
+                <div class="tema" data-tema="redes_politica">Trigonometría en computación: animaciones y sonido</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes al usar razones trigonométricas</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos de trigonometría</div>
+                <div class="tema" data-tema="glosario">Glosario de términos trigonométricos</div>
+            </div>
+        </aside>
 
-<!-- zona de texto en la derecha -->
-<main class="zona-herramientas">
-    <div id="contenido">
-        <h2>Introducción a Trigonometría</h2> 
-        <p>Selecciona un tema del menú lateral para aprender más sobre trigonometría.</p>
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Trigonometría: medición de triángulos y ondas que mueven el mundo</h2>
+                <p>La <strong>trigonometría</strong> (del griego <em>trigōnon</em> = 'triángulo' y <em>metría</em> = 'medición') es la rama de las matemáticas que estudia las relaciones entre los ángulos y los lados de los triángulos. Es fundamental en topografía, astronomía, navegación, ingeniería, música y gráficos por computadora.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Para medir la altura de un edificio sin subir a él, puedes usar un teodolito y la tangente: altura = distancia × tan(ángulo de elevación). La trigonometría convierte ángulos en distancias.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar el fascinante mundo de la trigonometría.</p>
+            </div>
+        </main>
     </div>
-</main>
 
-</div>
+    <footer>
+        <p>© 2025 AcademiaCCED · Trigonometría: el puente entre ángulos y longitudes que mide montañas y estrellas.</p>
+    </footer>
 
-<!-- pie de pagina -->
-<footer>
-    <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-</footer>
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos de la trigonometría</h2>
+                <p>La <strong>trigonometría</strong> se originó en las antiguas civilizaciones de Egipto y Babilonia para la agrimensura y la astronomía. Los griegos (Hiparco, Ptolomeo) desarrollaron tablas de cuerdas (antecesoras del seno). Los matemáticos árabes e indios (Al-Battani, Aryabhata) introdujeron las funciones seno y coseno. En el Renacimiento, la trigonometría se convirtió en una disciplina independiente con aplicaciones en navegación y cartografía.</p>
+                <p>Los conceptos fundamentales son las <strong>razones trigonométricas</strong> en un triángulo rectángulo:</p>
+                <ul>
+                    <li><strong>Seno (sin θ):</strong> cateto opuesto / hipotenusa.</li>
+                    <li><strong>Coseno (cos θ):</strong> cateto adyacente / hipotenusa.</li>
+                    <li><strong>Tangente (tan θ):</strong> cateto opuesto / cateto adyacente = senθ / cosθ.</li>
+                </ul>
+                <p>Estas razones se extienden a ángulos mayores de 90° mediante el círculo unitario (circunferencia de radio 1). Así, las funciones trigonométricas se convierten en funciones periódicas fundamentales para describir fenómenos ondulatorios (sonido, luz, mareas, corriente alterna).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo básico:</strong> En un triángulo rectángulo con ángulo agudo de 30°, el cateto opuesto es la mitad de la hipotenusa, por tanto sen30° = 0.5.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Las razones trigonométricas básicas y su interpretación</h2>
+                <ul>
+                    <li><strong>Seno (sin θ):</strong> Relación entre el lado opuesto al ángulo y la hipotenusa. Su valor oscila entre -1 y 1. Es impar: sin(-θ) = -sinθ.</li>
+                    <li><strong>Coseno (cos θ):</strong> Relación entre el lado adyacente y la hipotenusa. También oscila entre -1 y 1. Es par: cos(-θ) = cosθ.</li>
+                    <li><strong>Tangente (tan θ):</strong> Relación entre seno y coseno. Puede tomar cualquier valor real. Es periódica con período π (180°).</li>
+                    <li><strong>Ángulos notables (en grados y radianes):</strong>
+                        <ul>
+                            <li>0° (0 rad): sin=0, cos=1, tan=0</li>
+                            <li>30° (π/6): sin=1/2, cos=√3/2, tan=√3/3</li>
+                            <li>45° (π/4): sin=√2/2, cos=√2/2, tan=1</li>
+                            <li>60° (π/3): sin=√3/2, cos=1/2, tan=√3</li>
+                            <li>90° (π/2): sin=1, cos=0, tan (infinita)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de interpretación:</strong> Si en un triángulo rectángulo la hipotenusa mide 10 cm y un ángulo agudo tiene seno = 0.6, entonces el cateto opuesto mide 10 × 0.6 = 6 cm.
+                </div>
+            `,
+            tipos: `
+                <h2>Razones trigonométricas inversas y sus propiedades</h2>
+                <p>Además de las tres razones principales, existen tres razones <strong>recíprocas</strong> o inversas (no confundir con las funciones arco):</p>
+                <ul>
+                    <li><strong>Cosecante (csc θ):</strong> 1 / senθ. Es la hipotenusa entre cateto opuesto.</li>
+                    <li><strong>Secante (sec θ):</strong> 1 / cosθ. Hipotenusa entre cateto adyacente.</li>
+                    <li><strong>Cotangente (cot θ):</strong> 1 / tanθ = cosθ / senθ. Cateto adyacente entre opuesto.</li>
+                </ul>
+                <p><strong>Identidades trigonométricas fundamentales:</strong></p>
+                <ul>
+                    <li>Identidad pitagórica: sin²θ + cos²θ = 1.</li>
+                    <li>1 + tan²θ = sec²θ.</li>
+                    <li>1 + cot²θ = csc²θ.</li>
+                    <li>Fórmulas de adición: sin(α+β)= sinα cosβ + cosα sinβ; cos(α+β)= cosα cosβ - sinα sinβ.</li>
+                    <li>Fórmulas del ángulo doble: sin(2θ)= 2 sinθ cosθ; cos(2θ)= cos²θ - sin²θ = 2cos²θ -1 = 1 - 2sin²θ.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de identidad:</strong> Si sabemos que sinθ = 0.8 y θ es agudo, entonces cosθ = √(1 - 0.64) = √0.36 = 0.6. Así tanθ = 0.8/0.6 = 1.333...
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Comparación entre seno, coseno y tangente</h2>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Función</th><th>Seno (sinθ)</th><th>Coseno (cosθ)</th><th>Tangente (tanθ)</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Definición</strong> None<td>Opuesto / Hipotenusa</td><td>Adyacente / Hipotenusa</td><td>Opuesto / Adyacente</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"></td><strong>Rango</strong> None<td>[-1, 1]</td><td>[-1, 1]</td><td>(-∞, ∞)</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"></td><strong>Periodo (grados)</strong> None<td>360°</td><td>360°</td><td>180°</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><tr><strong>Paridad</strong> None<td>Impar</td><td>Par</td><td>Impar</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"></td><strong>Ceros en [0°,360°]</strong> None<td>0°, 180°, 360°</td><td>90°, 270°</td><td>0°, 180°, 360°</td></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><tr><strong>Asíntotas verticales</strong> None<td>No tiene</td><td>No tiene</td><td>90°, 270° (donde cosθ=0)</td></tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de periodicidad:</strong> sin(390°) = sin(30°) = 0.5 porque 390° = 30° + 360°. cos(405°) = cos(45°) = √2/2. tan(210°) = tan(30°) = √3/3 porque 210° = 30° + 180°.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Trigonometría en navegación, astronomía y acústica</h2>
+                <p>La trigonometría es esencial en ciencias que estudian fenómenos cíclicos y mediciones a distancia.</p>
+                <p><strong>Navegación y cartografía:</strong> Los GPS calculan posiciones usando triángulos esféricos y fórmulas de Haversine. Los mapas y la orientación por brújula usan senos y cosenos para convertir rumbos en desplazamientos Norte-Este.</p>
+                <p><strong>Astronomía:</strong> La paralaje estelar (medir distancias a estrellas cercanas) se basa en triángulos con bases enormes (órbita terrestre). Las órbitas de planetas y satélites se describen con funciones trigonométricas. Los eclipses se predicen con trigonometría esférica.</p>
+                <p><strong>Acústica y música:</strong> Las ondas sonoras son sinusoidales (puras) o sumas de sinusoides (timbre). La frecuencia determina el tono (nota musical). La trigonometría permite diseñar ecualizadores, sintetizadores y analizar armónicos (transformada de Fourier).</p>
+                <p><strong>Ingeniería eléctrica:</strong> La corriente alterna (CA) se expresa como I(t) = I₀ sen(ωt + φ). La potencia, impedancia y el factor de potencia se calculan con funciones trigonométricas.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en acústica:</strong> La nota La central (440 Hz) es una onda senoidal: y(t) = A·sen(2π·440·t). Al sumar senos de frecuencias múltiplos (armónicos) se obtienen los sonidos de instrumentos reales.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Trigonometría en computación: animaciones, videojuegos y procesamiento de señales</h2>
+                <p>Las funciones trigonométricas son omnipresentes en la programación gráfica y de audio.</p>
+                <p><strong>Animaciones y juegos:</strong> Movimiento circular: posición x = centroX + radio·cos(ángulo), y = centroY + radio·sen(ángulo) para hacer girar personajes o cámaras. Las trayectorias de proyectiles, movimientos de péndulos y curvas suaves se expresan con senos y cosenos. Los shaders (iluminación) usan cosenos para calcular luz difusa (producto punto entre normal y dirección de luz).</p>
+                <p><strong>Gráficos 3D y realidad virtual:</strong> Las matrices de rotación (sobre ejes X, Y, Z) están llenas de senos y cosenos. Por ejemplo, rotar un punto en el plano XY: x' = x·cosφ - y·sinφ, y' = x·sinφ + y·cosφ.</p>
+                <p><strong>Procesamiento de señales digitales (DSP):</strong> El análisis de Fourier descompone cualquier señal en suma de senos y cosenos. Esto se usa en compresión de audio (MP3), imágenes (JPEG), filtrado de voz, ecualizadores, cancelación de ruido.</p>
+                <p><strong>Inteligencia artificial:</strong> Las redes neuronales recurrentes (RNN) usan funciones de activación como el seno o la tangente hiperbólica. En visión por computadora, la transformada de Hough detecta líneas y círculos usando trigonometría.</p>
+                <div class="bloque-ejemplo">
+                    <strong>En videojuegos:</strong> Para mover una rueda de la fortuna, se actualiza el ángulo theta cada fotograma y se calculan las nuevas posiciones de las cabinas usando seno y coseno. Sin trigonometría, los movimientos circulares serían imposibles.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes al usar razones trigonométricas</h2>
+                <ul>
+                    <li><strong>Confundir la calculadora en radianes/grados:</strong> Un error típico: calcular sen(30) en modo radianes (≈ -0.988) en lugar de grados (0.5). Siempre verificar el modo angular.</li>
+                    <li><strong>Olvidar que la tangente tiene asíntotas:</strong> tan(90°) no está definida. Intentar calcularla puede llevar a divisiones por cero.</li>
+                    <li><strong>Aplicar el teorema de Pitágoras sin confirmar que es triángulo rectángulo:</strong> Las razones trigonométricas sólo son directas en triángulos rectángulos; para cualquier triángulo se usan los teoremas del seno y coseno.</li>
+                    <li><strong>Despreciar la ambigüedad del ángulo:</strong> Sinθ = 0.5 tiene dos soluciones en [0°,360°): 30° y 150°. Al resolver ecuaciones trigonométricas, considerar todas las soluciones según el periodo.</li>
+                    <li><strong>Olvidar que el seno y coseno de ángulos complementarios son equivalentes intercambiados:</strong> sin(θ) = cos(90°-θ). Error frecuente al calcular alturas sin usar esta relación.</li>
+                    <li><strong>Usar mal la fórmula del seno o coseno en problemas de vectores:</strong> Por ejemplo, para la componente horizontal de una fuerza F con ángulo θ respecto a la horizontal: Fx = F·cosθ (no senθ).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de ambigüedad:</strong> Resolver senx = 0.5. En grados: x = 30° + 360°k o x = 150° + 360°k (k entero). Es fácil olvidar la segunda familia.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de trigonometría</h2>
+                <p><strong>Ejercicio 1: Triángulo rectángulo.</strong> Un árbol proyecta una sombra de 8 m cuando el sol tiene un ángulo de elevación de 35°. ¿Cuál es la altura del árbol?</p>
+                <ul><li>Solución: tan(35°) = altura / 8 → altura = 8·tan(35°) ≈ 8·0.7002 ≈ 5.60 m.</li></ul>
+                <p><strong>Ejercicio 2: Identidad.</strong> Si cosθ = 0.6 y θ es agudo, halla senθ y tanθ.</p>
+                <ul><li>Solución: senθ = √(1 - 0.36) = 0.8, tanθ = 0.8/0.6 = 4/3 ≈ 1.333.</li></ul>
+                <p><strong>Ejercicio 3: Ángulos notables.</strong> Calcula sin(45°) + cos(60°) - tan(30°).</p>
+                <ul><li>Solución: √2/2 + 1/2 - √3/3 ≈ 0.7071 + 0.5 - 0.5774 = 0.6297.</li></ul>
+                <p><strong>Ejercicio 4: Teorema del seno.</strong> En un triángulo, el lado a = 10 cm, el ángulo A = 40°, el ángulo B = 70°. Halla el lado b.</p>
+                <ul><li>Solución: Por teorema del seno: a/senA = b/senB → b = a·senB/senA = 10·sen70°/sen40° ≈ 10·0.9397/0.6428 ≈ 14.62 cm.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5 (función periódica):</strong> La marea en un puerto sigue h(t) = 3·sen(π·t/6) + 2, donde t en horas desde la medianoche. ¿Altura a las 3:00?<br>
+                    <strong>Solución:</strong> h(3) = 3·sen(π·3/6)+2 = 3·sen(π/2)+2 = 3·1+2 = 5 metros.
+                </div>
+                <p><strong>Ejercicio 6 (ecuación trigonométrica):</strong> Resuelve 2·cosθ - 1 = 0 para θ en [0°, 360°].</p>
+                <ul><li>Solución: cosθ = 0.5 → θ = 60° y θ = 300° (pues cos es positivo en cuadrantes I y IV).</li></ul>
+            `,
+            glosario: `
+                <h2>Glosario de términos trigonométricos</h2>
+                <ul>
+                    <li><strong>Ángulo:</strong> Medida de la abertura entre dos semirrectas (grados o radianes).</li>
+                    <li><strong>Radián:</strong> Unidad angular: ángulo que subtiende un arco igual al radio. 180° = π rad.</li>
+                    <li><strong>Seno (sin):</strong> Razón longitud cateto opuesto / hipotenusa.</li>
+                    <li><strong>Coseno (cos):</strong> Razón cateto adyacente / hipotenusa.</li>
+                    <li><strong>Tangente (tan):</strong> Razón opuesto / adyacente = sin/cos.</li>
+                    <li><strong>Cosecante (csc):</strong> 1/sen.</li>
+                    <li><strong>Secante (sec):</strong> 1/cos.</li>
+                    <li><strong>Cotangente (cot):</strong> 1/tan = cos/sen.</li>
+                    <li><strong>Circunferencia unitaria:</strong> Círculo de radio 1 centrado en origen. Punto (cosθ, sinθ).</li>
+                    <li><strong>Función periódica:</strong> Función que se repite cada cierto intervalo (periodo).</li>
+                    <li><strong>Amplitud:</strong> Valor máximo de una onda sinusoidal.</li>
+                    <li><strong>Frecuencia:</strong> Número de ciclos por segundo (Hz) o por unidad de tiempo.</li>
+                    <li><strong>Fase (φ):</strong> Desplazamiento horizontal de una onda (sin(ωt+φ)).</li>
+                    <li><strong>Teorema del seno:</strong> a/senA = b/senB = c/senC en cualquier triángulo.</li>
+                    <li><strong>Teorema del coseno:</strong> c² = a² + b² - 2ab·cosC.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La trigonometría convierte el estudio de ángulos en una herramienta poderosa para medir distancias inaccesibles, modelar ondas, y hacer girar objetos en la pantalla de un ordenador.
+                </div>
+            `
+        };
 
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
 
-  if (tema === "Tema1") {
-    contenido.innerHTML = `
-      <h2>Razones trigonométricas</h2>
-      <p><strong>Definición:</strong> Son relaciones entre los lados de un triángulo rectángulo.</p>
-      <ul>
-        <li>sen = opuesto / hipotenusa</li>
-        <li>cos = adyacente / hipotenusa</li>
-        <li>tan = opuesto / adyacente</li>
-      </ul>
-    `;
-  }
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
 
-  if (tema === "Tema2") {
-    contenido.innerHTML = `
-      <h2>Seno, coseno y tangente</h2>
-      <p><strong>Definición:</strong> Son las funciones trigonométricas principales.</p>
-      <p><strong>Fórmulas:</strong></p>
-      <ul>
-        <li>sen²x + cos²x = 1</li>
-        <li>tan x = sen x / cos x</li>
-      </ul>
-      <p>Se usan para calcular lados y ángulos.</p>
-    `;
-  }
-
-  if (tema === "Tema3") {
-    contenido.innerHTML = `
-      <h2>Identidades trigonométricas</h2>
-      <p><strong>Definición:</strong> Igualdades que siempre se cumplen.</p>
-      <ul>
-        <li>sen²x + cos²x = 1</li>
-        <li>1 + tan²x = sec²x</li>
-        <li>1 + cot²x = csc²x</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema4") {
-    contenido.innerHTML = `
-      <h2>Teorema del seno</h2>
-      <p><strong>Fórmula:</strong></p>
-      <p>a / sen A = b / sen B = c / sen C</p>
-      <p>Se usa en triángulos que no son rectángulos.</p>
-    `;
-  }
-
-  if (tema === "Tema5") {
-    contenido.innerHTML = `
-      <h2>Teorema del coseno</h2>
-      <p><strong>Fórmula:</strong></p>
-      <p>c² = a² + b² - 2ab cos(C)</p>
-      <p>Sirve para encontrar lados o ángulos.</p>
-    `;
-  }
-
-  if (tema === "Tema6") {
-    contenido.innerHTML = `
-      <h2>Ángulos y radianes</h2>
-      <p><strong>Definición:</strong> Medidas de ángulos.</p>
-      <ul>
-        <li>180° = π radianes</li>
-        <li>360° = 2π radianes</li>
-      </ul>
-      <p><strong>Conversión:</strong></p>
-      <ul>
-        <li>Grados a radianes: multiplicar por π/180</li>
-        <li>Radianes a grados: multiplicar por 180/π</li>
-      </ul>
-    `;
-  }
-}
-</script>
+        mostrarTema('definicion');
+    </script>
 </body>
 </html>

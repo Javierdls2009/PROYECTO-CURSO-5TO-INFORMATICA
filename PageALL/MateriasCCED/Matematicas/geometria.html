@@ -3,36 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas | AcademiaCCED</title>
+    <title>Geometría | AcademiaCCED</title>
     <link rel="stylesheet" href="/PageALL/style_materias.css">
-    <!-- estilos propios de esta sola pagina -->
     <style>
-        /* colores */
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
         :root {
             --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
         }
 
-        /* estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
             background-color: var(--color-fondo);
         }
 
-        /* barra de navegacion superior */
         .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
-            border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
         }
 
-        /* boton volver */
         .boton-volver a {
             text-decoration: none;
             color: var(--color-principal);
@@ -40,293 +45,329 @@
             font-size: 1rem;
         }
 
-        /* titulo de la materia */
         .titulo-materia {
             font-weight: 800;
             color: var(--color-principal);
             font-size: 1.5rem;
         }
 
-        /* contenedor principal */
         .contenedor {
             display: flex;
             min-height: 100vh;
         }
 
-        /*barra lateral con foto del profesor */
         .barra-lateral {
-            width: 300px;
+            width: 320px;
             background-color: var(--blanco);
-            border-right: 1px solid #ddd;
+            border-right: 1px solid var(--gris-borde);
             padding: 40px 20px;
-            text-align: center;
         }
 
-        /* foto profesor */
-        .foto-profesor {
-            width: 110px;
-            height: 110px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 4px solid var(--color-principal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        /* nombre profesor */
         .barra-lateral h3 {
-            margin: 10px 0;
+            margin: 0 0 20px 0;
             color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
         }
 
-        /* linea separadora */
-        .barra-lateral hr {
-            opacity: 0.2;
-            margin: 20px 0;
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* informacion del profesor */
-        .info-profesor {
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
         }
 
-        .info-profesor p {
-            margin: 10px 0;
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
         }
 
-        /* zona principal */
         .zona-herramientas {
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
+            overflow-y: auto;
         }
 
-        /* encabezado en la zona */
-        .zona-herramientas h2 {
+        #contenido h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        .zona-herramientas p {
-            color: #718096;
-            margin: 0 0 40px 0;
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
         }
 
-        /* grid de herramientas */
-        .grid-herramientas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
         }
 
-        /* cada tarjeta */
-        .tarjeta-herramienta {
-            background: var(--blanco);
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        #contenido li {
+            margin: 8px 0;
         }
 
-        /* efecto pasar el mouse */
-        .tarjeta-herramienta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--color-principal);
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
         }
 
-        /* titulo de la tarjeta */
-        .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* descripción de la tarjeta */
-        .tarjeta-herramienta p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* pie de pagina */
         footer {
             text-align: center;
             padding: 20px;
             background: white;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid var(--gris-borde);
             color: #666;
             font-size: 0.9rem;
         }
-        .info-materia{
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-           
-            margin: 10px 10px;
-            padding: 10px;
-        }
-        .tema {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: #f0f0f0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
 
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
     </style>
-  
-
-
 </head>
 <body>
 
-    <!-- barra superior -->
     <nav class="barra-superior">
-              <div class="boton-volver"><a href="/PageALL/MateriasCCED/Matematicas/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
         <div class="titulo-materia">GEOMETRÍA</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <!-- contenido principal -->
     <div class="contenedor">
-        
-        <!-- barra lateral -->
         <aside class="barra-lateral">
-            <h3>GEOMETRÍA</h3>
-            <hr>
-            <div class="info-materia">
-<div class="tema" onclick="mostrar('Tema1')">Figuras geométricas</div>
-<br>
-<div class="tema" onclick="mostrar('Tema2')">Perímetro</div>
-<br>
-<div class="tema" onclick="mostrar('Tema3')">Área</div>
-<br>
-<div class="tema" onclick="mostrar('Tema4')">Volumen</div>
-<br>
-<div class="tema" onclick="mostrar('Tema5')">Ángulos</div>
-<br>
-<div class="tema" onclick="mostrar('Tema6')">Teorema de Pitágoras</div>
-</div>
-</aside>
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos de la geometría</div>
+                <div class="tema" data-tema="caracteristicas">Propiedades y elementos básicos</div>
+                <div class="tema" data-tema="tipos">Tipos de geometría: plana y del espacio</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre geometría euclidiana y no euclidiana</div>
+                <div class="tema" data-tema="literatura_cine">Geometría en arquitectura, arte y naturaleza</div>
+                <div class="tema" data-tema="redes_politica">Geometría en computación: gráficos 3D y realidad virtual</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes en mediciones y demostraciones geométricas</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos de geometría</div>
+                <div class="tema" data-tema="glosario">Glosario de términos geométricos</div>
+            </div>
+        </aside>
 
-<!-- zona de texto en la derecha -->
-<main class="zona-herramientas">
-    <div id="contenido">
-        <h2>Introducción a Geometría</h2> 
-        <p>Selecciona un tema del menú lateral para aprender más sobre geometría.</p>
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Geometría: formas, medidas y el espacio que nos rodea</h2>
+                <p>La <strong>geometría</strong> (del griego <em>geo</em> = 'tierra' y <em>metría</em> = 'medición') es la rama de las matemáticas que estudia las propiedades y medidas de las figuras en el plano y el espacio. Desde los antiguos egipcios hasta los gráficos 3D de los videojuegos, la geometría es fundamental para entender el mundo físico y virtual.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Calcular el área de un campo rectangular (base × altura) o el volumen de una habitación (largo × ancho × alto) son aplicaciones cotidianas de la geometría.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar el fascinante mundo de la geometría.</p>
+            </div>
+        </main>
     </div>
-</main>
 
-</div>
+    <footer>
+        <p>© 2025 AcademiaCCED · Geometría: la ciencia que da forma a nuestro universo.</p>
+    </footer>
 
-<!-- pie de pagina -->
-<footer>
-    <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
-</footer>
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos de la geometría</h2>
+                <p>La <strong>geometría</strong> es una de las disciplinas más antiguas de las matemáticas. Se originó en las civilizaciones de Egipto y Mesopotamia para medir terrenos y construir monumentos. Euclides, alrededor del año 300 a.C., sistematizó el conocimiento en su obra <em>Los Elementos</em>, que fue el texto de geometría estándar durante más de dos mil años.</p>
+                <p>La geometría se basa en <strong>elementos primitivos</strong> (punto, línea, plano) y <strong>axiomas</strong> (verdades que no requieren demostración). A partir de ellos se deducen teoremas como el famoso teorema de Pitágoras (a² + b² = c²).</p>
+                <p><strong>Ramas principales:</strong> Geometría plana (figuras en 2D), geometría del espacio (sólidos en 3D), geometría analítica (usa coordenadas), geometría descriptiva (representación en planos), y geometrías no euclidianas (como la esférica o hiperbólica).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo fundamental:</strong> Un punto es una posición sin dimensión. Una línea recta es una sucesión infinita de puntos. Un plano es una superficie plana infinita. Con estos elementos construimos todas las figuras.
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Propiedades y elementos básicos de la geometría</h2>
+                <ul>
+                    <li><strong>Punto:</strong> No tiene dimensión, solo posición. Se representa con una letra mayúscula (A, B).</li>
+                    <li><strong>Línea (recta):</strong> Sucesión infinita de puntos en una misma dirección. Tiene longitud infinita.</li>
+                    <li><strong>Semirrecta:</strong> Porción de recta con un origen y que se extiende infinitamente en una dirección.</li>
+                    <li><strong>Segmento:</strong> Porción de recta limitada por dos puntos (extremos). Tiene longitud finita.</li>
+                    <li><strong>Ángulo:</strong> Región del plano entre dos semirrectas que comparten el mismo origen (vértice). Se mide en grados o radianes.</li>
+                    <li><strong>Polígono:</strong> Figura plana cerrada formada por segmentos (lados). Ej: triángulo, cuadrado, pentágono.</li>
+                    <li><strong>Circunferencia y círculo:</strong> Circunferencia es el conjunto de puntos equidistantes de un centro (radio). Círculo es el interior.</li>
+                    <li><strong>Poliedro:</strong> Sólido tridimensional con caras planas poligonales (cubo, pirámide, prisma).</li>
+                    <li><strong>Teorema de Pitágoras:</strong> En un triángulo rectángulo, la hipotenusa al cuadrado es la suma de los cuadrados de los catetos: c² = a² + b².</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo:</strong> Una escuadra típica de dibujo tiene forma de triángulo rectángulo. Sus lados cumplen Pitágoras: si los catetos miden 3 y 4 cm, la hipotenusa mide 5 cm (3²+4²=9+16=25=5²).
+                </div>
+            `,
+            tipos: `
+                <h2>Tipos de geometría: plana y del espacio (y más allá)</h2>
+                <p><strong>Geometría plana (2D):</strong> Estudia figuras en un plano. Incluye:</p>
+                <ul>
+                    <li><strong>Triángulos:</strong> Según sus lados (equiláteros, isósceles, escalenos) o ángulos (rectángulos, acutángulos, obtusángulos).</li>
+                    <li><strong>Cuadriláteros:</strong> Cuadrado, rectángulo, rombo, paralelogramo, trapecio.</li>
+                    <li><strong>Círculo:</strong> Elementos: radio, diámetro, cuerda, arco, sector, segmento circular.</li>
+                    <li><strong>Polígonos regulares:</strong> Todos sus lados y ángulos iguales (pentágono, hexágono, etc.).</li>
+                </ul>
+                <p><strong>Geometría del espacio (3D):</strong> Estudia sólidos y figuras tridimensionales.</p>
+                <ul>
+                    <li><strong>Prismas:</strong> Dos bases paralelas iguales (cubo, paralelepípedo).</li>
+                    <li><strong>Pirámides:</strong> Base poligonal y caras triangulares que convergen en un vértice.</li>
+                    <li><strong>Cilindro, cono y esfera:</strong> Cuerpos redondos.</li>
+                    <li><strong>Poliedros regulares (sólidos platónicos):</strong> Tetraedro, cubo, octaedro, dodecaedro, icosaedro.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de aplicación:</strong> Un arquitecto diseña una torre con forma de pirámide cuadrangular. Necesita calcular el volumen (V = (1/3) × área base × altura) para estimar materiales.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias entre geometría euclidiana y no euclidiana</h2>
+                <p>La geometría euclidiana es la que estudiamos normalmente (en superficies planas). Pero existen otras geometrías que modifican el quinto postulado de Euclides (el de las paralelas).</p>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Aspecto</th><th>Geometría Euclidiana</th><th>Geometría No Euclidiana</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Superficie</strong> None<td>Plana (curvatura cero). None<td>Curvada: esférica (curvatura positiva) o hiperbólica (curvatura negativa). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Postulado de las paralelas</strong> None<td>Por un punto exterior pasa una única paralela a una recta dada. None<td>Pueden pasar infinitas (hiperbólica) o ninguna (elíptica/esférica). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Suma de ángulos de un triángulo</strong> None<td>180° exactos. None<td>Mayor de 180° (esférica) o menor de 180° (hiperbólica). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Ejemplo cotidiano</strong> None<td>Una hoja de papel, una mesa. None<td>Superficie de la Tierra (geometría esférica, usada en navegación). None</tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de geometría esférica:</strong> Las rutas de los aviones siguen arcos de círculo máximo (geodésicas). Un triángulo formado por dos meridianos y el ecuador puede tener suma de ángulos > 180°.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Geometría en arquitectura, arte y naturaleza</h2>
+                <p>La geometría no es solo teoría; está presente en todo lo que nos rodea, desde las construcciones humanas hasta las formas naturales.</p>
+                <p><strong>Arquitectura:</strong> Las pirámides de Egipto (caras triangulares), el Partenón (proporciones áureas), la Sagrada Familia de Gaudí (formas parabólicas y helicoidales), los rascacielos modernos (prismas rectangulares).</p>
+                <p><strong>Arte:</strong> La perspectiva lineal (Renacimiento) usa geometría para simular profundidad. M.C. Escher creó obras basadas en teselaciones y geometrías imposibles. El cubismo (Picasso) fragmenta figuras en formas geométricas.</p>
+                <p><strong>Naturaleza:</strong> Los panales de abejas son hexágonos regulares (máxima eficiencia). Las telarañas usan radios y espirales. Las conchas de caracol siguen una espiral logarítmica. Los copos de nieve tienen simetría hexagonal.</p>
+                <p><strong>Proporción áurea (φ ≈ 1.618):</strong> Aparece en el rectángulo áureo, la espiral de Fibonacci y se encuentra en obras artísticas (La Gioconda, el hombre de Vitruvio) y en estructuras naturales (girasoles, piñas de pino).</p>
+                <div class="bloque-ejemplo">
+                    <strong>La geometría en el cine:</strong> La película "Inception" (Origen) usa geometría de ciudades plegadas y perspectivas imposibles inspiradas en Escher. Los efectos 3D se basan en transformaciones geométricas (rotación, traslación, escala).
+                </div>
+            `,
+            redes_politica: `
+                <h2>Geometría en computación: gráficos 3D, realidad virtual y más</h2>
+                <p>La geometría es el pilar de los gráficos por computadora, los videojuegos y la simulación virtual. Cada píxel que ves en una pantalla 3D pasa por miles de cálculos geométricos por segundo.</p>
+                <p><strong>Modelado 3D:</strong> Los objetos se representan como mallas de vértices, aristas y caras (triángulos o polígonos). La transformación de coordenadas (modelado, vista, proyección) usa matrices geométricas.</p>
+                <p><strong>Motores gráficos (Unity, Unreal, Godot):</strong> Aplican culling (eliminar caras ocultas), iluminación por vértices, sombras mediante proyecciones, y técnicas como los shaders para simular materiales (metal, piel, agua).</p>
+                <p><strong>Realidad virtual (VR) y aumentada (AR):</strong> La geometría del entorno se mapea y se superponen objetos virtuales con transformaciones en tiempo real. El seguimiento de movimiento usa geometría de rotaciones.</p>
+                <p><strong>Algoritmos geométricos en informática:</strong> Detección de colisiones (círculos, cajas, rayos), generación de carreteras (curvas spline), sistemas de información geográfica (GIS), inteligencia artificial para navegación (pathfinding con grafos de nodos).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en videojuegos:</strong> En un juego de carreras, el coche se representa como una caja; la pista como una superficie con curvas. Para saber si el coche toca la hierba se calcula la intersección de la caja con el polígono de asfalto.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes en mediciones y demostraciones geométricas</h2>
+                <ul>
+                    <li><strong>Confundir área con perímetro:</strong> El perímetro es la suma de longitudes (en cm, m); el área es la superficie interna (en cm², m²).</li>
+                    <li><strong>Usar mal las fórmulas de volumen:</strong> Para un cilindro, V = πr²h; para un cono, V = (1/3)πr²h. Confundir una con la otra da resultados erróneos.</li>
+                    <li><strong>No verificar la validez de un triángulo:</strong> En cualquier triángulo, la suma de dos lados debe ser mayor que el tercero (desigualdad triangular).</li>
+                    <li><strong>Asumir que ángulos con mismo aspecto son iguales sin demostración:</strong> En geometría, no basta con "parecer", hay que usar teoremas (opuestos por el vértice, alternos internos, correspondientes, etc.).</li>
+                    <li><strong>Olvidar que el teorema de Pitágoras solo aplica a triángulos rectángulos:</strong> No sirve para cualquier triángulo.</li>
+                    <li><strong>Medir incorrectamente con instrumentos:</strong> Al usar regla o transportador, leer siempre desde cero y cuidar paralaje.</li>
+                </ul>
+                <p><strong>Consejos para hacer demostraciones correctas:</strong></p>
+                <ul>
+                    <li>Dibuja la figura con claridad y rotula todos los puntos, ángulos y medidas conocidas.</li>
+                    <li>Escribe todos los pasos lógicos, citando el teorema o propiedad usada.</li>
+                    <li>No asumas nada que no esté dado explícitamente o demostrado.</li>
+                    <li>Revisa las unidades: todas las longitudes deben estar en la misma unidad antes de aplicar fórmulas.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Error clásico de área vs perímetro:</strong> Una habitación de 4 m × 5 m tiene área 20 m² (para pintar paredes) y perímetro 18 m (para rodapié). Usar el perímetro para calcular pintura sería un grave error.
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de geometría</h2>
+                <p><strong>Ejercicio 1: Área y perímetro.</strong> Un jardín rectangular mide 12 m de largo y 8 m de ancho. Calcula su área y la longitud de la cerca necesaria.</p>
+                <ul><li>Solución: Área = 12 × 8 = 96 m². Perímetro = 2×(12+8) = 40 m.</li></ul>
+                <p><strong>Ejercicio 2: Teorema de Pitágoras.</strong> En un triángulo rectángulo, los catetos miden 5 cm y 12 cm. Halla la hipotenusa.</p>
+                <ul><li>Solución: h = √(5² + 12²) = √(25+144) = √169 = 13 cm.</li></ul>
+                <p><strong>Ejercicio 3: Volumen de un cilindro.</strong> Un tanque cilíndrico tiene radio 0.5 m y altura 2 m. ¿Cuántos litros caben? (1 m³ = 1000 L)</p>
+                <ul><li>Solución: V = π·(0.5)²·2 = π·0.25·2 = 0.5π ≈ 1.5708 m³ ≈ 1570.8 litros.</li></ul>
+                <p><strong>Ejercicio 4: Ángulos de un triángulo.</strong> En un triángulo, dos ángulos miden 45° y 75°. ¿Cuánto mide el tercero?</p>
+                <ul><li>Solución: 180° - (45+75) = 60°.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 5 (desafío):</strong> Se tiene un cuadrado inscrito en una circunferencia de radio 10 cm. ¿Cuál es el área del cuadrado?<br>
+                    <strong>Solución:</strong> La diagonal del cuadrado es el diámetro = 20 cm. Si lado = L, diagonal = L√2 = 20 → L = 20/√2 = 10√2 cm. Área = (10√2)² = 200 cm².
+                </div>
+                <p><strong>Ejercicio 6: Geometría analítica.</strong> Halla la distancia entre los puntos A(2,3) y B(5,7).</p>
+                <ul><li>Solución: d = √[(5-2)² + (7-3)²] = √(9+16) = √25 = 5.</li></ul>
+            `,
+            glosario: `
+                <h2>Glosario de términos geométricos</h2>
+                <ul>
+                    <li><strong>Punto:</strong> Posición en el espacio sin dimensiones.</li>
+                    <li><strong>Recta:</strong> Línea infinita sin curvas.</li>
+                    <li><strong>Plano:</strong> Superficie bidimensional infinita y plana.</li>
+                    <li><strong>Segmento:</strong> Porción de recta delimitada por dos puntos.</li>
+                    <li><strong>Ángulo:</strong> Apertura entre dos semirrectas (vértice común).</li>
+                    <li><strong>Polígono:</strong> Figura plana cerrada por segmentos.</li>
+                    <li><strong>Triángulo:</strong> Polígono de 3 lados. Clasificación por lados y ángulos.</li>
+                    <li><strong>Cuadrilátero:</strong> Polígono de 4 lados (cuadrado, rectángulo, rombo, trapecio).</li>
+                    <li><strong>Circunferencia:</strong> Conjunto de puntos equidistantes de un centro (radio r).</li>
+                    <li><strong>Círculo:</strong> Región interior de una circunferencia.</li>
+                    <li><strong>Radio:</strong> Distancia desde el centro a cualquier punto de la circunferencia.</li>
+                    <li><strong>Diámetro:</strong> Segmento que une dos puntos opuestos pasando por el centro (2r).</li>
+                    <li><strong>Prisma:</strong> Sólido con dos bases paralelas y caras laterales rectangulares.</li>
+                    <li><strong>Pirámide:</strong> Sólido con base poligonal y caras triangulares que se unen en un vértice.</li>
+                    <li><strong>Esfera:</strong> Sólido cuyos puntos equidistan de un centro.</li>
+                    <li><strong>Volumen:</strong> Medida del espacio ocupado por un cuerpo (m³, cm³).</li>
+                    <li><strong>Superficie (área):</strong> Medida de una región bidimensional (m², cm²).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    La geometría no solo es bella por sí misma, sino que es la caja de herramientas que usan arquitectos, ingenieros, diseñadores y programadores para construir y dar forma al mundo, tanto real como virtual.
+                </div>
+            `
+        };
 
-<script>
-function mostrar(tema) {
-  const contenido = document.getElementById("contenido");
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
 
-  if (tema === "Tema1") {
-    contenido.innerHTML = `
-      <h2>Figuras geométricas</h2>
-      <p><strong>Definición:</strong> Son formas en el plano o en el espacio.</p>
-      <p><strong>Ejemplos:</strong></p>
-      <ul>
-        <li>Triángulo</li>
-        <li>Cuadrado</li>
-        <li>Rectángulo</li>
-        <li>Círculo</li>
-      </ul>
-      <p><strong>Importancia:</strong> Son la base de la geometría.</p>
-    `;
-  }
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
 
-  if (tema === "Tema2") {
-    contenido.innerHTML = `
-      <h2>Perímetro</h2>
-      <p><strong>Definición:</strong> Es la suma de todos los lados de una figura.</p>
-      <p><strong>Fórmulas:</strong></p>
-      <ul>
-        <li>P = 4a (cuadrado)</li>
-        <li>P = 2(l + w) (rectángulo)</li>
-        <li>P = a + b + c (triángulo)</li>
-      </ul>
-      <p><strong>Ejemplo:</strong> Si un lado mide 5 → P = 20</p>
-    `;
-  }
-
-  if (tema === "Tema3") {
-    contenido.innerHTML = `
-      <h2>Área</h2>
-      <p><strong>Definición:</strong> Espacio que ocupa una figura.</p>
-      <p><strong>Fórmulas:</strong></p>
-      <ul>
-        <li>A = a² (cuadrado)</li>
-        <li>A = l × w (rectángulo)</li>
-        <li>A = (base × altura) / 2 (triángulo)</li>
-        <li>A = πr² (círculo)</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema4") {
-    contenido.innerHTML = `
-      <h2>Volumen</h2>
-      <p><strong>Definición:</strong> Espacio que ocupa un cuerpo en 3D.</p>
-      <p><strong>Fórmulas:</strong></p>
-      <ul>
-        <li>V = a³ (cubo)</li>
-        <li>V = área base × altura (prisma)</li>
-        <li>V = πr²h (cilindro)</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema5") {
-    contenido.innerHTML = `
-      <h2>Ángulos</h2>
-      <p><strong>Definición:</strong> Abertura entre dos líneas.</p>
-      <p><strong>Tipos:</strong></p>
-      <ul>
-        <li>Agudo: menor de 90°</li>
-        <li>Recto: igual a 90°</li>
-        <li>Obtuso: mayor de 90°</li>
-      </ul>
-    `;
-  }
-
-  if (tema === "Tema6") {
-    contenido.innerHTML = `
-      <h2>Teorema de Pitágoras</h2>
-      <p><strong>Definición:</strong> Relación entre los lados de un triángulo rectángulo.</p>
-      <p><strong>Fórmula:</strong></p>
-      <p>a² + b² = c²</p>
-      <p><strong>Ejemplo:</strong> 3² + 4² = 5²</p>
-    `;
-  }
-}
-</script>
+        mostrarTema('definicion');
+    </script>
 </body>
 </html>

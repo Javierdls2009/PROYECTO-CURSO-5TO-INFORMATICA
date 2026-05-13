@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <style>
+        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
+        :root {
+            --color-principal: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            flex-wrap: wrap;
+        }
+
+        .boton-volver a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-materia {
+            font-weight: 800;
+            color: var(--color-principal);
+            font-size: 1.5rem;
+        }
+
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+        }
+
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;
+            overflow-y: auto;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        #contenido ul, #contenido ol {
+            margin: 10px 0 20px 30px;
+            color: var(--texto-gris);
+            line-height: 1.5;
+        }
+
+        #contenido li {
+            margin: 8px 0;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-principal), transparent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">CÁLCULO</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
+    </nav>
+
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
+            <div class="lista-temas">
+                <div class="tema" data-tema="definicion">Definición y fundamentos del cálculo</div>
+                <div class="tema" data-tema="caracteristicas">Conceptos clave: límites, derivadas e integrales</div>
+                <div class="tema" data-tema="tipos">Ramas del cálculo: diferencial e integral</div>
+                <div class="tema" data-tema="diferencia_ironia">Diferencias entre derivación e integración</div>
+                <div class="tema" data-tema="literatura_cine">Cálculo en física, ingeniería y economía</div>
+                <div class="tema" data-tema="redes_politica">Cálculo en computación y machine learning</div>
+                <div class="tema" data-tema="uso_riesgos">Errores comunes y técnicas para dominar el cálculo</div>
+                <div class="tema" data-tema="ejercicios">Ejercicios prácticos de cálculo</div>
+                <div class="tema" data-tema="glosario">Glosario de términos de cálculo</div>
+            </div>
+        </aside>
+
+        <main class="zona-herramientas">
+            <div id="contenido">
+                <h2>Cálculo: definición, límites, derivadas e integrales</h2>
+                <p>El cálculo es la rama de las matemáticas que estudia el cambio continuo y la acumulación. Se divide en dos grandes áreas: el cálculo diferencial (estudio de tasas de cambio y pendientes) y el cálculo integral (estudio de áreas, volúmenes y acumulación).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo clave:</strong> Si manejas un coche, el velocímetro marca la derivada de la posición respecto al tiempo (rapidez instantánea). El odómetro marca la integral de la velocidad (distancia total recorrida). El cálculo une ambos conceptos.
+                </div>
+                <hr>
+                <p>Selecciona un tema del menú para explorar el mundo del cálculo en profundidad.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 AcademiaCCED · Cálculo: el lenguaje del cambio que modela el universo dinámico.</p>
+    </footer>
+
+    <script>
+        const contenidos = {
+            definicion: `
+                <h2>Definición y fundamentos del cálculo</h2>
+                <p>El <strong>cálculo</strong> (del latín <em>calculus</em>, 'piedra pequeña para contar') es la rama de las matemáticas desarrollada independientemente por Isaac Newton y Gottfried Leibniz en el siglo XVII. Su invención revolucionó la ciencia al permitir describir fenómenos cambiantes como el movimiento planetario, el flujo de fluidos o el crecimiento poblacional.</p>
+                <p>El cálculo se construye sobre tres conceptos fundamentales: <strong>límites, derivadas e integrales</strong>. Un límite describe el comportamiento de una función cuando su variable se acerca a un valor. La derivada mide la tasa de cambio instantánea (pendiente de la tangente). La integral mide la acumulación (área bajo la curva).</p>
+                <p><strong>Teorema Fundamental del Cálculo:</strong> Este teorema conecta la derivación y la integración, mostrando que son operaciones inversas. Si derivas una integral, recuperas la función original; si integras una derivada, obtienes el cambio neto.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo histórico:</strong> Newton usó el cálculo para demostrar que la fuerza gravitatoria decrece con el cuadrado de la distancia y para explicar las órbitas elípticas de los planetas (leyes de Kepler).
+                </div>
+            `,
+            caracteristicas: `
+                <h2>Conceptos clave: límites, derivadas e integrales</h2>
+                <ul>
+                    <li><strong>Límite:</strong> Es el valor al que se aproxima una función f(x) cuando x se acerca a un punto c. Se escribe como \\(\\lim_{x \\to c} f(x) = L\\). Los límites permiten estudiar la continuidad y son la base de las derivadas.</li>
+                    <li><strong>Derivada:</strong> Representa la tasa de cambio instantánea. Se define como \\(f'(x) = \\lim_{h \\to 0} \\frac{f(x+h)-f(x)}{h}\\). Geométricamente es la pendiente de la recta tangente a la curva en un punto.</li>
+                    <li><strong>Integral definida:</strong> \\(\\int_a^b f(x) dx\\) calcula el área bajo la curva entre a y b. Es un límite de sumas de Riemann (rectángulos cada vez más finos).</li>
+                    <li><strong>Integral indefinida (antiderivada):</strong> Una función F(x) tal que F'(x) = f(x). Se escribe como \\(\\int f(x) dx = F(x) + C\\), donde C es la constante de integración.</li>
+                    <li><strong>Continuidad:</strong> Una función es continua en un punto si el límite existe y coincide con el valor de la función.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de derivada:</strong> Si f(x) = x², entonces f'(x) = 2x. En x=3, la pendiente es 6. La recta tangente a la parábola en (3,9) tiene pendiente 6.
+                </div>
+            `,
+            tipos: `
+                <h2>Ramas del cálculo: diferencial e integral</h2>
+                <p>El cálculo clásico se divide en dos grandes ramas, aunque están profundamente conectadas por el Teorema Fundamental.</p>
+                <ul>
+                    <li><strong>Cálculo diferencial:</strong> Se enfoca en las derivadas y sus aplicaciones: estudiar máximos y mínimos (optimización), tasas de cambio relacionadas, aproximación lineal, concavidad y puntos de inflexión. Útil para hallar velocidades, aceleraciones, costos marginales, etc.</li>
+                    <li><strong>Cálculo integral:</strong> Se enfoca en las integrales: cálculo de áreas, volúmenes de sólidos de revolución, longitud de arco, centro de masa, trabajo realizado por una fuerza, probabilidad acumulada. Incluye técnicas de integración (sustitución, partes, fracciones parciales).</li>
+                    <li><strong>Cálculo multivariable (extensión):</strong> Estudia funciones de varias variables (x,y,z). Incluye derivadas parciales, gradiente, divergencia, rotacional, integrales dobles, triples, de línea y de superficie. Esencial en electromagnetismo, flujo de fluidos.</li>
+                    <li><strong>Ecuaciones diferenciales:</strong> Rama que estudia ecuaciones que involucran derivadas. Modelan casi todos los fenómenos continuos: caída libre, circuitos RC, ley de enfriamiento, dinámica de poblaciones (logística).</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo de aplicación del cálculo diferencial:</strong> Una empresa quiere maximizar su beneficio. El beneficio B(q) = ingresos - costos. La derivada B'(q) = 0 da la cantidad q que maximiza (punto crítico). Luego se verifica con B''(q)<0.
+                </div>
+            `,
+            diferencia_ironia: `
+                <h2>Diferencias clave entre derivación e integración</h2>
+                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
+                    <tr style="background:#e5322e; color:#fff;"><th>Aspecto</th><th>Derivación</th><th>Integración</th></tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Significado físico</strong> None<td>Velocidad instantánea, pendiente, razón de cambio. None<td>Acumulación total, área bajo la curva, distancia recorrida. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><tr><strong>Operación inversa</strong> None<td>Derivar es lo opuesto a integrar (Teorema Fundamental). None<td>Integrar "deshace" la derivada (salvo constante). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Efecto sobre constantes</strong> None<td>La derivada de una constante es 0. NoneTreeLabel<td>La integral de una constante k es kx + C (aparece variable). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Regla de la potencia</strong> None<td>d/dx (x^n) = n x^{n-1} (baja el exponente). None<td>∫ x^n dx = x^{n+1}/(n+1) + C (sube el exponente, divide). None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Interpretación geométrica</strong> None<td>Pendiente de la tangente. None<td>Área bajo la curva. None</tr>
+                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Existencia de constante</strong> None<td>No aparece constante arbitraria (salvo en derivación de funciones con parámetros). None<td>Siempre aparece +C en integral indefinida. None</tr>
+                </table>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo paralelo:</strong> Para f(x)=x³, derivada f'(x)=3x². Integral ∫3x² dx = x³ + C. Se recupera la función original excepto por la constante.
+                </div>
+            `,
+            literatura_cine: `
+                <h2>Cálculo en física, ingeniería y economía</h2>
+                <p>El cálculo es indispensable en todas las disciplinas que involucran magnitudes que varían de forma continua.</p>
+                <p><strong>Física:</strong> La cinemática usa derivadas: velocidad v = ds/dt, aceleración a = dv/dt = d²s/dt². La dinámica: F = m·a (segunda ley de Newton). El trabajo es una integral: W = ∫F·dx. Electromagnetismo: las ecuaciones de Maxwell son ecuaciones diferenciales.</p>
+                <p><strong>Ingeniería:</strong> Diseño de estructuras: los momentos flectores y esfuerzos cortantes se obtienen integrando cargas distribuidas. Control automático: los sistemas se modelan con funciones de transferencia (transformada de Laplace). Optimización de rutas (cálculo de variaciones).</p>
+                <p><strong>Economía:</strong> Costo marginal = derivada del costo total. Ingreso marginal = derivada del ingreso. Excedente del consumidor = integral de la curva de demanda menos el precio. Elasticidad = (dx/dp)*(p/x).</p>
+                <div class="bloque-ejemplo">
+                    <strong>Ejemplo en biología:</strong> La tasa de crecimiento de una bacteria sigue dP/dt = kP (crecimiento exponencial). Integrando se obtiene P(t)=P₀ e^{kt}. El cálculo permite predecir poblaciones.
+                </div>
+            `,
+            redes_politica: `
+                <h2>Cálculo en computación y machine learning</h2>
+                <p>Aunque el cálculo es continuo, sus conceptos son esenciales en numerosos algoritmos discretos y sistemas computacionales.</p>
+                <p><strong>Aprendizaje automático (Machine Learning):</strong> El entrenamiento de redes neuronales utiliza el descenso del gradiente (gradient descent). El gradiente es un vector de derivadas parciales de la función de pérdida. Se actualizan los pesos: w ← w - η ∇L. Sin cálculo no habría deep learning.</p>
+                <p><strong>Gráficos por computadora:</strong> Las curvas y superficies (Bézier, B-splines) se definen con derivadas para suavizado. Los shaders y efectos de iluminación usan gradientes normales.</p>
+                <p><strong>Simulaciones físicas en videojuegos:</strong> Se resuelven ecuaciones diferenciales (movimiento de proyectiles, colisiones) mediante métodos numéricos como Euler o Runge-Kutta.</p>
+                <p><strong>Optimización numérica:</strong> Algoritmos como el método de Newton para hallar raíces o minimizar funciones utilizan derivadas primeras y segundas.</p>
+                <div class="bloque-ejemplo">
+                    <strong>En inteligencia artificial:</strong> La retropropagación (backpropagation) calcula derivadas de la función de error respecto a millones de parámetros usando la regla de la cadena. Es la razón del éxito del deep learning.
+                </div>
+            `,
+            uso_riesgos: `
+                <h2>Errores comunes y técnicas para dominar el cálculo</h2>
+                <ul>
+                    <li><strong>Confundir derivada con pendiente de la secante:</strong> La derivada es el límite cuando h→0, no la pendiente con un h grande.</li>
+                    <li><strong>Olvidar la regla de la cadena:</strong> Si f(x)=sen(2x), entonces f'(x)=cos(2x)*2 (no solo cos(2x)). Derivar funciones compuestas requiere multiplicar por la derivada interna.</li>
+                    <li><strong>Errores algebraicos al simplificar límites:</strong> Intentar evaluar directamente un límite 0/0 sin factorizar o racionalizar.</li>
+                    <li><strong>Olvidar la constante de integración +C:</strong> En integrales indefinidas, la constante es obligatoria; representa una familia de funciones.</li>
+                    <li><strong>Aplicar mal la regla de integración por partes:</strong> Elegir incorrectamente u y dv (se debe elegir u que simplifique con la derivada).</li>
+                    <li><strong>No verificar si una integral impropia converge:</strong> Al integrar hasta infinito, hay que tomar límite y comprobar que existe finito.</li>
+                </ul>
+                <p><strong>Consejos para dominar el cálculo:</strong> Practicar muchas derivadas e integrales hasta mecanizar las reglas. Entender la intuición geométrica (tangente y área). Resolver problemas aplicados (optimización, tasas relacionadas). Usar software como GeoGebra para visualizar.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Regla nemotécnica para derivadas trigonométricas:</strong> sen → cos, cos → -sen, tan → sec². Para integrales es al revés (con cuidado de signos).
+                </div>
+            `,
+            ejercicios: `
+                <h2>Ejercicios prácticos de cálculo</h2>
+                <p><strong>Ejercicio 1: Límites.</strong> Calcula \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\).</p>
+                <ul><li>Solución: Factorizando (x-2)(x+2)/(x-2) → x+2 → 4.</li></ul>
+                <p><strong>Ejercicio 2: Derivada.</strong> Halla f'(x) para f(x)=3x⁴ - 5x² + 2x - 7.</p>
+                <ul><li>Solución: f'(x)=12x³ - 10x + 2.</li></ul>
+                <p><strong>Ejercicio 3: Regla del producto.</strong> Deriva g(x)=x²·sen(x).</p>
+                <ul><li>Solución: g'(x)=2x·sen(x) + x²·cos(x).</li></ul>
+                <p><strong>Ejercicio 4: Integral indefinida.</strong> ∫(6x² - 4x + 5) dx.</p>
+                <ul><li>Solución: 2x³ - 2x² + 5x + C.</li></ul>
+                <p><strong>Ejercicio 5: Integral definida.</strong> Calcula ∫₀¹ (x³ + x) dx.</p>
+                <ul><li>Solución: [x⁴/4 + x²/2]₀¹ = (1/4 + 1/2) - 0 = 3/4.</li></ul>
+                <div class="bloque-ejemplo">
+                    <strong>Ejercicio 6 (Optimización):</strong> Se quiere construir una caja sin tapa a partir de una lámina cuadrada de 12 cm de lado, recortando cuadrados en las esquinas y doblando. ¿Qué tamaño de recorte maximiza el volumen?<br>
+                    <strong>Solución:</strong> Volumen V(x)=x(12-2x)². Derivar, igualar a 0 → x=2 cm (máximo) o x=6 (mínimo). Volumen máximo 128 cm³.
+                </div>
+            `,
+            glosario: `
+                <h2>Glosario de términos de cálculo</h2>
+                <ul>
+                    <li><strong>Límite:</strong> Valor al que se aproxima una función cuando su variable tiende a cierto número.</li>
+                    <li><strong>Derivada:</strong> Tasa de cambio instantánea; pendiente de la recta tangente.</li>
+                    <li><strong>Integral definida:</strong> Área bajo la curva entre dos límites.</li>
+                    <li><strong>Integral indefinida:</strong> Familia de antiderivadas, incluye constante +C.</li>
+                    <li><strong>Teorema Fundamental del Cálculo:</strong> Conexión entre derivación e integración.</li>
+                    <li><strong>Regla de la cadena:</strong> Derivada de función compuesta: (f∘g)' = (f'∘g)·g'.</li>
+                    <li><strong>Derivada parcial:</strong> Derivada de una función multivariable respecto a una variable, manteniendo las otras constantes.</li>
+                    <li><strong>Gradiente:</strong> Vector de derivadas parciales; apunta en la dirección de máximo crecimiento.</li>
+                    <li><strong>Punto crítico:</strong> Donde la derivada es cero o no existe; posibles máximos, mínimos o puntos de silla.</li>
+                    <li><strong>Concavidad:</strong> Segunda derivada positiva → cóncava hacia arriba (mínimo local), negativa → cóncava hacia abajo (máximo local).</li>
+                    <li><strong>Ecuación diferencial:</strong> Ecuación que relaciona una función con sus derivadas.</li>
+                </ul>
+                <div class="bloque-ejemplo">
+                    Dominar el cálculo es como aprender a leer el movimiento del mundo. Con él, los estudiantes de ciencias e ingeniería pueden modelar desde el vuelo de una mosca hasta la trayectoria de un cohete.
+                </div>
+            `
+        };
+
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            }
+            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const tema = el.getAttribute('data-tema');
+                if (tema) mostrarTema(tema);
+            });
+        });
+
+        mostrarTema('definicion');
+    </script>
+</body>
+</html>
