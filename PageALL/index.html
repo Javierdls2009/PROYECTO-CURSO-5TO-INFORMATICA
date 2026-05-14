@@ -9,44 +9,44 @@
 </head>
 <body>
 
-    <header class="encabezado-principal">
-        <nav class="nav-superior">
-            <div class="logo">
-                <img src="./ImgALL/LogoCCED.jpeg" alt="logo del colegio">
-            </div>
-            
-            <div class="buscador">
-                <span class="material-symbols-outlined">search</span>
-                <input type="text" id="entradaBusqueda" placeholder="Buscar temas...">
-            </div>
+    <header class="header-moderno">
+    <div class="contenedor-nav">
+        <div class="logo-seccion">
+            <img src="./ImgALL/LogoCCED.jpeg" alt="Logo" class="logo-img">
+            <span class="logo-nombre">Biblioteca<span class="rojo">CCED</span></span>
+        </div>
 
-            <div class="controles-derecha">
+        <div class="buscador-minimal">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" id="entradaBusqueda" placeholder="¿Qué tema buscas?">
+        </div>
 
-                <div class="modo-oscuro">
+        <div class="menu-seccion">
+            <nav class="enlaces-principales">
+                <a href="#" class="activo">Inicio</a>
+                <a href="./sobreCCED.html">Sobre CCED</a>
+                <a href="./Biblioteca.html">Biblioteca</a>
+            </nav>
+            <div class="divisor"></div>
+            <div class="modo-oscuro">
                 <input type="checkbox" id="selectorModo" class="checkbox-oculto">
-                <label for="selectorModo" id="etiquetaIcono">
+                <label for="selectorModo">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </label>
-        </div> 
-
+            </div>
         </div>
-        </nav>
+    </div>
+</header>
 
-        <nav class="nav-inferior">
-            <ul class="ul-principal">
-                <li><a href="#" class="active"><span class="material-symbols-outlined">home</span></a></li>
-                <li><a href="./sobreCCED.html">Sobre el CCED</a></li>
-                <li><a href="./Biblioteca.html">Biblioteca</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="inicio">
-        <div class="titulo">
-            <h1>Biblioteca<span class="rojo">CCED</span></h1>
-            <p>Selecciona una materia para explorar</p>
-        </div>
-    </section>
+<section class="inicio-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-contenido">
+        <span class="tag-bienvenida">Centro Cristiano de Educación para el Desarrollo</span>
+        <h1>Aprender es una <span class="texto-gradiente">Aventura</span></h1>
+        <p>Tu portal de recursos educativos diseñado para el éxito académico.</p>
+        <a href="#materias" class="btn-explorar">Comenzar ahora</a>
+    </div>
+</section>
 
     <div class="contenedor-general">
 

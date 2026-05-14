@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Inglés | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
         /* ========== ESTILOS (misma paleta que las páginas anteriores) ========== */
         :root {
@@ -22,19 +23,16 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            background-color: var(--color-fondo); overflow: hidden; }
 
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid var(--gris-borde);
-            flex-wrap: wrap;
+            
         }
 
         .boton-volver a {
@@ -50,9 +48,7 @@
             font-size: 1.5rem;
         }
 
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         .barra-lateral {
@@ -97,8 +93,7 @@
         .zona-herramientas {
             flex: 1;
             padding: 50px;
-            background-color: #f9f9fb;
-            overflow-y: auto;
+            background-color: #f9f9fb;; height: 100%;
         }
 
         #contenido h2 {
@@ -189,18 +184,18 @@
 
 <div class="contenedor">
     <aside class="barra-lateral">
-        <h3>📚 TEMARIO</h3>
+        <h3> TEMARIO</h3>
         <div class="lista-temas">
-            <div class="tema" data-tema="tema1">🔍 1. Sus diferencias</div>
-            <div class="tema" data-tema="tema2">🗣️ 2. Pronunciación</div>
-            <div class="tema" data-tema="tema3">✍️ 3. Ortografía</div>
-            <div class="tema" data-tema="tema4">📖 4. Vocabulario extendido</div>
-            <div class="tema" data-tema="tema5">🧠 5. Gramática y Uses</div>
-            <div class="tema" data-tema="tema6">📅 6. Historia y Origen</div>
-            <div class="tema" data-tema="tema7">💼 7. Inglés Formal e Informal</div>
-            <div class="tema" data-tema="tema8">🎬 8. Cultura y Medios</div>
-            <div class="tema" data-tema="tema9">🔢 9. Números y Medidas</div>
-            <div class="tema" data-tema="tema10">💬 10. Expresiones y Frases Hechas</div>
+            <div class="tema" data-tema="tema1">Sus diferencias</div>
+            <div class="tema" data-tema="tema2">Pronunciación</div>
+            <div class="tema" data-tema="tema3">Ortografía</div>
+            <div class="tema" data-tema="tema4">Vocabulario extendido</div>
+            <div class="tema" data-tema="tema5">Gramática y Uses</div>
+            <div class="tema" data-tema="tema6">Historia y Origen</div>
+            <div class="tema" data-tema="tema7">Inglés Formal e Informal</div>
+            <div class="tema" data-tema="tema8">Cultura y Medios</div>
+            <div class="tema" data-tema="tema9">Números y Medidas</div>
+            <div class="tema" data-tema="tema10">Expresiones y Frases Hechas</div>
         </div>
     </aside>
 
@@ -213,7 +208,7 @@
 </div>
 
 <footer>
-    &copy; 2026 AcademiaCCED 
+    &copy; 2026 AcademiaCCED. Todos los derechos reservados.
 </footer>
 
 <script>
@@ -283,19 +278,19 @@
                 <b class="cat-rojo">Fechas:</b><br>
                 BrE: día/mes/año → 31/12/2026 = 31 de diciembre<br>
                 AmE: mes/día/año → 12/31/2026 = 31 de diciembre<br>
-                ⚠️ Esto puede causar confusión real: 04/05/2026 en BrE es el 4 de mayo, pero en AmE es el 5 de abril.`
+                 Esto puede causar confusión real: 04/05/2026 en BrE es el 4 de mayo, pero en AmE es el 5 de abril.`
         },
         'tema4': {
             titulo: "Vocabulario extendido",
             texto: `El vocabulario es quizás la diferencia más visible en el día a día. Aquí un repaso por categorías:<br><br>
-                <b class="cat-rojo">🚗 Transporte:</b><br>
+                <b class="cat-rojo"> Transporte:</b><br>
                 BrE: lorry / AmE: truck (camión)<br>
                 BrE: boot / AmE: trunk (maletero del coche)<br>
                 BrE: bonnet / AmE: hood (capó)<br>
                 BrE: motorway / AmE: highway/freeway (autopista)<br>
                 BrE: petrol / AmE: gas/gasoline (gasolina)<br>
                 BrE: car park / AmE: parking lot (estacionamiento)<br><br>
-                <b class="cat-rojo">🏠 Hogar:</b><br>
+                <b class="cat-rojo"> Hogar:</b><br>
                 BrE: flat / AmE: apartment (apartamento)<br>
                 BrE: wardrobe / AmE: closet (armario)<br>
                 BrE: tap / AmE: faucet (grifo)<br>
@@ -303,7 +298,7 @@
                 BrE: bin / AmE: trash can (cubo de basura)<br>
                 BrE: lift / AmE: elevator (ascensor)<br>
                 BrE: ground floor / AmE: first floor (planta baja)<br><br>
-                <b class="cat-rojo">🍔 Comida:</b><br>
+                <b class="cat-rojo"> Comida:</b><br>
                 BrE: courgette / AmE: zucchini (calabacín)<br>
                 BrE: aubergine / AmE: eggplant (berenjena)<br>
                 BrE: biscuit / AmE: cookie (galleta dulce)<br>
@@ -311,14 +306,14 @@
                 BrE: crisps / AmE: chips (papas fritas de bolsa)<br>
                 BrE: sweets / AmE: candy (dulces/caramelos)<br>
                 BrE: jam / AmE: jelly (mermelada)<br><br>
-                <b class="cat-rojo">👕 Ropa:</b><br>
+                <b class="cat-rojo"> Ropa:</b><br>
                 BrE: trainers / AmE: sneakers (zapatillas deportivas)<br>
                 BrE: jumper / AmE: sweater (suéter)<br>
                 BrE: mac/mackintosh / AmE: raincoat (impermeable)<br>
                 BrE: waistcoat / AmE: vest (chaleco)<br>
                 BrE: trousers / AmE: pants (pantalones)<br>
                 BrE: pants/knickers / AmE: underwear (ropa interior)<br><br>
-                <b class="cat-rojo">🏫 Educación y trabajo:</b><br>
+                <b class="cat-rojo"> Educación y trabajo:</b><br>
                 BrE: university / AmE: college (universidad)<br>
                 BrE: headmaster / AmE: principal (director de escuela)<br>
                 BrE: CV (Curriculum Vitae) / AmE: résumé (hoja de vida)<br>
@@ -410,16 +405,16 @@
         'tema8': {
             titulo: "Cultura y Medios",
             texto: `Los medios de comunicación han tenido un papel clave en la expansión y percepción de ambas variantes.<br><br>
-                <b class="cat-rojo">🎬 Cine y televisión:</b><br>
+                <b class="cat-rojo"> Cine y televisión:</b><br>
                 Hollywood ha globalizado el inglés americano durante más de un siglo. Series como <i>Friends</i>, <i>Breaking Bad</i>, <i>Game of Thrones</i> (producción americana) o <i>Grey's Anatomy</i> han popularizado el AmE en todo el mundo.<br>
                 El BrE se difunde con producciones como <i>Downton Abbey</i>, <i>Peaky Blinders</i>, <i>The Crown</i>, <i>Sherlock</i> y <i>Doctor Who</i>. El BrE tiene un halo de elegancia y sofisticación en la cultura popular global.<br><br>
-                <b class="cat-rojo">🎵 Música:</b><br>
+                <b class="cat-rojo"> Música:</b><br>
                 El rock, el pop, el hip-hop y el country americanos dominan las listas globales. Sin embargo, artistas como The Beatles, Adele, Ed Sheeran, Amy Winehouse o Coldplay han llevado el acento británico a millones de oyentes. Curiosamente, muchos cantantes británicos adoptan un acento americano al cantar.<br><br>
-                <b class="cat-rojo">💻 Internet y redes sociales:</b><br>
+                <b class="cat-rojo"> Internet y redes sociales:</b><br>
                 El AmE domina internet debido a la influencia de Silicon Valley. Plataformas como Google, Twitter, Instagram y TikTok surgieron en EE.UU. Esto ha normalizado expresiones americanas a nivel global: <i>trending, hashtag, selfie, to unfollow, to scroll</i>.<br><br>
-                <b class="cat-rojo">📰 Medios escritos:</b><br>
+                <b class="cat-rojo"> Medios escritos:</b><br>
                 Publicaciones como <i>The Guardian</i>, <i>The Economist</i> o <i>The Times</i> usan BrE y son referentes mundiales de escritura en inglés formal. <i>The New York Times</i> o <i>The Washington Post</i> establecen el estándar del AmE periodístico.<br><br>
-                <b class="cat-rojo">🎓 Educación internacional:</b><br>
+                <b class="cat-rojo"> Educación internacional:</b><br>
                 • BrE es el estándar en Europa, Asia del Sur, África y Medio Oriente.<br>
                 • AmE predomina en América Latina, Corea del Sur, Japón y partes de China.<br>
                 • Los exámenes internacionales como IELTS usan BrE; el TOEFL usa AmE.`
@@ -427,7 +422,7 @@
         'tema9': {
             titulo: "Números y Medidas",
             texto: `Una diferencia práctica muy importante entre BrE y AmE son los sistemas de medición y cómo se expresan los números en la vida cotidiana.<br><br>
-                <b class="cat-rojo">📏 Sistema de medidas:</b><br>
+                <b class="cat-rojo"> Sistema de medidas:</b><br>
                 El Reino Unido adoptó oficialmente el sistema métrico en los años 70, aunque conserva medidas imperiales en la vida diaria:<br>
                 • Velocidad y distancias: millas (mph)<br>
                 • Cerveza y leche: pintas<br>
@@ -436,21 +431,21 @@
                 • Distancia: pulgadas, pies, yardas, millas<br>
                 • Peso: onzas, libras<br>
                 • Volumen: onzas líquidas, tazas, pintas, galones<br><br>
-                <b class="cat-rojo">🌡️ Temperatura:</b><br>
+                <b class="cat-rojo"> Temperatura:</b><br>
                 BrE: Celsius → "It's 25 degrees today." (calor agradable)<br>
                 AmE: Fahrenheit → "It's 77 degrees today." (mismo valor)<br>
                 Fórmula: °F = (°C × 9/5) + 32<br><br>
-                <b class="cat-rojo">🔢 Números grandes:</b><br>
+                <b class="cat-rojo"> Números grandes:</b><br>
                 Hoy ambas variantes usan la misma escala:<br>
                 • Million = 1.000.000 (un millón)<br>
                 • Billion = 1.000.000.000 (mil millones)<br>
                 • Trillion = 1.000.000.000.000 (un billón)<br>
-                ⚠️ Históricamente el BrE usaba "billion" para referirse a 10¹², pero adoptó la escala americana en el siglo XX.<br><br>
-                <b class="cat-rojo">📅 Formato de fechas:</b><br>
+                 Históricamente el BrE usaba "billion" para referirse a 10¹², pero adoptó la escala americana en el siglo XX.<br><br>
+                <b class="cat-rojo"> Formato de fechas:</b><br>
                 BrE: día/mes/año → 04/07/2026 = 4 de julio<br>
                 AmE: mes/día/año → 07/04/2026 = 4 de julio<br>
-                ⚠️ Fechas como 01/06/2026 se prestan a confusión: ¿1 de junio o 6 de enero?<br><br>
-                <b class="cat-rojo">🕐 Formato de hora:</b><br>
+                 Fechas como 01/06/2026 se prestan a confusión: ¿1 de junio o 6 de enero?<br><br>
+                <b class="cat-rojo"> Formato de hora:</b><br>
                 BrE: más común el formato de 12h con am/pm, pero también se usa el de 24h en contextos formales y transporte.<br>
                 AmE: casi exclusivamente 12h con am/pm en el habla cotidiana.`
         },

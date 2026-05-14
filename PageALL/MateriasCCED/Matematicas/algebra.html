@@ -6,7 +6,6 @@
     <title>Álgebra | AcademiaCCED</title>
     <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
-        /* ========== ESTILOS BASE (misma paleta que Ironía) ========== */
         :root {
             --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
@@ -15,6 +14,7 @@
             --gris-borde: #ddd;
             --gris-claro: #f0f0f0;
             --texto-gris: #555;
+            --fondo-pizarra: #f9f9fb;
         }
 
         * {
@@ -23,19 +23,27 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
+        html, body {
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--color-fondo);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* ===== NAV SUPERIOR ===== */
         .barra-superior {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 0 5%;
+            height: 74px;
             background: var(--blanco);
             border-bottom: 2px solid var(--gris-borde);
-            flex-wrap: wrap;
+            flex-shrink: 0;
+            z-index: 1000;
         }
 
         .boton-volver a {
@@ -49,18 +57,25 @@
             font-weight: 800;
             color: var(--color-principal);
             font-size: 1.5rem;
+            text-transform: uppercase;
         }
 
+        /* ===== CONTENEDOR PRINCIPAL ===== */
         .contenedor {
             display: flex;
-            min-height: 100vh;
+            flex: 1;
+            overflow: hidden;
+            width: 100%;
         }
 
+        /* ===== SIDEBAR ===== */
         .barra-lateral {
             width: 320px;
             background-color: var(--blanco);
             border-right: 1px solid var(--gris-borde);
             padding: 40px 20px;
+            overflow-y: auto;
+            flex-shrink: 0;
         }
 
         .barra-lateral h3 {
@@ -81,8 +96,10 @@
         .tema {
             padding: 12px 15px;
             background: var(--gris-claro);
-            cursor: pointer;
+            border: none;
             border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
             transition: 0.2s;
             font-size: 0.95rem;
             color: #333;
@@ -95,17 +112,34 @@
             border-left-color: var(--color-principal);
         }
 
+        /* ===== VISOR DE CONTENIDO (ESTIRADO) ===== */
         .zona-herramientas {
             flex: 1;
-            padding: 50px;
-            background-color: #f9f9fb;
+            background-color: var(--fondo-pizarra);
+            display: flex;
+            flex-direction: column;
             overflow-y: auto;
+            height: 100%;
+        }
+
+        #contenido {
+            flex: 1 0 auto;
+            padding: 50px;
+            max-width: 950px;
+            width: 100%;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         #contenido h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--color-oscuro);
-            margin: 0 0 15px 0;
+            margin-bottom: 20px;
             border-bottom: 3px solid var(--color-principal);
             display: inline-block;
             padding-bottom: 5px;
@@ -113,50 +147,56 @@
 
         #contenido p {
             margin: 15px 0;
-            line-height: 1.5;
+            line-height: 1.8;
             color: var(--texto-gris);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         #contenido ul, #contenido ol {
-            margin: 10px 0 20px 30px;
+            margin: 15px 0 25px 30px;
             color: var(--texto-gris);
-            line-height: 1.5;
+            line-height: 1.7;
         }
 
-        #contenido li {
-            margin: 8px 0;
-        }
+        #contenido li { margin-bottom: 10px; }
 
         .bloque-ejemplo {
             background: #fef0ef;
             border-left: 5px solid var(--color-principal);
-            padding: 15px 20px;
-            margin: 20px 0;
+            padding: 25px;
+            margin: 30px 0;
             border-radius: 8px;
             color: #2d2d2d;
         }
 
-        hr {
-            margin: 20px 0;
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, var(--color-principal), transparent);
+        /* ===== TABLAS ===== */
+        table {
+            width: 100%;
+            margin: 25px 0;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
+        th { background: var(--color-principal); color: #fff; padding: 15px; text-align: left; }
+        td { border: 1px solid #eee; padding: 15px; color: var(--texto-gris); }
+
+        /* ===== FOOTER ===== */
         footer {
+            flex-shrink: 0;
             text-align: center;
-            padding: 20px;
-            background: white;
+            padding: 30px;
+            background: var(--blanco);
             border-top: 1px solid var(--gris-borde);
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
-            .contenedor { flex-direction: column; }
-            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
-            .zona-herramientas { padding: 25px; }
+            html, body { overflow: auto; }
+            .contenedor { flex-direction: column; height: auto; }
+            .barra-lateral { width: 100%; border-right: none; height: auto; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { height: auto; }
         }
     </style>
 </head>
@@ -172,189 +212,138 @@
         <aside class="barra-lateral">
             <h3>Contenidos</h3>
             <div class="lista-temas">
-                <div class="tema" data-tema="definicion">Definición y fundamentos del álgebra</div>
-                <div class="tema" data-tema="caracteristicas">Propiedades algebraicas básicas</div>
-                <div class="tema" data-tema="tipos">Tipos de expresiones algebraicas</div>
-                <div class="tema" data-tema="diferencia_ironia">Diferencias entre álgebra y aritmética</div>
-                <div class="tema" data-tema="literatura_cine">Álgebra en la ciencia y la ingeniería</div>
-                <div class="tema" data-tema="redes_politica">Álgebra en programación y algoritmos</div>
-                <div class="tema" data-tema="uso_riesgos">Errores comunes y consejos para resolver ecuaciones</div>
-                <div class="tema" data-tema="ejercicios">Ejercicios prácticos de álgebra</div>
-                <div class="tema" data-tema="glosario">Glosario de términos algebraicos</div>
+                <button class="tema" onclick="mostrarTema('definicion')">Definición y fundamentos</button>
+                <button class="tema" onclick="mostrarTema('caracteristicas')">Propiedades algebraicas</button>
+                <button class="tema" onclick="mostrarTema('tipos')">Tipos de expresiones</button>
+                <button class="tema" onclick="mostrarTema('diferencia')">Álgebra vs Aritmética</button>
+                <button class="tema" onclick="mostrarTema('ciencia')">Ciencia e Ingeniería</button>
+                <button class="tema" onclick="mostrarTema('programacion')">Programación y Algoritmos</button>
+                <button class="tema" onclick="mostrarTema('errores')">Errores y Consejos</button>
+                <button class="tema" onclick="mostrarTema('ejercicios')">Ejercicios Prácticos</button>
+                <button class="tema" onclick="mostrarTema('glosario')">Glosario Técnico</button>
             </div>
         </aside>
 
         <main class="zona-herramientas">
             <div id="contenido">
-                <h2>Álgebra: definición, expresiones y ecuaciones</h2>
-                <p>El álgebra es la rama de las matemáticas que introduce símbolos (generalmente letras) para representar números y operaciones, permitiendo generalizar patrones, resolver ecuaciones y modelar situaciones reales de forma abstracta.</p>
-                <div class="bloque-ejemplo">
-                    <strong>Ejemplo clave:</strong> Si una camisa cuesta x pesos y un pantalón cuesta y pesos, la expresión 5x + 3y representa el costo de 5 camisas y 3 pantalones. El álgebra nos permite trabajar con valores desconocidos.
-                </div>
-                <hr>
-                <p>Selecciona un tema del menú para explorar el mundo del álgebra en profundidad.</p>
+                <h2>Álgebra: el lenguaje de las variables</h2>
+                <p>Selecciona un tema del menú lateral para comenzar a explorar los fundamentos del álgebra, desde expresiones básicas hasta aplicaciones en algoritmos complejos.</p>
             </div>
+
+            <footer>
+                <p>© 2026 AcademiaCCED · Transformando problemas complejos en soluciones abstractas.</p>
+            </footer>
         </main>
     </div>
 
-    <footer>
-        <p>© 2025 AcademiaCCED · Álgebra: el lenguaje de lo desconocido que transforma problemas en soluciones.</p>
-    </footer>
-
     <script>
-        const contenidos = {
-            definicion: `
-                <h2>Definición y fundamentos del álgebra</h2>
-                <p>El <strong>álgebra</strong> (del árabe <em>al-jabr</em>, 'reintegración' o 'recomposición') es una disciplina matemática que generaliza la aritmética mediante el uso de variables (letras) y operaciones. Su objetivo es resolver ecuaciones, estudiar estructuras y modelar fenómenos del mundo real.</p>
-                <p>A diferencia de la aritmética, donde trabajamos con números concretos, el álgebra nos permite trabajar con cantidades desconocidas o variables. Por ejemplo, la ecuación <strong>2x + 3 = 7</strong> es un enunciado algebraico que busca el valor de x que lo cumple. Resolverla es encontrar que x = 2.</p>
-                <p><strong>Origen histórico:</strong> El álgebra fue desarrollada por matemáticos árabes como Al-Juarismi (siglo IX) en su obra "Kitab al-jabr wa al-muqabala". Este tratado dio nombre a la disciplina y sentó las bases para la resolución sistemática de ecuaciones lineales y cuadráticas.</p>
-                <div class="bloque-ejemplo">
-                    <strong>Ejemplo fundamental:</strong> La expresión (a + b)² = a² + 2ab + b² es una identidad algebraica que siempre se cumple, sin importar los valores de a y b. Es una herramienta poderosa para simplificar cálculos.
-                </div>
-            `,
-            caracteristicas: `
-                <h2>Propiedades algebraicas básicas</h2>
-                <p>El álgebra se apoya en las mismas propiedades de las operaciones aritméticas, pero aplicadas a expresiones con variables.</p>
-                <ul>
-                    <li><strong>Propiedad conmutativa:</strong> a + b = b + a y a · b = b · a. Permite reordenar términos.</li>
-                    <li><strong>Propiedad asociativa:</strong> (a + b) + c = a + (b + c) y (a·b)·c = a·(b·c). Permite agrupar sin cambiar el resultado.</li>
-                    <li><strong>Propiedad distributiva:</strong> a·(b + c) = a·b + a·c. Es la base para expandir y factorizar expresiones.</li>
-                    <li><strong>Elementos neutros e inversos:</strong> a + 0 = a; a × 1 = a. Además, a + (-a) = 0 y a × (1/a) = 1 (si a ≠ 0).</li>
-                    <li><strong>Leyes de los signos:</strong> (-a)·(-b) = a·b; (-a)·b = -a·b. Esencial para trabajar con términos negativos.</li>
-                </ul>
-                <div class="bloque-ejemplo">
-                    <strong>Ejemplo de factorización usando distributiva:</strong> 5x + 10y = 5(x + 2y). Aquí extraemos el factor común 5.
-                </div>
-            `,
-            tipos: `
-                <h2>Tipos de expresiones algebraicas</h2>
-                <p>Las expresiones algebraicas se clasifican según su estructura, grado y número de términos.</p>
-                <ul>
-                    <li><strong>Monomio:</strong> Expresión de un solo término, como 3x², -5y, 7. Los monomios constan de coeficiente, parte literal y grado (suma de exponentes).</li>
-                    <li><strong>Binomio:</strong> Suma o resta de dos monomios: 2x + 3, a² - b², x + y.</li>
-                    <li><strong>Trinomio:</strong> Tres monomios: x² + 5x - 6, a + b + c.</li>
-                    <li><strong>Polinomio:</strong> Expresión general con dos o más términos (binomio, trinomio, etc.). Ejemplo: 4x³ - 2x² + x - 7 (polinomio de grado 3).</li>
-                    <li><strong>Expresiones racionales:</strong> Cociente de dos polinomios, como (x² + 1)/(x - 3).</li>
-                    <li><strong>Ecuaciones e identidades:</strong> Una ecuación es una igualdad condicional (2x = 6 solo se cumple para x=3). Una identidad es una igualdad siempre verdadera ( (x+1)² = x²+2x+1 ).</li>
-                </ul>
-                <div class="bloque-ejemplo">
-                    <strong>Ejemplo de clasificación:</strong> 5mn² es un monomio de grado 3 (1+2). 3x²y - 7xy + 5 es un trinomio de grado 3.
-                </div>
-            `,
-            diferencia_ironia: `
-                <h2>Diferencias clave entre álgebra y aritmética</h2>
-                <p>Aunque el álgebra extiende la aritmética, existen diferencias fundamentales en su enfoque y aplicación.</p>
-                <table border="0" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; margin:15px 0; background:#fff; border:1px solid #ddd;">
-                    <tr style="background:#e5322e; color:#fff;"><th>Aspecto</th><th>Aritmética</th><th>Álgebra</th></tr>
-                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Objeto de estudio</strong> None<td>Números concretos y operaciones numéricas. None<td>Variables, expresiones simbólicas, ecuaciones y funciones. None</tr>
-                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Objetivo</strong> None<td>Obtener un resultado numérico. None<td>Generalizar patrones, resolver para incógnitas, modelar relaciones. None</tr>
-                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Ejemplo típico</strong> </td><td>3 + 5 = 8</td><td>3x + 5 = 8  →  x = 1</td></tr>
-                    <tr style="border-bottom:1px solid #ddd;"><td><strong>Nivel de abstracción</strong> None<td>Concreto (los números tienen valor fijo). None<td>Abstracto (las letras representan números desconocidos o variables). None</tr>
-                    <tr><td><strong>Aplicaciones</strong> </td><td>Cálculos cotidianos (precios, distancias, porcentajes).</td><td>Ciencia, ingeniería, computación, economía (modelos matemáticos).</td></tr>
-                </table>
-                <div class="bloque-ejemplo">
-                    <strong>Analogía:</strong> La aritmética es como una receta con cantidades exactas. El álgebra es como la fórmula general que permite ajustar las cantidades según los ingredientes disponibles.
-                </div>
-            `,
-            literatura_cine: `
-                <h2>Álgebra en la ciencia y la ingeniería</h2>
-                <p>El álgebra es el lenguaje oculto detrás de casi todos los avances científicos y tecnológicos. Donde hay una relación entre cantidades, hay álgebra.</p>
-                <p><strong>En la física:</strong> La famosa ecuación E = mc² es algebraica. Relaciona energía (E), masa (m) y velocidad de la luz (c).</p>
-                <p><strong>En la química:</strong> El balanceo de ecuaciones químicas (ej. 2H₂ + O₂ → 2H₂O) requiere resolver un sistema de ecuaciones algebraicas.</p>
-                <p><strong>En la economía:</strong> Las funciones de oferta y demanda son lineales o cuadráticas: Qd = a - bP, Qs = c + dP. El punto de equilibrio se encuentra resolviendo una ecuación.</p>
-                <p><strong>En la biología:</strong> El crecimiento de poblaciones se modela con ecuaciones logísticas: P(t) = K / (1 + Ae^{-rt}).</p>
-                <div class="bloque-ejemplo">
-                    <strong>Ejemplo en ingeniería:</strong> La ley de Ohm (V = I·R) es una ecuación algebraica que relaciona voltaje, corriente y resistencia. Permite diseñar circuitos eléctricos con valores desconocidos.
-                </div>
-            `,
-            redes_politica: `
-                <h2>Álgebra en programación y algoritmos</h2>
-                <p>Los programas de computadora ejecutan constantemente operaciones algebraicas, incluso en tareas que no parecen matemáticas.</p>
-                <p><strong>Variables en programación:</strong> En código, usamos variables (x = 5; y = x + 3) exactamente como en álgebra. La asignación y las expresiones son algebraicas.</p>
-                <p><strong>Expresiones lógicas y booleanas:</strong> El álgebra de Boole (AND, OR, NOT) es una estructura algebraica que sustenta todos los circuitos digitales y la lógica de programación.</p>
-                <p><strong>Algoritmos de búsqueda y optimización:</strong> Resolver una ecuación como 2x + 3 = 7 es equivalente a buscar un valor. Los métodos numéricos (bisección, Newton-Raphson) son algoritmos algebraicos.</p>
-                <p><strong>Criptografía:</strong> Los sistemas RSA y de curva elíptica usan álgebra modular para encriptar datos. Por ejemplo, la ecuación c ≡ m^e (mod n) es algebraica.</p>
-                <div class="bloque-ejemplo">
-                    <strong>En inteligencia artificial:</strong> El entrenamiento de redes neuronales implica resolver sistemas de ecuaciones mediante gradientes (álgebra lineal). Sin álgebra no habría machine learning.
-                </div>
-            `,
-            uso_riesgos: `
-                <h2>Errores comunes y consejos para resolver ecuaciones</h2>
-                <p>Los errores algebraicos son frecuentes incluso en estudiantes avanzados. Reconocerlos ayuda a evitarlos.</p>
-                <ul>
-                    <li><strong>Distribución incorrecta:</strong> 2(x + 3) = 2x + 6 (bien); pero 2(x + 3) ≠ 2x + 3 (error común).</li>
-                    <li><strong>Signos al mover términos:</strong> Al pasar un término de un lado a otro, cambia su signo. Si 3x - 5 = 7, entonces 3x = 7 + 5 (no 7 - 5).</li>
-                    <li><strong>Confundir (a + b)² con a² + b²:</strong> (x + 3)² = x² + 6x + 9, no x² + 9. El término cruzado 2ab es esencial.</li>
-                    <li><strong>Simplificar fracciones polinómicas incorrectamente:</strong> (x + 5)/(x + 2) no se simplifica cancelando x porque la suma no factoriza.</li>
-                    <li><strong>Olvidar comprobar soluciones en ecuaciones con raíces o fracciones:</strong> Una solución puede ser extraña (no válida).</li>
-                </ul>
-                <p><strong>Consejos prácticos:</strong></p>
-                <ul>
-                    <li>Verifica cada paso sustituyendo mentalmente con números pequeños.</li>
-                    <li>Factoriza siempre que sea posible para simplificar.</li>
-                    <li>Escribe las operaciones en vertical, especialmente con signos.</li>
-                    <li>Al final, comprueba la solución en la ecuación original.</li>
-                </ul>
-                <div class="bloque-ejemplo">
-                    <strong>Regla de oro:</strong> Lo que haces a un lado de la igualdad, hazlo al otro. Si sumas, multiplicas o elevas, aplícalo a ambos lados.
-                </div>
-            `,
-            ejercicios: `
-                <h2>Ejercicios prácticos de álgebra</h2>
-                <p><strong>Ejercicio 1: Simplificar expresiones.</strong> Reduce: 5x - 3y + 2x + 7y.</p>
-                <ul><li>Solución: 7x + 4y.</li></ul>
-                <p><strong>Ejercicio 2: Resolver ecuaciones lineales.</strong> 4(x - 3) + 2x = 5x + 8.</p>
-                <ul><li>Solución: 4x - 12 + 2x = 5x + 8 → 6x - 12 = 5x + 8 → 6x - 5x = 8 + 12 → x = 20.</li></ul>
-                <p><strong>Ejercicio 3: Productos notables.</strong> Desarrolla (2x - 5)².</p>
-                <ul><li>Solución: (2x)² - 2·(2x)·5 + 25 = 4x² - 20x + 25.</li></ul>
-                <p><strong>Ejercicio 4: Factorización.</strong> Factoriza x² - 7x + 10.</p>
-                <ul><li>Solución: (x - 2)(x - 5).</li></ul>
-                <p><strong>Ejercicio 5: Ecuación con fracciones.</strong> Resuelve (x+1)/2 + (x-3)/5 = 2.</p>
-                <div class="bloque-ejemplo">
-                    <strong>Solución paso a paso:</strong><br>
-                    Multiplicamos por mínimo común múltiplo (10): 5(x+1) + 2(x-3) = 20 → 5x+5+2x-6=20 → 7x -1 = 20 → 7x = 21 → x = 3.
-                </div>
-                <p><strong>Ejercicio 6 (desafío):</strong> Resuelve el sistema: 2x + y = 7; x - y = 2. (Solución: sumando: 3x = 9 → x=3; luego y=1).</p>
-            `,
-            glosario: `
-                <h2>Glosario de términos algebraicos</h2>
-                <ul>
-                    <li><strong>Variable:</strong> Símbolo (usualmente letra) que representa un número desconocido o variable.</li>
-                    <li><strong>Constante:</strong> Número fijo en una expresión (ej: 5 en 3x + 5).</li>
-                    <li><strong>Coeficiente:</strong> Número que multiplica a una variable (el 3 en 3x²).</li>
-                    <li><strong>Término:</strong> Cada componente separado por + o - en una expresión (ej: 2x, -3y, 7).</li>
-                    <li><strong>Grado de un monomio:</strong> Suma de exponentes de las variables. En 4x²y³, grado 5.</li>
-                    <li><strong>Grado de un polinomio:</strong> El mayor grado entre sus términos.</li>
-                    <li><strong>Ecuación:</strong> Igualdad condicional que solo se cumple para ciertos valores de las variables.</li>
-                    <li><strong>Identidad:</strong> Igualdad válida para todos los valores de las variables.</li>
-                    <li><strong>Factorización:</strong> Proceso de escribir una expresión como producto de factores más simples.</li>
-                    <li><strong>Opuesto o inverso aditivo:</strong> El número que sumado a otro da 0. El opuesto de a es -a.</li>
-                    <li><strong>Recíproco o inverso multiplicativo:</strong> El número que multiplicado por otro da 1. El recíproco de a (a≠0) es 1/a.</li>
-                </ul>
-                <div class="bloque-ejemplo">
-                    Dominar el álgebra es como aprender a leer el idioma de las matemáticas. Una vez que lo sabes, puedes entender y expresar ideas que van mucho más allá de los números concretos.
-                </div>
-            `
+        const baseDeDatos = {
+            definicion: {
+                titulo: "Definición y fundamentos del álgebra",
+                texto: `
+                    <p>El <strong>álgebra</strong> es una disciplina matemática que generaliza la aritmética mediante el uso de variables (letras) y operaciones. Su objetivo es estudiar estructuras, resolver ecuaciones y modelar fenómenos del mundo real de forma abstracta.</p>
+                    <p>Fue desarrollada por matemáticos árabes como <b>Al-Juarismi</b> en el siglo IX, sentando las bases para la resolución sistemática de ecuaciones lineales y cuadráticas.</p>
+                    <div class="bloque-ejemplo">
+                        <strong>Ejemplo fundamental:</strong> La expresión (a + b)² = a² + 2ab + b² es una identidad algebraica que siempre se cumple, permitiendo simplificar cálculos complejos sin importar los valores numéricos.
+                    </div>`
+            },
+            caracteristicas: {
+                titulo: "Propiedades algebraicas básicas",
+                texto: `
+                    <p>El álgebra se apoya en propiedades fundamentales que permiten manipular expresiones con seguridad:</p>
+                    <ul>
+                        <li><strong>Propiedad distributiva:</strong> a·(b + c) = a·b + a·c. Base para expandir y factorizar.</li>
+                        <li><strong>Propiedad conmutativa:</strong> a + b = b + a. El orden no altera la suma o el producto.</li>
+                        <li><strong>Elementos neutros:</strong> a + 0 = a; a × 1 = a.</li>
+                        <li><strong>Leyes de los signos:</strong> Esencial para trabajar con términos negativos y evitar errores comunes.</li>
+                    </ul>`
+            },
+            tipos: {
+                titulo: "Tipos de expresiones algebraicas",
+                texto: `
+                    <p>Las expresiones se clasifican según su número de términos y complejidad:</p>
+                    <ul>
+                        <li><strong>Monomio:</strong> Un solo término (ej. 3x²). Consta de coeficiente y parte literal.</li>
+                        <li><strong>Binomio:</strong> Suma o resta de dos monomios (ej. a² - b²).</li>
+                        <li><strong>Polinomio:</strong> Expresión general con múltiples términos (ej. 4x³ - 2x² + x - 7).</li>
+                        <li><strong>Identidad:</strong> Una igualdad que siempre es verdadera para cualquier valor de la variable.</li>
+                    </ul>`
+            },
+            diferencia: {
+                titulo: "Diferencias: Álgebra vs Aritmética",
+                texto: `
+                    <table>
+                        <tr><th>Aspecto</th><th>Aritmética</th><th>Álgebra</th></tr>
+                        <tr><td><strong>Objeto</strong></td><td>Números concretos</td><td>Variables y símbolos</td></tr>
+                        <tr><td><strong>Objetivo</strong></td><td>Resultado numérico fijo</td><td>Modelado y generalización</td></tr>
+                        <tr><td><strong>Abstracción</strong></td><td>Baja (Concreto)</td><td>Alta (Simbólico)</td></tr>
+                    </table>
+                    <div class="bloque-ejemplo">
+                        <strong>Analogía:</strong> La aritmética es una receta fija; el álgebra es la fórmula química que permite crear infinitas variantes.
+                    </div>`
+            },
+            ciencia: {
+                titulo: "Álgebra en la ciencia y la ingeniería",
+                texto: `
+                    <p>El álgebra es el motor de la ciencia moderna:</p>
+                    <ul>
+                        <li><strong>Física:</strong> E = mc² es una ecuación puramente algebraica.</li>
+                        <li><strong>Química:</strong> El balanceo de ecuaciones reactivas requiere sistemas de ecuaciones.</li>
+                        <li><strong>Ingeniería:</strong> La Ley de Ohm (V = I·R) permite diseñar circuitos eléctricos complejos.</li>
+                    </ul>`
+            },
+            programacion: {
+                titulo: "Álgebra en programación y algoritmos",
+                texto: `
+                    <p>Para un programador, el álgebra no es opcional:</p>
+                    <ul>
+                        <li><strong>Lógica Booleana:</strong> Base de todas las decisiones (IF/ELSE) en el código.</li>
+                        <li><strong>Criptografía:</strong> La seguridad de tus datos (RSA) depende de álgebra modular compleja.</li>
+                        <li><strong>Inteligencia Artificial:</strong> El entrenamiento de redes neuronales requiere resolver millones de ecuaciones de álgebra lineal.</li>
+                    </ul>`
+            },
+            errores: {
+                titulo: "Errores comunes y consejos",
+                texto: `
+                    <p>Evita estos fallos típicos para mejorar tu precisión:</p>
+                    <ul>
+                        <li><strong>Mover términos:</strong> Recuerda cambiar el signo al pasar al otro lado del igual.</li>
+                        <li><strong>Distribución:</strong> 2(x + 3) es 2x + 6, no 2x + 3.</li>
+                        <li><strong>Productos notables:</strong> No olvides el término central (2ab) en los binomios al cuadrado.</li>
+                    </ul>
+                    <div class="bloque-ejemplo">
+                        <strong>Regla de oro:</strong> Todo lo que hagas a un lado de la igualdad, debes hacerlo exactamente igual al otro lado.
+                    </div>`
+            },
+            ejercicios: {
+                titulo: "Ejercicios Prácticos",
+                texto: `
+                    <p><strong>1. Simplificación:</strong> Reduce 5x - 3y + 2x + 7y. (R: 7x + 4y).</p>
+                    <p><strong>2. Ecuación Lineal:</strong> 4(x - 3) = 8. (R: 4x - 12 = 8 → 4x = 20 → x = 5).</p>
+                    <p><strong>3. Factorización:</strong> Factoriza x² - 7x + 10. (R: (x - 2)(x - 5)).</p>`
+            },
+            glosario: {
+                titulo: "Glosario de términos algebraicos",
+                texto: `
+                    <ul>
+                        <li><strong>Variable:</strong> Letra que representa una cantidad desconocida.</li>
+                        <li><strong>Coeficiente:</strong> Número que multiplica a la variable.</li>
+                        <li><strong>Grado:</strong> El mayor exponente de un polinomio.</li>
+                        <li><strong>Recíproco:</strong> Número que multiplicado por otro da 1 (inverso multiplicativo).</li>
+                    </ul>`
+            }
         };
 
         function mostrarTema(temaId) {
-            const contenedor = document.getElementById("contenido");
-            if (contenidos[temaId]) {
-                contenedor.innerHTML = contenidos[temaId];
-            } else {
-                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
+            const pizarra = document.getElementById("contenido");
+            const visor = document.querySelector(".zona-herramientas");
+            const tema = baseDeDatos[temaId];
+
+            if (tema) {
+                pizarra.innerHTML = `<h2>${tema.titulo}</h2>${tema.texto}`;
+                visor.scrollTop = 0; // Regresa arriba al cambiar de tema
             }
-            contenedor.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-
-        document.querySelectorAll('.tema').forEach(el => {
-            el.addEventListener('click', () => {
-                const tema = el.getAttribute('data-tema');
-                if (tema) mostrarTema(tema);
-            });
-        });
-
-        mostrarTema('definicion');
     </script>
 </body>
 </html>

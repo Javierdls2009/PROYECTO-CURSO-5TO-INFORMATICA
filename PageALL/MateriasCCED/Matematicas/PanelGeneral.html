@@ -15,15 +15,12 @@
         }
 
         /* estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
@@ -47,9 +44,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /* barra lateral con foto del profesor */
@@ -192,7 +187,7 @@
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="#">← VOLVER AL INICIO</a></div>
+        <div class="boton-volver"><a href="/PageALL/index.html">← VOLVER AL INICIO</a></div>
         <div class="titulo-materia">Matemáticas</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>

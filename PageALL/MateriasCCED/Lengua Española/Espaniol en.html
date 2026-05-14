@@ -23,20 +23,17 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid var(--gris-borde);
-            flex-wrap: wrap;
+            
         }
 
         .boton-volver a {
@@ -53,9 +50,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /* barra lateral */

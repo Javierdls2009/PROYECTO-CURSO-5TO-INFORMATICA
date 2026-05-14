@@ -1,0 +1,120 @@
+<!-- ESTILOS ADICIONALES (Copia esto dentro de tus etiquetas <style>) -->
+<style>
+    /* Estilos para el Acordeón de Preguntas */
+    .seccion-legal {
+        margin-top: 40px;
+        border-top: 2px solid #eee;
+        padding-top: 40px;
+    }
+
+    .acordeon {
+        background-color: #fff;
+        color: var(--color-oscuro);
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: 1px solid #eee;
+        text-align: left;
+        outline: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: 0.4s;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .active, .acordeon:hover {
+        background-color: #f1f1f1;
+        border-left: 5px solid var(--color-materia);
+    }
+
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        margin-bottom: 20px;
+        border-left: 1px solid #eee;
+    }
+
+    .cuadro-terminos {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.6;
+        height: 250px;
+        overflow-y: scroll; /* Cuadro con scroll para no ocupar tanto espacio */
+        margin-bottom: 50px;
+    }
+</style>
+
+<!-- CONTENIDO HTML (Cópialo dentro de tu <main class="visor-contenido">) -->
+
+<div id="pizarra">
+    
+    <!-- SECCIÓN: TÉRMINOS Y CONDICIONES -->
+    <section class="seccion-legal">
+        <h2>Términos y Condiciones</h2>
+        <p>Al usar AcademiaCCED, aceptas las siguientes reglas de convivencia y uso:</p>
+        
+        <div class="cuadro-terminos">
+            <strong>1. Uso Educativo:</strong> Esta plataforma está diseñada exclusivamente para fines académicos de los estudiantes del centro. Queda prohibido el uso de los recursos para fines comerciales sin autorización.<br><br>
+            
+            <strong>2. Propiedad Intelectual:</strong> Todo el código, diseño y logotipos son propiedad de Javier de los Santos y la Clase de 2026. No se permite la reproducción total o parcial del sitio sin consentimiento previo.<br><br>
+            
+            <strong>3. Responsabilidad del Contenido:</strong> AcademiaCCED se esfuerza por ofrecer información veraz, pero no se hace responsable de errores tipográficos en los materiales de estudio proporcionados por terceros.<br><br>
+            
+            <strong>4. Comportamiento:</strong> Se espera que todos los usuarios mantengan un lenguaje respetuoso en cualquier interacción dentro del dominio de la academia.
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="seccion-legal">
+        <h2>Preguntas Frecuentes</h2>
+        <p>Resuelve tus dudas rápidas sobre el funcionamiento de la plataforma.</p>
+
+        <button class="acordeon">¿Cómo puedo descargar el material? <span>+</span></button>
+        <div class="panel">
+            <p>Actualmente, el material está diseñado para lectura en línea. Próximamente añadiremos botones de descarga en formato PDF para cada tema.</p>
+        </div>
+
+        <button class="acordeon">¿Quién actualiza los temas? <span>+</span></button>
+        <div class="panel">
+            <p>Los contenidos son supervisados por los docentes de cada área y subidos por el equipo técnico de 5to y 6to Informática.</p>
+        </div>
+
+        <button class="acordeon">¿Tengo que pagar por usar la plataforma? <span>+</span></button>
+        <div class="panel">
+            <p>No, AcademiaCCED es un recurso gratuito y abierto para todos los miembros de nuestra comunidad educativa.</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- SCRIPT PARA EL FUNCIONAMIENTO (Cópialo antes de cerrar tu etiqueta </body>) -->
+<script>
+    // Código para que el acordeón de preguntas se abra y cierre
+    var acc = document.getElementsByClassName("acordeon");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                this.querySelector("span").innerHTML = "+";
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                this.querySelector("span").innerHTML = "-";
+            } 
+        });
+    }
+</script>

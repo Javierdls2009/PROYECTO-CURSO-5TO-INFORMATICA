@@ -23,11 +23,9 @@
         box-sizing: border-box;
     }
 
-    body {
-        font-family: Arial, sans-serif;
+    body { height: 100%; margin: 0; font-family: Arial, sans-serif;
         background-color: var(--color-fondo);
-        color: #333;
-    }
+        color: #333; overflow: hidden; }
 
     /* ===== NAVBAR ===== */
     .nav-superior {
@@ -114,7 +112,7 @@
         flex: 1;
         padding: 50px;
         background-color: #f9f9fb;
-        overflow-y: auto;
+        overflow: hidden;
     }
 
     /* ===== PIZARRA ===== */
@@ -228,9 +226,9 @@
                      1. Copia la línea del botón.
                      2. Cambia el nombre (ej: "4. Nuevo Tema").
                      3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
-<button class="btn-tema" onclick="cargar('tema1')">🔗 Verbos frasales</button>
-<button class="btn-tema" onclick="cargar('tema2')">🛠️ Como usarlos</button>
-<button class="btn-tema" onclick="cargar('tema3')">🎯 Aplicación Práctica</button>
+<button class="btn-tema" onclick="cargar('tema1')"> Verbos frasales</button>
+<button class="btn-tema" onclick="cargar('tema2')"> Como usarlos</button>
+<button class="btn-tema" onclick="cargar('tema3')"> Aplicación Práctica</button>
             </div>
         </aside>
 
@@ -245,7 +243,7 @@
     </div>
 
     <footer>
-        &copy; 2026 AcademiaCCED 
+        &copy; 2026 AcademiaCCED. Todos los derechos reservados.
     </footer>
 
     <script>
@@ -301,4 +299,4 @@
         }
     </script>
 </body>
-</html> usen ese codigo base para los subtema de las materias
+</html>

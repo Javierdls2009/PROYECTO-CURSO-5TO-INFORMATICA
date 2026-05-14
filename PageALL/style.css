@@ -64,73 +64,125 @@ body.dark #etiquetaIcono:hover {
 /* ========================================
    ENCABEZADO (HEADER)
    ======================================== */
-.encabezado-principal {
-    background-color: var(--header-bg);
-    position: sticky;
+/* HEADER FLOTANTE Y TRANSPARENTE */
+.header-moderno {
+    position: fixed;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    transition: var(--transition);
-}
-
-.nav-superior {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 85px;
-}
-
-.logo img {
-    height: 60px;
-    border-radius: 50%;
-    transition: var(--transition);
-}
-
-.logo img:hover {
-    transform: scale(1.05);
-}
-
-/* Buscador */
-.buscador {
-    flex: 1;
-    max-width: 500px;
-    margin: 0 30px;
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.buscador span {
-    position: absolute;
-    left: 15px;
-    color: #666;
-    font-size: 20px;
-}
-
-.buscador input {
+    left: 0;
     width: 100%;
-    padding: 12px 20px 12px 45px;
-    border: none;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.8);
-    outline: none;
-    font-size: 1rem;
-    transition: var(--transition);
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-}
-
-body.dark .buscador input {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-}
-
-.controles-derecha {
+    height: 70px;
+    background: rgba(255, 255, 255, 0.7); /* Transparencia */
+    backdrop-filter: blur(15px); /* Desenfoque de fondo */
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 2000;
     display: flex;
     align-items: center;
-    gap: 15px;
+}
+
+.contenedor-nav {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO */
+.logo-seccion { display: flex; align-items: center; gap: 12px; }
+.logo-img { height: 40px; border-radius: 6px; }
+.logo-nombre { font-weight: 800; font-size: 1.1rem; color: #1a1a2e; }
+.rojo { color: #e5322e; }
+
+/* BUSCADOR ESTILO CAPSULA */
+.buscador-minimal {
+    background: rgba(0, 0, 0, 0.04);
+    padding: 8px 18px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 30%;
+    transition: 0.3s;
+}
+
+.buscador-minimal:focus-within {
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(229, 50, 46, 0.1);
+}
+
+.buscador-minimal input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/* ENLACES */
+.enlaces-principales { display: flex; gap: 20px; }
+.enlaces-principales a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.enlaces-principales a.activo, .enlaces-principales a:hover { color: #e5322e; }
+
+/* SECCION HERO (INICIO) */
+.inicio-hero {
+    height: 90vh;
+    background: linear-gradient(135deg, #f3f6ff 0%, #ffffff 100%); /* Fondo suave */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag-bienvenida {
+    background: rgba(229, 50, 46, 0.1);
+    color: #e5322e;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.inicio-hero h1 {
+    font-size: 4rem;
+    color: #1a1a2e;
+    margin: 20px 0;
+    font-weight: 900;
+}
+
+.texto-gradiente {
+    background: linear-gradient(45deg, #e5322e, #ff8a80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-explorar {
+    display: inline-block;
+    background: #1a1a2e;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.btn-explorar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 /* =====================================================
    BOTÓN CONFIGURACIÓN

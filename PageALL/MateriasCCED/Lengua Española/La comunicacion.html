@@ -24,20 +24,17 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid var(--gris-borde);
-            flex-wrap: wrap;
+            
         }
 
         /* boton volver */
@@ -56,9 +53,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /* barra lateral */
@@ -220,7 +215,7 @@
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
         <div class="titulo-materia">LA COMUNICACIÓN</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
@@ -232,20 +227,20 @@
         <aside class="barra-lateral">
             <h3>Contenidos</h3>
             <div class="lista-temas">
-                <div class="tema" data-tema="definicion">💬 ¿Qué es la comunicación?</div>
-                <div class="tema" data-tema="caracteristicas">✨ Características de la comunicación</div>
-                <div class="tema" data-tema="tipos_comunicacion">📋 Tipos de comunicación</div>
-                <div class="tema" data-tema="comunicacion_verbal">🗣️ Comunicación verbal</div>
-                <div class="tema" data-tema="comunicacion_no_verbal">🤚 Comunicación no verbal</div>
-                <div class="tema" data-tema="elementos">🔧 Elementos de la comunicación</div>
-                <div class="tema" data-tema="proceso">🔄 Proceso de la comunicación</div>
-                <div class="tema" data-tema="barreras">🚧 Barreras de la comunicación</div>
-                <div class="tema" data-tema="funciones">🎯 Funciones de la comunicación</div>
-                <div class="tema" data-tema="importancia">⭐ Importancia de la comunicación</div>
-                <div class="tema" data-tema="medios">📺 Medios de comunicación</div>
-                <div class="tema" data-tema="ciencias">🎓 Ciencias de la Comunicación</div>
-                <div class="tema" data-tema="verbal_no_verbal">🔄 Comunicación verbal y no verbal</div>
-                <div class="tema" data-tema="conclusion">📝 Conclusión</div>
+                <div class="tema" data-tema="definicion"> ¿Qué es la comunicación?</div>
+                <div class="tema" data-tema="caracteristicas"> Características de la comunicación</div>
+                <div class="tema" data-tema="tipos_comunicacion"> Tipos de comunicación</div>
+                <div class="tema" data-tema="comunicacion_verbal"> Comunicación verbal</div>
+                <div class="tema" data-tema="comunicacion_no_verbal"> Comunicación no verbal</div>
+                <div class="tema" data-tema="elementos"> Elementos de la comunicación</div>
+                <div class="tema" data-tema="proceso"> Proceso de la comunicación</div>
+                <div class="tema" data-tema="barreras"> Barreras de la comunicación</div>
+                <div class="tema" data-tema="funciones"> Funciones de la comunicación</div>
+                <div class="tema" data-tema="importancia"> Importancia de la comunicación</div>
+                <div class="tema" data-tema="medios"> Medios de comunicación</div>
+                <div class="tema" data-tema="ciencias"> Ciencias de la Comunicación</div>
+                <div class="tema" data-tema="verbal_no_verbal"> Comunicación verbal y no verbal</div>
+                <div class="tema" data-tema="conclusion"> Conclusión</div>
             </div>
         </aside>
 
@@ -322,11 +317,11 @@
                 <h2>Comunicación verbal</h2>
                 <p>La <strong>comunicación verbal</strong> es la que se da mediante palabras, es decir, signos lingüísticos. Puede ser:</p>
                 
-                <h3>🗣️ Comunicación oral</h3>
+                <h3> Comunicación oral</h3>
                 <p>Se realiza a través de la palabra hablada, ya sea cara a cara o con algún medio auditivo, como el teléfono, los mensajes de voz o la radio.</p>
                 <p>En la comunicación oral intervienen elementos como la <strong>pronunciación</strong>, la <strong>fluidez</strong>, el <strong>ritmo</strong> al hablar y el <strong>tono de voz</strong>. No es solo lo que se dice, sino cómo se dice.</p>
                 
-                <h3>✍️ Comunicación escrita</h3>
+                <h3> Comunicación escrita</h3>
                 <p>Tiene lugar a través de la palabra escrita o cualquier otro código escrito (por ejemplo, un pictograma). Suele ser diferida en el tiempo y el espacio, y es duradera.</p>
                 <p>Requiere <strong>organización de ideas</strong>, buena <strong>ortografía</strong> y <strong>coherencia</strong> para que el mensaje sea comprendido correctamente. Incluye medios como libros, correos electrónicos, mensajes de texto y documentos.</p>
                 
@@ -338,7 +333,7 @@
                 <h2>Comunicación no verbal</h2>
                 <p>La <strong>comunicación no verbal</strong> es aquella que no depende de la palabra para transmitir un mensaje, sino de gestos, movimientos, sonidos o imágenes, y puede ser voluntaria o involuntaria.</p>
                 
-                <h3>🤔 Tipos de comunicación no verbal:</h3>
+                <h3> Tipos de comunicación no verbal:</h3>
                 <ul>
                     <li><strong>Comunicación paralingüística:</strong> Producida por los sonidos que complementan la comunicación verbal (tono, volumen, pausas).</li>
                     <li><strong>Comunicación kinésica:</strong> Producida por los movimientos corporales (gestos, posturas, expresiones faciales).</li>
@@ -346,7 +341,7 @@
                     <li><strong>Contacto visual:</strong> Mantener la mirada puede indicar interés, seguridad o sinceridad.</li>
                 </ul>
                 
-                <h3>🎭 Elementos importantes:</h3>
+                <h3> Elementos importantes:</h3>
                 <ul>
                     <li><strong>Expresión facial:</strong> Refleja emociones como alegría, tristeza, enojo o sorpresa.</li>
                     <li><strong>Lenguaje corporal:</strong> Postura erguida (confianza) vs encorvada (inseguridad).</li>
@@ -383,16 +378,16 @@
                 <h2>Proceso de la comunicación</h2>
                 <p>El proceso de la comunicación es el procedimiento mediante el que un individuo transmite un mensaje a otro. Este proceso consta de tres etapas:</p>
                 
-                <h3>1️⃣ Codificación</h3>
+                <h3> Codificación</h3>
                 <p>Etapa en la que el emisor compone un mensaje, es decir, pasa sus ideas a los signos o las señales de un código. Por ejemplo, cuando una persona quiere transmitir la idea de saludo, selecciona la palabra "Hola" para elaborar el mensaje.</p>
                 
-                <h3>2️⃣ Transmisión</h3>
+                <h3> Transmisión</h3>
                 <p>Etapa en la que un participante le envía un mensaje a otro. Por ejemplo, cuando el emisor dice "Hola" y el mensaje viaja por el aire hasta llegar al receptor.</p>
                 
-                <h3>3️⃣ Decodificación</h3>
+                <h3> Decodificación</h3>
                 <p>Etapa en la que el receptor interpreta los signos o las señales del mensaje para comprender su sentido. Por ejemplo, cuando el receptor comprende que "Hola" significa que el emisor quiso saludar.</p>
                 
-                <h3>🔄 Retroalimentación</h3>
+                <h3> Retroalimentación</h3>
                 <p>En algunos casos, puede aparecer la retroalimentación, que consiste en que el receptor le responde al emisor y cambian sus roles. Por ejemplo: "Hola, ¿cómo estás?"</p>
                 
                 <div class="bloque-ejemplo">
@@ -420,13 +415,13 @@
                 <h2>Funciones de la comunicación</h2>
                 <p>La comunicación tiene diversas funciones:</p>
                 
-                <h3>📊 Función informativa</h3>
+                <h3> Función informativa</h3>
                 <p>Es la que tiene como propósito principal transmitir información relacionada con aspectos de la realidad.</p>
                 
-                <h3>❤️ Función afectiva</h3>
+                <h3> Función afectiva</h3>
                 <p>Aquella centrada en la expresión de impresiones subjetivas, sentimientos, emociones o estados de ánimo.</p>
                 
-                <h3>⚖️ Función reguladora</h3>
+                <h3> Función reguladora</h3>
                 <p>Aquella que sirve para evaluar o modificar las acciones de los demás.</p>
                 
                 <div class="bloque-ejemplo">
@@ -455,10 +450,10 @@
                 <h2>Medios de comunicación</h2>
                 <p>Los <strong>medios de comunicación</strong> son los instrumentos o dispositivos que permiten que la comunicación se desarrolle de forma más sencilla, porque facilitan la transmisión de información.</p>
                 
-                <h3>📞 Medios interpersonales</h3>
+                <h3> Medios interpersonales</h3>
                 <p>Se emplean entre dos personas o un grupo reducido. Ejemplo: el teléfono permite que dos individuos en sitios distintos se comuniquen instantáneamente.</p>
                 
-                <h3>📺 Medios masivos de comunicación</h3>
+                <h3> Medios masivos de comunicación</h3>
                 <p>Sirven para que un emisor envíe un mensaje a un gran número de receptores. En estos casos, la comunicación es <strong>unidireccional</strong>, porque no suele haber una respuesta directa.</p>
                 <ul>
                     <li><strong>Televisión:</strong> Transmite información, entretenimiento y noticias a millones de personas.</li>
@@ -475,7 +470,7 @@
                 <h2>Ciencias de la Comunicación</h2>
                 <p>Las <strong>Ciencias de la Comunicación</strong> es el estudio de los diferentes aspectos de la comunicación humana. Es un enfoque interdisciplinario en el que confluyen conceptos y teorías provenientes de la sociología, la semiótica, la psicología, la antropología y la lingüística, entre otros campos del conocimiento.</p>
                 
-                <h3>📚 Áreas de aplicación:</h3>
+                <h3> Áreas de aplicación:</h3>
                 <ul>
                     <li>Periodismo</li>
                     <li>Comunicación empresarial</li>
@@ -494,10 +489,10 @@
                 <h2>Comunicación verbal y no verbal</h2>
                 <p>La comunicación es un proceso fundamental en la vida humana, ya que permite intercambiar ideas, emociones, pensamientos e información. Se divide principalmente en comunicación verbal y comunicación no verbal, y ambas se complementan constantemente en cualquier interacción.</p>
                 
-                <h3>🔄 Coherencia entre ambos tipos</h3>
+                <h3> Coherencia entre ambos tipos</h3>
                 <p>Cuando son coherentes, el mensaje se entiende mejor y genera confianza. Por ejemplo, si alguien dice que está feliz y además sonríe, el mensaje resulta creíble. Pero si hay contradicción, como decir que todo está bien con un tono de voz apagado y evitando la mirada, las personas tienden a creer más en la comunicación no verbal.</p>
                 
-                <h3>💡 Importancia de dominarlos:</h3>
+                <h3> Importancia de dominarlos:</h3>
                 <ul>
                     <li>En la educación, facilita el aprendizaje y la enseñanza.</li>
                     <li>En el trabajo, mejora las relaciones profesionales y la productividad.</li>
@@ -514,7 +509,7 @@
                 <h2>Conclusión</h2>
                 <p>La comunicación verbal y no verbal son herramientas esenciales que usamos constantemente. Entender cómo funcionan y aprender a utilizarlas de manera adecuada permite expresarse con claridad, interpretar mejor a los demás y construir relaciones más efectivas.</p>
                 
-                <h3>🎯 Puntos clave para recordar:</h3>
+                <h3> Puntos clave para recordar:</h3>
                 <ul>
                     <li>La comunicación es la transmisión de información entre dos o más individuos.</li>
                     <li>Existen elementos clave: emisor, receptor, mensaje, código, canal y contexto.</li>
@@ -526,7 +521,7 @@
                 </ul>
                 
                 <div class="bloque-ejemplo">
-                    <strong>📖 Reflexión final:</strong> "La comunicación es el puente que conecta a las personas. Sin ella, no hay sociedad, no hay relaciones, no hay progreso."
+                    <strong> Reflexión final:</strong> "La comunicación es el puente que conecta a las personas. Sin ella, no hay sociedad, no hay relaciones, no hay progreso."
                 </div>
             `
         };
@@ -534,9 +529,7 @@
         function mostrarTema(temaId) {
             const contenedor = document.getElementById("contenido");
             if (contenidos[temaId]) {
-                contenedor.innerHTML = contenidos[temaId];
-                contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
+                contenedor.innerHTML = contenidos[temaId];} else {
                 contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
             }
         }

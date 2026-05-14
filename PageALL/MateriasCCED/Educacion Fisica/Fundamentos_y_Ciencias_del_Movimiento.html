@@ -3,228 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
     <title>Fundamentos y Ciencias del Movimiento | AcademiaCCED</title>
     <link rel="stylesheet" href="/PageALL/style_materias.css">
     <style>
+        /* ========== ESTILOS (Sincronizados con Lengua Española) ========== */
         :root {
-            /* COLOR PERSONALIZADO: Cambia este código hexadecimal (#...) 
-               para darle un color único a cada asignatura (ej: Azul para Matemáticas) */
-            --color-materia: #e5322e; 
-            
-            /* COLORES DE ESTRUCTURA: No suele ser necesario cambiarlos */
+            --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
             --color-oscuro: #1a1a2e;
             --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
         }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+        * {
             margin: 0;
-            background-color: var(--color-fondo);
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* BARRA DE NAVEGACIÓN: Controla la parte superior de la pantalla */
-        .nav-superior {
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
             display: flex;
+            flex-direction: column;
+            height: calc(100vh - 74px); overflow: hidden; }
+
+        /* BARRA SUPERIOR FIJA */
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 0 5%;
             background: var(--blanco);
-            border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid var(--gris-borde);
             height: 70px;
-            position: sticky; /* Se queda fija al hacer scroll */
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        /* ENLACE VOLVER: Estilo del botón de retroceso */
-        .volver a {
+        .boton-volver a {
             text-decoration: none;
-            color: var(--color-materia);
+            color: var(--color-principal);
             font-weight: bold;
+            font-size: 1rem;
         }
 
-        /* TÍTULO PRINCIPAL: El nombre de la plataforma en la barra superior */
-        .titulo-app {
+        .titulo-materia {
             font-weight: 800;
-            color: var(--color-materia);
-            font-size: 1.4rem;
-            text-transform: uppercase;
+            color: var(--color-principal);
+            font-size: 1.5rem;
         }
 
-        /* CONTENEDOR FLEX: Divide la pantalla en Menú Lateral y Contenido */
-        .contenedor-principal {
+        /* CONTENEDOR PRINCIPAL */
+        .contenedor {
             display: flex;
-            min-height: calc(100vh - 70px);
-        }
-
-        /* SIDEBAR: Panel izquierdo donde van los temas */
-        .sidebar {
-            width: 280px;
-            background: var(--blanco);
-            border-right: 1px solid #ddd;
-            padding: 25px;
-            box-sizing: border-box;
-            flex-shrink: 0; /* Evita que el menú se aplaste en pantallas pequeñas */
-        }
-
-        .sidebar h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            color: var(--color-oscuro);
-            border-left: 4px solid var(--color-materia); /* Línea decorativa del color de la materia */
-            padding-left: 10px;
-        }
-
-        /* BOTONES DE TEMAS: Estilo de cada botón del menú */
-        .btn-tema {
-            width: 100%;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: left;
-            transition: 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        /* EFECTO HOVER: Lo que pasa cuando pasas el ratón sobre un tema */
-        .btn-tema:hover {
-            background: var(--color-materia);
-            color: white;
-            transform: translateX(5px); /* Pequeño movimiento a la derecha */
-        }
-
-        /* VISOR DE CONTENIDO: El área grande donde se lee la información */
-        .visor-contenido {
             flex: 1;
-            padding: 60px;
-            background: #fafbfc;
         }
 
-        /* PIZARRA: El cuadro de texto centralizado */
-        #pizarra {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeIn 0.5s ease; /* Animación de aparición suave */
+        .barra-lateral {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+            flex-shrink: 0;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .barra-lateral h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-principal);
+            padding-left: 12px;
         }
 
-        h2 { font-size: 2.5rem; color: var(--color-oscuro); margin-bottom: 15px; }
-        p { line-height: 1.8; font-size: 1.1rem; color: #4a5568; }
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
 
-        /* PIE DE PÁGINA */
+        .tema {
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+        }
+
+        .tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-principal);
+        }
+
+        /* ZONA DE CONTENIDO DINÁMICO */
+        .zona-herramientas {
+            flex: 1;
+            padding: 50px;
+            background-color: #f9f9fb;; height: 100%;
+        }
+
+        #contenido h2 {
+            font-size: 2rem;
+            color: var(--color-oscuro);
+            margin: 0 0 15px 0;
+            border-bottom: 3px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        #contenido h3 {
+            font-size: 1.5rem;
+            color: var(--color-principal);
+            margin: 25px 0 10px 0;
+        }
+
+        #contenido p {
+            margin: 15px 0;
+            line-height: 1.6;
+            color: var(--texto-gris);
+            font-size: 1rem;
+        }
+
+        .bloque-ejemplo {
+            background: #fef0ef;
+            border-left: 5px solid var(--color-principal);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #2d2d2d;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
-            font-size: 0.8rem;
-            color: #888;
-            background: var(--blanco);
-            border-top: 1px solid #eee;
+            background: white;
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor { flex-direction: column; }
+            .barra-lateral { width: 100%; border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .zona-herramientas { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- NAVEGACIÓN: Puedes cambiar el enlace de "href" para que vuelva a la página correcta -->
-    <nav class="nav-superior">
-        <div class="volver"><a href="/PageALL/MateriasCCED/Educacion Fisica/PanelGeneral.html">← REGRESAR ATRAS</a></div>
-        <div class="titulo-app">Academia CCED</div>
-        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+    <nav class="barra-superior">
+        <div class="boton-volver"><a href="/PageALL/MateriasCCED/Educacion Fisica/PanelGeneral.html"> ←  VOLVER ATRÁS</a></div>
+        <div class="titulo-materia">CIENCIAS DEL MOVIMIENTO</div>
+        <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <div class="contenedor-principal">
-        
-        <!-- MENÚ LATERAL: Aquí añades los botones para cada tema nuevo -->
-        <aside class="sidebar">
-            <h3>TEMARIO</h3>
+    <div class="contenedor">
+        <aside class="barra-lateral">
+            <h3>Contenidos</h3>
             <div class="lista-temas">
-                <!-- Para añadir un tema:
-                     1. Copia la línea del botón.
-                     2. Cambia el nombre (ej: "4. Nuevo Tema").
-                     3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
-                <button class="btn-tema" onclick="cargar('tema1')">Definición e Importancia de la Educación Física.</button>
-                <button class="btn-tema" onclick="cargar('tema2')">Historia de la Educación Física.</button>
-                <button class="btn-tema" onclick="cargar('tema3')">Anatomía y Fisiología</button>
-                <button class="btn-tema" onclick="cargar('tema4')">Biografía deportiva</button>
-                <button class="btn-tema" onclick="cargar('tema5')">Beneficios para la salud</button>
-
+                <div class="tema" data-tema="bienvenida">Bienvenida</div>
+                <div class="tema" data-tema="tema1">Definición e Importancia</div>
+                <div class="tema" data-tema="tema2">Historia de la Ed. Física</div>
+                <div class="tema" data-tema="tema3">Anatomía y Fisiología</div>
+                <div class="tema" data-tema="tema4">Biografía Deportiva</div>
+                <div class="tema" data-tema="tema5">Beneficios para la Salud</div>
             </div>
         </aside>
 
-        <!-- ÁREA DE LECTURA: Aquí es donde el JavaScript "dibuja" la información -->
-        <main class="visor-contenido">
-            <div id="pizarra">
-                <h2>Bienvenido</h2>
-                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
-            </div>
+        <main class="zona-herramientas">
+            <div id="contenido">
+                </div>
         </main>
-
     </div>
 
     <footer>
-        &copy; 2026 AcademiaCCED. Todos los derechos reservados.
+        <p>© 2026 AcademiaCCED · Fundamentos y Ciencias del Movimiento.</p>
     </footer>
 
     <script>
-        /**
-         * FUNCIÓN CARGAR: Es la encargada de cambiar el texto de la pantalla.
-         * @param {string} id - El identificador del tema que queremos mostrar.
-         */
-        function cargar(id) {
-            const pizarra = document.getElementById("pizarra");
+        const contenidos = {
+            bienvenida: `
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema del menú lateral para explorar el material de estudio sobre los fundamentos de la educación física.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Explora:</strong> Desde la historia antigua hasta el funcionamiento del cuerpo humano en movimiento.
+                </div>
+            `,
+            tema1: `
+                <h2>Definición e Importancia</h2>
+                <p>La educación física es una disciplina educativa que utiliza el ejercicio y el movimiento corporal para contribuir al desarrollo físico, mental y social. Su propósito es mejorar la condición física y fomentar hábitos saludables.</p>
+                <h3>Importancia</h3>
+                <p>Ayuda a prevenir enfermedades relacionadas con el sedentarismo, fortalece el sistema cardiovascular y mejora el bienestar emocional reduciendo el estrés.</p>
+            `,
+            tema2: `
+                <h2>Historia de la Educación Física</h2>
+                <p>Se remonta a civilizaciones antiguas donde el ejercicio preparaba para la guerra y la supervivencia. En Grecia y Roma, era esencial para el equilibrio entre cuerpo y mente.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Dato Histórico:</strong> Los griegos promovían competencias deportivas como parte integral de la formación ciudadana.
+                </div>
+                <p>Hoy ha evolucionado de la preparación militar a un enfoque integral de salud, recreación y bienestar.</p>
+            `,
+            tema3: `
+                <h2>Anatomía y Fisiología</h2>
+                <p>La <strong>anatomía</strong> estudia la estructura del cuerpo (huesos, músculos), mientras que la <strong>fisiología</strong> estudia cómo funcionan estas partes en conjunto durante el movimiento.</p>
+                <h3>Importancia en el Deporte</h3>
+                <p>Estas ciencias permiten prevenir lesiones, mejorar el rendimiento y diseñar entrenamientos específicos según las necesidades del organismo.</p>
+            `,
+            tema4: `
+                <h2>Biografía Deportiva</h2>
+                <p>Es la narración de la trayectoria de un atleta. Incluye sus logros, entrenamientos y las dificultades que superó para alcanzar el éxito.</p>
+                <div class="bloque-ejemplo">
+                    <strong>Valores:</strong> A través de las biografías aprendemos sobre la perseverancia, la constancia y el sacrificio.
+                </div>
+            `,
+            tema5: `
+                <h2>Beneficios para la Salud</h2>
+                <h3>Beneficios Físicos</h3>
+                <p>Fortalece huesos y músculos, controla el peso y reduce el riesgo de enfermedades como la obesidad y la diabetes.</p>
+                <h3>Beneficios Mentales</h3>
+                <p>Mejora la calidad del sueño, aumenta la autoestima y favorece la liberación de endorfinas, lo que genera una sensación de bienestar general.</p>
+            `
+        };
 
-            /* BASE DE DATOS: Aquí guardas toda la información de la materia.
-               Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
-            const baseDeDatos = {
-                'tema1': {
-                    titulo: "Definición e Importancia de la Educación Física",
-                    texto: ""
-                },
-                'tema2': {
-                    titulo: "Historia de la Educación Física",
-                    texto: ""
-                },
-                'tema3': {
-                    titulo: "Anatomía y Fisiología",
-                    texto: ""
-                },
-                'tema4': {
-                    titulo: "Biografía deportiva",
-                    texto: ""
-                },
-                'tema5': {
-                    titulo: "Beneficios para la salud",
-                    texto: ""
-                }
-                /* Para añadir más, solo pon una coma al final del anterior y crea el nuevo:
-                'tema6': {
-                    titulo: "Título del tema 6",
-                    texto: "Texto del tema 6..."
-                } 
-                */
-            };
-
-            // Busca en la base de datos el ID que pulsamos en el botón
-            const info = baseDeDatos[id];
-
-            // Si el tema existe, lo inyecta en el HTML de la "pizarra"
-            if (info) {
-                pizarra.innerHTML = `
-                    <h2>${info.titulo}</h2>
-                    <p>${info.texto}</p>
-                `;
+        function mostrarTema(temaId) {
+            const contenedor = document.getElementById("contenido");
+            if (contenidos[temaId]) {
+                contenedor.innerHTML = contenidos[temaId];
+            } else {
+                contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema.</p>`;
             }
         }
+
+        document.querySelectorAll('.tema').forEach(el => {
+            el.addEventListener('click', () => {
+                const temaId = el.getAttribute('data-tema');
+                mostrarTema(temaId);
+            });
+        });
+
+        // Carga inicial
+        mostrarTema('bienvenida');
     </script>
 </body>
 </html>

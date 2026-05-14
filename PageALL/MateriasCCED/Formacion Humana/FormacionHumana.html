@@ -15,21 +15,18 @@
         }
 
         /* estilos generales */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
-            flex-wrap: wrap;
+            
         }
 
         /* boton volver */
@@ -53,9 +50,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /*barra lateral */
@@ -108,8 +103,7 @@
         .zona-herramientas {
             flex: 1;
             padding: 50px;
-            background-color: #f9f9fb;
-            overflow-y: auto;
+            background-color: #f9f9fb;; height: 100%;
         }
 
         .zona-herramientas h2 {

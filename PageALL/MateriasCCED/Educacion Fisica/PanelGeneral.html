@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educación Física | AcademiaCCED</title>
     <link rel="stylesheet" href="/PageALL/style_materias.css">
-    <!-- estilos propios de esta sola pagina -->
     <style>
-        /* colores */
+        /* Colores adaptados al estilo de Lengua Española */
         :root {
             --color-principal: #e5322e;
             --color-fondo: #f3f6ff;
@@ -15,16 +14,13 @@
             --blanco: #ffffff;
         }
 
-        /* estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: var(--color-fondo);
-        }
+        /* Estilos generales */
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            
+            background-color: var(--color-fondo); overflow: hidden; }
 
-        /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        /* Barra de navegación superior */
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
@@ -32,7 +28,7 @@
             border-bottom: 2px solid #ddd;
         }
 
-        /* boton volver */
+        /* Botón volver */
         .boton-volver a {
             text-decoration: none;
             color: var(--color-principal);
@@ -40,20 +36,18 @@
             font-size: 1rem;
         }
 
-        /* titulo de la materia */
+        /* Título de la materia */
         .titulo-materia {
             font-weight: 800;
             color: var(--color-principal);
             font-size: 1.5rem;
         }
 
-        /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        /* Contenedor principal */
+        .contenedor { display: flex; flex: 1;
         }
 
-        /*barra lateral con foto del profesor */
+        /* Barra lateral */
         .barra-lateral {
             width: 300px;
             background-color: var(--blanco);
@@ -62,7 +56,7 @@
             text-align: center;
         }
 
-        /* foto profesor */
+        /* Foto profesor */
         .foto-profesor {
             width: 110px;
             height: 110px;
@@ -73,22 +67,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            overflow: hidden;
         }
 
-        /* nombre profesor */
+        .foto-profesor img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Nombre profesor */
         .barra-lateral h3 {
             margin: 10px 0;
             color: var(--color-oscuro);
         }
 
-        /* linea separadora */
+        /* Línea separadora */
         .barra-lateral hr {
             opacity: 0.2;
             margin: 20px 0;
         }
 
-        /* informacion del profesor */
+        /* Información del profesor */
         .info-profesor {
             text-align: left;
             font-size: 0.9rem;
@@ -99,14 +100,14 @@
             margin: 10px 0;
         }
 
-        /* zona principal */
+        /* Zona principal */
         .zona-herramientas {
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
         }
 
-        /* encabezado en la zona */
+        /* Encabezado en la zona */
         .zona-herramientas h2 {
             font-size: 2rem;
             color: var(--color-oscuro);
@@ -118,14 +119,14 @@
             margin: 0 0 40px 0;
         }
 
-        /* grid de herramientas */
+        /* Grid de herramientas - 3 columnas como en Lengua Española */
         .grid-herramientas {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
-        /* cada tarjeta */
+        /* Cada tarjeta */
         .tarjeta-herramienta {
             background: var(--blanco);
             padding: 30px 20px;
@@ -139,35 +140,32 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        /* efecto pasar el mouse */
+        /* Efecto pasar el mouse */
         .tarjeta-herramienta:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border-color: var(--color-principal);
         }
 
-        /* icono en la tarjeta */
-        .icono {
-            font-size: 2.5rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
-        }
-
-        /* titulo de la tarjeta */
+        /* Título de la tarjeta */
         .tarjeta-herramienta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
+            margin: 0 0 12px 0;
+            font-size: 1.2rem;
+            color: var(--color-oscuro);
+            text-align: center;
+            font-weight: 700;
         }
 
-        /* descripción de la tarjeta */
+        /* Descripción de la tarjeta */
         .tarjeta-herramienta p {
             margin: 0;
             font-size: 0.9rem;
             color: #666;
+            text-align: center;
+            line-height: 1.3;
         }
 
-        /* pie de pagina */
+        /* Pie de página */
         footer {
             text-align: center;
             padding: 20px;
@@ -177,71 +175,83 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive */
+        @media (max-width: 900px) {
+            .grid-herramientas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contenedor {
+                flex-direction: column;
+            }
+            .barra-lateral {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+            .grid-herramientas {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PageALL/index.html">← VOLVER AL INICIO</a></div>
+        <div class="boton-volver"><a href="/PageALL/index.html"> ←  VOLVER AL INICIO</a></div>
         <div class="titulo-materia">Educación Física</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
 
-    <!-- contenido principal -->
     <div class="contenedor">
-        
-        <!-- barra lateral -->
+
         <aside class="barra-lateral">
-             <div class="foto-profesor">
-                <img src="/PageALL/ImgALL/Jan.jpeg" alt=" Jan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <div class="foto-profesor">
+                <img src="/PageALL/ImgALL/Jan.jpeg" alt="Profesor Jan">
             </div>
-            <h3>Jan</h3>
+            <h3>Prof. Jan</h3>
             <hr>
             <div class="info-profesor">
                 <p><b>Especialidad:</b> Área de Educación Física</p>
                 <p><b>Horario:</b> Lunes a Viernes</p>
-                <p><b>Aula:</b> ---</p>
+                <p><b>Aula:</b> Polideportivo</p>
+                <p><b>Email:</b> jan@academiaced.edu</p>
             </div>
         </aside>
 
-        <!-- zona de herramientas -->
         <main class="zona-herramientas">
-            <h2>Herramientas Educativas</h2>
-            <p>Selecciona una herramienta para comenzar.</p>
-
-            <!-- grid de herramientas -->
+            <h2 style="text-align: center;">Herramientas Educativas</h2>
+            <p style="text-align: center;">Selecciona una herramienta para comenzar tu aprendizaje en Educación Física.</p>
+            
             <div class="grid-herramientas">
                 
                 <a href="Fundamentos_y_Ciencias_del_Movimiento.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Fundamentos y Ciencias del Movimiento</h3>
-                    <p>Conoce los principios y teorías que subyacen a las actividades físicas y deportivas.</p>
+                    <h3>Fundamentos y Ciencias</h3>
+                    <p>Principios anatómicos y biomecánicos del deporte.</p>
                 </a>
 
                 <a href="Aptitud_Física_Capacidades.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Aptitud Física y Capacidad</h3>
-                    <p>Descubre cómo desarrollar y mejorar tu aptitud física y capacidades motoras.</p>
+                    <h3>Aptitud Física</h3>
+                    <p>Desarrolla tu fuerza, resistencia, velocidad y flexibilidad.</p>
                 </a>
-                  <a href="Salud_Seguridad_Prevención.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Salud, Seguridad y Prevención</h3>
-                    <p>Conoce cómo mantener tu salud y seguridad en las actividades físicas y deportivas.</p>
+
+                <a href="Salud_Seguridad_Prevención.html" class="tarjeta-herramienta">
+                    <h3>Salud y Prevención</h3>
+                    <p>Medidas de seguridad, salud y primeros auxilios.</p>
                 </a>
+
                 <a href="Práctica_Deportiva_Expresión_Motriz.html" class="tarjeta-herramienta">
-                    <div class="icono"></div>
-                    <h3>Práctica Deportiva y Expresión Motriz</h3>
-                    <p>Explora cómo aplicar los conocimientos teóricos en la práctica deportiva y desarrollar tu expresión motriz.</p>
+                    <h3>Práctica Deportiva</h3>
+                    <p>Aplicación teórica en el deporte y expresión corporal.</p>
                 </a>
+
             </div>
         </main>
     </div>
 
-    <!-- pie de pagina -->
     <footer>
         <p>© 2025 AcademiaCCED. Todos los derechos reservados.</p>
     </footer>
-
 </body>
 </html>

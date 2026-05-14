@@ -3,323 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TITULO DE LA PESTAÑA: Cámbialo por el nombre de la materia -->
-    <title>Ingles | AcademiaCCED</title>
-    
- <style>
-    :root {
-        --color-materia: #ff0400;
-        --color-fondo: #f3f6ff;
-        --color-oscuro: #1a1a2e;
-        --blanco: #ffffff;
-        --gris-borde: #ddd;
-        --gris-claro: #f0f0f0;
-        --texto-gris: #555;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Segoe UI', Arial, sans-serif;
-        background-color: var(--color-fondo);
-        color: #333;
-    }
-
-    /* =========================
-       BARRA SUPERIOR
-    ========================= */
-    .nav-superior {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 5%;
-        background: var(--blanco);
-        border-bottom: 2px solid var(--gris-borde);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        flex-wrap: wrap;
-    }
-
-    .volver a {
-        text-decoration: none;
-        color: var(--color-materia);
-        font-weight: bold;
-        font-size: 1rem;
-    }
-
-    .titulo-app {
-        font-weight: 800;
-        color: var(--color-materia);
-        font-size: 1.5rem;
-        text-transform: uppercase;
-    }
-
-    /* =========================
-       CONTENEDOR PRINCIPAL
-    ========================= */
-    .contenedor-principal {
-        display: flex;
-        min-height: calc(100vh - 70px);
-    }
-
-    /* =========================
-       SIDEBAR
-    ========================= */
-    .sidebar {
-        width: 320px;
-        background-color: var(--blanco);
-        border-right: 1px solid var(--gris-borde);
-        padding: 40px 20px;
-        overflow-y: auto;
-    }
-
-    .sidebar h3 {
-        margin-bottom: 20px;
-        color: var(--color-oscuro);
-        font-size: 1.2rem;
-        font-weight: bold;
-        border-left: 4px solid var(--color-materia);
-        padding-left: 12px;
-    }
-
-    .lista-temas {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    /* =========================
-       BOTONES TEMAS
-    ========================= */
-    .btn-tema {
-        width: 100%;
-        padding: 12px 15px;
-        background: var(--gris-claro);
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: left;
-        transition: 0.25s ease;
-        font-size: 0.95rem;
-        color: #333;
-        border-left: 3px solid transparent;
-        font-weight: 500;
-    }
-
-    .btn-tema:hover {
-        background: #ffe8e7;
-        transform: translateX(4px);
-        border-left-color: var(--color-materia);
-        color: var(--color-materia);
-    }
-
-    /* =========================
-       CONTENIDO
-    ========================= */
-    .visor-contenido {
-        flex: 1;
-        padding: 50px;
-        background-color: #f9f9fb;
-        overflow-y: auto;
-    }
-
-    #pizarra {
-        max-width: 950px;
-        margin: 0 auto;
-        animation: fadeIn 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
+    <title>Vocabulario | AcademiaCCED</title>
+    <style>
+        :root {
+            --color-materia: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+            --fondo-pizarra: #f9f9fb;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    }
 
-    #pizarra h2 {
-        font-size: 2rem;
-        color: var(--color-oscuro);
-        margin-bottom: 15px;
-        border-bottom: 3px solid var(--color-materia);
-        display: inline-block;
-        padding-bottom: 5px;
-    }
+        /* Bloqueamos scroll en body para manejarlo por paneles independientes */
+        html, body { 
+            height: 100vh; 
+            margin: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--color-fondo); 
+            overflow: hidden; 
+        }
 
-    #pizarra p {
-        margin: 15px 0;
-        line-height: 1.7;
-        color: var(--texto-gris);
-        font-size: 1rem;
-    }
+        /* ===== NAVBAR ===== */
+        .nav-superior {
+            display: flex;
+            height: 70px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            position: relative;
+            z-index: 1000;
+        }
 
-    /* =========================
-       TABLAS BONITAS
-    ========================= */
-    .tabla-bonita {
-        width: 100%;
-        margin-top: 20px;
-    }
+        .volver a {
+            text-decoration: none;
+            color: var(--color-materia);
+            font-weight: bold;
+            font-size: 1rem;
+        }
 
-    .fila {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        justify-content: center;
-    }
+        .titulo-app {
+            font-weight: 800;
+            color: var(--color-materia);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
 
-    .fila span {
-        background: #ffffff;
-        border-left: 4px solid var(--color-materia);
-        border-radius: 12px;
-        padding: 14px 18px;
-        min-width: 140px;
-        text-align: center;
-        color: #333;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-        transition: 0.25s ease;
-        line-height: 1.5;
-    }
-
-    .fila span:hover {
-        transform: translateY(-4px);
-        background: #fff5f5;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.10);
-    }
-
-    .fila span b {
-        color: var(--color-materia);
-        font-size: 1rem;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: var(--blanco);
-        border-top: 1px solid var(--gris-borde);
-        color: #666;
-        font-size: 0.9rem;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-    @media (max-width: 768px) {
-
+        /* ===== CONTENEDOR PRINCIPAL ===== */
         .contenedor-principal {
-            flex-direction: column;
-        }
-
-        .sidebar {
+            display: flex;
+            height: calc(100vh - 70px); /* Resto de la pantalla */
             width: 100%;
-            border-right: none;
-            border-bottom: 1px solid var(--gris-borde);
-            padding: 25px;
         }
 
+        /* ===== SIDEBAR (FIJA) ===== */
+        .sidebar {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+            overflow-y: auto; /* Scroll solo para la lista de temas */
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-materia);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.25s ease;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .btn-tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-materia);
+            color: var(--color-materia);
+        }
+
+        /* ===== VISOR DE CONTENIDO (CON SCROLL PROPIO) ===== */
         .visor-contenido {
-            padding: 25px;
+            flex: 1;
+            background-color: var(--fondo-pizarra);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        /* Área de texto/tablas */
+        #pizarra {
+            flex: 1 0 auto; /* Empuja al footer hacia abajo */
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 50px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         #pizarra h2 {
-            font-size: 1.6rem;
+            font-size: 2.2rem;
+            color: var(--color-oscuro);
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--color-materia);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* ===== TABLAS DE VOCABULARIO ===== */
+        .tabla-bonita { width: 100%; margin-top: 10px; }
+        .fila {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start;
         }
 
         .fila span {
-            min-width: 120px;
-            font-size: 0.9rem;
+            background: #ffffff;
+            border-left: 4px solid var(--color-materia);
+            border-radius: 12px;
+            padding: 14px 18px;
+            min-width: 160px;
+            text-align: center;
+            color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: 0.25s ease;
+            line-height: 1.5;
         }
-        .fila span b {
-    color: #e5322e;
-}
-    }
-    #pizarra b {
-    color: #e5322e;
-}
-</style>
+
+        .fila span:hover {
+            transform: translateY(-4px);
+            background: #fff5f5;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+        }
+
+        .fila span b { color: var(--color-materia); font-size: 1.1rem; }
+
+        /* ===== FOOTER DENTRO DEL FLUJO ===== */
+        footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 25px;
+            background: var(--blanco);
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            html, body { overflow: auto; }
+            .contenedor-principal { flex-direction: column; height: auto; }
+            .sidebar { width: 100%; border-right: none; height: auto; border-bottom: 1px solid var(--gris-borde); }
+            .visor-contenido { height: auto; }
+            #pizarra { padding: 30px 20px; }
+            .fila { justify-content: center; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- NAVEGACIÓN: Puedes cambiar el enlace de "href" para que vuelva a la página correcta -->
     <nav class="nav-superior">
-        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
+        <div class="volver"><a href="PanelGeneral.html"> ← REGRESAR ATRAS</a></div>
         <div class="titulo-app">Academia CCED</div>
-        <div style="font-weight: 600; color: #888;">Panel Educativo</div>
+        <div style="font-weight: 600; color: #888;">Inglés</div>
     </nav>
 
     <div class="contenedor-principal">
-        
-        <!-- MENÚ LATERAL: Aquí añades los botones para cada tema nuevo -->
         <aside class="sidebar">
             <h3>TEMARIO</h3>
             <div class="lista-temas">
-                <!-- Para añadir un tema:
-                     1. Copia la línea del botón.
-                     2. Cambia el nombre (ej: "4. Nuevo Tema").
-                     3. Cambia el ID en cargar('id_aqui'). Este ID debe ser igual al del Script abajo. -->
-                <button class="btn-tema" onclick="cargar('tema1')">🐾 Animales</button>
-<button class="btn-tema" onclick="cargar('tema2')">🐒🌴 Animales de la selva</button>
-<button class="btn-tema" onclick="cargar('tema3')">🐠🌊 Animales marinos</button>
-<button class="btn-tema" onclick="cargar('tema4')">💬 Frases basicas</button>
-<button class="btn-tema" onclick="cargar('tema5')">👋😊 Saludas y cortecia</button>
-<button class="btn-tema" onclick="cargar('tema6')">🙏 Peticiones y ayuda</button>
-<button class="btn-tema" onclick="cargar('tema7')">🏡✨ Cortecia en el hogar</button>
-<button class="btn-tema" onclick="cargar('tema8')">🏢 Lugares públicos y servicios</button>
-<button class="btn-tema" onclick="cargar('tema10')">🚗🏗️ Transporte y estructuras</button>
-<button class="btn-tema" onclick="cargar('tema11')">👩‍⚕️👨‍🏫 Profesiones</button>
-<button class="btn-tema" onclick="cargar('tema12')">🔧 Oficios y servicios</button>
-<button class="btn-tema" onclick="cargar('tema13')">🔄📚 Sinonimos y terminos relacionados</button>
-<button class="btn-tema" onclick="cargar('tema15')">👨‍👩‍👧 Familia Inmediata</button>
-<button class="btn-tema" onclick="cargar('tema16')">👪 Familia Extendida</button>
-<button class="btn-tema" onclick="cargar('tema17')">🤝 Familia Política y Otros</button>
-<button class="btn-tema" onclick="cargar('tema18')">🏠 Partes y Habitaciones de la Casa</button>
-<button class="btn-tema" onclick="cargar('tema19')">🔁🏠 Sinónimos de Partes de la Casa</button>
-<button class="btn-tema" onclick="cargar('tema20')">🛋️ Sala de Estar</button>
-<button class="btn-tema" onclick="cargar('tema21')">🍳 Cocina</button>
-<button class="btn-tema" onclick="cargar('tema22')">🛏️ Dormitorio</button>
-<button class="btn-tema" onclick="cargar('tema23')">🚿 Baño</button>
-<button class="btn-tema" onclick="cargar('tema24')">🧱 Estructura General</button>
-            </div>
-        </aside>                
+                <button class="btn-tema" onclick="cargar('tema1')"> Animales de granja</button>
+                <button class="btn-tema" onclick="cargar('tema2')"> Animales de la selva</button>
+                <button class="btn-tema" onclick="cargar('tema3')"> Animales marinos</button>
+                <button class="btn-tema" onclick="cargar('tema4')"> Frases básicas</button>
+                <button class="btn-tema" onclick="cargar('tema5')"> Saludos</button>
+                </div>
+        </aside>
 
-        <!-- ÁREA DE LECTURA: Aquí es donde el JavaScript "dibuja" la información -->
         <main class="visor-contenido">
             <div id="pizarra">
                 <h2>Bienvenido</h2>
-                <p>Selecciona un tema de la izquierda para visualizar el material de estudio.</p>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio detallado.</p>
             </div>
-        </main>
 
+            <footer>
+                &copy; 2026 AcademiaCCED
+            </footer>
+        </main>
     </div>
 
-    <footer>
-        &copy; 2026 AcademiaCCED 
-    </footer>
-
     <script>
-        /**
-         * FUNCIÓN CARGAR: Es la encargada de cambiar el texto de la pantalla.
-         * @param {string} id - El identificador del tema que queremos mostrar.
-         */
         function cargar(id) {
             const pizarra = document.getElementById("pizarra");
+            const visor = document.querySelector(".visor-contenido");
 
-            /* BASE DE DATOS: Aquí guardas toda la información de la materia.
-               Cada bloque (ej: 'tema1') debe tener su Título y su Texto. */
-           const baseDeDatos = {
-
-tema1: {
+            const baseDeDatos = {
+                tema1: {
   titulo: "Animales de granja",
   texto: `
   <div class="tabla-bonita"><div class="fila">
@@ -848,20 +766,14 @@ tema24: {
   </div></div>
   `
 }
+            };
 
-};
-
-            // Busca en la base de datos el ID que pulsamos en el botón
             const info = baseDeDatos[id];
-
-            // Si el tema existe, lo inyecta en el HTML de la "pizarra"
             if (info) {
-                pizarra.innerHTML = `
-                    <h2>${info.titulo}</h2>
-                    <p>${info.texto}</p>
-                `;
+                pizarra.innerHTML = `<h2>${info.titulo}</h2>${info.texto}`;
+                visor.scrollTop = 0; // Regresa el scroll arriba al cambiar tema
             }
         }
     </script>
 </body>
-</html> usen ese codigo base para los subtema de las materias
+</html>

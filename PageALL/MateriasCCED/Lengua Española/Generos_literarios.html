@@ -15,15 +15,12 @@
         }
 
         /* estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
@@ -47,9 +44,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /* barra lateral */
@@ -101,8 +96,7 @@
         .zona-herramientas {
             flex: 1;
             padding: 50px;
-            background-color: #f9f9fb;
-            overflow-y: auto;
+            background-color: #f9f9fb;; height: 100%;
         }
 
         .zona-herramientas h2 {
@@ -179,20 +173,20 @@
             <h3>Clasificación de la literatura</h3>
             <hr>
             <div class="info-materia">
-                <div class="tema" onclick="mostrar('definicion')">1. ¿Qué son los géneros literarios?</div>
-                <div class="tema" onclick="mostrar('caracteristicas')">2. Características generales</div>
-                <div class="tema" onclick="mostrar('narrativo')">3. Género narrativo (novela, cuento, fábula, leyenda)</div>
-                <div class="tema" onclick="mostrar('elementos_narrativo')">4. Elementos del género narrativo</div>
-                <div class="tema" onclick="mostrar('dramatico')">5. Género dramático (tragedia, comedia, drama)</div>
-                <div class="tema" onclick="mostrar('elementos_dramatico')">6. Elementos y estructura teatral</div>
-                <div class="tema" onclick="mostrar('lirico')">7. Género lírico (oda, elegía, soneto, etc.)</div>
-                <div class="tema" onclick="mostrar('recursos_lirico')">8. Recursos del lenguaje lírico</div>
-                <div class="tema" onclick="mostrar('epico')">9. Género épico (epopeya, cantar de gesta)</div>
-                <div class="tema" onclick="mostrar('didactico')">10. Género didáctico (ensayo, fábula, texto expositivo)</div>
-                <div class="tema" onclick="mostrar('tabla_comparativa')">11. Tabla comparativa de los 5 géneros</div>
-                <div class="tema" onclick="mostrar('evolucion')">12. Evolución e importancia</div>
-                <div class="tema" onclick="mostrar('ejercicios')">13. Ejercicios prácticos</div>
-                <div class="tema" onclick="mostrar('glosario')">14. Glosario literario</div>
+                <div class="tema" onclick="mostrar('definicion')">¿Qué son los géneros literarios?</div>
+                <div class="tema" onclick="mostrar('caracteristicas')">Características generales</div>
+                <div class="tema" onclick="mostrar('narrativo')">Género narrativo (novela, cuento, fábula, leyenda)</div>
+                <div class="tema" onclick="mostrar('elementos_narrativo')">Elementos del género narrativo</div>
+                <div class="tema" onclick="mostrar('dramatico')">Género dramático (tragedia, comedia, drama)</div>
+                <div class="tema" onclick="mostrar('elementos_dramatico')">Elementos y estructura teatral</div>
+                <div class="tema" onclick="mostrar('lirico')">Género lírico (oda, elegía, soneto, etc.)</div>
+                <div class="tema" onclick="mostrar('recursos_lirico')">Recursos del lenguaje lírico</div>
+                <div class="tema" onclick="mostrar('epico')">Género épico (epopeya, cantar de gesta)</div>
+                <div class="tema" onclick="mostrar('didactico')">Género didáctico (ensayo, fábula, texto expositivo)</div>
+                <div class="tema" onclick="mostrar('tabla_comparativa')">Tabla comparativa de los 5 géneros</div>
+                <div class="tema" onclick="mostrar('evolucion')">Evolución e importancia</div>
+                <div class="tema" onclick="mostrar('ejercicios')">Ejercicios prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')">Glosario literario</div>
             </div>
         </aside>
 

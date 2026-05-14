@@ -15,15 +15,12 @@
         }
 
         /* estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
@@ -47,9 +44,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /*barra lateral */
@@ -101,8 +96,7 @@
         .zona-herramientas {
             flex: 1;
             padding: 50px;
-            background-color: #f9f9fb;
-            overflow-y: auto;
+            background-color: #f9f9fb;; height: 100%;
         }
 
         .zona-herramientas h2 {
@@ -179,20 +173,20 @@
             <h3>Estructura de la palabra</h3>
             <hr>
             <div class="info-materia">
-                <div class="tema" onclick="mostrar('definicion')">1. ¿Qué es la Morfología?</div>
-                <div class="tema" onclick="mostrar('lexema_morfema')">2. Lexema y Morfema</div>
-                <div class="tema" onclick="mostrar('tipos_morfemas')">3. Tipos de morfemas (flexivos / derivativos)</div>
-                <div class="tema" onclick="mostrar('prefijos')">4. Prefijos (lista y ejemplos)</div>
-                <div class="tema" onclick="mostrar('sufijos')">5. Sufijos (lista y ejemplos)</div>
-                <div class="tema" onclick="mostrar('interfijos')">6. Interfijos (o infijos)</div>
-                <div class="tema" onclick="mostrar('derivacion')">7. Derivación</div>
-                <div class="tema" onclick="mostrar('composicion')">8. Composición</div>
-                <div class="tema" onclick="mostrar('parasintesis')">9. Parasíntesis</div>
-                <div class="tema" onclick="mostrar('acronimia')">10. Acronimia, siglas y abreviaturas</div>
-                <div class="tema" onclick="mostrar('prestamos')">11. Préstamos lingüísticos</div>
-                <div class="tema" onclick="mostrar('analisis_morfologico')">12. Análisis morfológico paso a paso</div>
-                <div class="tema" onclick="mostrar('ejercicios')">13. Ejercicios prácticos</div>
-                <div class="tema" onclick="mostrar('glosario')">14. Glosario morfológico</div>
+                <div class="tema" onclick="mostrar('definicion')"> ¿Qué es la Morfología?</div>
+                <div class="tema" onclick="mostrar('lexema_morfema')"> Lexema y Morfema</div>
+                <div class="tema" onclick="mostrar('tipos_morfemas')"> Tipos de morfemas (flexivos / derivativos)</div>
+                <div class="tema" onclick="mostrar('prefijos')"> Prefijos (lista y ejemplos)</div>
+                <div class="tema" onclick="mostrar('sufijos')"> Sufijos (lista y ejemplos)</div>
+                <div class="tema" onclick="mostrar('interfijos')"> Interfijos (o infijos)</div>
+                <div class="tema" onclick="mostrar('derivacion')"> Derivación</div>
+                <div class="tema" onclick="mostrar('composicion')"> Composición</div>
+                <div class="tema" onclick="mostrar('parasintesis')"> Parasíntesis</div>
+                <div class="tema" onclick="mostrar('acronimia')"> Acronimia, siglas y abreviaturas</div>
+                <div class="tema" onclick="mostrar('prestamos')"> Préstamos lingüísticos</div>
+                <div class="tema" onclick="mostrar('analisis_morfologico')"> Análisis morfológico paso a paso</div>
+                <div class="tema" onclick="mostrar('ejercicios')"> Ejercicios prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')"> Glosario morfológico</div>
             </div>
         </aside>
 

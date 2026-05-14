@@ -24,20 +24,17 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid var(--gris-borde);
-            flex-wrap: wrap;
+            
         }
 
         /* boton volver */
@@ -56,9 +53,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /* barra lateral */
@@ -214,7 +209,7 @@
 
     <!-- barra superior -->
     <nav class="barra-superior">
-        <div class="boton-volver"><a href="/PROYECTO-CURSO-5TO-INFORMATICA/PageALL/MateriasCCED/Lengua Española/PanelGeneral.html">← VOLVER ATRAS</a></div>
+        <div class="boton-volver"><a href="PanelGeneral.html">← VOLVER ATRÁS</a></div>
         <div class="titulo-materia">GRAMÁTICA ESPAÑOLA</div>
         <div style="color: #666; font-weight: bold;">5to Informática</div>
     </nav>
@@ -545,9 +540,7 @@
         function mostrarTema(temaId) {
             const contenedor = document.getElementById("contenido");
             if (contenidos[temaId]) {
-                contenedor.innerHTML = contenidos[temaId];
-                contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
+                contenedor.innerHTML = contenidos[temaId];} else {
                 contenedor.innerHTML = `<h2>Contenido no disponible</h2><p>Selecciona otro tema del menú.</p>`;
             }
         }

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulario | AcademiaCCED</title>
+    <style>
+        :root {
+            --color-materia: #e5322e;
+            --color-fondo: #f3f6ff;
+            --color-oscuro: #1a1a2e;
+            --blanco: #ffffff;
+            --gris-borde: #ddd;
+            --gris-claro: #f0f0f0;
+            --texto-gris: #555;
+            --fondo-pizarra: #f9f9fb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Bloqueamos scroll en body para manejarlo por paneles independientes */
+        html, body { 
+            height: 100vh; 
+            margin: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--color-fondo); 
+            overflow: hidden; 
+        }
+
+        /* ===== NAVBAR ===== */
+        .nav-superior {
+            display: flex;
+            height: 70px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--blanco);
+            border-bottom: 2px solid var(--gris-borde);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .volver a {
+            text-decoration: none;
+            color: var(--color-materia);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .titulo-app {
+            font-weight: 800;
+            color: var(--color-materia);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .contenedor-principal {
+            display: flex;
+            height: calc(100vh - 70px); /* Resto de la pantalla */
+            width: 100%;
+        }
+
+        /* ===== SIDEBAR (FIJA) ===== */
+        .sidebar {
+            width: 320px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--gris-borde);
+            padding: 40px 20px;
+            overflow-y: auto; /* Scroll solo para la lista de temas */
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            margin: 0 0 20px 0;
+            color: var(--color-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-left: 4px solid var(--color-materia);
+            padding-left: 12px;
+        }
+
+        .lista-temas {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .btn-tema {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--gris-claro);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.25s ease;
+            font-size: 0.95rem;
+            color: #333;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .btn-tema:hover {
+            background: #ffe8e7;
+            transform: translateX(4px);
+            border-left-color: var(--color-materia);
+            color: var(--color-materia);
+        }
+
+        /* ===== VISOR DE CONTENIDO (CON SCROLL PROPIO) ===== */
+        .visor-contenido {
+            flex: 1;
+            background-color: var(--fondo-pizarra);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        /* Área de texto/tablas */
+        #pizarra {
+            flex: 1 0 auto; /* Empuja al footer hacia abajo */
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 50px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #pizarra h2 {
+            font-size: 2.2rem;
+            color: var(--color-oscuro);
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--color-materia);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* ===== TABLAS DE VOCABULARIO ===== */
+        .tabla-bonita { width: 100%; margin-top: 10px; }
+        .fila {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start;
+        }
+
+        .fila span {
+            background: #ffffff;
+            border-left: 4px solid var(--color-materia);
+            border-radius: 12px;
+            padding: 14px 18px;
+            min-width: 160px;
+            text-align: center;
+            color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: 0.25s ease;
+            line-height: 1.5;
+        }
+
+        .fila span:hover {
+            transform: translateY(-4px);
+            background: #fff5f5;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+        }
+
+        .fila span b { color: var(--color-materia); font-size: 1.1rem; }
+
+        /* ===== FOOTER DENTRO DEL FLUJO ===== */
+        footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 25px;
+            background: var(--blanco);
+            border-top: 1px solid var(--gris-borde);
+            color: #666;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            html, body { overflow: auto; }
+            .contenedor-principal { flex-direction: column; height: auto; }
+            .sidebar { width: 100%; border-right: none; height: auto; border-bottom: 1px solid var(--gris-borde); }
+            .visor-contenido { height: auto; }
+            #pizarra { padding: 30px 20px; }
+            .fila { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-superior">
+        <div class="volver"><a href="PanelGeneral.html"> ← REGRESAR</a></div>
+        <div class="titulo-app">Academia CCED</div>
+        <div style="font-weight: 600; color: #888;">Inglés</div>
+    </nav>
+
+    <div class="contenedor-principal">
+        <aside class="sidebar">
+            <h3>TEMARIO</h3>
+            <div class="lista-temas">
+                <button class="btn-tema" onclick="cargar('tema1')">🐾 Animales de granja</button>
+                <button class="btn-tema" onclick="cargar('tema2')">🐒🌴 Animales de la selva</button>
+                <button class="btn-tema" onclick="cargar('tema3')">🐠🌊 Animales marinos</button>
+                <button class="btn-tema" onclick="cargar('tema4')">💬 Frases básicas</button>
+                <button class="btn-tema" onclick="cargar('tema5')">👋😊 Saludos</button>
+                </div>
+        </aside>
+
+        <main class="visor-contenido">
+            <div id="pizarra">
+                <h2>Bienvenido</h2>
+                <p>Selecciona un tema de la izquierda para visualizar el material de estudio detallado.</p>
+            </div>
+
+            <footer>
+                &copy; 2026 AcademiaCCED
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        function cargar(id) {
+            const pizarra = document.getElementById("pizarra");
+            const visor = document.querySelector(".visor-contenido");
+
+            const baseDeDatos = {
+                tema1: {
+  titulo: "Animales de granja",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Buey</b><br>Ox</span>
+    <span><b>Burro</b><br>Donkey</span>
+    <span><b>Caballo</b><br>Horse</span>
+    <span><b>Cabra</b><br>Goat</span>
+    <span><b>Cerdo</b><br>Pig</span>
+    <span><b>Cordero</b><br>Lamb</span>
+    <span><b>Gallina</b><br>Hen</span>
+    <span><b>Gallo</b><br>Rooster</span>
+    <span><b>Ganso</b><br>Goose</span>
+    <span><b>Gato</b><br>Cat</span>
+    <span><b>Hámster</b><br>Hamster</span>
+    <span><b>Mula</b><br>Mule</span>
+    <span><b>Oveja</b><br>Sheep</span>
+    <span><b>Pato</b><br>Duck</span>
+    <span><b>Pavo</b><br>Turkey</span>
+    <span><b>Perro</b><br>Dog</span>
+    <span><b>Pollo</b><br>Chicken</span>
+    <span><b>Poni</b><br>Pony</span>
+    <span><b>Potrillo</b><br>Foal</span>
+    <span><b>Ternero</b><br>Calf</span>
+    <span><b>Toro</b><br>Bull</span>
+    <span><b>Vaca</b><br>Cow</span>
+    <span><b>Yegua</b><br>Mare</span>
+
+    <!-- NUEVO -->
+    <span><b>Conejo</b><br>Rabbit</span>
+    <span><b>Cerdito</b><br>Piglet</span>
+    <span><b>Pollito</b><br>Chick</span>
+    <span><b>Patito</b><br>Duckling</span>
+    <span><b>Granja</b><br>Farm</span>
+    <span><b>Establo</b><br>Stable</span>
+    <span><b>Gallinero</b><br>Chicken coop</span>
+    <span><b>Heno</b><br>Hay</span>
+    <span><b>Granero</b><br>Barn</span>
+  </div></div>
+  `
+},
+
+tema2: {
+  titulo: "Animales de la selva",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Aligátor</b><br>Alligator</span>
+    <span><b>Anaconda</b><br>Anaconda</span>
+    <span><b>Araña</b><br>Spider</span>
+    <span><b>Armadillo</b><br>Armadillo</span>
+    <span><b>Camaleón</b><br>Chameleon</span>
+    <span><b>Cocodrilo</b><br>Crocodile</span>
+    <span><b>Erizo</b><br>Hedgehog</span>
+    <span><b>Gorila</b><br>Gorilla</span>
+    <span><b>Guacamayo</b><br>Macaw</span>
+    <span><b>Hormiga</b><br>Ant</span>
+    <span><b>Jaguar</b><br>Jaguar</span>
+    <span><b>Koala</b><br>Koala</span>
+    <span><b>Lemur</b><br>Lemur</span>
+    <span><b>Leopardo</b><br>Leopard</span>
+    <span><b>Loro</b><br>Parrot</span>
+    <span><b>Mono</b><br>Monkey</span>
+    <span><b>Mosquito</b><br>Mosquito</span>
+    <span><b>Murciélago</b><br>Bat</span>
+    <span><b>Orangután</b><br>Orangutan</span>
+    <span><b>Oso hormiguero</b><br>Anteater</span>
+    <span><b>Oso perezoso</b><br>Sloth</span>
+    <span><b>Panda</b><br>Panda Bear</span>
+    <span><b>Pantera</b><br>Panther</span>
+    <span><b>Rana</b><br>Frog</span>
+    <span><b>Sapo</b><br>Toad</span>
+    <span><b>Serpiente</b><br>Snake</span>
+    <span><b>Tarántula</b><br>Tarantula</span>
+    <span><b>Tigre</b><br>Tiger</span>
+    <span><b>Tucán</b><br>Toucan</span>
+
+    <!-- NUEVO -->
+    <span><b>León</b><br>Lion</span>
+    <span><b>Elefante</b><br>Elephant</span>
+    <span><b>Rinoceronte</b><br>Rhinoceros</span>
+    <span><b>Cebra</b><br>Zebra</span>
+    <span><b>Chimpancé</b><br>Chimpanzee</span>
+    <span><b>Hipopótamo</b><br>Hippopotamus</span>
+    <span><b>Escorpión</b><br>Scorpion</span>
+    <span><b>Búho</b><br>Owl</span>
+    <span><b>Águila</b><br>Eagle</span>
+  </div></div>
+  `
+},
+
+tema3: {
+  titulo: "Animales marinos",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Almeja</b><br>Clam</span>
+    <span><b>Anguila</b><br>Eel</span>
+    <span><b>Atún</b><br>Tuna</span>
+    <span><b>Ballena</b><br>Whale</span>
+    <span><b>Caballo de mar</b><br>Seahorse</span>
+    <span><b>Calamar</b><br>Squid</span>
+    <span><b>Camarón</b><br>Shrimp</span>
+    <span><b>Cangrejo</b><br>Crab</span>
+    <span><b>Delfín</b><br>Dolphin</span>
+    <span><b>Estrella de mar</b><br>Starfish</span>
+    <span><b>Gaviota</b><br>Seagull</span>
+    <span><b>Langosta</b><br>Lobster</span>
+    <span><b>Mantarraya</b><br>Stingray</span>
+    <span><b>Medusa</b><br>Jellyfish</span>
+    <span><b>Pez</b><br>Fish</span>
+    <span><b>Pulpo</b><br>Octopus</span>
+    <span><b>Salmón</b><br>Salmon</span>
+    <span><b>Sardina</b><br>Sardine</span>
+    <span><b>Tiburón</b><br>Shark</span>
+    <span><b>Tortuga</b><br>Turtle</span>
+
+    <!-- NUEVO -->
+    <span><b>Pingüino</b><br>Penguin</span>
+    <span><b>Foca</b><br>Seal</span>
+    <span><b>Pelícano</b><br>Pelican</span>
+    <span><b>Coral</b><br>Coral</span>
+    <span><b>Ostra</b><br>Oyster</span>
+    <span><b>Caracol marino</b><br>Sea snail</span>
+    <span><b>Orca</b><br>Orca</span>
+  </div></div>
+  `
+},
+
+tema4: {
+  titulo: "Frases básicas",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Please</b><br>Por favor</span>
+    <span><b>Thank you</b><br>Gracias</span>
+    <span><b>Thank you very much</b><br>Muchas gracias</span>
+    <span><b>You're welcome</b><br>De nada</span>
+    <span><b>Excuse me</b><br>Disculpe</span>
+    <span><b>I'm sorry</b><br>Lo siento</span>
+    <span><b>No problem</b><br>No hay problema</span>
+
+    <!-- NUEVO -->
+    <span><b>See you later</b><br>Hasta luego</span>
+    <span><b>Good luck</b><br>Buena suerte</span>
+    <span><b>I understand</b><br>Entiendo</span>
+    <span><b>I don't understand</b><br>No entiendo</span>
+    <span><b>Can you repeat?</b><br>¿Puedes repetir?</span>
+  </div></div>
+  `
+},
+
+tema5: {
+  titulo: "Saludos de cortesía",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Good morning</b><br>Buenos días</span>
+    <span><b>Good afternoon</b><br>Buenas tardes</span>
+    <span><b>Good evening</b><br>Buenas noches</span>
+    <span><b>How are you?</b><br>¿Cómo estás?</span>
+    <span><b>Nice to meet you</b><br>Mucho gusto</span>
+    <span><b>Take care</b><br>Cuídate</span>
+    <span><b>Have a nice day</b><br>Que tengas un buen día</span>
+
+    <!-- NUEVO -->
+    <span><b>Hello</b><br>Hola</span>
+    <span><b>Hi</b><br>Hola</span>
+    <span><b>Goodbye</b><br>Adiós</span>
+    <span><b>See you soon</b><br>Nos vemos pronto</span>
+  </div></div>
+  `
+},
+
+tema6: {
+  titulo: "Peticiones y ayuda",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Could you...?</b><br>¿Podrías...?</span>
+    <span><b>Would you...?</b><br>¿Podría...?</span>
+    <span><b>Would you mind...?</b><br>¿Te importaría...?</span>
+    <span><b>May I...?</b><br>¿Puedo...?</span>
+    <span><b>Let me help you</b><br>Permítame ayudarle</span>
+    <span><b>Could I have...?</b><br>¿Podría tomar...?</span>
+
+    <!-- NUEVO -->
+    <span><b>Can you help me?</b><br>¿Puedes ayudarme?</span>
+    <span><b>I need help</b><br>Necesito ayuda</span>
+    <span><b>Please wait</b><br>Por favor espera</span>
+  </div></div>
+  `
+},
+
+tema7: {
+  titulo: "Cortesías en el hogar",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>After you</b><br>Después de usted</span>
+    <span><b>Make yourself at home</b><br>Está en su casa</span>
+    <span><b>Help yourself</b><br>Sírvase</span>
+    <span><b>Cheers</b><br>¡Salud!</span>
+
+    <!-- NUEVO -->
+    <span><b>Have a seat</b><br>Tome asiento</span>
+    <span><b>Make yourself comfortable</b><br>Ponte cómodo</span>
+  </div></div>
+  `
+},
+
+tema8: {
+  titulo: "Lugares públicos y servicios",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Hospital</b><br>Hospital</span>
+    <span><b>Library</b><br>Biblioteca</span>
+    <span><b>Police station</b><br>Estación de policía</span>
+    <span><b>Fire station</b><br>Estación de bomberos</span>
+    <span><b>Post office</b><br>Oficina de correos</span>
+    <span><b>School</b><br>Escuela</span>
+    <span><b>Bank</b><br>Banco</span>
+    <span><b>City hall</b><br>Ayuntamiento</span>
+    <span><b>Courthouse</b><br>Palacio de justicia</span>
+
+    <!-- NUEVO -->
+    <span><b>Church</b><br>Iglesia</span>
+    <span><b>Clinic</b><br>Clínica</span>
+    <span><b>Market</b><br>Mercado</span>
+  </div></div>
+  `
+},
+
+tema9: {
+  titulo: "Entretenimiento y compras",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Park</b><br>Parque</span>
+    <span><b>Restaurant</b><br>Restaurante</span>
+    <span><b>Café</b><br>Cafetería</span>
+    <span><b>Cinema</b><br>Cine</span>
+    <span><b>Mall</b><br>Centro comercial</span>
+    <span><b>Supermarket</b><br>Supermercado</span>
+    <span><b>Museum</b><br>Museo</span>
+    <span><b>Theater</b><br>Teatro</span>
+    <span><b>Zoo</b><br>Zoológico</span>
+    <span><b>Gym</b><br>Gimnasio</span>
+    <span><b>Pharmacy</b><br>Farmacia</span>
+    <span><b>Bookstore</b><br>Librería</span>
+
+    <!-- NUEVO -->
+    <span><b>Beach</b><br>Playa</span>
+    <span><b>Arcade</b><br>Sala de videojuegos</span>
+    <span><b>Barbershop</b><br>Barbería</span>
+  </div></div>
+  `
+},
+
+tema10: {
+  titulo: "Transporte y estructuras",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Hotel</b><br>Hotel</span>
+    <span><b>Train station</b><br>Estación de tren</span>
+    <span><b>Bus stop</b><br>Parada de autobús</span>
+    <span><b>Airport</b><br>Aeropuerto</span>
+    <span><b>Gas station</b><br>Gasolinera</span>
+    <span><b>Street</b><br>Calle</span>
+    <span><b>Avenue</b><br>Avenida</span>
+    <span><b>Square</b><br>Plaza</span>
+    <span><b>Bridge</b><br>Puente</span>
+
+    <!-- NUEVO -->
+    <span><b>Taxi</b><br>Taxi</span>
+    <span><b>Bicycle</b><br>Bicicleta</span>
+    <span><b>Traffic light</b><br>Semáforo</span>
+  </div></div>
+  `
+},
+
+tema11: {
+  titulo: "Profesiones",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Teacher</b><br>Maestro/a</span>
+    <span><b>Doctor</b><br>Médico</span>
+    <span><b>Nurse</b><br>Enfermero/a</span>
+    <span><b>Engineer</b><br>Ingeniero/a</span>
+    <span><b>Lawyer</b><br>Abogado/a</span>
+    <span><b>Accountant</b><br>Contador/a</span>
+    <span><b>Police officer</b><br>Policía</span>
+    <span><b>Firefighter</b><br>Bombero</span>
+    <span><b>Artist</b><br>Artista</span>
+    <span><b>Scientist</b><br>Científico</span>
+
+    <!-- NUEVO -->
+    <span><b>Programmer</b><br>Programador</span>
+    <span><b>Architect</b><br>Arquitecto</span>
+    <span><b>Dentist</b><br>Dentista</span>
+  </div></div>
+  `
+},
+
+tema12: {
+  titulo: "Oficios y servicios",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Electrician</b><br>Electricista</span>
+    <span><b>Plumber</b><br>Plomero</span>
+    <span><b>Mechanic</b><br>Mecánico</span>
+    <span><b>Carpenter</b><br>Carpintero</span>
+    <span><b>Hairdresser</b><br>Peluquero</span>
+    <span><b>Painter</b><br>Pintor</span>
+    <span><b>Gardener</b><br>Jardinero</span>
+    <span><b>Builder</b><br>Constructor</span>
+
+    <!-- NUEVO -->
+    <span><b>Baker</b><br>Panadero</span>
+    <span><b>Farmer</b><br>Agricultor</span>
+  </div></div>
+  `
+},
+
+tema13: {
+  titulo: "Servicios y administración",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Waiter</b><br>Mesero</span>
+    <span><b>Chef</b><br>Cocinero</span>
+    <span><b>Cashier</b><br>Cajero</span>
+    <span><b>Receptionist</b><br>Recepcionista</span>
+    <span><b>Secretary</b><br>Secretario/a</span>
+    <span><b>Salesperson</b><br>Vendedor</span>
+    <span><b>Driver</b><br>Conductor</span>
+
+    <!-- NUEVO -->
+    <span><b>Manager</b><br>Gerente</span>
+    <span><b>Security guard</b><br>Guardia de seguridad</span>
+  </div></div>
+  `
+},
+
+tema14: {
+  titulo: "Sinónimos de trabajo",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Job</b><br>Trabajo</span>
+    <span><b>Occupation</b><br>Ocupación</span>
+    <span><b>Career</b><br>Carrera</span>
+    <span><b>Trade</b><br>Oficio</span>
+    <span><b>Profession</b><br>Profesión</span>
+
+    <!-- NUEVO -->
+    <span><b>Employment</b><br>Empleo</span>
+    <span><b>Position</b><br>Puesto</span>
+  </div></div>
+  `
+},
+
+tema15: {
+  titulo: "Familia inmediata",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Parents</b><br>Padres</span>
+    <span><b>Mother</b><br>Madre</span>
+    <span><b>Father</b><br>Padre</span>
+    <span><b>Brother</b><br>Hermano</span>
+    <span><b>Sister</b><br>Hermana</span>
+    <span><b>Son</b><br>Hijo</span>
+    <span><b>Daughter</b><br>Hija</span>
+
+    <!-- NUEVO -->
+    <span><b>Husband</b><br>Esposo</span>
+    <span><b>Wife</b><br>Esposa</span>
+  </div></div>
+  `
+},
+
+tema16: {
+  titulo: "Familia extendida",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Grandparents</b><br>Abuelos</span>
+    <span><b>Grandfather</b><br>Abuelo</span>
+    <span><b>Grandmother</b><br>Abuela</span>
+    <span><b>Uncle</b><br>Tío</span>
+    <span><b>Aunt</b><br>Tía</span>
+    <span><b>Cousin</b><br>Primo/a</span>
+
+    <!-- NUEVO -->
+    <span><b>Nephew</b><br>Sobrino</span>
+    <span><b>Niece</b><br>Sobrina</span>
+  </div></div>
+  `
+},
+
+tema17: {
+  titulo: "Familia política",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Father-in-law</b><br>Suegro</span>
+    <span><b>Mother-in-law</b><br>Suegra</span>
+    <span><b>Brother-in-law</b><br>Cuñado</span>
+    <span><b>Sister-in-law</b><br>Cuñada</span>
+    <span><b>Son-in-law</b><br>Yerno</span>
+    <span><b>Daughter-in-law</b><br>Nuera</span>
+
+    <!-- NUEVO -->
+    <span><b>Stepfather</b><br>Padrastro</span>
+    <span><b>Stepmother</b><br>Madrastra</span>
+  </div></div>
+  `
+},
+
+tema18: {
+  titulo: "Casa - partes",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Kitchen</b><br>Cocina</span>
+    <span><b>Bathroom</b><br>Baño</span>
+    <span><b>Bedroom</b><br>Dormitorio</span>
+    <span><b>Living room</b><br>Sala</span>
+    <span><b>Garden</b><br>Jardín</span>
+
+    <!-- NUEVO -->
+    <span><b>Garage</b><br>Garaje</span>
+    <span><b>Balcony</b><br>Balcón</span>
+    <span><b>Dining room</b><br>Comedor</span>
+  </div></div>
+  `
+},
+
+tema19: {
+  titulo: "Casa - sinónimos",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Room</b><br>Habitación</span>
+    <span><b>Closet</b><br>Armario</span>
+    <span><b>Yard</b><br>Patio</span>
+    <span><b>Cellar</b><br>Sótano</span>
+
+    <!-- NUEVO -->
+    <span><b>Attic</b><br>Ático</span>
+    <span><b>Hall</b><br>Recibidor</span>
+  </div></div>
+  `
+},
+
+tema20: {
+  titulo: "Sala de estar",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Sofa</b><br>Sofá</span>
+    <span><b>TV</b><br>Televisor</span>
+    <span><b>Table</b><br>Mesa</span>
+    <span><b>Lamp</b><br>Lámpara</span>
+
+    <!-- NUEVO -->
+    <span><b>Armchair</b><br>Sillón</span>
+    <span><b>Carpet</b><br>Alfombra</span>
+    <span><b>Remote control</b><br>Control remoto</span>
+  </div></div>
+  `
+},
+
+tema21: {
+  titulo: "Cocina",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Fridge</b><br>Refrigerador</span>
+    <span><b>Oven</b><br>Horno</span>
+    <span><b>Sink</b><br>Fregadero</span>
+    <span><b>Microwave</b><br>Microondas</span>
+
+    <!-- NUEVO -->
+    <span><b>Knife</b><br>Cuchillo</span>
+    <span><b>Fork</b><br>Tenedor</span>
+    <span><b>Spoon</b><br>Cuchara</span>
+  </div></div>
+  `
+},
+
+tema22: {
+  titulo: "Dormitorio",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Bed</b><br>Cama</span>
+    <span><b>Wardrobe</b><br>Armario</span>
+    <span><b>Mirror</b><br>Espejo</span>
+
+    <!-- NUEVO -->
+    <span><b>Pillow</b><br>Almohada</span>
+    <span><b>Blanket</b><br>Manta</span>
+  </div></div>
+  `
+},
+
+tema23: {
+  titulo: "Baño",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Shower</b><br>Ducha</span>
+    <span><b>Toilet</b><br>Inodoro</span>
+    <span><b>Sink</b><br>Lavabo</span>
+    <span><b>Towel</b><br>Toalla</span>
+    <span><b>Mirror</b><br>Espejo</span>
+    <span><b>Soap</b><br>Jabón</span>
+    <span><b>Shampoo</b><br>Champú</span>
+    <span><b>Toothbrush</b><br>Cepillo de dientes</span>
+    <span><b>Toothpaste</b><br>Pasta dental</span>
+
+    <!-- NUEVO -->
+    <span><b>Toilet paper</b><br>Papel higiénico</span>
+    <span><b>Razor</b><br>Rasuradora</span>
+    <span><b>Comb</b><br>Peine</span>
+  </div></div>
+  `
+},
+
+tema24: {
+  titulo: "Estructura general",
+  texto: `
+  <div class="tabla-bonita"><div class="fila">
+    <span><b>Door</b><br>Puerta</span>
+    <span><b>Window</b><br>Ventana</span>
+    <span><b>Roof</b><br>Techo</span>
+    <span><b>Wall</b><br>Pared</span>
+
+    <!-- NUEVO -->
+    <span><b>Floor</b><br>Piso</span>
+    <span><b>Ceiling</b><br>Techo interior</span>
+    <span><b>Fence</b><br>Cerca</span>
+  </div></div>
+  `
+}
+            };
+
+            const info = baseDeDatos[id];
+            if (info) {
+                pizarra.innerHTML = `<h2>${info.titulo}</h2>${info.texto}`;
+                visor.scrollTop = 0; // Regresa el scroll arriba al cambiar tema
+            }
+        }
+    </script>
+</body>
+</html>

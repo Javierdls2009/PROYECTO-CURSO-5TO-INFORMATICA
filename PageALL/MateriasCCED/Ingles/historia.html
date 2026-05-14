@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingles | AcademiaCCED</title>    
+    <title>Ingles | AcademiaCCED</title>
+    <link rel="stylesheet" href="/PageALL/style_materias.css">    
     <style>
         :root {
             --color-materia: #e5312e; 
@@ -21,11 +22,9 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
             background-color: var(--color-fondo);
-            color: #333;
-        }
+            color: #333; overflow: hidden; }
 
         /* ===== BARRA SUPERIOR ===== */
         .nav-superior {
@@ -205,7 +204,7 @@
 <body>
 
     <nav class="nav-superior">
-        <div class="volver"><a href="PanelGeneral.html">← REGRESAR</a></div>
+        <div class="volver"><a href="PanelGeneral.html">← REGRESAR ATRAS</a></div>
         <div class="titulo-app">Academia CCED</div>
         <div style="font-weight: 600; color: #888;">Panel Educativo</div>
     </nav>
@@ -214,10 +213,10 @@
         <aside class="sidebar">
             <h3>TEMARIO</h3>
             <div class="lista-temas">
-                <button class="btn-tema" onclick="cargar('tema1')">⌛ Historia</button>
-                <button class="btn-tema" onclick="cargar('tema2')">⚒ Ingles antiguo</button>
-                <button class="btn-tema" onclick="cargar('tema3')">◈ Ingles Medio</button>
-                <button class="btn-tema" onclick="cargar('tema4')">✦ Ingles Moderno</button>
+                <button class="btn-tema" onclick="cargar('tema1')"> Historia</button>
+                <button class="btn-tema" onclick="cargar('tema2')"> Ingles antiguo</button>
+                <button class="btn-tema" onclick="cargar('tema3')"> Ingles Medio</button>
+                <button class="btn-tema" onclick="cargar('tema4')"> Ingles Moderno</button>
             </div>
         </aside>
 
@@ -230,7 +229,7 @@
     </div>
 
     <footer>
-        &copy; 2026 AcademiaCCED 
+        &copy; 2026 AcademiaCCED. Todos los derechos reservados.
     </footer>
 
     <script>

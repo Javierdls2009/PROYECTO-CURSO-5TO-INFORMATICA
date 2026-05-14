@@ -19,19 +19,16 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            background-color: var(--color-fondo); overflow: hidden; }
 
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
             background: var(--blanco);
             border-bottom: 2px solid #ddd;
-            flex-wrap: wrap;
+            
         }
 
         .boton-volver a {
@@ -47,9 +44,7 @@
             font-size: 1.5rem;
         }
 
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         .barra-lateral {
@@ -57,7 +52,7 @@
             background-color: var(--blanco);
             border-right: 1px solid #ddd;
             padding: 30px 15px;
-            overflow-y: auto;
+            overflow: hidden;
         }
 
         .barra-lateral h3 {
@@ -97,7 +92,7 @@
             flex: 1;
             padding: 50px;
             background-color: #f9f9fb;
-            overflow-y: auto;
+            overflow: hidden;
         }
 
         #contenido h2 {

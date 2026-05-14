@@ -15,15 +15,12 @@
         }
 
         /* estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
@@ -47,9 +44,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /*barra lateral */
@@ -101,8 +96,7 @@
         .zona-herramientas {
             flex: 1;
             padding: 50px;
-            background-color: #f9f9fb;
-            overflow-y: auto;
+            background-color: #f9f9fb;; height: 100%;
         }
 
         .zona-herramientas h2 {
@@ -179,20 +173,20 @@
             <h3>Los sonidos del habla</h3>
             <hr>
             <div class="info-materia">
-                <div class="tema" onclick="mostrar('definicion')">1. Fonética y Fonología (diferencias)</div>
-                <div class="tema" onclick="mostrar('fono_fonema')">2. Fono, fonema y alófono</div>
-                <div class="tema" onclick="mostrar('aparato')">3. Aparato fonador (órganos y función)</div>
-                <div class="tema" onclick="mostrar('clasif_vocales')">4. Clasificación de las vocales</div>
-                <div class="tema" onclick="mostrar('clasif_consonantes')">5. Clasificación de las consonantes</div>
-                <div class="tema" onclick="mostrar('punto_articulacion')">6. Punto de articulación (consonantes)</div>
-                <div class="tema" onclick="mostrar('modo_articulacion')">7. Modo de articulación (consonantes)</div>
-                <div class="tema" onclick="mostrar('sonoridad')">8. Sonoridad (sordas vs sonoras)</div>
-                <div class="tema" onclick="mostrar('silabas')">9. La sílaba: estructura y tipos</div>
-                <div class="tema" onclick="mostrar('diptongo_triptongo')">10. Diptongo, triptongo y hiato</div>
-                <div class="tema" onclick="mostrar('acentuacion')">11. Acentuación y tipos de acento</div>
-                <div class="tema" onclick="mostrar('transcripcion')">12. Transcripción fonética (AFI)</div>
-                <div class="tema" onclick="mostrar('ejercicios')">13. Ejercicios prácticos</div>
-                <div class="tema" onclick="mostrar('glosario')">14. Glosario fonético-fonológico</div>
+                <div class="tema" onclick="mostrar('definicion')">Fonética y Fonología (diferencias)</div>
+                <div class="tema" onclick="mostrar('fono_fonema')">Fono, fonema y alófono</div>
+                <div class="tema" onclick="mostrar('aparato')"> Aparato fonador (órganos y función)</div>
+                <div class="tema" onclick="mostrar('clasif_vocales')"> Clasificación de las vocales</div>
+                <div class="tema" onclick="mostrar('clasif_consonantes')"> Clasificación de las consonantes</div>
+                <div class="tema" onclick="mostrar('punto_articulacion')"> Punto de articulación (consonantes)</div>
+                <div class="tema" onclick="mostrar('modo_articulacion')"> Modo de articulación (consonantes)</div>
+                <div class="tema" onclick="mostrar('sonoridad')"> Sonoridad (sordas vs sonoras)</div>
+                <div class="tema" onclick="mostrar('silabas')"> La sílaba: estructura y tipos</div>
+                <div class="tema" onclick="mostrar('diptongo_triptongo')"> Diptongo, triptongo y hiato</div>
+                <div class="tema" onclick="mostrar('acentuacion')"> Acentuación y tipos de acento</div>
+                <div class="tema" onclick="mostrar('transcripcion')"> Transcripción fonética (AFI)</div>
+                <div class="tema" onclick="mostrar('ejercicios')"> Ejercicios prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')"> Glosario fonético-fonológico</div>
             </div>
         </aside>
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sintaxis | AcademiaCCED</title>
-    <link rel="stylesheet" href="/PageALL/style_materias.css">
+    <link href="style_materias.css" rel="stylesheet">
     <style>
         /* colores */
         :root {
@@ -15,15 +15,12 @@
         }
 
         /* estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: var(--color-fondo);
-        }
+        body { height: 100%; margin: 0; font-family: Arial, sans-serif;
+            
+            background-color: var(--color-fondo); overflow: hidden; }
 
         /* barra de navegacion superior */
-        .barra-superior {
-            display: flex;
+        .barra-superior { display: flex; height: 74px;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
@@ -47,9 +44,7 @@
         }
 
         /* contenedor principal */
-        .contenedor {
-            display: flex;
-            min-height: 100vh;
+        .contenedor { display: flex; flex: 1;
         }
 
         /* barra lateral */
@@ -58,7 +53,7 @@
             background-color: var(--blanco);
             border-right: 1px solid #ddd;
             padding: 40px 20px;
-            overflow-y: auto;
+            overflow: hidden;
         }
 
         .barra-lateral h3 {
@@ -102,8 +97,7 @@
         .zona-herramientas {
             flex: 1;
             padding: 50px;
-            background-color: #f9f9fb;
-            overflow-y: auto;
+            background-color: #f9f9fb;; height: 100%;
         }
 
         .zona-herramientas h2 {
@@ -180,23 +174,23 @@
             <h3>Temas de Sintaxis</h3>
             <hr>
             <div class="info-materia">
-                <div class="tema" onclick="mostrar('definicion')">1. Definición de Sintaxis</div>
-                <div class="tema" onclick="mostrar('oracion')">2. La Oración</div>
-                <div class="tema" onclick="mostrar('sujeto_predicado')">3. Sujeto y Predicado</div>
-                <div class="tema" onclick="mostrar('tipos_sujeto')">4. Tipos de Sujeto</div>
-                <div class="tema" onclick="mostrar('tipos_oraciones')">5. Tipos de Oraciones</div>
-                <div class="tema" onclick="mostrar('complementos')">6. Complementos del Verbo</div>
-                <div class="tema" onclick="mostrar('cd_ci')">7. Complemento Directo e Indirecto</div>
-                <div class="tema" onclick="mostrar('circunstancial')">8. Complementos Circunstanciales</div>
-                <div class="tema" onclick="mostrar('atributo')">9. Atributo y Predicativo</div>
-                <div class="tema" onclick="mostrar('agente')">10. Complemento Agente</div>
-                <div class="tema" onclick="mostrar('orden')">11. Orden de la Oración</div>
-                <div class="tema" onclick="mostrar('oraciones_compuestas')">12. Oraciones Compuestas</div>
-                <div class="tema" onclick="mostrar('coordinacion')">13. Coordinación y Subordinación</div>
-                <div class="tema" onclick="mostrar('perifrasis')">14. Perífrasis Verbales</div>
-                <div class="tema" onclick="mostrar('analisis')">15. Análisis Sintáctico Paso a Paso</div>
-                <div class="tema" onclick="mostrar('ejercicios')">16. Ejercicios Prácticos</div>
-                <div class="tema" onclick="mostrar('glosario')">17. Glosario Sintáctico</div>
+                <div class="tema" onclick="mostrar('definicion')"> Definición de Sintaxis</div>
+                <div class="tema" onclick="mostrar('oracion')"> La Oración</div>
+                <div class="tema" onclick="mostrar('sujeto_predicado')"> Sujeto y Predicado</div>
+                <div class="tema" onclick="mostrar('tipos_sujeto')"> Tipos de Sujeto</div>
+                <div class="tema" onclick="mostrar('tipos_oraciones')"> Tipos de Oraciones</div>
+                <div class="tema" onclick="mostrar('complementos')"> Complementos del Verbo</div>
+                <div class="tema" onclick="mostrar('cd_ci')"> Complemento Directo e Indirecto</div>
+                <div class="tema" onclick="mostrar('circunstancial')"> Complementos Circunstanciales</div>
+                <div class="tema" onclick="mostrar('atributo')"> Atributo y Predicativo</div>
+                <div class="tema" onclick="mostrar('agente')"> Complemento Agente</div>
+                <div class="tema" onclick="mostrar('orden')"> Orden de la Oración</div>
+                <div class="tema" onclick="mostrar('oraciones_compuestas')"> Oraciones Compuestas</div>
+                <div class="tema" onclick="mostrar('coordinacion')"> Coordinación y Subordinación</div>
+                <div class="tema" onclick="mostrar('perifrasis')"> Perífrasis Verbales</div>
+                <div class="tema" onclick="mostrar('analisis')"> Análisis Sintáctico Paso a Paso</div>
+                <div class="tema" onclick="mostrar('ejercicios')"> Ejercicios Prácticos</div>
+                <div class="tema" onclick="mostrar('glosario')"> Glosario Sintáctico</div>
             </div>
         </aside>
 
